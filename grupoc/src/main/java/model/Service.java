@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 import java.util.List;
 
-public class Provider {
+public class Service {
 	
 	private String name;
 	private String logo;
