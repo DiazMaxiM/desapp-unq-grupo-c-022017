@@ -2,9 +2,9 @@ package model;
 
 public class Address {
 
-	String locality;
-	String street;
-	String numberStreet;
-	String floor;
-	MapPosition mapPosition;
+	private Locality locality;
+	private String street;
+	private String numberStreet;
+	private String floor;
+	private MapPosition mapPosition;
 }
