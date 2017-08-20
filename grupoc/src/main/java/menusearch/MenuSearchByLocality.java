@@ -1,14 +1,20 @@
 package menusearch;
 
-import java.util.List;
-
+import java.util.ArrayList;
+import model.Locality;
 import model.Menu;
 
-public class MenuSearchByLocality implements MenuSearchCriteria {
+public class MenuSearchByLocality extends MenuSearchCriteria {
 
-	public void menuSearch(List<Menu> menus) {
-		// TODO Auto-generated method stub
-		
+	public MenuSearchByLocality(Locality locality){
+		super.setCriteria(locality);
+	}
+	
+	@Override
+	public ArrayList<Menu> menuSearch(){
+		ArrayList<Menu> result = new ArrayList<Menu>();
+//TERMINAR IMPLEMENTACION
+		return result;
 	}
 
 }

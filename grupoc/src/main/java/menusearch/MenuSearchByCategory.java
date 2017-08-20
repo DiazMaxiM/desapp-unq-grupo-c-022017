@@ -1,14 +1,10 @@
 package menusearch;
 
-import java.util.List;
+import model.Category;
 
-import model.Menu;
-
-public class MenuSearchByCategory implements MenuSearchCriteria {
-
-	public void menuSearch(List<Menu> menus) {
-		// TODO Auto-generated method stub
-
+public class MenuSearchByCategory extends MenuSearchCriteria {
+	
+	public MenuSearchByCategory(Category category){
+		super.setCriteria(category);
 	}
-
 }
