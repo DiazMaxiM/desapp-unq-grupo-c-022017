@@ -7,25 +7,25 @@ import model.ServiceManager;
 public abstract class MenuSearchCriteria {
 	
 	private ServiceManager serviceManager;
-	private Object criteria;
-				
+	private Object searchCriteria;
+
 	public  ArrayList<Menu> menuSearch(){
-		ArrayList<Menu> menus = this.getServiceManager().getAllMenus();
-		ArrayList<Menu> result = new ArrayList<Menu>();
-		for(int i = 0; i < menus.size(); i++){
-			if(menus.get(i).getMenuCategory() == this.getCriteria()){
-				result.add(menus.get(i));
+		ArrayList<Menu> allMenus = this.getServiceManager().getAllMenus();
+		ArrayList<Menu> menuSearchResult = new ArrayList<Menu>();
+		for(int i = 0; i < allMenus.size(); i++){
+			if(this.getPropertyToCompare(allMenus.get(i)) == this.getSearchCriteria()){
+				menuSearchResult.add(allMenus.get(i));
 			}
 		}
-		return result;
+		return menuSearchResult;
 	}
 
-	public Object getCriteria() {
-		return criteria;
+	public Object getSearchCriteria() {
+		return searchCriteria;
 	}
 
-	public void setCriteria(Object criteria) {
-		this.criteria = criteria;
+	public void setSearchCriteria(Object criteria) {
+		this.searchCriteria = criteria;
 	}
 
 	public ServiceManager getServiceManager() {
@@ -33,7 +33,9 @@ public abstract class MenuSearchCriteria {
 	}
 
 	public void setServiceManager(ServiceManager serviceManager) {
-		this.serviceManager = serviceManager;
+		serviceManager = serviceManager;
 	}
-
+	
+	public abstract Object getPropertyToCompare(Menu menu);
+	
 }
