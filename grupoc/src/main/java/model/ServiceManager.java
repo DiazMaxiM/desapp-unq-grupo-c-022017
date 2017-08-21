@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exception.InvalidServiceException;
+
 public class ServiceManager {
 	private List<Service> servicesOffered;
 
@@ -11,8 +13,12 @@ public class ServiceManager {
 	}
 
 	public void addService(Service newService) {
-		this.servicesOffered.add(newService);
-		
+		if(newService.isAValidService()){
+			this.servicesOffered.add(newService);
+		}
+		else{
+			new InvalidServiceException("The service entered is not valid");
+		}
 	}
 	
 	public ArrayList<Menu> getAllMenus(){
