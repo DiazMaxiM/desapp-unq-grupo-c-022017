@@ -18,7 +18,14 @@ public class Menu {
     private Integer secondMinimumNumberOfMenusToBuy;
     private Float secondMinimumPriceOfMenusToBuy;
     private Float maximumNumberOfMunusSalesPerDay;
+    private Service service;
     
+	public Service getService() {
+		return service;
+	}
+	public void setService(Service service) {
+		this.service = service;
+	}
 	public String getMenuName() {
 		return menuName;
 	}
@@ -103,9 +110,5 @@ public class Menu {
 	public void setMaximumNumberOfMunusSalesPerDay(Float maximumNumberOfMunusSalesPerDay) {
 		this.maximumNumberOfMunusSalesPerDay = maximumNumberOfMunusSalesPerDay;
 	}
-    
-    
-    
-    
     
 }
