@@ -3,13 +3,13 @@
   <groupId>morfiya</groupId>
   <artifactId>grupoc</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
-	<dependecies>
-		<dependency>
-    		<groupId>junit</groupId>
-   			<artifactId>junit</artifactId>
-    		<version>4.8.1</version>
-    		<scope>test</scope>
-		</dependency>
-	</dependecies>
+<dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>junit</groupId>
+  			<artifactId>junit</artifactId>
+  			<version>4.8.2</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>
