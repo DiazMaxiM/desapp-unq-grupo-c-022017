@@ -1,19 +1,20 @@
 package model;
 
-import java.util.List;
-
 public class Transaction {
 	private TypeTransaction typeTransaction;
-	private float value;
+	private Double value;
 	
 	
-	public Transaction(TypeTransaction typeTransaction, float value) {
+	public Transaction(TypeTransaction typeTransaction, Double value) {
 		
 		this.typeTransaction  =typeTransaction;
 		this.value = value;
 	}
-	public float getValue(){
-		return value;
+	public Double getValueForSum(){
+		if (this.typeTransaction.equals(TypeTransaction.CREDIT)){
+			return value;
+		}
+		return -value;
 	}
 	public TypeTransaction getTypeTransaction() {
 		return typeTransaction;
