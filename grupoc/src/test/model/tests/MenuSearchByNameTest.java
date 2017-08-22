@@ -7,7 +7,8 @@ import org.junit.Test;
 public class MenuSearchByNameTest {
 
 	@Test
-	public void test() {
+	public void testMenuSearch_siNoHayMenusNoDevuelveNada() {
+		
 		assertTrue(true);
 	}
 
