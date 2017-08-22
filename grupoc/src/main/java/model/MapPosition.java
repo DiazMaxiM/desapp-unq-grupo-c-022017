@@ -2,7 +2,7 @@ package model;
 
 public class MapPosition {
 
-	String latitude;
-	String lenght;
+	private String latitude;
+	private String lenght;
 	
 }
