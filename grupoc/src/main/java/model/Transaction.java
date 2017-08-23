@@ -11,10 +11,10 @@ public class Transaction {
 		this.value = value;
 	}
 	public Double getValueForSum(){
-		if (this.typeTransaction.equals(TypeTransaction.CREDIT)){
-			return value;
+		if (this.getTypeTransaction().equals(TypeTransaction.CREDIT)){
+			return getValue();
 		}
-		return -value;
+		return - getValue();
 	}
 	public TypeTransaction getTypeTransaction() {
 		return typeTransaction;

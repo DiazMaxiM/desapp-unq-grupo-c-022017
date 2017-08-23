@@ -48,5 +48,29 @@ public class AccountTest {
 		Mockito.when(transaction.getTypeTransaction()).thenReturn(TypeTransaction.DEBIT);
 		account.addTransaction(transaction);
 	}
+	@Test
+	public void testIfCreateNewAccountThenTheBalanceIs0() {
 	
+		Account account = new Account();
+		Assert.assertEquals(account.balance(),new Double(0.0));
+	}
+	@Test
+	public void testIfCreateNewAccountAndAddNewTransactionTypeCreditTheValue5AndAfterOtherTransactionTypeDebitTheValue3ThenTheBalanceIs2() throws BalanceInsufficient {
+	
+		Account account = new Account();
+		Transaction transactionCredit5 = Mockito.mock(Transaction.class);
+		Mockito.when(transactionCredit5.getValue()).thenReturn(new Double(5.0));
+		Mockito.when(transactionCredit5.getValueForSum()).thenReturn(new Double(5.0));
+		Mockito.when(transactionCredit5.getTypeTransaction()).thenReturn(TypeTransaction.CREDIT);
+		
+		Transaction transactionDebit2 = Mockito.mock(Transaction.class);
+		Mockito.when(transactionDebit2.getValue()).thenReturn(new Double(2.0));
+		Mockito.when(transactionDebit2.getValueForSum()).thenReturn(new Double(-2.0));
+		Mockito.when(transactionDebit2.getTypeTransaction()).thenReturn(TypeTransaction.DEBIT);
+		
+		account.addTransaction(transactionCredit5);
+		account.addTransaction(transactionDebit2);
+		
+		Assert.assertEquals(account.balance(),new Double(3.0));
+	}	
 }
