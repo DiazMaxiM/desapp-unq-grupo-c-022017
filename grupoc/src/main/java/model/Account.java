@@ -10,10 +10,14 @@ public class Account {
 	private List<Transaction> transactions = new ArrayList<Transaction>();
 
 	public void addTransaction(Transaction transaction) throws BalanceInsufficient  {
-		if (transaction.getTypeTransaction() == TypeTransaction.DEBIT && this.balance() < transaction.getValue()){
-			throw new BalanceInsufficient(null);
+		if ( isBalanceInsufficient(transaction)){
+			throw new BalanceInsufficient("Error saldo insuficiente");
 		}
 			transactions.add(transaction);
+	}
+
+	private boolean isBalanceInsufficient(Transaction transaction) {
+		return (this.balance() + transaction.getValueForSum())<0;
 	}
 
 	public Integer countTransaction() {

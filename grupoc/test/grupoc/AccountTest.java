@@ -44,6 +44,7 @@ public class AccountTest {
 		Account account = new Account();
 		Transaction transaction = Mockito.mock(Transaction.class);
 		Mockito.when(transaction.getValue()).thenReturn(new Double(5.0));
+		Mockito.when(transaction.getValueForSum()).thenReturn(new Double(-5.0));
 		Mockito.when(transaction.getTypeTransaction()).thenReturn(TypeTransaction.DEBIT);
 		account.addTransaction(transaction);
 	}
