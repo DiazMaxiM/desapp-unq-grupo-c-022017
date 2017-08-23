@@ -10,6 +10,6 @@ Links útiles
 
 [Codacy](https://www.codacy.com/app/DiazMaxiM/desapp-unq-grupo-c-022017/dashboard)
 
-[Heroku](https://afternoon-reaches-27280.herokuapp.com/)
+[Heroku](https://desapp-unq-grupo-c-022017.herokuapp.com/)
 
-https://dashboard.heroku.com/apps/afternoon-reaches-27280
+https://dashboard.heroku.com/apps/desapp-unq-grupo-c-022017
