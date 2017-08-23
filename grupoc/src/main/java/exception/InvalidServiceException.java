@@ -2,9 +2,11 @@ package exception;
 
 import org.omg.CORBA.UserException;
 
-@SuppressWarnings("all")
 public class InvalidServiceException extends UserException {
-	public InvalidServiceException(String message){
+
+	private static final long serialVersionUID = 1L;
+
+	public InvalidServiceException(String message) {
 		super(message);
 	}
 

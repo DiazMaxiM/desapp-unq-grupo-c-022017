@@ -2,22 +2,21 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import exception.BalanceInsufficient;
 
 public class Account {
 	private List<Transaction> transactions = new ArrayList<Transaction>();
 
-	public void addTransaction(Transaction transaction) throws BalanceInsufficient  {
-		if ( isBalanceInsufficient(transaction)){
+	public void addTransaction(Transaction transaction) throws BalanceInsufficient {
+		if (isBalanceInsufficient(transaction)) {
 			throw new BalanceInsufficient("Error saldo insuficiente");
 		}
-			transactions.add(transaction);
+		transactions.add(transaction);
 	}
 
 	private boolean isBalanceInsufficient(Transaction transaction) {
-		return (this.balance() + transaction.getValueForSum())<0;
+		return (this.balance() + transaction.getValueForSum()) < 0;
 	}
 
 	public Integer countTransaction() {
@@ -25,7 +24,7 @@ public class Account {
 	}
 
 	public Double balance() {
-		return transactions.stream().mapToDouble( trans -> trans.getValueForSum()).sum();
+		return transactions.stream().mapToDouble(trans -> trans.getValueForSum()).sum();
 	}
-	
+
 }

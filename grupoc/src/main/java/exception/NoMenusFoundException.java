@@ -2,9 +2,11 @@ package exception;
 
 import org.omg.CORBA.UserException;
 
-@SuppressWarnings("all")
 public class NoMenusFoundException extends UserException {
-	public NoMenusFoundException(String message){
+
+	private static final long serialVersionUID = 1L;
+
+	public NoMenusFoundException(String message) {
 		super(message);
 	}
 }
