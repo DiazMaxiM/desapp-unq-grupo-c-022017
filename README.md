@@ -12,4 +12,4 @@ Links útiles
 
 [Heroku](https://desapp-unq-grupo-c-022017.herokuapp.com/)
 
-https://dashboard.heroku.com/apps/desapp-unq-grupo-c-022017
+[Heroku dashboard](https://dashboard.heroku.com/apps/desapp-unq-grupo-c-022017)
