@@ -19,5 +19,8 @@ public class Transaction {
 	public TypeTransaction getTypeTransaction() {
 		return typeTransaction;
 	}
+	public Double getValue() {
+		return value;
+	}
 	
 }
