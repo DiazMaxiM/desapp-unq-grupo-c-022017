@@ -20,6 +20,13 @@ public class Menu {
     private Float maximumNumberOfMunusSalesPerDay;
     private Service service;
     
+	public Menu(String menuName, String menuDescription, Category menuCategory, Service service) {
+		this.menuName = menuName;
+		this.menuDescription = menuDescription;
+		this.menuCategory = menuCategory;
+		this.service = service;
+	}
+	
 	public Service getService() {
 		return service;
 	}
