@@ -3,6 +3,8 @@ package model;
 import java.util.HashMap;
 import java.util.List;
 
+import exception.NumberOfMenusExceededException;
+
 public class Service {
 	private String serviceName;
 	private String serviceLogo;
@@ -15,7 +17,8 @@ public class Service {
 	private Telephone serviceTelephone;
 	private HashMap<String,String> serviceWorkingHours;
 	private List<String> serviceDeliveryLocations;
-	
+	private int maximumNumberOfMenus = 20;
+
 	public String getServiceName() {
 		return serviceName;
 	}
@@ -108,6 +111,24 @@ public class Service {
 		return true;
 	}
 	
-
+	public int getMaximumNumberOfMenus() {
+		return maximumNumberOfMenus;
+	}
+	
+	public int numberOfMenusOffered() {
+		return this.getServiceMenusOffered().size();
+	}
+	
+	public void addMenuToOffer(Menu menuToOffer) throws NumberOfMenusExceededException {
+		if(this.numberOfMenusOffered() < this.maximumNumberOfMenus) {
+			this.getServiceMenusOffered().add(menuToOffer);		
+		} else {
+			throw new NumberOfMenusExceededException("No puede ofrecer más de 20 menús");
+		}
+	}
+	
+	public Locality serviceLocality() {
+		return this.getServiceAddress().getLocality();
+	}
 
 }
