@@ -1,12 +1,20 @@
 package model;
 
-public class Provider {
-	private ServiceManager serviceManager;
-	private String cuit;
+import java.util.ArrayList;
+import java.util.List;
 
-	public void addNewService() {
-		Service newService = new Service();
-		this.serviceManager.addService(newService);
+import exception.InvalidServiceException;
+
+public class Provider {
+	private String cuit;
+	private List<Service> servicesOffered;
+
+	public Provider() {
+		this.servicesOffered = new ArrayList<Service>();
+	}
+
+	public void addNewService(Service newService) throws InvalidServiceException {
+		this.servicesOffered.add(newService);
 	}
 
 	@Override
