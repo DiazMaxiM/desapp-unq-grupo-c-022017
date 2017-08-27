@@ -26,4 +26,9 @@ public class Provider {
 	public int hashCode() {
 		return super.hashCode();
 	}
+	
+	public List<Service>getServicesOffered(){
+		return this.servicesOffered;
+	}
+	
 }
