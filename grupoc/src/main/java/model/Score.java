@@ -33,4 +33,10 @@ public class Score {
 		return valueScore;
 	}
 
+	public void setScore(Integer valueScore) {
+		this.valueScore = valueScore;
+		this.status = TypeStatus.FINISH;
+
+	}
+
 }
