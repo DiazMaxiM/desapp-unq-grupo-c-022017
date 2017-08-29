@@ -1,4 +1,4 @@
-package exception;
+package menuExceptions;
 
 public class InvalidStartDateOfferMenuException  extends Exception {
 	

@@ -1,4 +1,4 @@
-package exception;
+package menuExceptions;
 
 public class InvalidDeliveryPriceException extends Throwable {
 	private static final long serialVersionUID = 1L;

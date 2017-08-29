@@ -6,15 +6,19 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import builders.ServiceBuilder;
-import exception.InvalidDeliveryPriceException;
-import exception.InvalidEndDateOfferMenuException;
-import exception.InvalidMenuCategoryException;
-import exception.InvalidMenuDeliveryPriceException;
-import exception.InvalidMenuDescriptionException;
-import exception.InvalidMenuException;
-import exception.InvalidMenuNameException;
+import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
-import exception.InvalidStartDateOfferMenuException;
+import menuExceptions.InvalidDeliveryPriceException;
+import menuExceptions.InvalidEndDateOfferMenuException;
+import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMenuCategoryException;
+import menuExceptions.InvalidMenuDeliveryPriceException;
+import menuExceptions.InvalidMenuDescriptionException;
+import menuExceptions.InvalidMenuNameException;
+import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
 import model.Menu;
 import model.Service;
@@ -37,7 +41,7 @@ public class MenuBuilder {
     private Integer maximumNumberOfMunusSalesPerDay= 100;
     private Service service = this.getService();
     
-    public Menu build() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+    public Menu build() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 			return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice,startDateOfferMenu,endDateOfferMenu,deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice,firstMinimumNumberOfMenusToBuy,firstminimumPriceOfMenusToBuy,secondMinimumNumberOfMenusToBuy,secondMinimumPriceOfMenusToBuy,maximumNumberOfMunusSalesPerDay,service);
 			
     }
@@ -78,6 +82,41 @@ public class MenuBuilder {
 
 	public MenuBuilder withStartDateOfferMenu(DateTime dateOfferMenu) {
 		this.startDateOfferMenu=dateOfferMenu;
+		return this;
+	}
+
+	public MenuBuilder withEndDateOfferMenu(DateTime dateOfferMenu) {
+		this.endDateOfferMenu=dateOfferMenu;
+		return this;
+	}
+
+	public MenuBuilder withAverageDeliveryTimeOfMenu(Integer averageDeliveryTimeOfMenu) {
+		this.averageDeliveryTimeOfMenu= averageDeliveryTimeOfMenu;
+		return this;
+	}
+
+	public MenuBuilder withFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) {
+		this.firstMinimumNumberOfMenusToBuy=firstMinimumNumberOfMenusToBuy;
+		return this;
+	}
+
+	public MenuBuilder withFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) {
+		this.firstminimumPriceOfMenusToBuy=firstminimumPriceOfMenusToBuy;
+		return this;
+	}
+
+	public MenuBuilder withSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) {
+		this.secondMinimumNumberOfMenusToBuy=secondMinimumNumberOfMenusToBuy;
+		return this;
+	}
+
+	public MenuBuilder withSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
+		this.secondMinimumPriceOfMenusToBuy=secondMinimumPriceOfMenusToBuy;
+		return this;
+	}
+
+	public MenuBuilder withMenuService(Service service) {
+		this.service=service;
 		return this;
 	}
 

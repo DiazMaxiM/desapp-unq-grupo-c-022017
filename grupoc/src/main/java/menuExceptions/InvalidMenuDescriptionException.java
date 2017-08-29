@@ -1,4 +1,4 @@
-package exception;
+package menuExceptions;
 
 public class InvalidMenuDescriptionException extends Exception {
 	 private static final long serialVersionUID = 1L;

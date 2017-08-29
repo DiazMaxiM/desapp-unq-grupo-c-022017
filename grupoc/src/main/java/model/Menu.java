@@ -2,14 +2,18 @@ package model;
 import java.util.List;
 import org.joda.time.DateTime;
 
-import exception.InvalidDeliveryPriceException;
-import exception.InvalidEndDateOfferMenuException;
-import exception.InvalidMenuCategoryException;
-import exception.InvalidMenuDeliveryPriceException;
-import exception.InvalidMenuDescriptionException;
-import exception.InvalidMenuException;
-import exception.InvalidMenuNameException;
-import exception.InvalidStartDateOfferMenuException;
+import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidServiceException;
+import menuExceptions.InvalidDeliveryPriceException;
+import menuExceptions.InvalidEndDateOfferMenuException;
+import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMenuCategoryException;
+import menuExceptions.InvalidMenuDeliveryPriceException;
+import menuExceptions.InvalidMenuDescriptionException;
+import menuExceptions.InvalidMenuNameException;
+import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidStartDateOfferMenuException;
 
 public class Menu {
     private String menuName;
@@ -35,7 +39,7 @@ public class Menu {
 			    Integer averageDeliveryTimeOfMenu,Double menuPrice,
 			    Integer firstMinimumNumberOfMenusToBuy,Double firstminimumPriceOfMenusToBuy,
 			    Integer secondMinimumNumberOfMenusToBuy,Double secondMinimumPriceOfMenusToBuy,
-			    Integer maximumNumberOfMunusSalesPerDay,Service service) throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+			    Integer maximumNumberOfMunusSalesPerDay,Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		
 		if(isAValidMenu(menuName,menuDescription,menuCategory,menuDeliveryPrice,
 				startDateOfferMenu,endDateOfferMenu,averageDeliveryTimeOfMenu,
@@ -56,7 +60,7 @@ public class Menu {
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
 			Integer firstMinimumNumberOfMenusToBuy, Double firstminimumPriceOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy, Double secondMinimumPriceOfMenusToBuy,
-			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay {
 		
 		return isValidMenuName(menuName)
 			   && isValidMenuDescription(menuDescription)
@@ -91,27 +95,40 @@ public class Menu {
 		return menuDeliveryPrice>=10 && menuDeliveryPrice<=40;
 	}
 
-	private boolean isValidService(Service service) {
+	private boolean isValidService(Service service) throws InvalidServiceException {
+		if (service==null){
+			throw new InvalidServiceException("El menu debe tener un servicio asociado");
+		}
 		return service!=null;
 	}
 
-	private boolean isValidMaximumNumberOfMunusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) {
+	private boolean isValidMaximumNumberOfMunusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) throws InvalidMaximumNumberOfMunusSalesPerDay {
+		if(!validator.isValidIntegerNumber(maximumNumberOfMunusSalesPerDay)){
+			throw new InvalidMaximumNumberOfMunusSalesPerDay("Ingrese la cantidad maxima de ventas de menus por dia");
+		}
 		return validator.isValidIntegerNumber(maximumNumberOfMunusSalesPerDay);
 	}
     
-	private boolean isValidSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
-		return isHasValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy)
+	private boolean isValidSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException {
+		boolean isValidSecondMinimumPriceOfMenusToBuy=isHasValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy)
 			   && isHasValidPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy);
+		if(!isValidSecondMinimumPriceOfMenusToBuy){
+			throw new InvalidMinimumPriceOfMenusToBuyException("El segundo precio para la venta de menus no es valido");
+		}
+		return isValidSecondMinimumPriceOfMenusToBuy;
 	}
 
 	private boolean isHasValidSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
 		return validator.isValidDoubleNumber(secondMinimumPriceOfMenusToBuy);
 	}
 
-	private boolean isValidSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) {
-		return isHasValidSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy)
+	private boolean isValidSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) throws InvalidMinimumNumberOfMenusToBuyException {
+		boolean isValidSecondMinimumNumberOfMenusToBuy= isHasValidSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy)
 				&& isHasNumberOfSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy);
-	
+		if(!isValidSecondMinimumNumberOfMenusToBuy){
+			throw new InvalidMinimumNumberOfMenusToBuyException("La segunda cantidad minima ingresada no es valida");
+		}
+	    return isValidSecondMinimumNumberOfMenusToBuy;
 	}
 
 	private boolean isHasNumberOfSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) {
@@ -123,9 +140,13 @@ public class Menu {
 		return validator.isValidIntegerNumber(secondMinimumNumberOfMenusToBuy);
 	}
 
-	private boolean isValidFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) {	
-		return isHasValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy)
+	private boolean isValidFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException{
+		boolean isValidFirstMinimumPriceOfMenusToBuy =isHasValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy)
 		       && isHasValidPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy);
+		if(!isValidFirstMinimumPriceOfMenusToBuy){
+			throw new InvalidMinimumPriceOfMenusToBuyException("El precio del menu para la su venta no es valido");
+		}
+		return isValidFirstMinimumPriceOfMenusToBuy;
 	}
 
 	private boolean isHasValidPriceOfMenusToBuy(Double minimumPriceOfMenusToBuy) {
@@ -137,9 +158,13 @@ public class Menu {
 		return validator.isValidDoubleNumber(firstminimumPriceOfMenusToBuy);
 	}
 
-	private boolean isValidFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) {
-		return isHasValidFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy)
-		       && isHasNumberOfFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy);
+	private boolean isValidFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) throws InvalidMinimumNumberOfMenusToBuyException {
+		boolean isValidFirstMinimumNumberOfMenusToBuy= isHasValidFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy)
+			       && isHasNumberOfFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy);
+		if(!isValidFirstMinimumNumberOfMenusToBuy){
+			throw new InvalidMinimumNumberOfMenusToBuyException("El primer minimo de menus para comprar no es valido ");
+		}
+		return isValidFirstMinimumNumberOfMenusToBuy;
 	}
 
 	private boolean isHasNumberOfFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) {
@@ -151,7 +176,10 @@ public class Menu {
 		return validator.isValidIntegerNumber(firstMinimumNumberOfMenusToBuy);
 	}
 
-	private boolean isValidAverageDeliveryTimeOfMenu(Integer averageDeliveryTimeOfMenu) {
+	private boolean isValidAverageDeliveryTimeOfMenu(Integer averageDeliveryTimeOfMenu) throws InvalidAverageDeliveryTimeOfMenuException {
+		if(!validator.isValidIntegerNumber(averageDeliveryTimeOfMenu)){
+			throw new InvalidAverageDeliveryTimeOfMenuException("Ingrese un tiempo promedio de entrega");
+		}
 		return validator.isValidIntegerNumber(averageDeliveryTimeOfMenu);
 	}
 

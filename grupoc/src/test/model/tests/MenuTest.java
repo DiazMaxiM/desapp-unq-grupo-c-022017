@@ -2,63 +2,110 @@ package tests;
 import org.junit.Test;
 
 import builder.MenuBuilder;
-import exception.InvalidDeliveryPriceException;
-import exception.InvalidEndDateOfferMenuException;
-import exception.InvalidMenuCategoryException;
-import exception.InvalidMenuDeliveryPriceException;
-import exception.InvalidMenuDescriptionException;
-import exception.InvalidMenuException;
-import exception.InvalidMenuNameException;
-import exception.InvalidStartDateOfferMenuException;
-import model.Menu;
+import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidServiceException;
+import menuExceptions.InvalidDeliveryPriceException;
+import menuExceptions.InvalidEndDateOfferMenuException;
+import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMenuCategoryException;
+import menuExceptions.InvalidMenuDeliveryPriceException;
+import menuExceptions.InvalidMenuDescriptionException;
+import menuExceptions.InvalidMenuNameException;
+import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidStartDateOfferMenuException;
 
 public class MenuTest {
-
-	@Test(expected=InvalidMenuNameException.class)
-	public void testShouldFailWhenICreateAnInvalidMenu() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
-		new Menu(null,null,null,null,null, null, null, null, null, null, null, null, null, null, null);
-	}
 	
 	@Test()
-	public void testShouldPassWhenICreateAValidMenu() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldPassWhenICreateAValidMenu() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.build();
 	}
 	
 	@Test(expected=InvalidMenuNameException.class)
-	public void testShouldFailWhenICreateAnInvalidMenuWithAShortName() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldFailWhenICreateAnInvalidMenuWithAShortName() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.withMenuName("ppp")
 		.build();
 	}
 	
 	@Test(expected=InvalidMenuDescriptionException.class)
-	public void testShouldFailWhenICreateAnInvalidMenuWithAShortDescription() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldFailWhenICreateAnInvalidMenuWithAShortDescription() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.withMenuDescription("ppp")
 		.build();
 	}
 	@Test(expected=InvalidMenuCategoryException.class)
-	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidCategory() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidCategory() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.withMenuCategory(null)
 		.build();
 	}
 	
 	@Test(expected=InvalidMenuDeliveryPriceException.class)
-	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidMenu() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidMenuDeliveryPrice() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.withMenuDeliveryPrice(new Double(50))
 		.build();
 	}
 	
 	@Test(expected=InvalidStartDateOfferMenuException.class)
-	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidisinValidStartDateOfferMenu() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidStartDateOfferMenu() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		new MenuBuilder()
 		.withStartDateOfferMenu(null)
 		.build();
 	}
 	
 
+	@Test(expected=InvalidEndDateOfferMenuException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidEndDateOfferMenu() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withEndDateOfferMenu(null)
+		.build();
+	}
+	
+	@Test(expected=InvalidAverageDeliveryTimeOfMenuException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidAverageDeliveryTimeOfMenu() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withAverageDeliveryTimeOfMenu(null)
+		.build();
+	}
+	
+	@Test(expected=InvalidMinimumNumberOfMenusToBuyException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidFirstMinimumNumberOfMenusToBuy() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withFirstMinimumNumberOfMenusToBuy(100)
+		.build();
+	}
+	
+	@Test(expected=InvalidMinimumPriceOfMenusToBuyException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidFirstMinimumPriceOfMenusToBuy() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withFirstMinimumPriceOfMenusToBuy(new Double(1500))
+		.build();
+	}
+	
+	@Test(expected=InvalidMinimumNumberOfMenusToBuyException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidSecondMinimumNumberOfMenusToBuy() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withSecondMinimumNumberOfMenusToBuy(200)
+		.build();
+	}
+	
+	@Test(expected=InvalidMinimumPriceOfMenusToBuyException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidSecondMinimumPriceOfMenusToBuy() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withSecondMinimumPriceOfMenusToBuy(new Double(1500))
+		.build();
+	}
+	
+	@Test(expected=InvalidServiceException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidService() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
+		new MenuBuilder()
+		.withMenuService(null)
+		.build();
+	}
 	
 }
