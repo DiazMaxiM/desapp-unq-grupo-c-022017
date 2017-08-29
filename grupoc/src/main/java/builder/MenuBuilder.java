@@ -6,11 +6,15 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import builders.ServiceBuilder;
+import exception.InvalidDeliveryPriceException;
+import exception.InvalidEndDateOfferMenuException;
 import exception.InvalidMenuCategoryException;
+import exception.InvalidMenuDeliveryPriceException;
 import exception.InvalidMenuDescriptionException;
 import exception.InvalidMenuException;
 import exception.InvalidMenuNameException;
 import exception.InvalidServiceException;
+import exception.InvalidStartDateOfferMenuException;
 import model.Category;
 import model.Menu;
 import model.Service;
@@ -33,12 +37,12 @@ public class MenuBuilder {
     private Integer maximumNumberOfMunusSalesPerDay= 100;
     private Service service = this.getService();
     
-    public Menu build() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException {
-			return new Menu(menuName, menuDescription, menuCategory, firstminimumPriceOfMenusToBuy, endDateOfferMenu, endDateOfferMenu, deliveryTimesMenus, averageDeliveryTimeOfMenu, firstminimumPriceOfMenusToBuy, averageDeliveryTimeOfMenu, firstminimumPriceOfMenusToBuy, averageDeliveryTimeOfMenu, firstminimumPriceOfMenusToBuy, averageDeliveryTimeOfMenu, service);
+    public Menu build() throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
+			return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice,startDateOfferMenu,endDateOfferMenu,deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice,firstMinimumNumberOfMenusToBuy,firstminimumPriceOfMenusToBuy,secondMinimumNumberOfMenusToBuy,secondMinimumPriceOfMenusToBuy,maximumNumberOfMunusSalesPerDay,service);
 			
     }
     
-    private List<String> getDeliveryTimesMenus() {	
+    private List<String> getDeliveryTimesMenus() {
 		return new ArrayList<>();
 	}
 
@@ -69,6 +73,11 @@ public class MenuBuilder {
 
 	public MenuBuilder withMenuDeliveryPrice(Double menuDelieryPrice) {
 		this.menuDeliveryPrice=menuDelieryPrice;
+		return this;
+	}
+
+	public MenuBuilder withStartDateOfferMenu(DateTime dateOfferMenu) {
+		this.startDateOfferMenu=dateOfferMenu;
 		return this;
 	}
 

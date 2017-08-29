@@ -2,10 +2,14 @@ package model;
 import java.util.List;
 import org.joda.time.DateTime;
 
+import exception.InvalidDeliveryPriceException;
+import exception.InvalidEndDateOfferMenuException;
 import exception.InvalidMenuCategoryException;
+import exception.InvalidMenuDeliveryPriceException;
 import exception.InvalidMenuDescriptionException;
 import exception.InvalidMenuException;
 import exception.InvalidMenuNameException;
+import exception.InvalidStartDateOfferMenuException;
 
 public class Menu {
     private String menuName;
@@ -31,7 +35,7 @@ public class Menu {
 			    Integer averageDeliveryTimeOfMenu,Double menuPrice,
 			    Integer firstMinimumNumberOfMenusToBuy,Double firstminimumPriceOfMenusToBuy,
 			    Integer secondMinimumNumberOfMenusToBuy,Double secondMinimumPriceOfMenusToBuy,
-			    Integer maximumNumberOfMunusSalesPerDay,Service service) throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException {
+			    Integer maximumNumberOfMunusSalesPerDay,Service service) throws InvalidMenuException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
 		
 		if(isAValidMenu(menuName,menuDescription,menuCategory,menuDeliveryPrice,
 				startDateOfferMenu,endDateOfferMenu,averageDeliveryTimeOfMenu,
@@ -46,16 +50,13 @@ public class Menu {
 				       secondMinimumPriceOfMenusToBuy,maximumNumberOfMunusSalesPerDay,
 				       service);
 		}
-		else{
-			throw new InvalidMenuException("El munu ingresado no es valido");
-		}
 	}
 	
 	private boolean isAValidMenu(String menuName, String menuDescription,Category menuCategory,Double menuDeliveryPrice,
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
 			Integer firstMinimumNumberOfMenusToBuy, Double firstminimumPriceOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy, Double secondMinimumPriceOfMenusToBuy,
-			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException {
+			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException {
 		
 		return isValidMenuName(menuName)
 			   && isValidMenuDescription(menuDescription)
@@ -72,14 +73,21 @@ public class Menu {
 		       && isValidService(service);
 	}
 	
-	private boolean isValidMenuDeliveryPrice(Double menuDeliveryPrice) {
+	private boolean isValidMenuDeliveryPrice(Double menuDeliveryPrice) throws InvalidMenuDeliveryPriceException{
 		if(validator.isValidDoubleNumber(menuDeliveryPrice)){
 			return isHasValidDeliveryPrice(menuDeliveryPrice);
 		}
 		return true;
 	}
+    
+	private boolean isHasValidDeliveryPrice(Double menuDeliveryPrice) throws InvalidMenuDeliveryPriceException {
+		if(!isValidDeliveryPrice(menuDeliveryPrice)){
+			throw new InvalidMenuDeliveryPriceException("El precio del delivery no es valido");
+		}
+	   return isValidDeliveryPrice(menuDeliveryPrice);
+	}
 
-	private boolean isHasValidDeliveryPrice(Double menuDeliveryPrice) {
+	private boolean isValidDeliveryPrice(Double menuDeliveryPrice) {
 		return menuDeliveryPrice>=10 && menuDeliveryPrice<=40;
 	}
 
@@ -147,11 +155,17 @@ public class Menu {
 		return validator.isValidIntegerNumber(averageDeliveryTimeOfMenu);
 	}
 
-	private boolean isValidEndDateOfferMenu(DateTime endDateOfferMenu) {
+	private boolean isValidEndDateOfferMenu(DateTime endDateOfferMenu) throws InvalidEndDateOfferMenuException {
+		if(!validator.isValidDate(endDateOfferMenu)){
+			throw new InvalidEndDateOfferMenuException("La fecha de fin no es valida");
+		}
 		return validator.isValidDate(endDateOfferMenu);
 	}
 
-	private boolean isValidStartDateOfferMenu(DateTime startDateOfferMenu) {
+	private boolean isValidStartDateOfferMenu(DateTime startDateOfferMenu) throws InvalidStartDateOfferMenuException {
+		if(!validator.isValidDate(startDateOfferMenu)){
+			throw new InvalidStartDateOfferMenuException("La fecha ingresada no es valida");
+		}
 		return validator.isValidDate(startDateOfferMenu);
 	}
 
