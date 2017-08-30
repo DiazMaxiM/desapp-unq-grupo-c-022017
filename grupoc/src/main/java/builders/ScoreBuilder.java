@@ -15,7 +15,9 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
+import model.Client;
 import model.Menu;
+import model.Provider;
 import model.Score;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
@@ -24,16 +26,33 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 
 public class ScoreBuilder {
-	protected Score score;
+	protected Client client;
+	protected Provider provider;
+	protected Menu menu;
 
-	public ScoreBuilder() throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+	public ScoreBuilder() throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException,
+			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
+			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
+			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
+			InvalidTelephoneNumberException {
 		Menu menu = null;
-		menu = new MenuBuilder().build();
-		score = new Score(null, new ClientBuilder().build(), menu);
 	}
 
 	public Score build() {
-		return score;
+		return new Score(provider, client, menu);
+
 	}
 
+	public ScoreBuilder setClient(Client client) {
+		this.client = client;
+		return this;
+	}
+
+	public ScoreBuilder setProvider(Provider provider) {
+		this.provider = provider;
+		return this;
+	}
 }

@@ -18,7 +18,7 @@ public class ScoringManager {
 
 	}
 
-	public Double averageScoresForClient(Provider provider) {
+	public Double averageScoresForProvider(Provider provider) {
 		return scoresList.stream().filter(score -> score.isProvider(provider) && score.isFinish())
 				.mapToDouble(score -> score.getValue()).average().getAsDouble();
 	}
