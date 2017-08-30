@@ -1,25 +1,33 @@
 package builders;
 
 import builder.MenuBuilder;
-import exception.InvalidDeliveryPriceException;
-import exception.InvalidEndDateOfferMenuException;
+import exception.InvalidAddressException;
+import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidServiceException;
+import menuExceptions.InvalidDeliveryPriceException;
+import menuExceptions.InvalidEndDateOfferMenuException;
+import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMenuCategoryException;
+import menuExceptions.InvalidMenuDeliveryPriceException;
+import menuExceptions.InvalidMenuDescriptionException;
+import menuExceptions.InvalidMenuNameException;
+import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.Score;
+import serviceException.InvalidServiceDescriptionException;
+import serviceException.InvalidServiceEmailException;
+import serviceException.InvalidServiceLogoException;
+import serviceException.InvalidServiceNameException;
 
 public class ScoreBuilder {
 	protected Score score;
 
-	public ScoreBuilder() {
+	public ScoreBuilder() throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException {
 		Menu menu = null;
-		try {
-			try {
-				menu = new MenuBuilder().build();
-			} catch (InvalidDeliveryPriceException | InvalidEndDateOfferMenuException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (Exception e) {
-		}
+		menu = new MenuBuilder().build();
 		score = new Score(null, new ClientBuilder().build(), menu);
 	}
 

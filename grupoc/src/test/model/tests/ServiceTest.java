@@ -7,65 +7,63 @@ import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Service;
 import model.Telephone;
+import serviceException.InvalidServiceDescriptionException;
+import serviceException.InvalidServiceEmailException;
+import serviceException.InvalidServiceLogoException;
+import serviceException.InvalidServiceNameException;
 
 public class ServiceTest {
-
-	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidService() throws InvalidServiceException{
-		new Service(null,null,null,null,null,null,null,null,null);
-	}
-	
-	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidName() throws InvalidServiceException{
+	@Test(expected=InvalidServiceNameException.class)
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidName() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceName("")
 	    .build();
 	}
 	
-	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidLogo() throws InvalidServiceException{
+	@Test(expected=InvalidServiceLogoException.class)
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidLogo() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceLogo("")
 	    .build();
 	}
 	
 	@Test(expected=InvalidAddressException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidAddress() throws InvalidServiceException, InvalidAddressException{
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidAddress() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceAddress(new Address(null, null,null,null,null))
 	    .build();
 	}
 	
-	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidDescription() throws InvalidServiceException{
+	@Test(expected=InvalidServiceDescriptionException.class)
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidDescription() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceDescription("")
 	    .build();
 	}
 	
-	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidEmail() throws InvalidServiceException{
+	@Test(expected=InvalidServiceEmailException.class)
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidEmail() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceEmail("")
 	    .build();
 	}
 	
 	@Test(expected=InvalidServiceException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidWorkingHours() throws InvalidServiceException{
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidWorkingHours() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
         .withServiceWorkingHours(null)
 	    .build();
 	}
 	
 	@Test(expected=InvalidTelephoneNumberException.class)
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidTelephone() throws InvalidServiceException, InvalidTelephoneNumberException{
+	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidTelephone() throws InvalidServiceException, InvalidTelephoneNumberException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
        .withServiceTelephone(new Telephone("54", null, null))
 	   .build();
 	}
 	
 	@Test()
-	public void testShouldPassWhenICreateAValidService() throws InvalidServiceException{
+	public void testShouldPassWhenICreateAValidService() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
 		new ServiceBuilder()
 	    .build();
 	}

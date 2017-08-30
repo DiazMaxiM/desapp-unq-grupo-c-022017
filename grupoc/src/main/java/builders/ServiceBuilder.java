@@ -14,14 +14,19 @@ import model.Locality;
 import model.MapPosition;
 import model.Service;
 import model.Telephone;
+import serviceException.InvalidServiceDescriptionException;
+import serviceException.InvalidServiceEmailException;
+import serviceException.InvalidServiceLogoException;
+import serviceException.InvalidServiceNameException;
 
 public class ServiceBuilder {
-	public ServiceBuilder() {
+	public ServiceBuilder() throws InvalidAddressException {
+		this.serviceAddress= this.address();
 	}
 
 	private String serviceName = "Fast-Food";
 	private String serviceLogo = "Perez-H";
-	private Address serviceAddress = this.address();
+	private Address serviceAddress;
 	private String serviceDescription = "Hamburguesas caseras";
 	private String serviceWebDirection = "";
 	private String serviceEmail = "perezH@gmail.com";
@@ -29,7 +34,7 @@ public class ServiceBuilder {
 	private HashMap<Days, List<String>> serviceWorkingHours = this.serviceWorkingHours();
 	private List<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
 
-	public Service build() throws InvalidServiceException {
+	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException {
 		Service service = new Service(serviceName, serviceLogo, serviceAddress, serviceDescription, serviceWebDirection,
 				serviceEmail, serviceTelephone, serviceWorkingHours, serviceDeliveryLocations);
 		return service;
@@ -63,13 +68,10 @@ public class ServiceBuilder {
 		return null;
 	}
 
-	private Address address() {
-		try {
+	private Address address() throws InvalidAddressException {
 			return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
-		} catch (InvalidAddressException e) {
-			e.printStackTrace();
-		}
-		return null;
+		
+	
 	}
 
 	private Telephone telephone() {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import builders.ServiceBuilder;
+import exception.InvalidAddressException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
 import menuExceptions.InvalidDeliveryPriceException;
@@ -22,8 +23,16 @@ import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
 import model.Menu;
 import model.Service;
+import serviceException.InvalidServiceDescriptionException;
+import serviceException.InvalidServiceEmailException;
+import serviceException.InvalidServiceLogoException;
+import serviceException.InvalidServiceNameException;
 
 public class MenuBuilder {
+	
+	   public MenuBuilder() throws InvalidAddressException, InvalidServiceException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
+		   this.service = this.getService();
+	   }
 	
 	private String menuName = "MenuName";
     private String menuDescription = "MenuDescription12345678910";
@@ -39,7 +48,7 @@ public class MenuBuilder {
     private Integer secondMinimumNumberOfMenusToBuy = 50;
     private Double secondMinimumPriceOfMenusToBuy = (double) 25;
     private Integer maximumNumberOfMunusSalesPerDay= 100;
-    private Service service = this.getService();
+    private Service service;
     
     public Menu build() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 			return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice,startDateOfferMenu,endDateOfferMenu,deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice,firstMinimumNumberOfMenusToBuy,firstminimumPriceOfMenusToBuy,secondMinimumNumberOfMenusToBuy,secondMinimumPriceOfMenusToBuy,maximumNumberOfMunusSalesPerDay,service);
@@ -50,14 +59,10 @@ public class MenuBuilder {
 		return new ArrayList<>();
 	}
 
-	public Service getService(){
-    	try {
-			return new ServiceBuilder()
-			        .build();
-		} catch (InvalidServiceException e) {
-			e.printStackTrace();
-		}
-    	return null; 
+	public Service getService() throws InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceException{
+		
+		return new ServiceBuilder()
+			       .build(); 
     }
 
 	public MenuBuilder withMenuName(String menuName) {
