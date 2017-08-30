@@ -18,6 +18,7 @@ import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
+import serviceException.InvalidServiceWorkingHoursException;
 
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException {
@@ -34,7 +35,7 @@ public class ServiceBuilder {
 	private HashMap<Days, List<String>> serviceWorkingHours = this.serviceWorkingHours();
 	private List<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
 
-	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException {
+	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
 		Service service = new Service(serviceName, serviceLogo, serviceAddress, serviceDescription, serviceWebDirection,
 				serviceEmail, serviceTelephone, serviceWorkingHours, serviceDeliveryLocations);
 		return service;

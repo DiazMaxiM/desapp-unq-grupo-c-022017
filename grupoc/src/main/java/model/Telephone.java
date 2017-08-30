@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 
 import exception.InvalidTelephoneNumberException;
@@ -12,6 +11,7 @@ public class Telephone {
 	private String areaCode;
 	private String localNumber;
 	private List<String>areasCode=this.areasCode();
+	private Validation validator= new Validation();
 
 	public Telephone(String countryCode, String areaCode, String localNumber) throws InvalidTelephoneNumberException {
 		if(isAValidTelephone(countryCode,areaCode,localNumber)){
@@ -32,7 +32,9 @@ public class Telephone {
 	}
 
 	private boolean isAValidTelephone(String countryCode, String areaCode, String localNumber) {
-		return isValidCountryCode(countryCode)&& isValidAreaCode(areaCode)&& isValidLocalNumber(localNumber);
+		return isValidCountryCode(countryCode)
+				&& isValidAreaCode(areaCode)
+				&& isValidLocalNumber(localNumber);
 	}
 	
 	private boolean isValidLocalNumber(String localNumber) {

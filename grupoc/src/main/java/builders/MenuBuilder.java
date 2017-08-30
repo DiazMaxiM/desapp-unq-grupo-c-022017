@@ -1,14 +1,14 @@
-package builder;
+package builders;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
 
-import builders.ServiceBuilder;
 import exception.InvalidAddressException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
+import exception.InvalidTelephoneNumberException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
@@ -27,10 +27,11 @@ import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
+import serviceException.InvalidServiceWorkingHoursException;
 
 public class MenuBuilder {
 	
-	   public MenuBuilder() throws InvalidAddressException, InvalidServiceException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
+	   public MenuBuilder() throws InvalidAddressException, InvalidServiceException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException{
 		   this.service = this.getService();
 	   }
 	
@@ -59,7 +60,7 @@ public class MenuBuilder {
 		return new ArrayList<>();
 	}
 
-	public Service getService() throws InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceException{
+	public Service getService() throws InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException{
 		
 		return new ServiceBuilder()
 			       .build(); 

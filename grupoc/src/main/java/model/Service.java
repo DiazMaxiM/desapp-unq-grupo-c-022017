@@ -3,18 +3,15 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.xml.validation.Validator;
-
-import org.apache.commons.lang3.StringUtils;
-
 import exception.InvalidAddressException;
 import exception.InvalidServiceException;
+import exception.InvalidTelephoneNumberException;
 import exception.NumberOfMenusExceededException;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
+import serviceException.InvalidServiceWorkingHoursException;
 
 public class Service {
 	private String serviceName; //Required
@@ -34,7 +31,7 @@ public class Service {
 			       String serviceDescription,String serviceWebDirection,
 			       String serviceEmail,Telephone serviceTelephone,
 			       HashMap<Days,List<String>> serviceWorkingHours,
-			       List<Locality>serviceDeliveryLocations) throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException{
+			       List<Locality>serviceDeliveryLocations) throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException{
 		
 		  if(isAValidService(serviceName,serviceLogo,
 				             serviceAddress,serviceDescription,
@@ -46,25 +43,29 @@ public class Service {
 					        serviceWebDirection, serviceEmail, 
 					        serviceTelephone, serviceWorkingHours,
 					        serviceDeliveryLocations);
-		  }else{
-			  throw new InvalidServiceException("Ingrese un servicio valido");
 		  }
 	}
 	
     private boolean isAValidService(String serviceName, String serviceLogo,
     		Address serviceAddress,String serviceDescription, 
     		String serviceWebDirection,String serviceEmail,
-    		Telephone serviceTelephone,HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException {
+    		Telephone serviceTelephone,HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
 		
 		return isValidServiceName(serviceName)
 			   && isValidServiceLogo(serviceLogo)
 			   && isValidServiceDescription(serviceDescription)
 			   && isValidServiceEmail(serviceEmail)
-			   && isValidAddress(serviceAddress)&& isAValidTelephone(serviceTelephone)
+			   && isValidAddress(serviceAddress)
+			   && isAValidTelephone(serviceTelephone)
 			   && isValidServiceWorkingHours(serviceWorkingHours);
 	}
     
-	private boolean isAValidTelephone(Telephone serviceTelephone) {
+	private boolean isAValidTelephone(Telephone serviceTelephone) throws InvalidTelephoneNumberException {
+		if(serviceTelephone==null){
+			
+			throw new InvalidTelephoneNumberException("Ingrese un telefono para el servicio");
+			
+		}
 		return serviceTelephone!=null;
 	}
 	
@@ -75,8 +76,10 @@ public class Service {
 		return serviceAddress!=null;
 	}
 	
-	private boolean isValidServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) {
-
+	private boolean isValidServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceWorkingHoursException {
+        if(serviceWorkingHours==null || serviceWorkingHours.isEmpty()){
+        	throw new InvalidServiceWorkingHoursException("Ingrese las horas y dias de atencion");
+        }
 		return serviceWorkingHours!=null && !serviceWorkingHours.isEmpty();
 	}
 	
