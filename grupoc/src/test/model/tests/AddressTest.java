@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import exception.InvalidAddressException;
@@ -15,13 +14,6 @@ import model.Locality;
 import model.MapPosition;
 
 public class AddressTest {
-
-	@Test(expected = InvalidAddressException.class)
-	@Ignore
-	public void testShouldFailWhenICreateAnInvalidAddress() throws InvalidAddressException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
-		new Address(null, null, null, null, null);
-	}
 
 	@Test(expected = InvalidLatitudeMapPositionException.class)
 	public void testShouldFailWhenICreateAnInvalidAddressWithInvalidMapPosition() throws InvalidAddressException,

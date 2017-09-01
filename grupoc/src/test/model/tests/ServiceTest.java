@@ -1,16 +1,17 @@
 package tests;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import builders.ServiceBuilder;
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
-import model.Address;
 import model.Telephone;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
@@ -24,7 +25,8 @@ public class ServiceTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceName("").build();
 	}
 
@@ -33,18 +35,9 @@ public class ServiceTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceLogo("").build();
-	}
-
-	@Test(expected = InvalidAddressException.class)
-	@Ignore
-	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidAddress()
-			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
-			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
-			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
-		new ServiceBuilder().withServiceAddress(new Address(null, null, null, null, null)).build();
 	}
 
 	@Test(expected = InvalidServiceDescriptionException.class)
@@ -52,7 +45,8 @@ public class ServiceTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceDescription("").build();
 	}
 
@@ -61,7 +55,8 @@ public class ServiceTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceEmail("").build();
 	}
 
@@ -70,16 +65,18 @@ public class ServiceTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceWorkingHours(null).build();
 	}
 
-	@Test(expected = InvalidTelephoneNumberException.class)
+	@Test(expected = InvalidAreaCodeException.class)
 	public void testShouldFailWhenICreateAnInvalidServiceWithInvalidTelephone()
-			throws InvalidServiceException, InvalidTelephoneNumberException, InvalidAddressException,
-			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
-			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
+			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
+			InvalidServiceWorkingHoursException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidTelephoneNumberException, InvalidCountryCodeException {
 		new ServiceBuilder().withServiceTelephone(new Telephone("54", null, null)).build();
 	}
 
@@ -87,7 +84,8 @@ public class ServiceTest {
 	public void testShouldPassWhenICreateAValidService() throws InvalidServiceException, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new ServiceBuilder().build();
 	}
 

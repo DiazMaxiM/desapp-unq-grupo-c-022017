@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
 import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
-import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
@@ -27,7 +29,8 @@ import serviceException.InvalidServiceWorkingHoursException;
 
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 		this.serviceAddress = this.address();
 	}
 
@@ -71,8 +74,7 @@ public class ServiceBuilder {
 	private MapPosition mapPosition() {
 		try {
 			return new MapPosition(new Double(12345), new Double(34456));
-		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException
-				| InvalidMapPositionException e) {
+		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -84,13 +86,9 @@ public class ServiceBuilder {
 
 	}
 
-	private Telephone telephone() {
-		try {
-			return new Telephone("54", "011", "1245567");
-		} catch (InvalidTelephoneNumberException e) {
-			e.printStackTrace();
-		}
-		return null;
+	private Telephone telephone()
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+		return new Telephone("54", "011", "1245567");
 	}
 
 	public ServiceBuilder withServiceName(final String aServiceName) {

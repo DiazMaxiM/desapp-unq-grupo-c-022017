@@ -2,18 +2,15 @@ package model;
 
 import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
-import exception.InvalidMapPositionException;
 
 public class MapPosition {
 	private Double latitude;
 	private Double length;
 
 	public MapPosition(Double latitude, Double length)
-			throws InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		if (isAValidMapPosition(latitude, length)) {
 			createMapPosition(latitude, length);
-		} else {
-			throw new InvalidMapPositionException("Ingrese un MapPosition valido");
 		}
 	}
 

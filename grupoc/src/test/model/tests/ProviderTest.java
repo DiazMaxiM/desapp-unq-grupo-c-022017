@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import builders.ServiceBuilder;
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
@@ -26,7 +29,8 @@ public class ProviderTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		Provider provider = new Provider();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -39,7 +43,8 @@ public class ProviderTest {
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		Provider provider = new Provider();
 		Service service = new ServiceBuilder().withServiceName(null).build();
 		provider.addNewService(service);

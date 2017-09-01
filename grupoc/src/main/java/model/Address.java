@@ -2,7 +2,6 @@ package model;
 
 import org.apache.commons.lang3.StringUtils;
 
-import exception.InvalidAddressException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
@@ -16,12 +15,9 @@ public class Address {
 	private MapPosition mapPosition;
 
 	public Address(Locality locality, String street, String numberStreet, String floor, MapPosition mapPosition)
-			throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
 		if (isAValidAddress(locality, street, numberStreet)) {
 			createAddress(locality, street, numberStreet, floor, mapPosition);
-		} else {
-			throw new InvalidAddressException("Ingrese una dirección válida");
 		}
 	}
 
