@@ -7,8 +7,11 @@ import java.util.List;
 import exception.InvalidAddressException;
 import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
+import exception.InvalidLocalityAddressException;
 import exception.InvalidMapPositionException;
+import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
+import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Days;
@@ -23,7 +26,8 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 
 public class ServiceBuilder {
-	public ServiceBuilder() throws InvalidAddressException {
+	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException {
 		this.serviceAddress = this.address();
 	}
 
@@ -81,7 +85,8 @@ public class ServiceBuilder {
 		return null;
 	}
 
-	private Address address() throws InvalidAddressException {
+	private Address address() throws InvalidAddressException, InvalidNumberStreetException,
+			InvalidStreetAddressException, InvalidLocalityAddressException {
 		return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
 
 	}
