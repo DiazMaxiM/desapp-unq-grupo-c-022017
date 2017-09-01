@@ -3,6 +3,9 @@ package model;
 import org.apache.commons.lang3.StringUtils;
 
 import exception.InvalidAddressException;
+import exception.InvalidLocalityAddressException;
+import exception.InvalidNumberStreetException;
+import exception.InvalidStreetAddressException;
 
 public class Address {
 
@@ -13,27 +16,38 @@ public class Address {
 	private MapPosition mapPosition;
 
 	public Address(Locality locality, String street, String numberStreet, String floor, MapPosition mapPosition)
-			throws InvalidAddressException {
+			throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException {
 		if (isAValidAddress(locality, street, numberStreet)) {
 			createAddress(locality, street, numberStreet, floor, mapPosition);
 		} else {
-			throw new InvalidAddressException("Ingrese una direccion valida");
+			throw new InvalidAddressException("Ingrese una dirección válida");
 		}
 	}
 
-	private boolean isAValidAddress(Locality locality, String street, String numberStreet) {
+	private boolean isAValidAddress(Locality locality, String street, String numberStreet)
+			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
 		return isValidLocality(locality) && isValidStreet(street) && isValidNumberStreet(numberStreet);
 	}
 
-	private boolean isValidNumberStreet(String numberStreet) {
+	private boolean isValidNumberStreet(String numberStreet) throws InvalidNumberStreetException {
+		if (StringUtils.isEmpty(numberStreet)) {
+			throw new InvalidNumberStreetException("Debe ingresar un número de calle válido");
+		}
 		return !StringUtils.isEmpty(numberStreet);
 	}
 
-	private boolean isValidStreet(String street) {
+	private boolean isValidStreet(String street) throws InvalidStreetAddressException {
+		if (StringUtils.isEmpty(street)) {
+			throw new InvalidStreetAddressException("Debe ingresar un nombre de calle válido");
+		}
 		return !StringUtils.isEmpty(street);
 	}
 
-	private boolean isValidLocality(Locality locality) {
+	private boolean isValidLocality(Locality locality) throws InvalidLocalityAddressException {
+		if (locality == null) {
+			throw new InvalidLocalityAddressException("Debe ingresar una localidad válida");
+		}
 		return locality != null;
 	}
 
