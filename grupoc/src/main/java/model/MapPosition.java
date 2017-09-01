@@ -1,35 +1,44 @@
 package model;
 
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidMapPositionException;
 
 public class MapPosition {
 	private Double latitude;
-	private Double lenght;
+	private Double length;
 
-	public MapPosition(Double latitude, Double lenght) throws InvalidMapPositionException {
-		if(isAValidMapPosition(latitude,lenght)){
-			createMapPosition(latitude,lenght);
-		}	
-		else{
+	public MapPosition(Double latitude, Double length)
+			throws InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+		if (isAValidMapPosition(latitude, length)) {
+			createMapPosition(latitude, length);
+		} else {
 			throw new InvalidMapPositionException("Ingrese un MapPosition valido");
 		}
 	}
 
-	private boolean isAValidMapPosition(Double latitude, Double lenght) {
-		return isValidLatitude(latitude)&& isValidLenght(lenght);
+	private boolean isAValidMapPosition(Double latitude, Double lenght)
+			throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+		return isValidLatitude(latitude) && isValidLength(lenght);
 	}
 
-	private boolean isValidLenght(Double lenght) {
-		return lenght!=(null);
+	private boolean isValidLength(Double length) throws InvalidLengthMapPositionException {
+		if (length == null) {
+			throw new InvalidLengthMapPositionException("Debe ingresar una longitud válida");
+		}
+		return length != null;
 	}
 
-	private boolean isValidLatitude(Double latitude) {
-		return latitude!=(null);
+	private boolean isValidLatitude(Double latitude) throws InvalidLatitudeMapPositionException {
+		if (latitude == null) {
+			throw new InvalidLatitudeMapPositionException("Debe ingresar una latitud válida");
+		}
+		return latitude != null;
 	}
-	
-	private void createMapPosition(Double latitude, Double lenght) {	
+
+	private void createMapPosition(Double latitude, Double length) {
 		this.setLatitude(latitude);
-		this.setLenght(lenght);
+		this.setLength(length);
 	}
 
 	public Double getLatitude() {
@@ -40,12 +49,11 @@ public class MapPosition {
 		this.latitude = latitude;
 	}
 
-	public Double getLenght() {
-		return lenght;
+	public Double getLength() {
+		return length;
 	}
 
-	public void setLenght(Double lenght) {
-		this.lenght = lenght;
+	public void setLength(Double length) {
+		this.length = length;
 	}
-
 }
