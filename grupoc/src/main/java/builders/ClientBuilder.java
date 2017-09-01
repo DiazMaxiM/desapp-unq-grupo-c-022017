@@ -45,25 +45,11 @@ public class ClientBuilder {
 		try {
 			return new Client("any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
 					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)));
-		} catch (InvalidLengthMapPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidLatitudeMapPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidNumberStreetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidStreetAddressException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidLocalityAddressException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidAddressException | InvalidTelephoneNumberException | InvalidMapPositionException e) {
+		} catch (InvalidAddressException | InvalidTelephoneNumberException | InvalidMapPositionException
+				| InvalidLengthMapPositionException | InvalidLatitudeMapPositionException | InvalidNumberStreetException
+				| InvalidStreetAddressException | InvalidLocalityAddressException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 }

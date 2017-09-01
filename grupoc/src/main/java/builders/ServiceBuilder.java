@@ -70,16 +70,9 @@ public class ServiceBuilder {
 
 	private MapPosition mapPosition() {
 		try {
-			try {
-				return new MapPosition(new Double(12345), new Double(34456));
-			} catch (InvalidLengthMapPositionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidLatitudeMapPositionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (InvalidMapPositionException e) {
+			return new MapPosition(new Double(12345), new Double(34456));
+		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException
+				| InvalidMapPositionException e) {
 			e.printStackTrace();
 		}
 		return null;
