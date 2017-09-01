@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidMapPositionException;
 import exception.InvalidServiceException;
 import exception.InvalidTelephoneNumberException;
@@ -22,7 +24,7 @@ import serviceException.InvalidServiceWorkingHoursException;
 
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException {
-		this.serviceAddress= this.address();
+		this.serviceAddress = this.address();
 	}
 
 	private String serviceName = "Fast-Food";
@@ -35,7 +37,9 @@ public class ServiceBuilder {
 	private HashMap<Days, List<String>> serviceWorkingHours = this.serviceWorkingHours();
 	private List<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
 
-	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
+			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
+			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
 		Service service = new Service(serviceName, serviceLogo, serviceAddress, serviceDescription, serviceWebDirection,
 				serviceEmail, serviceTelephone, serviceWorkingHours, serviceDeliveryLocations);
 		return service;
@@ -62,7 +66,15 @@ public class ServiceBuilder {
 
 	private MapPosition mapPosition() {
 		try {
-			return new MapPosition(new Double(12345), new Double(34456));
+			try {
+				return new MapPosition(new Double(12345), new Double(34456));
+			} catch (InvalidLengthMapPositionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidLatitudeMapPositionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (InvalidMapPositionException e) {
 			e.printStackTrace();
 		}
@@ -70,9 +82,8 @@ public class ServiceBuilder {
 	}
 
 	private Address address() throws InvalidAddressException {
-			return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
-		
-	
+		return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
+
 	}
 
 	private Telephone telephone() {
@@ -93,7 +104,7 @@ public class ServiceBuilder {
 		this.setServiceLogo(aServiceLogo);
 		return this;
 	}
-	
+
 	public ServiceBuilder withServiceAddress(final Address aServiceAddress) {
 		this.setServiceAddress(aServiceAddress);
 		return this;
