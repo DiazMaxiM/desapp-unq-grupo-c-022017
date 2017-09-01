@@ -1,6 +1,7 @@
 package menusearch;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import exception.NoMenusFoundException;
 import model.Menu;
@@ -13,21 +14,13 @@ public abstract class MenuSearchCriteria {
 
 	public ArrayList<Menu> menuSearch() throws NoMenusFoundException {
 		ArrayList<Menu> allMenus = this.getMenuManager().getAllMenusOffered();
-		ArrayList<Menu> menuSearchResult = new ArrayList<Menu>();
-		for (int i = 0; i < allMenus.size(); i++) {
-			if (isTheMenuSearchInIndex(allMenus, i)) {
-				menuSearchResult.add(allMenus.get(i));
-			}
-		}
+		Stream<Menu> menuSearchResult = allMenus.stream()
+				.filter(m -> this.getPropertyToCompare(m) == this.getSearchCriteria());
 
-		if (!this.areElementsAsAResult(menuSearchResult)) {
+		if (!this.areElementsAsAResult((ArrayList<Menu>) menuSearchResult)) {
 			throw new NoMenusFoundException("No se han encontrado resultados para su búsqueda");
 		}
-		return menuSearchResult;
-	}
-
-	public boolean isTheMenuSearchInIndex(ArrayList<Menu> menus, int index) {
-		return this.getPropertyToCompare(menus.get(index)) == this.getSearchCriteria();
+		return (ArrayList<Menu>) menuSearchResult;
 	}
 
 	public boolean areElementsAsAResult(ArrayList<Menu> resultSearch) {
