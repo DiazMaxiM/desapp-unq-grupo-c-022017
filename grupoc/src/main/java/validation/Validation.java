@@ -1,7 +1,9 @@
-package model;
+package validation;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+
+import model.Category;
 
 public class Validation {
     
