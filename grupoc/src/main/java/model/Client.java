@@ -9,12 +9,13 @@ public class Client {
 	private Telephone telephone;
 	private Address address;
 
-	public Client(String name, String surname, String mail, Telephone telephone, Address address) {
+	public Client(String name, String surname, String mail, Telephone telephone, Address address,String cuit) {
 		this.setName(name);
 		this.setSurname(surname);
 		this.setMail(mail);
 		this.setTelephone(telephone);
 		this.setAddress(address);
+		this.setCuit(cuit);
 	}
 
 	@Override
@@ -73,5 +74,10 @@ public class Client {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	private void setCuit(String cuit) {
+		this.cuit=cuit;
+		
 	}
 }

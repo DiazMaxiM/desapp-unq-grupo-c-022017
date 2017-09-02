@@ -9,5 +9,6 @@ public class InvalidLocalNumberException extends UserException {
 	public InvalidLocalNumberException(String message) {
 		super(message);
 	}
-
+    
+	
 }
