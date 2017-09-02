@@ -18,26 +18,26 @@ public class Menu {
     private String menuName;
     private String menuDescription;
     private Category menuCategory;
-    private Double menuDeliveryPrice;
+    private Price menuDeliveryPrice;
     private DateTime startDateOfferMenu;
     private DateTime endDateOfferMenu;
     private List<String> deliveryTimesMenus;
     private Integer averageDeliveryTimeOfMenu;
-    private Double menuPrice;
+    private Price menuPrice;
     private Integer firstMinimumNumberOfMenusToBuy;
-    private Double firstminimumPriceOfMenusToBuy;
+    private Price firstminimumPriceOfMenusToBuy;
     private Integer secondMinimumNumberOfMenusToBuy;
-    private Double secondMinimumPriceOfMenusToBuy;
+    private Price secondMinimumPriceOfMenusToBuy;
     private Integer maximumNumberOfMunusSalesPerDay;
     private Service service;
     private MenuValidation validator= new MenuValidation();
     
 	public Menu(String menuName, String menuDescription, Category menuCategory,
-			    Double menuDeliveryPrice,DateTime startDateOfferMenu,
+			    Price menuDeliveryPrice,DateTime startDateOfferMenu,
 			    DateTime endDateOfferMenu,List<String> deliveryTimesMenus,
-			    Integer averageDeliveryTimeOfMenu,Double menuPrice,
-			    Integer firstMinimumNumberOfMenusToBuy,Double firstminimumPriceOfMenusToBuy,
-			    Integer secondMinimumNumberOfMenusToBuy,Double secondMinimumPriceOfMenusToBuy,
+			    Integer averageDeliveryTimeOfMenu,Price menuPrice,
+			    Integer firstMinimumNumberOfMenusToBuy,Price firstminimumPriceOfMenusToBuy,
+			    Integer secondMinimumNumberOfMenusToBuy,Price secondMinimumPriceOfMenusToBuy,
 			    Integer maximumNumberOfMunusSalesPerDay,Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay {
 		
 		if(validator.isAValidMenu(menuName,menuDescription,menuCategory,menuDeliveryPrice,
@@ -56,11 +56,11 @@ public class Menu {
 	}
 	
 	private void createMenu(String menuName, String menuDescription, Category menuCategory,
-		    Double menuDeliveryPrice,DateTime startDateOfferMenu,
+		    Price menuDeliveryPrice,DateTime startDateOfferMenu,
 		    DateTime endDateOfferMenu,List<String> deliveryTimesMenus,
-		    Integer averageDeliveryTimeOfMenu,Double menuPrice,
-		    Integer firstMinimumNumberOfMenusToBuy,Double firstminimumPriceOfMenusToBuy,
-		    Integer secondMinimumNumberOfMenusToBuy,Double secondMinimumPriceOfMenusToBuy,
+		    Integer averageDeliveryTimeOfMenu,Price menuPrice,
+		    Integer firstMinimumNumberOfMenusToBuy,Price firstminimumPriceOfMenusToBuy,
+		    Integer secondMinimumNumberOfMenusToBuy,Price secondMinimumPriceOfMenusToBuy,
 		    Integer maximumNumberOfMunusSalesPerDay,Service service) {
 		
 		setMenuName(menuName);
@@ -105,10 +105,10 @@ public class Menu {
 	public void setMenuCategory(Category menuCategory) {
 		this.menuCategory = menuCategory;
 	}
-	public Double getMenuDeliveryPrice() {
+	public Price getMenuDeliveryPrice() {
 		return menuDeliveryPrice;
 	}
-	public void setMenuDeliveryPrice(Double menuDeliveryPrice) {
+	public void setMenuDeliveryPrice(Price menuDeliveryPrice) {
 		this.menuDeliveryPrice = menuDeliveryPrice;
 	}
 	public DateTime getStartDateOfferMenu() {
@@ -136,10 +136,10 @@ public class Menu {
 	public void setAverageDeliveryTimeOfMenu(Integer averageDeliveryTimeOfMenu) {
 		this.averageDeliveryTimeOfMenu = averageDeliveryTimeOfMenu;
 	}
-	public Double getMenuPrice() {
+	public Price getMenuPrice() {
 		return menuPrice;
 	}
-	public void setMenuPrice(Double menuPrice) {
+	public void setMenuPrice(Price menuPrice) {
 		this.menuPrice = menuPrice;
 	}
 	public Integer getFirstMinimumNumberOfMenusToBuy() {
@@ -148,10 +148,10 @@ public class Menu {
 	public void setFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) {
 		this.firstMinimumNumberOfMenusToBuy = firstMinimumNumberOfMenusToBuy;
 	}
-	public Double getFirstminimumPriceOfMenusToBuy() {
+	public Price getFirstminimumPriceOfMenusToBuy() {
 		return firstminimumPriceOfMenusToBuy;
 	}
-	public void setFirstminimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) {
+	public void setFirstminimumPriceOfMenusToBuy(Price firstminimumPriceOfMenusToBuy) {
 		this.firstminimumPriceOfMenusToBuy = firstminimumPriceOfMenusToBuy;
 	}
 	public Integer getSecondMinimumNumberOfMenusToBuy() {
@@ -160,10 +160,10 @@ public class Menu {
 	public void setSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) {
 		this.secondMinimumNumberOfMenusToBuy = secondMinimumNumberOfMenusToBuy;
 	}
-	public Double getSecondMinimumPriceOfMenusToBuy() {
+	public Price getSecondMinimumPriceOfMenusToBuy() {
 		return secondMinimumPriceOfMenusToBuy;
 	}
-	public void setSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
+	public void setSecondMinimumPriceOfMenusToBuy(Price secondMinimumPriceOfMenusToBuy) {
 		this.secondMinimumPriceOfMenusToBuy = secondMinimumPriceOfMenusToBuy;
 	}
 	public Integer getMaximumNumberOfMunusSalesPerDay() {

@@ -15,14 +15,15 @@ import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
+import model.Price;
 import model.Service;
 
 public class MenuValidation extends Validation{
 	
-	public boolean isAValidMenu(String menuName, String menuDescription,Category menuCategory,Double menuDeliveryPrice,
+	public boolean isAValidMenu(String menuName, String menuDescription,Category menuCategory,Price menuDeliveryPrice,
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
-			Integer firstMinimumNumberOfMenusToBuy, Double firstminimumPriceOfMenusToBuy,
-			Integer secondMinimumNumberOfMenusToBuy, Double secondMinimumPriceOfMenusToBuy,
+			Integer firstMinimumNumberOfMenusToBuy, Price firstminimumPriceOfMenusToBuy,
+			Integer secondMinimumNumberOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
 			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay {
 		
 		return isValidMenuName(menuName)
@@ -40,9 +41,9 @@ public class MenuValidation extends Validation{
 		       && isValidService(service);
 	}
 	
-	private boolean isValidMenuDeliveryPrice(Double menuDeliveryPrice) throws InvalidMenuDeliveryPriceException{
-		if(isValidDoubleNumber(menuDeliveryPrice)){
-			return isHasValidDeliveryPrice(menuDeliveryPrice);
+	private boolean isValidMenuDeliveryPrice(Price menuDeliveryPrice) throws InvalidMenuDeliveryPriceException{
+		if(isValidDoubleNumber(menuDeliveryPrice.getValue())){
+			return isHasValidDeliveryPrice(menuDeliveryPrice.getValue());
 		}
 		return true;
 	}
@@ -72,9 +73,9 @@ public class MenuValidation extends Validation{
 		return isValidIntegerNumber(maximumNumberOfMunusSalesPerDay);
 	}
     
-	private boolean isValidSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException {
-		boolean isValidSecondMinimumPriceOfMenusToBuy=isHasValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy)
-			   && isHasValidPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy);
+	private boolean isValidSecondMinimumPriceOfMenusToBuy(Price secondMinimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException {
+		boolean isValidSecondMinimumPriceOfMenusToBuy=isHasValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy.getValue())
+			   && isHasValidPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy.getValue());
 		if(!isValidSecondMinimumPriceOfMenusToBuy){
 			throw new InvalidMinimumPriceOfMenusToBuyException("El segundo precio para la venta de menus no es valido");
 		}
@@ -103,9 +104,9 @@ public class MenuValidation extends Validation{
 		return isValidIntegerNumber(secondMinimumNumberOfMenusToBuy);
 	}
 
-	private boolean isValidFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException{
-		boolean isValidFirstMinimumPriceOfMenusToBuy =isHasValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy)
-		       && isHasValidPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy);
+	private boolean isValidFirstMinimumPriceOfMenusToBuy(Price firstminimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException{
+		boolean isValidFirstMinimumPriceOfMenusToBuy =isHasValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy.getValue())
+		       && isHasValidPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy.getValue());
 		if(!isValidFirstMinimumPriceOfMenusToBuy){
 			throw new InvalidMinimumPriceOfMenusToBuyException("El precio del menu para la su venta no es valido");
 		}

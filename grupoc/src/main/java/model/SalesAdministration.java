@@ -45,7 +45,7 @@ public class SalesAdministration {
 	}
 
 	private void chargeClientMenu(Menu menu, Client client) throws BalanceInsufficient {
-		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT, menu.getMenuPrice());
+		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT, menu.getMenuPrice().getValue());
 		client.getAccount().addTransaction(newTransaction);
 		
 	}
@@ -62,9 +62,9 @@ public class SalesAdministration {
 		return days>=2;
 	}
 
-	private boolean isHasBalanceToBuy(Double clientBalance, Double menuPrice) {
+	private boolean isHasBalanceToBuy(Double clientBalance,Price menuPrice) {
 	
-		return clientBalance>=menuPrice;
+		return clientBalance>=menuPrice.getValue();
 	}
 
 }
