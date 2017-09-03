@@ -28,7 +28,8 @@ public class Menu {
     private Price firstminimumPriceOfMenusToBuy;
     private Integer secondMinimumNumberOfMenusToBuy;
     private Price secondMinimumPriceOfMenusToBuy;
-    private Integer maximumNumberOfMunusSalesPerDay;
+    private Integer maximumNumberOfMenusSalesPerDay;
+    private Integer numberOfMenuSale=0;
     private Service service;
     private MenuValidation validator= new MenuValidation();
     
@@ -76,7 +77,7 @@ public class Menu {
 		setFirstminimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy);
 		setSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy);
 		setSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy);
-		setMaximumNumberOfMunusSalesPerDay(maximumNumberOfMunusSalesPerDay);
+		setMaximumNumberOfMenusSalesPerDay(maximumNumberOfMunusSalesPerDay);
 		setService(service);
 		
 	}
@@ -166,11 +167,24 @@ public class Menu {
 	public void setSecondMinimumPriceOfMenusToBuy(Price secondMinimumPriceOfMenusToBuy) {
 		this.secondMinimumPriceOfMenusToBuy = secondMinimumPriceOfMenusToBuy;
 	}
-	public Integer getMaximumNumberOfMunusSalesPerDay() {
-		return maximumNumberOfMunusSalesPerDay;
+	public Integer getMaximumNumberOfMenusSalesPerDay() {
+		return maximumNumberOfMenusSalesPerDay;
 	}
-	public void setMaximumNumberOfMunusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) {
-		this.maximumNumberOfMunusSalesPerDay = maximumNumberOfMunusSalesPerDay;
+	public void setMaximumNumberOfMenusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) {
+		this.maximumNumberOfMenusSalesPerDay = maximumNumberOfMunusSalesPerDay;
+	}
+
+	public Integer getNumberOfMenuSale() {
+		return numberOfMenuSale;
+	}
+
+	public void setNumberOfMenuSale(Integer numberOfMenuSale) {
+		this.numberOfMenuSale = numberOfMenuSale;
+	}
+
+	public void increaseMenuSale(Integer numberOfMenusToAdd) {
+	   this.numberOfMenuSale= this.numberOfMenuSale+ numberOfMenusToAdd;
+		
 	}
     
 }
