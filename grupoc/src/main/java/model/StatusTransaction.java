@@ -1,5 +1,5 @@
 package model;
 
-public enum TypeStatus {
+public enum StatusTransaction {
 	PENDING, FINISH
 }

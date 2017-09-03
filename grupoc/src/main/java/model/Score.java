@@ -1,11 +1,13 @@
 package model;
 
+import exception.InvalidValueScoreException;
+
 public class Score {
 	private Provider provider;
 	private Client client;
 	private Integer valueScore = 0;
 	private Menu menu;
-	private TypeStatus status = TypeStatus.PENDING;
+	private TypeStatusTransaction status = TypeStatusTransaction.PENDING;
 
 	public Score(Provider provider, Client client, Menu menu) {
 		this.provider = provider;
@@ -14,7 +16,7 @@ public class Score {
 	}
 
 	public Boolean isPending() {
-		return this.status.equals(TypeStatus.PENDING);
+		return this.status.equals(TypeStatusTransaction.PENDING);
 	}
 
 	public Boolean isClient(Client client) {
@@ -26,16 +28,24 @@ public class Score {
 	}
 
 	public Boolean isFinish() {
-		return this.status.equals(TypeStatus.FINISH);
+		return this.status.equals(TypeStatusTransaction.FINISH);
 	}
 
 	public Integer getValue() {
 		return valueScore;
 	}
 
-	public void setScore(Integer valueScore) {
-		this.valueScore = valueScore;
-		this.status = TypeStatus.FINISH;
+	public Provider getProvider() {
+		return this.provider;
+	}
+
+	public void setScore(Integer valueScore) throws InvalidValueScoreException {
+		if (valueScore >= 1 && valueScore <= 5) {
+			this.valueScore = valueScore;
+			this.status = TypeStatusTransaction.FINISH;
+		} else {
+			throw new InvalidValueScoreException("puntuacion incorrecta");
+		}
 
 	}
 
