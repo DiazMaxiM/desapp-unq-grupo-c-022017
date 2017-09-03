@@ -10,11 +10,11 @@ import validation.UserValidation;
 
 public class User {
 	private String cuit;
-	private String userfirstName;
-	private String userLastName;
-	private String userEmailAddress;
-	private Telephone userTelephone;
-	private Address userAddress;
+	private String  name;
+	private String surname;
+	private String mail;
+	private Telephone telephone;
+	private Address address;
 	private Account account = new Account();
 	private UserValidation validator= new UserValidation();
 	
@@ -28,50 +28,63 @@ public class User {
 	private void createUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress) {	
 		setCuit(cuit);
-		setUserfirstName(userfirstName);
-		setUserLastName(userLastName);
-		setUserEmailAddress(userEmailAddress);
-		setUserAddress(userAddress);
-	}
-
-	public String getUserfirstName() {
-		return userfirstName;
+		setName(userfirstName);
+		setSurname(userLastName);
+		setMail(userEmailAddress);
+		setAddress(userAddress);
 	}
 	
-	public void setUserfirstName(String userfirstName) {
-		this.userfirstName = userfirstName;
+	@Override
+	public boolean equals(Object user) {
+		return this.getCuit().equals(((User) user).getCuit());
 	}
 
-	public String getUserLastName() {
-		return userLastName;
+	public String getCuit() {
+		return cuit;
 	}
 
-	public void setUserLastName(String userLastName) {
-		this.userLastName = userLastName;
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
 	}
 
-	public String getUserEmailAddress() {
-		return userEmailAddress;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserEmailAddress(String userEmailAddress) {
-		this.userEmailAddress = userEmailAddress;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Telephone getUserTelephone() {
-		return userTelephone;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setUserTelephone(Telephone userTelephone) {
-		this.userTelephone = userTelephone;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public Address getUserAddress() {
-		return userAddress;
+	public String getEmail() {
+		return mail;
 	}
 
-	public void setUserAddress(Address userAddress) {
-		this.userAddress = userAddress;
+	public void setMail(String email) {
+		this.mail = email;
+	}
+
+	public Telephone getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(Telephone telephone) {
+		this.telephone = telephone;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public Account getAccount() {
@@ -82,12 +95,4 @@ public class User {
 		this.account = account;
 	}
 
-	public String getCuit() {
-		return cuit;
-	}
-
-	public void setCuit(String cuit) {
-		this.cuit = cuit;
-	}
-	
 }
