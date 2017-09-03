@@ -30,4 +30,9 @@ public class Transaction {
 		this.statusTransaction = StatusTransaction.FINISH;
 	}
 
+	public Boolean isNotRejected() {
+
+		return this.statusTransaction != StatusTransaction.REJECTED;
+	}
+
 }

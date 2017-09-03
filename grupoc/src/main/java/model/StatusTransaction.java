@@ -1,5 +1,5 @@
 package model;
 
 public enum StatusTransaction {
-	PENDING, FINISH
+	PENDING, FINISH, REJECTED
 }
