@@ -8,6 +8,7 @@ import exception.InvalidServiceException;
 public class Provider {
 	private String cuit;
 	private List<Service> servicesOffered;
+	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
 
 	public Provider() {
 		this.servicesOffered = new ArrayList<Service>();
@@ -26,9 +27,21 @@ public class Provider {
 	public int hashCode() {
 		return super.hashCode();
 	}
-	
-	public List<Service>getServicesOffered(){
+
+	public List<Service> getServicesOffered() {
 		return this.servicesOffered;
 	}
-	
+
+	public void disabled() {
+		this.setStatus(TypeStatusUsers.INACTIVE);
+	}
+
+	private TypeStatusUsers getStatus() {
+		return status;
+	}
+
+	private void setStatus(TypeStatusUsers status) {
+		this.status = status;
+	}
+
 }

@@ -5,9 +5,16 @@ import org.mockito.Mockito;
 
 import builders.ScoreBuilder;
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
+import exception.InvalidLocalityAddressException;
+import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
+import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidValueScoreException;
 import junit.framework.Assert;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
@@ -41,7 +48,9 @@ public class ScoringManagerTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException {
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Client client = Mockito.mock(Client.class);
@@ -62,7 +71,9 @@ public class ScoringManagerTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException {
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Client client = Mockito.mock(Client.class);
@@ -83,7 +94,9 @@ public class ScoringManagerTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException {
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Provider provider = Mockito.mock(Provider.class);
@@ -100,4 +113,59 @@ public class ScoringManagerTest {
 		Assert.assertEquals(scoringManager.averageScoresForProvider(provider), new Double(3.5));
 
 	}
+
+	@Test
+	public void testIfAddTwentyNewsScoresWithAvarege1ThenRetunListWith1Element()
+			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
+			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
+			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
+			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
+			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
+
+		ScoringManager scoringManager = new ScoringManager();
+		Provider provider = Mockito.mock(Provider.class);
+		Client client = Mockito.mock(Client.class);
+		Score score;
+		for (int i = 0; i < 20; i++) {
+			score = new ScoreBuilder().setClient(client).setProvider(provider).build();
+			score.setScore(1);
+			scoringManager.addScore(score);
+		}
+		Assert.assertTrue(scoringManager.providerWith20ScoresAndAverageLess2().contains(provider));
+		Assert.assertEquals(scoringManager.providerWith20ScoresAndAverageLess2().size(), 1);
+
+	}
+
+	@Test
+	public void testIfAddTwentyNewsScoresWithAvarege3ThenRetunListWith0Element()
+			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
+			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
+			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
+			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
+			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
+
+		ScoringManager scoringManager = new ScoringManager();
+		Provider provider = Mockito.mock(Provider.class);
+		Client client = Mockito.mock(Client.class);
+		Score score;
+		for (int i = 0; i < 20; i++) {
+			score = new ScoreBuilder().setClient(client).setProvider(provider).build();
+			score.setScore(3);
+			scoringManager.addScore(score);
+		}
+		Assert.assertFalse(scoringManager.providerWith20ScoresAndAverageLess2().contains(provider));
+		Assert.assertEquals(scoringManager.providerWith20ScoresAndAverageLess2().size(), 0);
+
+	}
+
 }

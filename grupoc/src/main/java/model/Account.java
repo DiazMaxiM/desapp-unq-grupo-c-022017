@@ -24,7 +24,8 @@ public class Account {
 	}
 
 	public Double balance() {
-		return transactions.stream().mapToDouble(trans -> trans.getValueForSum()).sum();
+		return transactions.stream().filter(trans -> trans.isNotRejected()).mapToDouble(trans -> trans.getValueForSum())
+				.sum();
 	}
 
 }
