@@ -6,7 +6,10 @@ import org.mockito.Mockito;
 
 import builders.ScoreBuilder;
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
@@ -45,7 +48,8 @@ public class ScoreTest {
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 		Score score = new ScoreBuilder().build();
 
 		Assert.assertTrue(score.isPending());
@@ -62,7 +66,8 @@ public class ScoreTest {
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException, InvalidValueScoreException {
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(3);
 		Assert.assertEquals(score.getValue(), new Integer(3));
@@ -80,7 +85,8 @@ public class ScoreTest {
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException, InvalidValueScoreException {
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(8);
 
@@ -96,7 +102,8 @@ public class ScoreTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 		Client client = Mockito.mock(Client.class);
 
 		Score score = new ScoreBuilder().setClient(client).build();
@@ -115,7 +122,8 @@ public class ScoreTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 		Provider provider = Mockito.mock(Provider.class);
 
 		Score score = new ScoreBuilder().setProvider(provider).build();
