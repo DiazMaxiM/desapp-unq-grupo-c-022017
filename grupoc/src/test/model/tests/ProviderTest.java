@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import builders.ProviderBuilder;
 import builders.ServiceBuilder;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
@@ -21,17 +22,26 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import userExceptions.InvalidCuitException;
+import userExceptions.InvalidEmailAddressException;
+import userExceptions.InvalidFirstNameException;
+import userExceptions.InvalidLastNameException;
 
 public class ProviderTest {
-
+    
+	@Test
+	public void testShouldPassWhenICreatAValidProvider() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException{
+		new ProviderBuilder().build();
+	}
+	
 	@Test
 	public void testTheAmountOfServicesOfferedByTheProviderShouldBe1WhenAddingAValidService()
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
-		Provider provider = new Provider();
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
+		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
 		assertEquals(1, provider.getServicesOffered().size());
@@ -44,8 +54,8 @@ public class ProviderTest {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
-		Provider provider = new Provider();
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
+		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().withServiceName(null).build();
 		provider.addNewService(service);
 		assertEquals(0, provider.getServicesOffered().size());

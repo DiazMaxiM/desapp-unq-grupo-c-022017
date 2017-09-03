@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -75,7 +76,7 @@ public class SalesAdministration {
 		
 	}
 
-	private Transaction chargeClientMenu(Menu menu, Client client) throws BalanceInsufficient {
+	private Transaction chargeClientMenu(Menu menu, Client client) throws BalanceInsufficient, EmailException {
 		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT, menu.getMenuPrice().getValue());
 		client.getAccount().addTransaction(newTransaction);
 		return newTransaction;
