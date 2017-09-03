@@ -1,7 +1,10 @@
 package builders;
 
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
@@ -41,7 +44,8 @@ public class ScoreBuilder {
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException {
+			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException {
 		Menu menu = new MenuBuilder().build();
 	}
 
