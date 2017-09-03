@@ -1,10 +1,9 @@
 package model;
 
-import org.apache.commons.lang3.StringUtils;
-
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
+import validation.AddressValidation;
 
 public class Address {
 
@@ -13,38 +12,13 @@ public class Address {
 	private String numberStreet;
 	private String floor;
 	private MapPosition mapPosition;
+	private AddressValidation validator= new AddressValidation();
 
 	public Address(Locality locality, String street, String numberStreet, String floor, MapPosition mapPosition)
 			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
-		if (isAValidAddress(locality, street, numberStreet)) {
+		if (validator.isAValidAddress(locality, street, numberStreet)) {
 			createAddress(locality, street, numberStreet, floor, mapPosition);
 		}
-	}
-
-	private boolean isAValidAddress(Locality locality, String street, String numberStreet)
-			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
-		return isValidLocality(locality) && isValidStreet(street) && isValidNumberStreet(numberStreet);
-	}
-
-	private boolean isValidNumberStreet(String numberStreet) throws InvalidNumberStreetException {
-		if (StringUtils.isEmpty(numberStreet)) {
-			throw new InvalidNumberStreetException("Debe ingresar un número de calle válido");
-		}
-		return !StringUtils.isEmpty(numberStreet);
-	}
-
-	private boolean isValidStreet(String street) throws InvalidStreetAddressException {
-		if (StringUtils.isEmpty(street)) {
-			throw new InvalidStreetAddressException("Debe ingresar un nombre de calle válido");
-		}
-		return !StringUtils.isEmpty(street);
-	}
-
-	private boolean isValidLocality(Locality locality) throws InvalidLocalityAddressException {
-		if (locality == null) {
-			throw new InvalidLocalityAddressException("Debe ingresar una localidad válida");
-		}
-		return locality != null;
 	}
 
 	private void createAddress(Locality locality, String street, String numberStreet, String floor,
