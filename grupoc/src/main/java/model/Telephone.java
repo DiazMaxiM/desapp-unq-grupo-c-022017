@@ -2,55 +2,64 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
-import exception.InvalidTelephoneNumberException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import validation.Validation;
 
 public class Telephone {
-	private String countryCode="54"; //Area Code Argentina
+	private String countryCode = "54"; // Area Code Argentina
 	private String areaCode;
 	private String localNumber;
-	private List<String>areasCode=this.areasCode();
-	private Validation validator= new Validation();
+	private List<String> areasCode = this.areasCode();
+	private Validation validator = new Validation();
 
-	public Telephone(String countryCode, String areaCode, String localNumber) throws InvalidTelephoneNumberException {
-		if(isAValidTelephone(countryCode,areaCode,localNumber)){
-			createTelephone(countryCode,areaCode,localNumber);
-		}
-		else{
-			throw new InvalidTelephoneNumberException("El telefono ingresado no es valido");
+	public Telephone(String countryCode, String areaCode, String localNumber)
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+		if (isAValidTelephone(countryCode, areaCode, localNumber)) {
+			createTelephone(countryCode, areaCode, localNumber);
 		}
 	}
 
 	private List<String> areasCode() {
-		List<String> areasCode=new ArrayList<>();
+		List<String> areasCode = new ArrayList<>();
 		areasCode.add("011");
 		areasCode.add("220");
 		areasCode.add("221");
-		areasCode.add("223");		
+		areasCode.add("223");
 		return areasCode;
 	}
 
-	private boolean isAValidTelephone(String countryCode, String areaCode, String localNumber) {
-		return isValidCountryCode(countryCode)
-				&& isValidAreaCode(areaCode)
-				&& isValidLocalNumber(localNumber);
-	}
-	
-	private boolean isValidLocalNumber(String localNumber) {
-		return  !StringUtils.isEmpty(localNumber);
+	private boolean isAValidTelephone(String countryCode, String areaCode, String localNumber)
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+		return isValidCountryCode(countryCode) && isValidAreaCode(areaCode) && isValidLocalNumber(localNumber);
 	}
 
-	private boolean isValidAreaCode(String areaCode) {
-		return !StringUtils.isEmpty(areaCode)&& this.areasCode.contains(areaCode) ;
+	private boolean isValidLocalNumber(String localNumber) throws InvalidLocalNumberException {
+		if (StringUtils.isEmpty(localNumber)) {
+			throw new InvalidLocalNumberException("Debe ingresar un número local válido");
+		}
+		return !StringUtils.isEmpty(localNumber);
 	}
 
-	private boolean isValidCountryCode(String countryCode) {
-		return !StringUtils.isEmpty(countryCode)&& this.getCountryCode().equals(countryCode);
+	private boolean isValidAreaCode(String areaCode) throws InvalidAreaCodeException {
+		if (StringUtils.isEmpty(areaCode) || !this.areasCode.contains(areaCode)) {
+			throw new InvalidAreaCodeException("Debe ingresar un número de área válido");
+		}
+		return !StringUtils.isEmpty(areaCode) && this.areasCode.contains(areaCode);
 	}
 
-	private void createTelephone(String countryCode,String areaCode, String localNumber){
+	private boolean isValidCountryCode(String countryCode) throws InvalidCountryCodeException {
+		if (StringUtils.isEmpty(countryCode) || !this.getCountryCode().equals(countryCode)) {
+			throw new InvalidCountryCodeException("Debe ingresar un código de país válido");
+		}
+		return !StringUtils.isEmpty(countryCode) && this.getCountryCode().equals(countryCode);
+	}
+
+	private void createTelephone(String countryCode, String areaCode, String localNumber) {
 		this.setAreaCode(areaCode);
 		this.setCountryCode(countryCode);
 		this.setLocalNumber(localNumber);

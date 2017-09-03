@@ -6,7 +6,10 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
@@ -37,7 +40,8 @@ public class MenuBuilder {
 	public MenuBuilder() throws InvalidAddressException, InvalidServiceException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		this.service = this.getService();
 	}
 
@@ -77,7 +81,8 @@ public class MenuBuilder {
 	public Service getService() throws InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 
 		return new ServiceBuilder().build();
 	}

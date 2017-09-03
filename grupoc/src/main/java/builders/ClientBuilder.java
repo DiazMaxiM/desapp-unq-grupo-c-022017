@@ -1,13 +1,13 @@
 package builders;
 
-import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
 import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
-import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
-import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Client;
 import model.Locality;
@@ -45,9 +45,9 @@ public class ClientBuilder {
 		try {
 			return new Client("any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
 					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)));
-		} catch (InvalidAddressException | InvalidTelephoneNumberException | InvalidMapPositionException
-				| InvalidLengthMapPositionException | InvalidLatitudeMapPositionException | InvalidNumberStreetException
-				| InvalidStreetAddressException | InvalidLocalityAddressException e) {
+		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException | InvalidNumberStreetException
+				| InvalidStreetAddressException | InvalidLocalityAddressException | InvalidLocalNumberException
+				| InvalidAreaCodeException | InvalidCountryCodeException e) {
 			e.printStackTrace();
 		}
 		return null;

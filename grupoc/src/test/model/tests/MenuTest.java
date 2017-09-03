@@ -4,7 +4,10 @@ import org.junit.Test;
 
 import builders.MenuBuilder;
 import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
@@ -38,7 +41,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().build();
 	}
 
@@ -51,7 +55,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withMenuName("ppp").build();
 	}
 
@@ -64,7 +69,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withMenuDescription("ppp").build();
 	}
 
@@ -77,7 +83,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withMenuCategory(null).build();
 	}
 
@@ -90,7 +97,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withMenuDeliveryPrice(new Double(50)).build();
 	}
 
@@ -103,7 +111,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withStartDateOfferMenu(null).build();
 	}
 
@@ -116,7 +125,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withEndDateOfferMenu(null).build();
 	}
 
@@ -130,7 +140,8 @@ public class MenuTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withAverageDeliveryTimeOfMenu(null).build();
 	}
 
@@ -144,7 +155,8 @@ public class MenuTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withFirstMinimumNumberOfMenusToBuy(100).build();
 	}
 
@@ -158,7 +170,8 @@ public class MenuTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withFirstMinimumPriceOfMenusToBuy(new Double(1500)).build();
 	}
 
@@ -172,7 +185,8 @@ public class MenuTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withSecondMinimumNumberOfMenusToBuy(200).build();
 	}
 
@@ -186,7 +200,8 @@ public class MenuTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withSecondMinimumPriceOfMenusToBuy(new Double(1500)).build();
 	}
 
@@ -199,7 +214,8 @@ public class MenuTest {
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
-			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		new MenuBuilder().withMenuService(null).build();
 	}
 

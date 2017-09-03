@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import exception.InvalidLatitudeMapPositionException;
@@ -9,14 +8,6 @@ import exception.InvalidMapPositionException;
 import model.MapPosition;
 
 public class MapPositionTest {
-
-	@Test(expected = InvalidMapPositionException.class)
-	@Ignore
-	public void testShouldFailWhenICreateAnInvalidMapPosition()
-			throws InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
-		new MapPosition(null, null);
-
-	}
 
 	@Test(expected = InvalidLatitudeMapPositionException.class)
 	public void testShouldFailWhenICreateAMapPositionWithLatitudeInvalid()
