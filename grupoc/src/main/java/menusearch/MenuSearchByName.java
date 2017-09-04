@@ -1,11 +1,13 @@
 package menusearch;
 
 import model.Menu;
+import model.MenuManager;
 
-public class MenuSearchByName extends MenuSearchCriteria{
-		
-	public MenuSearchByName(String name){
+public class MenuSearchByName extends MenuSearchCriteria {
+
+	public MenuSearchByName(MenuManager menuManager, String name) {
 		super.setSearchCriteria(name);
+		super.setMenuManager(menuManager);
 	}
 
 	@Override
