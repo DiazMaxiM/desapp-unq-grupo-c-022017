@@ -27,7 +27,8 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
-import menusearch.MenuSearchByName;
+import menusearch.MenuSearchByCategory;
+import model.Category;
 import model.Menu;
 import model.MenuManager;
 import serviceException.InvalidServiceDescriptionException;
@@ -36,7 +37,7 @@ import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 
-public class MenuSearchByNameTest {
+public class MenuSearchByCategoryTest {
 
 	@Test(expected = NoMenusFoundException.class)
 	public void testWhenLookForAMenuAndItIsNotInTheSystemShouldThrowAnException()
@@ -51,12 +52,12 @@ public class MenuSearchByNameTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, NoMenusFoundException {
 
-		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();
+		Menu menuPizza = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
 
 		MenuManager menuManager = new MenuManager();
-		menuManager.addMenuToMenusOffered(menuPastas);
+		menuManager.addMenuToMenusOffered(menuPizza);
 
-		MenuSearchByName searchCriteria = new MenuSearchByName(menuManager, "Milanesas");
+		MenuSearchByCategory searchCriteria = new MenuSearchByCategory(menuManager, Category.BEER);
 
 		searchCriteria.menuSearch();
 	}
@@ -74,14 +75,14 @@ public class MenuSearchByNameTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, NoMenusFoundException {
 
-		Menu menuMilanesas = new MenuBuilder().withMenuName("Milanesas").build();
-		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();
+		Menu menuBurguer = new MenuBuilder().withMenuCategory(Category.BURGER).build();
+		Menu menuEmpanadas = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
 
 		MenuManager menuManager = new MenuManager();
-		menuManager.addMenuToMenusOffered(menuPastas);
-		menuManager.addMenuToMenusOffered(menuMilanesas);
+		menuManager.addMenuToMenusOffered(menuBurguer);
+		menuManager.addMenuToMenusOffered(menuEmpanadas);
 
-		MenuSearchByName searchCriteria = new MenuSearchByName(menuManager, "Milanesas");
+		MenuSearchByCategory searchCriteria = new MenuSearchByCategory(menuManager, Category.EMPANADAS);
 
 		searchCriteria.menuSearch();
 
