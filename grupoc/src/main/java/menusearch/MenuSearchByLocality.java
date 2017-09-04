@@ -2,10 +2,12 @@ package menusearch;
 
 import model.Locality;
 import model.Menu;
+import model.MenuManager;
 
 public class MenuSearchByLocality extends MenuSearchCriteria {
 
-	public MenuSearchByLocality(Locality locality){
+	public MenuSearchByLocality(MenuManager menuManager, Locality locality) {
+		super.setMenuManager(menuManager);
 		super.setSearchCriteria(locality);
 	}
 

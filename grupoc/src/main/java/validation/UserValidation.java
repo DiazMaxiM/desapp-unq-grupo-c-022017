@@ -25,28 +25,28 @@ public class UserValidation extends Validation{
 		if (!isValidString(userEmailAddress)){
 			throw new InvalidEmailAddressException("Ingrese un correo electronico");
 		}
-		return isValidString(userEmailAddress);
+		return true;
 	}
 
 	private boolean isValidLastName(String userLastName) throws InvalidLastNameException {
 		if(!isValidString(userLastName)){
 			throw new InvalidLastNameException("Ingrese un apellido valido");
 		}
-		return isValidString(userLastName);
+		return true;
 	}
 
 	private boolean isValidFirstName(String userfirstName) throws InvalidFirstNameException {
 		if(!isValidString(userfirstName)){
 			throw new InvalidFirstNameException("Ingrese un nombre valido");
 		}
-		return isValidString(userfirstName);
+		return true;
 	}
 
 	private boolean isValidCuit(String cuit) throws InvalidCuitException {
 	    if(!isValidString(cuit)){
 	    	throw new InvalidCuitException("Ingrese un cuit valido");
 	    }	    	
-	    return isValidString(cuit);
+	    return true;
 	}
 	
 

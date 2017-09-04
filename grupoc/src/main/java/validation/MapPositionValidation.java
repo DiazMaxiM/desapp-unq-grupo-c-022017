@@ -13,14 +13,14 @@ public class MapPositionValidation extends Validation {
 		if (length == null) {
 			throw new InvalidLengthMapPositionException("Debe ingresar una longitud válida");
 		}
-		return length != null;
+		return true;
 	}
 
 	private boolean isValidLatitude(Double latitude) throws InvalidLatitudeMapPositionException {
 		if (latitude == null) {
 			throw new InvalidLatitudeMapPositionException("Debe ingresar una latitud válida");
 		}
-		return latitude != null;
+		return true;
 	}
 
 }

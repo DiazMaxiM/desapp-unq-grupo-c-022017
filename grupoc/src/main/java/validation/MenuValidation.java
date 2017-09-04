@@ -52,7 +52,7 @@ public class MenuValidation extends Validation{
 		if(!isValidDeliveryPrice(menuDeliveryPrice)){
 			throw new InvalidMenuDeliveryPriceException("El precio del delivery no es valido");
 		}
-	   return isValidDeliveryPrice(menuDeliveryPrice);
+	   return true;
 	}
 
 	private boolean isValidDeliveryPrice(Double menuDeliveryPrice) {
@@ -63,14 +63,14 @@ public class MenuValidation extends Validation{
 		if (service==null){
 			throw new InvalidServiceException("El menu debe tener un servicio asociado");
 		}
-		return service!=null;
+		return true;
 	}
 
 	private boolean isValidMaximumNumberOfMunusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) throws InvalidMaximumNumberOfMunusSalesPerDay {
 		if(!isValidIntegerNumber(maximumNumberOfMunusSalesPerDay)){
 			throw new InvalidMaximumNumberOfMunusSalesPerDay("Ingrese la cantidad maxima de ventas de menus por dia");
 		}
-		return isValidIntegerNumber(maximumNumberOfMunusSalesPerDay);
+		return true;
 	}
     
 	private boolean isValidSecondMinimumPriceOfMenusToBuy(Price secondMinimumPriceOfMenusToBuy) throws InvalidMinimumPriceOfMenusToBuyException {
@@ -79,7 +79,7 @@ public class MenuValidation extends Validation{
 		if(!isValidSecondMinimumPriceOfMenusToBuy){
 			throw new InvalidMinimumPriceOfMenusToBuyException("El segundo precio para la venta de menus no es valido");
 		}
-		return isValidSecondMinimumPriceOfMenusToBuy;
+		return true;
 	}
 
 	private boolean isHasValidSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
@@ -92,7 +92,7 @@ public class MenuValidation extends Validation{
 		if(!isValidSecondMinimumNumberOfMenusToBuy){
 			throw new InvalidMinimumNumberOfMenusToBuyException("La segunda cantidad minima ingresada no es valida");
 		}
-	    return isValidSecondMinimumNumberOfMenusToBuy;
+	    return true;
 	}
 
 	private boolean isHasNumberOfSecondMinimumNumberOfMenusToBuy(Integer secondMinimumNumberOfMenusToBuy) {
@@ -110,7 +110,7 @@ public class MenuValidation extends Validation{
 		if(!isValidFirstMinimumPriceOfMenusToBuy){
 			throw new InvalidMinimumPriceOfMenusToBuyException("El precio del menu para la su venta no es valido");
 		}
-		return isValidFirstMinimumPriceOfMenusToBuy;
+		return true;
 	}
 
 	private boolean isHasValidPriceOfMenusToBuy(Double minimumPriceOfMenusToBuy) {
@@ -128,7 +128,7 @@ public class MenuValidation extends Validation{
 		if(!isValidFirstMinimumNumberOfMenusToBuy){
 			throw new InvalidMinimumNumberOfMenusToBuyException("El primer minimo de menus para comprar no es valido ");
 		}
-		return isValidFirstMinimumNumberOfMenusToBuy;
+		return true;
 	}
 
 	private boolean isHasNumberOfFirstMinimumNumberOfMenusToBuy(Integer firstMinimumNumberOfMenusToBuy) {
@@ -144,28 +144,28 @@ public class MenuValidation extends Validation{
 		if(!isValidIntegerNumber(averageDeliveryTimeOfMenu)){
 			throw new InvalidAverageDeliveryTimeOfMenuException("Ingrese un tiempo promedio de entrega");
 		}
-		return isValidIntegerNumber(averageDeliveryTimeOfMenu);
+		return true;
 	}
 
 	private boolean isValidEndDateOfferMenu(DateTime endDateOfferMenu) throws InvalidEndDateOfferMenuException {
 		if(!isValidDate(endDateOfferMenu)){
 			throw new InvalidEndDateOfferMenuException("La fecha de fin no es valida");
 		}
-		return isValidDate(endDateOfferMenu);
+		return true;
 	}
 
 	private boolean isValidStartDateOfferMenu(DateTime startDateOfferMenu) throws InvalidStartDateOfferMenuException {
 		if(!isValidDate(startDateOfferMenu)){
 			throw new InvalidStartDateOfferMenuException("La fecha ingresada no es valida");
 		}
-		return isValidDate(startDateOfferMenu);
+		return true;
 	}
 
 	private boolean isValidMenuDescription(String menuDescription) throws InvalidMenuDescriptionException {
 		if(!(isHasValidMenuDescription(menuDescription)&& isHasValidSizeDescription(menuDescription))){
 			throw new InvalidMenuDescriptionException("La descripcion del muenu no es valida");
 		}
-		return isHasValidMenuDescription(menuDescription)&& isHasValidSizeDescription(menuDescription);
+		return true;
 		
 	}
 
@@ -181,7 +181,7 @@ public class MenuValidation extends Validation{
 		if (!(isHasValidName(menuName)&& isHasValidSizeName(menuName))){
 		   throw new InvalidMenuNameException("El nombre del menu no es valido");
 		}
-		return isHasValidName(menuName)&& isHasValidSizeName(menuName);
+		return true;
 	}
 	
 	private boolean isHasValidSizeName(String menuName) {

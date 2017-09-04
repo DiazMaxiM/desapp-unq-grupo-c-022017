@@ -11,8 +11,9 @@ import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 
-public class Provider extends User{
-	private List<Service> servicesOffered= new ArrayList<Service>();
+
+public class Provider extends User {
+	private List<Service> servicesOffered = new ArrayList<>();
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
 	
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,

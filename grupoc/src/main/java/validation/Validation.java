@@ -23,7 +23,7 @@ public class Validation {
 		if(menuCategory==null){
 			throw new InvalidMenuCategoryException("Ingrese una categoria");
 		}
-		return  menuCategory!=null;
+		return true;
 	}
  
 	public boolean isValidIntegerNumber(Integer integerNumber){
@@ -38,13 +38,13 @@ public class Validation {
 		if(telephone==null){
 			throw new InvalidTelephoneNumberException("ingrese un numero de telefono valido");
 		}
-		return telephone!=null;
+		return true;
 	}
 	
 	public boolean isValidAddress(Address address) throws InvalidAddressException{
 		if(address==null){
 			throw new InvalidAddressException("ingrese una direccion valida");
 		}
-		return address!=null;
+		return true;
 	}
 }

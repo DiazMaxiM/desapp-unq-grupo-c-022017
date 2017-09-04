@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -13,15 +14,17 @@ import exception.PendingScoreException;
 public class SalesAdministration {
 	ScoringManager scoringManager;
 	MenuManager    menuManager;
+	Mail           mail;
 	List<Order> ordersToConfirm= new ArrayList<>();
 	
-	public SalesAdministration(ScoringManager scoringManager, MenuManager menuManager){
+	public SalesAdministration(ScoringManager scoringManager, MenuManager menuManager,Mail mail){
 		this.scoringManager=scoringManager;
 		this.menuManager= menuManager;
+		this.mail= mail;
 		
 	}
 	
-     public void saleMenu(Order order, Client client, Provider provider) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException{
+     public void saleMenu(Order order, Client client, Provider provider) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException{
     	 if(scoringManager.hasPendingScoreForClient(client)){
     		 throw new PendingScoreException("Tiene calificaciones pendientes a completar");
     	 }
@@ -29,15 +32,15 @@ public class SalesAdministration {
     	 
      }
 
-	private void manageSales(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException {
+	private void manageSales(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
 		Double clientBalance= client.getAccount().balance();
-		if(!isHasBalanceToBuy(clientBalance,order.getMenuToOrder().getMenuPrice())){
+		if(!isHasBalanceToBuy(clientBalance,calculatePriceToDiscount(order))){
 			throw new BalanceInsufficient("No tiene dinero suficiente para realizar la compra");
 		}
 		forSale(order,client,provider);
 	}
 
-	private void forSale(Order order, Client client, Provider provider) throws InvalidPurchaseException, BalanceInsufficient {
+	private void forSale(Order order, Client client, Provider provider) throws InvalidPurchaseException, BalanceInsufficient, EmailException {
 		    if(!isWithinTheMaximumAmountOfMenuSales(order)){
 		    	throw new InvalidPurchaseException("Se ha superado el limite de ventas");
 		    }
@@ -49,14 +52,14 @@ public class SalesAdministration {
 		return order.getMenuToOrder().getNumberOfMenuSale()+ order.getNumberOfMenusToOrder()<order.getMenuToOrder().getMaximumNumberOfMenusSalesPerDay();
 	}
 
-	private void finishSale(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException {
+	private void finishSale(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
 		if(!isTheSaleOfTheMenuWithinTheLimitOfPurchase(order)){
 		    	throw new InvalidPurchaseException("El pedido debe estar dentro de las 48 horas");
 		}
 		increaseNumberOfMenuSales(order.getMenuToOrder(),order.getNumberOfMenusToOrder());
 		createNewScoreOfClient(provider,client,order.getMenuToOrder());
-		order.setTransactionClient(chargeClientMenu(order.getMenuToOrder(),client));
-		order.setTransactionProvider(payTheProvider(order.getMenuToOrder(),provider));
+		chargeClientMenu(order, client);
+		payTheProvider(order, provider);
 		addOrderToConfirm(order);
 	}
 	
@@ -64,9 +67,11 @@ public class SalesAdministration {
 		this.ordersToConfirm.add(order);
 	}
 
-	private Transaction payTheProvider(Menu menu, Provider provider) throws BalanceInsufficient {
-	     Transaction newTransaction= new Transaction(TypeTransaction.CREDIT,menu.getMenuPrice().getValue());
-		 provider.getAccount().addTransaction(newTransaction);
+	private Transaction payTheProvider(Order order, Provider provider) throws BalanceInsufficient, EmailException {
+		 Double priceToAcredit= calculatePriceToDiscount(order);
+	     Transaction newTransaction= new Transaction(TypeTransaction.CREDIT,priceToAcredit);
+	     order.setTransactionProvider(newTransaction);
+		 this.mail.send(provider.getEmail(), "Pedido Pendiente", "Se realizo una compra por "+ priceToAcredit.toString());
 		 return newTransaction;
 	}
 
@@ -75,11 +80,23 @@ public class SalesAdministration {
 		
 	}
 
-	private Transaction chargeClientMenu(Menu menu, Client client) throws BalanceInsufficient {
-		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT, menu.getMenuPrice().getValue());
+	private Transaction chargeClientMenu(Order order, Client client) throws BalanceInsufficient, EmailException {
+		Double priceToDiscount= calculatePriceToDiscount(order);
+		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT,priceToDiscount);
 		client.getAccount().addTransaction(newTransaction);
+		this.mail.send(client.getEmail(), "Cobro de pedido", "Se descontaron "+ priceToDiscount.toString());
+		order.setTransactionClient(newTransaction);
 		return newTransaction;
 		
+	}
+
+	private Double calculatePriceToDiscount(Order order) {
+		Double priceToDiscount=order.getNumberOfMenusToOrder() *
+		                       order.getMenuToOrder().getMenuDeliveryPrice().getValue();
+		if(order.getTypeOfDelivery()==TypeOfDelivery.HOMEDELIVERY){
+			priceToDiscount+= order.getMenuToOrder().getMenuDeliveryPrice().getValue();
+		}
+		return priceToDiscount;
 	}
 
 	private void createNewScoreOfClient(Provider provider,Client client, Menu menu) {
@@ -94,8 +111,8 @@ public class SalesAdministration {
 	   return days>=2;
 	}
 
-	private boolean isHasBalanceToBuy(Double clientBalance,Price menuPrice) {	
-		return clientBalance>=menuPrice.getValue();
+	private boolean isHasBalanceToBuy(Double clientBalance,Double orderPrice) {	
+		return clientBalance>=orderPrice;
 	}
 
 }

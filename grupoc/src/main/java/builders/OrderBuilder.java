@@ -8,6 +8,7 @@ import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidCountryCodeException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMenuException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
@@ -26,6 +27,10 @@ import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.Order;
 import model.TypeOfDelivery;
+import orderExceptions.InvalidDateOfDeliveryException;
+import orderExceptions.InvalidDeliveryTimeException;
+import orderExceptions.InvalidNumberOfMenusToOrderException;
+import orderExceptions.InvalidTypeOfDeliveryException;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -43,8 +48,8 @@ public class OrderBuilder {
     	 this.menuToOrder= new MenuBuilder().build();
      }
      
-     public Order build(){
-    	 return new Order(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime);
+     public Order build() throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException{
+    	 return new Order(this.menuToOrder,this.numberOfMenusToOrder,this.typeOfDelivery,this.dateOfDelivery,this.deliveryTime);
      }
     
      public Menu getMenu(){

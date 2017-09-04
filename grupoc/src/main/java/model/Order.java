@@ -2,6 +2,13 @@ package model;
 
 import org.joda.time.DateTime;
 
+import exception.InvalidMenuException;
+import orderExceptions.InvalidDateOfDeliveryException;
+import orderExceptions.InvalidDeliveryTimeException;
+import orderExceptions.InvalidNumberOfMenusToOrderException;
+import orderExceptions.InvalidTypeOfDeliveryException;
+import validation.OrderValidation;
+
 public class Order {
 	  private TypeStatusOrder  typeStatusOrder;
       private Menu menuToOrder;
@@ -11,16 +18,25 @@ public class Order {
       private String deliveryTime;
       private Transaction transactionClient;
       private Transaction transactionProvider;
+      private OrderValidation validator= new OrderValidation();
+   
       
     public Order(Menu menuToOrder,Integer numberOfMenusToOrder,
+    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException{
+    	if(validator.isValidOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime)){
+    		createOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime);
+    	}
+    }
+    
+    public void createOrder(Menu menuToOrder,Integer numberOfMenusToOrder,
     		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime){
     	setMenuToOrder(menuToOrder);
     	setNumberOfMenusToOrder(numberOfMenusToOrder);
     	setTypeOfDelivery(typeOfDelivery);
     	setDateOfDelivery(dateOfDelivery);
     	setDeliveryTime(deliveryTime);
+    	
     }
-      
 	public Menu getMenuToOrder() {
 		return menuToOrder;
 	}

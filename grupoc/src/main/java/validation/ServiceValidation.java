@@ -36,41 +36,41 @@ public class ServiceValidation extends Validation{
 			throw new InvalidTelephoneNumberException("Ingrese un telefono para el servicio");
 			
 		}
-		return serviceTelephone!=null;
+		return true;
 	}
 	
 	private boolean isValidServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceWorkingHoursException {
         if(serviceWorkingHours==null || serviceWorkingHours.isEmpty()){
         	throw new InvalidServiceWorkingHoursException("Ingrese las horas y dias de atencion");
         }
-		return serviceWorkingHours!=null && !serviceWorkingHours.isEmpty();
+		return true;
 	}
 	
 	private boolean isValidServiceEmail(String serviceEmail) throws InvalidServiceEmailException {
 		if(!isValidString(serviceEmail)){
 			throw new InvalidServiceEmailException("Ingrese una direccion de mail para el servicio");
 		}
-		return isValidString(serviceEmail);
+		return true;
 	}
 	
 	private boolean isValidServiceDescription(String serviceDescription) throws InvalidServiceDescriptionException {
 		if(!isValidString(serviceDescription)){
 			throw new InvalidServiceDescriptionException("Ingrese una descripcion del servicio");
 		}
-		return isValidString(serviceDescription);
+		return true;
 	}
 	
 	private boolean isValidServiceLogo(String serviceLogo) throws InvalidServiceLogoException {
 		if(!isValidString(serviceLogo)){
 			throw new InvalidServiceLogoException("Ingrese un logo para el servicio");
 		}
-		return isValidString(serviceLogo);
+		return true;
 	}
 	
 	private boolean isValidServiceName(String serviceName) throws InvalidServiceNameException {
 		if(!isValidString(serviceName)){
 			throw new InvalidServiceNameException("Ingrese un nombre para el servicio");
 		}
-		return isValidString(serviceName);
+		return true;
 	}
 }
