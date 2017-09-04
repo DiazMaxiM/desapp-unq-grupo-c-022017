@@ -5,7 +5,7 @@ import java.util.List;
 
 import exception.InvalidServiceException;
 
-public class Provider {
+public class Provider extends User {
 	private String cuit;
 	private List<Service> servicesOffered;
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;

@@ -34,4 +34,8 @@ public class Mail {
 		mail.send();
 	}
 
+	public void sendMailDisabledProvider(String userEmailAddress) throws EmailException {
+		this.send(userEmailAddress, "Proveedor Inactivo", "Estimado Usuario su cuenta a sido inhabilitada");
+	}
+
 }
