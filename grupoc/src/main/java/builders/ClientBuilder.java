@@ -44,7 +44,7 @@ public class ClientBuilder {
 	public Client getClient() {
 		try {
 			return new Client("any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
-					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)));
+					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)),"20-35462865-7");
 		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException | InvalidNumberStreetException
 				| InvalidStreetAddressException | InvalidLocalityAddressException | InvalidLocalNumberException
 				| InvalidAreaCodeException | InvalidCountryCodeException e) {

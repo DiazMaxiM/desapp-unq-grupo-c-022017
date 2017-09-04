@@ -7,6 +7,7 @@ public class User {
 	private String userEmailAddress;
 	private Telephone userTelephone;
 	private Address userAddress;
+	private Account account = new Account();
 
 	public String getUserfirstName() {
 		return userfirstName;
@@ -46,6 +47,14 @@ public class User {
 
 	public void setUserAddress(Address userAddress) {
 		this.userAddress = userAddress;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 }

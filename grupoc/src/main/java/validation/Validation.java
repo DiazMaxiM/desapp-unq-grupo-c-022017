@@ -3,6 +3,7 @@ package validation;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 
+import menuExceptions.InvalidMenuCategoryException;
 import model.Category;
 
 public class Validation {
@@ -14,10 +15,13 @@ public class Validation {
 		return date!=null;
 	}
 	
-	public boolean isValidCategory(Category menuCategory){
-		return menuCategory!=null;
+	public boolean isValidCategory(Category menuCategory) throws InvalidMenuCategoryException{
+		if(menuCategory==null){
+			throw new InvalidMenuCategoryException("Ingrese una categoria");
+		}
+		return  menuCategory!=null;
 	}
-	
+ 
 	public boolean isValidIntegerNumber(Integer integerNumber){
 		return integerNumber!= null;
 	}

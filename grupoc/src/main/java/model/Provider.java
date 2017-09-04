@@ -9,7 +9,8 @@ public class Provider extends User {
 	private String cuit;
 	private List<Service> servicesOffered;
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
-
+	private Account account = new Account();
+	
 	public Provider() {
 		this.servicesOffered = new ArrayList<Service>();
 	}
@@ -42,6 +43,14 @@ public class Provider extends User {
 
 	private void setStatus(TypeStatusUsers status) {
 		this.status = status;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 }
