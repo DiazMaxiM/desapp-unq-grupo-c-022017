@@ -21,7 +21,6 @@ public class Order {
       private Transaction transactionClient;
       private Transaction transactionProvider;
       private OrderValidation validator= new OrderValidation();
-   
       
     public Order(Menu menuToOrder,Integer numberOfMenusToOrder,
     		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException{
