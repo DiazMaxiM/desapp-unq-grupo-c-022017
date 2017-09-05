@@ -4,11 +4,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 
 import exception.InvalidAddressException;
+import exception.InvalidClientException;
+import exception.InvalidProviderException;
 import exception.InvalidTelephoneNumberException;
 import menuExceptions.InvalidMenuCategoryException;
 import model.Address;
 import model.Category;
+import model.Provider;
 import model.Telephone;
+import model.User;
 
 public class Validation {
     
@@ -46,5 +50,20 @@ public class Validation {
 			throw new InvalidAddressException("ingrese una direccion valida");
 		}
 		return true;
+	}
+	
+	public boolean isValidProvider(Provider provider) throws InvalidProviderException {
+		if(provider==null){
+			throw new InvalidProviderException("Indique el proveedor");
+		}
+		return true;
+		
+	}
+
+	public boolean  isValidClient(User client) throws InvalidClientException {
+		if(client==null){
+			throw new InvalidClientException("Indique el cliente");
+		}
+	    return true;
 	}
 }

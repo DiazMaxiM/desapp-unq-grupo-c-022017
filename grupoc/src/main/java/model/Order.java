@@ -2,7 +2,9 @@ package model;
 
 import org.joda.time.DateTime;
 
+import exception.InvalidClientException;
 import exception.InvalidMenuException;
+import exception.InvalidProviderException;
 import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
 import orderExceptions.InvalidNumberOfMenusToOrderException;
@@ -23,19 +25,22 @@ public class Order {
       private OrderValidation validator= new OrderValidation();
       
     public Order(Menu menuToOrder,Integer numberOfMenusToOrder,
-    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException{
-    	if(validator.isValidOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime)){
-    		createOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime);
+    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,
+    		     String deliveryTime,User client,Provider provider) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException{
+    	if(validator.isValidOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime,client,provider)){
+    		createOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime,client,provider);
     	}
     }
     
     public void createOrder(Menu menuToOrder,Integer numberOfMenusToOrder,
-    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime){
+    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime,User client,Provider provider){
     	setMenuToOrder(menuToOrder);
     	setNumberOfMenusToOrder(numberOfMenusToOrder);
     	setTypeOfDelivery(typeOfDelivery);
     	setDateOfDelivery(dateOfDelivery);
     	setDeliveryTime(deliveryTime);
+    	setClient(client);
+    	setProvider(provider);
     	
     }
 	public Menu getMenuToOrder() {
