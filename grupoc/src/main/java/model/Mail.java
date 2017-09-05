@@ -38,4 +38,11 @@ public class Mail {
 		this.send(userEmailAddress, "Proveedor Inactivo", "Estimado Usuario su cuenta a sido inhabilitada");
 	}
 
+	public void sendMailClientBuy(String userEmailAddress) throws EmailException {
+		this.send(userEmailAddress, "Compra Exitosa", "Estimado Usuario su compra fue realizada con exito.");
+	}
+
+	public void sendMailProviderSale(String userEmailAddress) throws EmailException {
+		this.send(userEmailAddress, "Venta Exitosa", "Estimado Usuario se realizo una venta de uno de sus menues.");
+	}
 }

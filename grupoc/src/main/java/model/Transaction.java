@@ -35,4 +35,9 @@ public class Transaction {
 		return this.statusTransaction != StatusTransaction.REJECTED;
 	}
 
+	public void setRejected() {
+		this.statusTransaction = StatusTransaction.REJECTED;
+
+	}
+
 }
