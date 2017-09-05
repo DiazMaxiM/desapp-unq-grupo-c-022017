@@ -12,19 +12,20 @@ public abstract class MenuSearchCriteria {
 	private MenuManager menuManager;
 	private Object searchCriteria;
 
-	public ArrayList<Menu> menuSearch() throws NoMenusFoundException {
+	public Menu[] menuSearch() throws NoMenusFoundException {
 		ArrayList<Menu> allMenus = this.getMenuManager().getAllMenusOffered();
 		Stream<Menu> menuSearchResult = allMenus.stream()
 				.filter(m -> this.getPropertyToCompare(m) == this.getSearchCriteria());
 
-		if (!this.areElementsAsAResult((ArrayList<Menu>) menuSearchResult)) {
+		Menu[] result = menuSearchResult.toArray(Menu[]::new);
+		if (!this.areElementsAsAResult(result)) {
 			throw new NoMenusFoundException("No se han encontrado resultados para su búsqueda");
 		}
-		return (ArrayList<Menu>) menuSearchResult;
+		return result;
 	}
 
-	public boolean areElementsAsAResult(ArrayList<Menu> resultSearch) {
-		return !resultSearch.isEmpty();
+	public boolean areElementsAsAResult(Menu[] result) {
+		return !(result.length == 0);
 	}
 
 	public Object getSearchCriteria() {

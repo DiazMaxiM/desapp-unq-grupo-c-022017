@@ -12,8 +12,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
-import validation.Validation;
-
+import validation.ServiceValidation;
 public class Service {
 	private String serviceName; //Required
 	private String serviceLogo; //Required
@@ -26,7 +25,7 @@ public class Service {
 	private HashMap<Days,List<String>> serviceWorkingHours;//Required
 	private List<Locality> serviceDeliveryLocations;
 	private int maximumNumberOfMenus = 20;
-	private Validation validator = new Validation();
+	private ServiceValidation validator = new ServiceValidation();
 	
 	public Service(String serviceName,String serviceLogo,Address serviceAddress,
 			       String serviceDescription,String serviceWebDirection,
@@ -34,7 +33,7 @@ public class Service {
 			       HashMap<Days,List<String>> serviceWorkingHours,
 			       List<Locality>serviceDeliveryLocations) throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException{
 		
-		  if(isAValidService(serviceName,serviceLogo,
+		  if(validator.isAValidService(serviceName,serviceLogo,
 				             serviceAddress,serviceDescription,
 				             serviceWebDirection,serviceEmail,
 				             serviceTelephone,serviceWorkingHours)){
@@ -45,73 +44,7 @@ public class Service {
 					        serviceTelephone, serviceWorkingHours,
 					        serviceDeliveryLocations);
 		  }
-	}
-	
-    private boolean isAValidService(String serviceName, String serviceLogo,
-    		Address serviceAddress,String serviceDescription, 
-    		String serviceWebDirection,String serviceEmail,
-    		Telephone serviceTelephone,HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
-		
-		return isValidServiceName(serviceName)
-			   && isValidServiceLogo(serviceLogo)
-			   && isValidServiceDescription(serviceDescription)
-			   && isValidServiceEmail(serviceEmail)
-			   && isValidAddress(serviceAddress)
-			   && isAValidTelephone(serviceTelephone)
-			   && isValidServiceWorkingHours(serviceWorkingHours);
-	}
-    
-	private boolean isAValidTelephone(Telephone serviceTelephone) throws InvalidTelephoneNumberException {
-		if(serviceTelephone==null){
-			
-			throw new InvalidTelephoneNumberException("Ingrese un telefono para el servicio");
-			
-		}
-		return serviceTelephone!=null;
-	}
-	
-	private boolean isValidAddress(Address serviceAddress) throws InvalidAddressException{
-		if(serviceAddress==null){
-			throw new InvalidAddressException("Ingrese un direccion para el servicio");
-		}
-		return serviceAddress!=null;
-	}
-	
-	private boolean isValidServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceWorkingHoursException {
-        if(serviceWorkingHours==null || serviceWorkingHours.isEmpty()){
-        	throw new InvalidServiceWorkingHoursException("Ingrese las horas y dias de atencion");
-        }
-		return serviceWorkingHours!=null && !serviceWorkingHours.isEmpty();
-	}
-	
-	private boolean isValidServiceEmail(String serviceEmail) throws InvalidServiceEmailException {
-		if(!validator.isValidString(serviceEmail)){
-			throw new InvalidServiceEmailException("Ingrese una direccion de mail para el servicio");
-		}
-		return validator.isValidString(serviceEmail);
-	}
-	
-	private boolean isValidServiceDescription(String serviceDescription) throws InvalidServiceDescriptionException {
-		if(!validator.isValidString(serviceDescription)){
-			throw new InvalidServiceDescriptionException("Ingrese una descripcion del servicio");
-		}
-		return validator.isValidString(serviceDescription);
-	}
-	
-	private boolean isValidServiceLogo(String serviceLogo) throws InvalidServiceLogoException {
-		if(!validator.isValidString(serviceLogo)){
-			throw new InvalidServiceLogoException("Ingrese un logo para el servicio");
-		}
-		return validator.isValidString(serviceLogo);
-	}
-	
-	private boolean isValidServiceName(String serviceName) throws InvalidServiceNameException {
-		if(!validator.isValidString(serviceName)){
-			throw new InvalidServiceNameException("Ingrese un nombre para el servicio");
-		}
-		return validator.isValidString(serviceName);
-	}
-	
+	}	
 	private void createService(String serviceName,String serviceLogo,Address serviceAddress,
 		       String serviceDescription,String serviceWebDirection,
 		       String serviceEmail,Telephone serviceTelephone,

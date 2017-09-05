@@ -23,7 +23,7 @@ public class ProviderProcessor extends Thread {
 	private void sendMailsForDisabled(List<Provider> providers) {
 		providers.stream().forEach(provider -> {
 			try {
-				mail.sendMailDisabledProvider(provider.getUserEmailAddress());
+				mail.sendMailDisabledProvider(provider.getEmail());
 			} catch (EmailException e) {
 				// TODO: preguntar al profe que pasa si sale un error al enviar
 				// un mail;

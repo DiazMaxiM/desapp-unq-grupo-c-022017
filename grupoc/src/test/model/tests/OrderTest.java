@@ -1,0 +1,48 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import builders.OrderBuilder;
+import exception.InvalidAddressException;
+import exception.InvalidAreaCodeException;
+import exception.InvalidAverageDeliveryTimeOfMenuException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
+import exception.InvalidLocalityAddressException;
+import exception.InvalidMenuException;
+import exception.InvalidNumberStreetException;
+import exception.InvalidServiceException;
+import exception.InvalidStreetAddressException;
+import exception.InvalidTelephoneNumberException;
+import menuExceptions.InvalidDeliveryPriceException;
+import menuExceptions.InvalidEndDateOfferMenuException;
+import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMenuCategoryException;
+import menuExceptions.InvalidMenuDeliveryPriceException;
+import menuExceptions.InvalidMenuDescriptionException;
+import menuExceptions.InvalidMenuNameException;
+import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
+import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidStartDateOfferMenuException;
+import orderExceptions.InvalidDateOfDeliveryException;
+import orderExceptions.InvalidDeliveryTimeException;
+import orderExceptions.InvalidNumberOfMenusToOrderException;
+import orderExceptions.InvalidTypeOfDeliveryException;
+import serviceException.InvalidServiceDescriptionException;
+import serviceException.InvalidServiceEmailException;
+import serviceException.InvalidServiceLogoException;
+import serviceException.InvalidServiceNameException;
+import serviceException.InvalidServiceWorkingHoursException;
+
+public class OrderTest {
+
+	@Test
+	public void testShuldPassWhenICreateAValidOrder() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException {
+		new OrderBuilder().build();
+		
+	}
+
+}
