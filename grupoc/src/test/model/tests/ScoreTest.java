@@ -27,9 +27,9 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
-import model.Client;
 import model.Provider;
 import model.Score;
+import model.User;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -104,7 +104,7 @@ public class ScoreTest {
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException {
-		Client client = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
 
 		Score score = new ScoreBuilder().setClient(client).build();
 

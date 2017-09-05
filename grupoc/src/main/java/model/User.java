@@ -39,6 +39,11 @@ public class User {
 	public boolean equals(Object user) {
 		return this.getCuit().equals(((User) user).getCuit());
 	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 
 	public String getCuit() {
 		return cuit;

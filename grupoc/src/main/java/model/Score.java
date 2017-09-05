@@ -4,12 +4,12 @@ import exception.InvalidValueScoreException;
 
 public class Score {
 	private Provider provider;
-	private Client client;
+	private User client;
 	private Integer valueScore = 0;
 	private Menu menu;
 	private TypeStatusTransaction status = TypeStatusTransaction.PENDING;
 
-	public Score(Provider provider, Client client, Menu menu) {
+	public Score(Provider provider, User client, Menu menu) {
 		this.provider = provider;
 		this.client = client;
 		this.menu = menu;
@@ -19,7 +19,7 @@ public class Score {
 		return this.status.equals(TypeStatusTransaction.PENDING);
 	}
 
-	public Boolean isClient(Client client) {
+	public Boolean isClient(User client) {
 		return this.client.equals(client);
 	}
 

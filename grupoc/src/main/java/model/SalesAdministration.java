@@ -24,7 +24,7 @@ public class SalesAdministration {
 		
 	}
 	
-     public void saleMenu(Order order, Client client, Provider provider) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException{
+     public void saleMenu(Order order,User client, Provider provider) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException{
     	 if(scoringManager.hasPendingScoreForClient(client)){
     		 throw new PendingScoreException("Tiene calificaciones pendientes a completar");
     	 }
@@ -32,7 +32,7 @@ public class SalesAdministration {
     	 
      }
 
-	private void manageSales(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
+	private void manageSales(Order order, User client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
 		Double clientBalance= client.getAccount().balance();
 		if(!isHasBalanceToBuy(clientBalance,calculatePriceToDiscount(order))){
 			throw new BalanceInsufficient("No tiene dinero suficiente para realizar la compra");
@@ -40,7 +40,7 @@ public class SalesAdministration {
 		forSale(order,client,provider);
 	}
 
-	private void forSale(Order order, Client client, Provider provider) throws InvalidPurchaseException, BalanceInsufficient, EmailException {
+	private void forSale(Order order, User client, Provider provider) throws InvalidPurchaseException, BalanceInsufficient, EmailException {
 		    if(!isWithinTheMaximumAmountOfMenuSales(order)){
 		    	throw new InvalidPurchaseException("Se ha superado el limite de ventas");
 		    }
@@ -52,7 +52,7 @@ public class SalesAdministration {
 		return order.getMenuToOrder().getNumberOfMenuSale()+ order.getNumberOfMenusToOrder()<order.getMenuToOrder().getMaximumNumberOfMenusSalesPerDay();
 	}
 
-	private void finishSale(Order order, Client client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
+	private void finishSale(Order order, User client, Provider provider) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
 		if(!isTheSaleOfTheMenuWithinTheLimitOfPurchase(order)){
 		    	throw new InvalidPurchaseException("El pedido debe estar dentro de las 48 horas");
 		}
@@ -67,12 +67,13 @@ public class SalesAdministration {
 		this.ordersToConfirm.add(order);
 	}
 
-	private Transaction payTheProvider(Order order, Provider provider) throws BalanceInsufficient, EmailException {
+	private void payTheProvider(Order order, Provider provider) throws BalanceInsufficient, EmailException {
 		 Double priceToAcredit= calculatePriceToDiscount(order);
 	     Transaction newTransaction= new Transaction(TypeTransaction.CREDIT,priceToAcredit);
+	     order.setProvider(provider);
 	     order.setTransactionProvider(newTransaction);
 		 this.mail.send(provider.getEmail(), "Pedido Pendiente", "Se realizo una compra por "+ priceToAcredit.toString());
-		 return newTransaction;
+		
 	}
 
 	private void increaseNumberOfMenuSales(Menu menu,Integer numberOfMenusToOrder) {
@@ -80,13 +81,13 @@ public class SalesAdministration {
 		
 	}
 
-	private Transaction chargeClientMenu(Order order, Client client) throws BalanceInsufficient, EmailException {
+	private  void chargeClientMenu(Order order, User client) throws BalanceInsufficient, EmailException {
 		Double priceToDiscount= calculatePriceToDiscount(order);
 		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT,priceToDiscount);
 		client.getAccount().addTransaction(newTransaction);
 		this.mail.send(client.getEmail(), "Cobro de pedido", "Se descontaron "+ priceToDiscount.toString());
-		order.setTransactionClient(newTransaction);
-		return newTransaction;
+		order.setClient(client);
+		order.setTransactionClient(newTransaction);		
 		
 	}
 
@@ -99,7 +100,7 @@ public class SalesAdministration {
 		return priceToDiscount;
 	}
 
-	private void createNewScoreOfClient(Provider provider,Client client, Menu menu) {
+	private void createNewScoreOfClient(Provider provider,User client, Menu menu) {
 		Score newScore= new Score(provider, client, menu);
 		this.scoringManager.addScore(newScore);
 		

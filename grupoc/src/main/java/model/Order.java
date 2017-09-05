@@ -16,6 +16,8 @@ public class Order {
       private TypeOfDelivery typeOfDelivery;
       private DateTime dateOfDelivery;
       private String deliveryTime;
+      private User   client; 
+      private Provider provider;
       private Transaction transactionClient;
       private Transaction transactionProvider;
       private OrderValidation validator= new OrderValidation();
@@ -90,6 +92,22 @@ public class Order {
 
 	public void setTransactionClient(Transaction transactionClient) {
 		this.transactionClient = transactionClient;
+	}
+
+	public User getClient() {
+		return client;
+	}
+
+	public void setClient(User client) {
+		this.client = client;
+	}
+
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
 	}
       
       

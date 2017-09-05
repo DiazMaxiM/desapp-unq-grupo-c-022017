@@ -12,7 +12,7 @@ public class ScoringManager {
 		scoresList.add(score);
 	}
 
-	public Boolean hasPendingScoreForClient(Client client) {
+	public Boolean hasPendingScoreForClient(User client){
 
 		Long countPending = scoresList.stream().filter(score -> score.isClient(client) && score.isPending()).count();
 

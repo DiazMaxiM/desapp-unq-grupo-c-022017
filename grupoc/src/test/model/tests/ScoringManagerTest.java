@@ -27,10 +27,10 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
-import model.Client;
 import model.Provider;
 import model.Score;
 import model.ScoringManager;
+import model.User;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -53,7 +53,7 @@ public class ScoringManagerTest {
 			InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
-		Client client = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
 		Score score = new ScoreBuilder().setClient(client).build();
 
 		scoringManager.addScore(score);
@@ -76,7 +76,7 @@ public class ScoringManagerTest {
 			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
-		Client client = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
 		Score score = new ScoreBuilder().setClient(client).build();
 		score.setScore(3);
 		scoringManager.addScore(score);
@@ -100,8 +100,8 @@ public class ScoringManagerTest {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Provider provider = Mockito.mock(Provider.class);
-		Client client = Mockito.mock(Client.class);
-		Client client2 = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
+		User client2 = Mockito.mock(User.class);
 
 		Score score = new ScoreBuilder().setClient(client).setProvider(provider).build();
 		Score score2 = new ScoreBuilder().setClient(client2).setProvider(provider).build();
@@ -129,7 +129,7 @@ public class ScoringManagerTest {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Provider provider = Mockito.mock(Provider.class);
-		Client client = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
 		Score score;
 		for (int i = 0; i < 20; i++) {
 			score = new ScoreBuilder().setClient(client).setProvider(provider).build();
@@ -156,7 +156,7 @@ public class ScoringManagerTest {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Provider provider = Mockito.mock(Provider.class);
-		Client client = Mockito.mock(Client.class);
+		User client = Mockito.mock(User.class);
 		Score score;
 		for (int i = 0; i < 20; i++) {
 			score = new ScoreBuilder().setClient(client).setProvider(provider).build();

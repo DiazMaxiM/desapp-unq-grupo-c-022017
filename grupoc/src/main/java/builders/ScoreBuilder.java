@@ -21,10 +21,10 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
-import model.Client;
 import model.Menu;
 import model.Provider;
 import model.Score;
+import model.User;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -32,7 +32,7 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 
 public class ScoreBuilder {
-	protected Client client;
+	protected User client;
 	protected Provider provider;
 	protected Menu menu;
 
@@ -54,7 +54,7 @@ public class ScoreBuilder {
 
 	}
 
-	public ScoreBuilder setClient(Client client) {
+	public ScoreBuilder setClient(User client) {
 		this.client = client;
 		return this;
 	}
