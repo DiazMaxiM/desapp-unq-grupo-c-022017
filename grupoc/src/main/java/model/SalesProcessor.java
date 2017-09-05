@@ -8,9 +8,11 @@ import org.joda.time.DateTime;
 
 public class SalesProcessor extends Thread {
 	private SalesAdministration salesAdministration;
+	private Mail mail;
 
-	public SalesProcessor(SalesAdministration salesAdministration) {
+	public SalesProcessor(SalesAdministration salesAdministration, Mail mail) {
 		this.salesAdministration = salesAdministration;
+		this.mail = mail;
 	}
 
 	public void run() {
@@ -23,14 +25,49 @@ public class SalesProcessor extends Thread {
 		for (Order order : ordersForTomorrow) {
 			if (notHasMinimumCountOrders(menusCount, order)) {
 				cancelTransactionClientProvider(order);
+				sendMailsCancelTransaction(order);
 			} else {
 				if (applySecondPriceForMenus(menusCount, order)) {
-					order.getTransactionClient()
-							.setValue(order.getMenuToOrder().getSecondMinimumPriceOfMenusToBuy().getValue());
+					refreshPriceForSaleSecond(order);
+				} else {
+					refreshPriceForSaleFirts(order);
 				}
+				sendMailsToConfirm(order);
 			}
 
 		}
+	}
+
+	private void refreshPriceForSaleFirts(Order order) {
+		order.getTransactionClient().setValue(order.getMenuToOrder().getFirstminimumPriceOfMenusToBuy().getValue());
+		order.getTransactionProvider().setValue(order.getMenuToOrder().getFirstminimumPriceOfMenusToBuy().getValue());
+
+	}
+
+	private void sendMailsCancelTransaction(Order order) {
+		try {
+			mail.sendMailCancelSaleProvider(order.getProvider().getEmail());
+			mail.sendMailCancelSaleClient(order.getClient().getEmail());
+		} catch (Exception e) {
+			// TODO Revisar
+
+		}
+	}
+
+	private void sendMailsToConfirm(Order order) {
+		try {
+			mail.sendMailConfirmSaleProvider(order.getProvider().getEmail());
+			mail.sendMailConfirmSaleClient(order.getClient().getEmail());
+		} catch (Exception e) {
+			// TODO Revisar
+
+		}
+
+	}
+
+	private void refreshPriceForSaleSecond(Order order) {
+		order.getTransactionClient().setValue(order.getMenuToOrder().getSecondMinimumPriceOfMenusToBuy().getValue());
+		order.getTransactionProvider().setValue(order.getMenuToOrder().getSecondMinimumPriceOfMenusToBuy().getValue());
 	}
 
 	private boolean applySecondPriceForMenus(Map<Menu, Long> menusCount, Order order) {
