@@ -31,6 +31,7 @@ public class User {
 		setName(userfirstName);
 		setSurname(userLastName);
 		setMail(userEmailAddress);
+		setTelephone(userTelephone);
 		setAddress(userAddress);
 	}
 	

@@ -24,12 +24,15 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
+import model.Menu;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.MenuValidation;
 
+import static org.junit.Assert.*;
 public class MenuTest {
 
 	@Test()
@@ -43,7 +46,14 @@ public class MenuTest {
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
 			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
-		new MenuBuilder().build();
+		Menu menu = new MenuBuilder().build();
+		MenuValidation validator = new MenuValidation();
+		assertTrue(validator.isAValidMenu(menu.getMenuName(),menu.getMenuDescription(),menu.getMenuCategory(), 
+				                          menu.getMenuDeliveryPrice(),menu.getStartDateOfferMenu(),menu.getEndDateOfferMenu(), 
+				                          menu.getAverageDeliveryTimeOfMenu(), menu.getFirstMinimumNumberOfMenusToBuy(), 
+				                          menu.getFirstminimumPriceOfMenusToBuy(), menu.getSecondMinimumNumberOfMenusToBuy(), 
+				                          menu.getSecondMinimumPriceOfMenusToBuy(), menu.getMaximumNumberOfMenusSalesPerDay(), 
+				                          menu.getService()));
 	}
 
 	@Test(expected = InvalidMenuNameException.class)

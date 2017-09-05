@@ -42,7 +42,7 @@ public class OrderValidation extends Validation{
 	}
 
 	private boolean isValidNumberOfMenusToOrder(Integer numberOfMenusToOrder) throws InvalidNumberOfMenusToOrderException {
-		if(!isValidIntegerNumber(numberOfMenusToOrder)){
+		if(!isValidIntegerNumber(numberOfMenusToOrder)|| numberOfMenusToOrder==0){
 			throw new InvalidNumberOfMenusToOrderException("Ingrese la cantidad de menus a comprar");
 		}
 		return true;

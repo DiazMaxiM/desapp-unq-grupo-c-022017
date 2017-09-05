@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -26,12 +26,18 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import validation.UserValidation;
 
 public class ProviderTest {
     
 	@Test
 	public void testShouldPassWhenICreatAValidProvider() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException{
-		new ProviderBuilder().build();
+		Provider provider= new ProviderBuilder().build();
+		UserValidation validator= new UserValidation();
+		assertTrue(validator.isValidUser(provider.getCuit(),provider.getName(), 
+				                       provider.getSurname(),provider.getEmail(),
+				                       provider.getTelephone(), provider.getAddress()));
+		
 	}
 	
 	@Test

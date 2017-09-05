@@ -71,5 +71,24 @@ public class OrderBuilder {
 		this.menuToOrder.setMaximumNumberOfMenusSalesPerDay(maximumNumberOfMunusSalesPerDay);
 		return this;
 	}
-     
+
+	public OrderBuilder withMenuToOrder(Menu menu) {
+		this.menuToOrder= menu;
+		return this;
+		
+	}
+	
+	public OrderBuilder withTypeOfDelivery(TypeOfDelivery typeOfDelivery) {
+		this.typeOfDelivery= typeOfDelivery;
+		return this;
+		
+	}
+	
+	public OrderBuilder withDeliveryTime(String deliveryTime) {
+		this.deliveryTime= deliveryTime;
+		return this;
+		
+	}
+	
+	
 }
