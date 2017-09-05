@@ -2,8 +2,6 @@ package model;
 
 import java.util.List;
 
-import org.apache.commons.mail.EmailException;
-
 public class ProviderProcessor extends Thread {
 
 	private ScoringManager scoringManager;
@@ -24,7 +22,7 @@ public class ProviderProcessor extends Thread {
 		providers.stream().forEach(provider -> {
 			try {
 				mail.sendMailDisabledProvider(provider.getEmail());
-			} catch (EmailException e) {
+			} catch (Exception e) {
 				// TODO: preguntar al profe que pasa si sale un error al enviar
 				// un mail;
 			}

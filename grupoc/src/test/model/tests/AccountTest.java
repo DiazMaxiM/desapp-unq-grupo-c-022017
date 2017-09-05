@@ -28,6 +28,8 @@ public class AccountTest {
 		Transaction transaction = Mockito.mock(Transaction.class);
 		Mockito.when(transaction.getValueForSum()).thenReturn(new Double(5.0));
 		Mockito.when(transaction.getTypeTransaction()).thenReturn(TypeTransaction.CREDIT);
+		Mockito.when(transaction.isNotRejected()).thenReturn(true);
+
 		account.addTransaction(transaction);
 		Assert.assertEquals(account.balance(), new Double(5.0));
 
@@ -59,12 +61,15 @@ public class AccountTest {
 		Transaction transactionCredit5 = Mockito.mock(Transaction.class);
 		Mockito.when(transactionCredit5.getValue()).thenReturn(new Double(5.0));
 		Mockito.when(transactionCredit5.getValueForSum()).thenReturn(new Double(5.0));
+		Mockito.when(transactionCredit5.isNotRejected()).thenReturn(true);
+
 		Mockito.when(transactionCredit5.getTypeTransaction()).thenReturn(TypeTransaction.CREDIT);
 
 		Transaction transactionDebit2 = Mockito.mock(Transaction.class);
 		Mockito.when(transactionDebit2.getValue()).thenReturn(new Double(2.0));
 		Mockito.when(transactionDebit2.getValueForSum()).thenReturn(new Double(-2.0));
 		Mockito.when(transactionDebit2.getTypeTransaction()).thenReturn(TypeTransaction.DEBIT);
+		Mockito.when(transactionDebit2.isNotRejected()).thenReturn(true);
 
 		account.addTransaction(transactionCredit5);
 		account.addTransaction(transactionDebit2);

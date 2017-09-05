@@ -11,6 +11,10 @@ public class Transaction {
 		this.value = value;
 	}
 
+	public void setValue(Double value) {
+		this.value = value;
+	}
+
 	public Double getValueForSum() {
 		if (this.getTypeTransaction().equals(TypeTransaction.CREDIT)) {
 			return getValue();

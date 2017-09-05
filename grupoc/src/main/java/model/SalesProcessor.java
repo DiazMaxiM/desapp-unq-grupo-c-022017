@@ -21,11 +21,20 @@ public class SalesProcessor extends Thread {
 		Map<Menu, Long> menusCount = countMenusForType(ordersForTomorrow);
 
 		for (Order order : ordersForTomorrow) {
-			if (hasMinimumCountOrders(menusCount, order)) {
+			if (notHasMinimumCountOrders(menusCount, order)) {
 				cancelTransactionClientProvider(order);
+			} else {
+				if (applySecondPriceForMenus(menusCount, order)) {
+					order.getTransactionClient()
+							.setValue(order.getMenuToOrder().getSecondMinimumPriceOfMenusToBuy().getValue());
+				}
 			}
 
 		}
+	}
+
+	private boolean applySecondPriceForMenus(Map<Menu, Long> menusCount, Order order) {
+		return menusCount.get(order.getMenuToOrder()) >= order.getMenuToOrder().getSecondMinimumNumberOfMenusToBuy();
 	}
 
 	private void cancelTransactionClientProvider(Order order) {
@@ -33,7 +42,7 @@ public class SalesProcessor extends Thread {
 		order.getTransactionClient().setRejected();
 	}
 
-	private boolean hasMinimumCountOrders(Map<Menu, Long> menusCount, Order order) {
+	private boolean notHasMinimumCountOrders(Map<Menu, Long> menusCount, Order order) {
 		return menusCount.get(order.getMenuToOrder()) < order.getMenuToOrder().getFirstMinimumNumberOfMenusToBuy();
 	}
 
