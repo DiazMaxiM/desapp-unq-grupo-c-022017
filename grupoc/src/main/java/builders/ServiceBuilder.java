@@ -92,115 +92,43 @@ public class ServiceBuilder {
 	}
 
 	public ServiceBuilder withServiceName(final String aServiceName) {
-		this.setServiceName(aServiceName);
+		this.serviceName = aServiceName;
 		return this;
 	}
 
 	public ServiceBuilder withServiceLogo(final String aServiceLogo) {
-		this.setServiceLogo(aServiceLogo);
+		this.serviceLogo = aServiceLogo;
 		return this;
 	}
 
 	public ServiceBuilder withServiceAddress(final Address aServiceAddress) {
-		this.setServiceAddress(aServiceAddress);
+		this.serviceAddress = aServiceAddress;
 		return this;
 	}
 
 	public ServiceBuilder withServiceDescription(final String aServiceDescription) {
-		this.setServiceDescription(aServiceDescription);
+		this.serviceDescription = aServiceDescription;
 		return this;
 	}
 
 	public ServiceBuilder withServiceEmail(final String aServiceEmail) {
-		this.setServiceEmail(aServiceEmail);
+		this.serviceEmail = aServiceEmail;
 		return this;
 	}
 
 	public ServiceBuilder withServiceTelephone(final Telephone aServiceTelephone) {
-		this.setServiceTelephone(aServiceTelephone);
+		this.serviceTelephone = aServiceTelephone;
 		return this;
 	}
 
 	public ServiceBuilder withServiceWorkingHours(final HashMap<Days, List<String>> aServiceWorkingHours) {
-		this.setServiceWorkingHours(aServiceWorkingHours);
+		this.serviceWorkingHours = aServiceWorkingHours;
 		return this;
 	}
 
 	public ServiceBuilder withServiceDeliveryLocations(final List<Locality> aServiceDeliveryLocations) {
-		this.setServiceDeliveryLocations(aServiceDeliveryLocations);
+		this.serviceDeliveryLocations = aServiceDeliveryLocations;
 		return this;
-	}
-
-	public String getServiceName() {
-		return serviceName;
-	}
-
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
-	}
-
-	public String getServiceLogo() {
-		return serviceLogo;
-	}
-
-	public void setServiceLogo(String serviceLogo) {
-		this.serviceLogo = serviceLogo;
-	}
-
-	public Address getServiceAddress() {
-		return serviceAddress;
-	}
-
-	public void setServiceAddress(Address serviceAddress) {
-		this.serviceAddress = serviceAddress;
-	}
-
-	public String getServiceDescription() {
-		return serviceDescription;
-	}
-
-	public void setServiceDescription(String serviceDescription) {
-		this.serviceDescription = serviceDescription;
-	}
-
-	public String getServiceWebDirection() {
-		return serviceWebDirection;
-	}
-
-	public void setServiceWebDirection(String serviceWebDirection) {
-		this.serviceWebDirection = serviceWebDirection;
-	}
-
-	public String getServiceEmail() {
-		return serviceEmail;
-	}
-
-	public void setServiceEmail(String serviceEmail) {
-		this.serviceEmail = serviceEmail;
-	}
-
-	public Telephone getServiceTelephone() {
-		return serviceTelephone;
-	}
-
-	public void setServiceTelephone(Telephone serviceTelephone) {
-		this.serviceTelephone = serviceTelephone;
-	}
-
-	public HashMap<Days, List<String>> getServiceWorkingHours() {
-		return serviceWorkingHours;
-	}
-
-	public void setServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) {
-		this.serviceWorkingHours = serviceWorkingHours;
-	}
-
-	public List<Locality> getServiceDeliveryLocations() {
-		return serviceDeliveryLocations;
-	}
-
-	public void setServiceDeliveryLocations(List<Locality> serviceDeliveryLocations) {
-		this.serviceDeliveryLocations = serviceDeliveryLocations;
 	}
 
 }
