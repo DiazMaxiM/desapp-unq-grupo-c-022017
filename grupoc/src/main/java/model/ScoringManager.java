@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,7 +13,7 @@ public class ScoringManager {
 		scoresList.add(score);
 	}
 
-	public Boolean hasPendingScoreForClient(User client){
+	public Boolean hasPendingScoreForClient(User client) {
 
 		Long countPending = scoresList.stream().filter(score -> score.isClient(client) && score.isPending()).count();
 
@@ -20,19 +21,27 @@ public class ScoringManager {
 
 	}
 
-	public Double averageScoresForProvider(Provider provider) {
-		return scoresList.stream().filter(score -> score.isProvider(provider) && score.isFinish())
+	public Double averageScoresForMenu(Menu menu) {
+		return scoresList.stream().filter(score -> score.isMenu(menu) && score.isFinish())
 				.mapToDouble(score -> score.getValue()).average().getAsDouble();
 	}
 
-	public List<Provider> providerWith20ScoresAndAverageLess2() {
-		Map<Provider, Long> map = scoresList.stream()
-				.collect(Collectors.groupingBy(s -> s.getProvider(), Collectors.counting()));
+	public List<Menu> menuWith20ScoresAndAverageLess2() {
+		Map<Menu, Long> map = scoresList.stream()
+				.collect(Collectors.groupingBy(s -> s.getMenu(), Collectors.counting()));
 
-		List<Provider> list = map.entrySet().stream().filter(m -> m.getValue() >= 20).map(Map.Entry::getKey)
+		List<Menu> list = map.entrySet().stream().filter(m -> m.getValue() >= 20).map(Map.Entry::getKey)
 				.collect(Collectors.toList());
 
-		return list.stream().filter(provider -> averageScoresForProvider(provider) <= 2).collect(Collectors.toList());
+		return list.stream().filter(menu -> averageScoresForMenu(menu) <= 2).collect(Collectors.toList());
+	}
+
+	public Map<Menu, Double> getMenusWithAverage() {
+		Map<Menu, DoubleSummaryStatistics> data = scoresList.stream()
+				.collect(Collectors.groupingBy(Score::getMenu, Collectors.summarizingDouble(Score::getValue)));
+
+		return data.entrySet().stream().collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().getAverage()));
+
 	}
 
 }

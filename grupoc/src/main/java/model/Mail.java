@@ -9,6 +9,11 @@ public class Mail {
 	private SimpleEmail mail = new SimpleEmail();
 
 	public Mail() throws EmailException {
+		mailConfiguration();
+
+	}
+
+	private void mailConfiguration() throws EmailException {
 		mail.setHostName("smtp.gmail.com");
 		// mail.setTLS(true);
 		mail.setStartTLSEnabled(true);
@@ -17,6 +22,11 @@ public class Mail {
 		mail.setSSLOnConnect(true);
 		mail.setAuthentication("MorfiYa2017@gmail.com", "2017Morf");
 		mail.setFrom("MorfiYa2017@gmail.com");
+	}
+
+	public Mail(SimpleEmail email) throws EmailException {
+		this.mail = email;
+		mailConfiguration();
 
 	}
 

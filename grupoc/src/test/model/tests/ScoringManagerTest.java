@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.Map;
+
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -27,7 +29,7 @@ import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidStartDateOfferMenuException;
-import model.Provider;
+import model.Menu;
 import model.Score;
 import model.ScoringManager;
 import model.User;
@@ -99,18 +101,18 @@ public class ScoringManagerTest {
 			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
-		Provider provider = Mockito.mock(Provider.class);
+		Menu menu = Mockito.mock(Menu.class);
 		User client = Mockito.mock(User.class);
 		User client2 = Mockito.mock(User.class);
 
-		Score score = new ScoreBuilder().setClient(client).setProvider(provider).build();
-		Score score2 = new ScoreBuilder().setClient(client2).setProvider(provider).build();
+		Score score = new ScoreBuilder().setClient(client).setMenu(menu).build();
+		Score score2 = new ScoreBuilder().setClient(client2).setMenu(menu).build();
 		score.setScore(4);
 		score2.setScore(3);
 		scoringManager.addScore(score);
 		scoringManager.addScore(score2);
 
-		Assert.assertEquals(scoringManager.averageScoresForProvider(provider), new Double(3.5));
+		Assert.assertEquals(scoringManager.averageScoresForMenu(menu), new Double(3.5));
 
 	}
 
@@ -128,16 +130,16 @@ public class ScoringManagerTest {
 			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
-		Provider provider = Mockito.mock(Provider.class);
+		Menu menu = Mockito.mock(Menu.class);
 		User client = Mockito.mock(User.class);
 		Score score;
 		for (int i = 0; i < 20; i++) {
-			score = new ScoreBuilder().setClient(client).setProvider(provider).build();
+			score = new ScoreBuilder().setClient(client).setMenu(menu).build();
 			score.setScore(1);
 			scoringManager.addScore(score);
 		}
-		Assert.assertTrue(scoringManager.providerWith20ScoresAndAverageLess2().contains(provider));
-		Assert.assertEquals(scoringManager.providerWith20ScoresAndAverageLess2().size(), 1);
+		Assert.assertTrue(scoringManager.menuWith20ScoresAndAverageLess2().contains(menu));
+		Assert.assertEquals(scoringManager.menuWith20ScoresAndAverageLess2().size(), 1);
 
 	}
 
@@ -155,16 +157,58 @@ public class ScoringManagerTest {
 			InvalidAreaCodeException, InvalidCountryCodeException {
 
 		ScoringManager scoringManager = new ScoringManager();
-		Provider provider = Mockito.mock(Provider.class);
+		Menu menu = Mockito.mock(Menu.class);
 		User client = Mockito.mock(User.class);
 		Score score;
 		for (int i = 0; i < 20; i++) {
-			score = new ScoreBuilder().setClient(client).setProvider(provider).build();
+			score = new ScoreBuilder().setClient(client).setMenu(menu).build();
 			score.setScore(3);
 			scoringManager.addScore(score);
 		}
-		Assert.assertFalse(scoringManager.providerWith20ScoresAndAverageLess2().contains(provider));
-		Assert.assertEquals(scoringManager.providerWith20ScoresAndAverageLess2().size(), 0);
+		Assert.assertFalse(scoringManager.menuWith20ScoresAndAverageLess2().contains(menu));
+		Assert.assertEquals(scoringManager.menuWith20ScoresAndAverageLess2().size(), 0);
+
+	}
+
+	@Test
+	public void testIfGetListOrderForScoreThenGetFirtsMenuWithBestAverageScore()
+			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
+			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
+			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
+			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
+			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException {
+
+		ScoringManager scoringManager = new ScoringManager();
+		Menu menu = Mockito.mock(Menu.class);
+		Menu menu2 = Mockito.mock(Menu.class);
+		Menu menu3 = Mockito.mock(Menu.class);
+		User client = Mockito.mock(User.class);
+		Score score;
+
+		for (int i = 0; i < 20; i++) {
+			score = new ScoreBuilder().setClient(client).setMenu(menu).build();
+			score.setScore(3);
+			scoringManager.addScore(score);
+		}
+		for (int i = 0; i < 20; i++) {
+			score = new ScoreBuilder().setClient(client).setMenu(menu2).build();
+			score.setScore(4);
+			scoringManager.addScore(score);
+		}
+		for (int i = 0; i < 20; i++) {
+			score = new ScoreBuilder().setClient(client).setMenu(menu3).build();
+			score.setScore(1);
+			scoringManager.addScore(score);
+		}
+		Map<Menu, Double> mapMenuScoringAverage = scoringManager.getMenusWithAverage();
+		Assert.assertTrue(mapMenuScoringAverage.get(menu).equals(new Double(3.0)));
+		Assert.assertTrue(mapMenuScoringAverage.get(menu2).equals(new Double(4.0)));
+		Assert.assertTrue(mapMenuScoringAverage.get(menu3).equals(new Double(1.0)));
 
 	}
 

@@ -13,25 +13,25 @@ public class ProviderProcessor extends Thread {
 	}
 
 	public void run() {
-		List<Provider> providerForDelete = this.scoringManager.providerWith20ScoresAndAverageLess2();
-		disabledProviders(providerForDelete);
-		sendMailsForDisabled(providerForDelete);
+		List<Menu> menuForDelete = this.scoringManager.menuWith20ScoresAndAverageLess2();
+		disabledMenu(menuForDelete);
+		// sendMailsForDisabled(menuForDelete);
 	}
 
-	private void sendMailsForDisabled(List<Provider> providers) {
-		providers.stream().forEach(provider -> {
-			try {
-				mail.sendMailDisabledProvider(provider.getEmail());
-			} catch (Exception e) {
-				// TODO: preguntar al profe que pasa si sale un error al enviar
-				// un mail;
-			}
-		});
+	// private void sendMailsForDisabled(List<Menu> menu) {
+	// menu.stream().forEach(menu -> {
+	// try {
+	// mail.sendMailDisabledProvider(menu.getEmail());
+	// } catch (Exception e) {
+	// // TODO: preguntar al profe que pasa si sale un error al enviar
+	// // un mail;
+	// }
+	// });
+	//
+	// }
 
-	}
-
-	private void disabledProviders(List<Provider> providers) {
-		providers.stream().forEach(provider -> provider.disabled());
+	private void disabledMenu(List<Menu> menu) {
+		menu.stream().forEach(m -> m.disabled());
 	}
 
 }

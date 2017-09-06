@@ -7,16 +7,16 @@ public class Score {
 	private User client;
 	private Integer valueScore = 0;
 	private Menu menu;
-	private TypeStatusTransaction status = TypeStatusTransaction.PENDING;
+	private TypeStatusScore status = TypeStatusScore.PENDING;
 
 	public Score(Provider provider, User client, Menu menu) {
 		this.provider = provider;
 		this.client = client;
-		this.menu = menu;
+		this.setMenu(menu);
 	}
 
 	public Boolean isPending() {
-		return this.status.equals(TypeStatusTransaction.PENDING);
+		return this.status.equals(TypeStatusScore.PENDING);
 	}
 
 	public Boolean isClient(User client) {
@@ -28,7 +28,7 @@ public class Score {
 	}
 
 	public Boolean isFinish() {
-		return this.status.equals(TypeStatusTransaction.FINISH);
+		return this.status.equals(TypeStatusScore.FINISH);
 	}
 
 	public Integer getValue() {
@@ -42,11 +42,24 @@ public class Score {
 	public void setScore(Integer valueScore) throws InvalidValueScoreException {
 		if (valueScore >= 1 && valueScore <= 5) {
 			this.valueScore = valueScore;
-			this.status = TypeStatusTransaction.FINISH;
+			this.status = TypeStatusScore.FINISH;
 		} else {
 			throw new InvalidValueScoreException("puntuacion incorrecta");
 		}
 
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
+	public Boolean isMenu(Menu otherMenu) {
+
+		return this.menu.equals(otherMenu);
 	}
 
 }

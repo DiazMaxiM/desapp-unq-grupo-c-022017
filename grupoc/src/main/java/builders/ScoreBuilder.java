@@ -63,4 +63,9 @@ public class ScoreBuilder {
 		this.provider = provider;
 		return this;
 	}
+
+	public ScoreBuilder setMenu(Menu menu) {
+		this.menu = menu;
+		return this;
+	}
 }
