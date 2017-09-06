@@ -1,11 +1,13 @@
 package sortingMenus;
 
+import java.util.ArrayList;
+
 import model.Menu;
 import model.MenuManager;
 
 public abstract class SortingMenuCriteria {
+
 	private MenuManager menuManager;
-	private Object searchCriteria;
 
 	public MenuManager getMenuManager() {
 		return menuManager;
@@ -15,13 +17,7 @@ public abstract class SortingMenuCriteria {
 		this.menuManager = menuManager;
 	}
 
-	public Object getSearchCriteria() {
-		return searchCriteria;
-	}
+	public abstract ArrayList<Menu> orderMenu();
 
-	public void setSearchCriteria(Object searchCriteria) {
-		this.searchCriteria = searchCriteria;
-	}
-
-	public abstract Object getPropertyToOrder(Menu menu);
+	public abstract ArrayList<Menu> menusToOrder();
 }

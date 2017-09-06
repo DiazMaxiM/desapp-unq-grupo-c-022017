@@ -23,35 +23,27 @@ public class SalesProcessor extends Thread {
 		Map<Menu, Long> menusCount = countMenusForType(ordersForTomorrow);
 
 		for (Order order : ordersForTomorrow) {
-			if (notHasMinimumCountOrders(menusCount, order)) {
-				cancelTransactionClientProvider(order);
-				sendMailsCancelTransaction(order);
+			if (applySecondPriceForMenus(menusCount, order)) {
+				refreshPriceForSaleSecond(order);
 			} else {
-				if (applySecondPriceForMenus(menusCount, order)) {
-					refreshPriceForSaleSecond(order);
-				} else {
-					refreshPriceForSaleFirts(order);
+				if (applyFirstPriceForMenus(menusCount, order)) {
+					refreshPriceForSaleFirst(order);
 				}
-				sendMailsToConfirm(order);
 			}
-
+			sendMailsToConfirm(order);
 		}
 	}
 
-	private void refreshPriceForSaleFirts(Order order) {
+	private boolean applyFirstPriceForMenus(Map<Menu, Long> menusCount, Order order) {
+		return menusCount.get(order.getMenuToOrder()) < order.getMenuToOrder().getSecondMinimumNumberOfMenusToBuy()
+				&& menusCount.get(order.getMenuToOrder()) >= order.getMenuToOrder().getFirstMinimumNumberOfMenusToBuy();
+
+	}
+
+	private void refreshPriceForSaleFirst(Order order) {
 		order.getTransactionClient().setValue(order.getMenuToOrder().getFirstminimumPriceOfMenusToBuy().getValue());
 		order.getTransactionProvider().setValue(order.getMenuToOrder().getFirstminimumPriceOfMenusToBuy().getValue());
 
-	}
-
-	private void sendMailsCancelTransaction(Order order) {
-		try {
-			mail.sendMailCancelSaleProvider(order.getProvider().getEmail());
-			mail.sendMailCancelSaleClient(order.getClient().getEmail());
-		} catch (Exception e) {
-			// TODO Revisar
-
-		}
 	}
 
 	private void sendMailsToConfirm(Order order) {
@@ -72,15 +64,6 @@ public class SalesProcessor extends Thread {
 
 	private boolean applySecondPriceForMenus(Map<Menu, Long> menusCount, Order order) {
 		return menusCount.get(order.getMenuToOrder()) >= order.getMenuToOrder().getSecondMinimumNumberOfMenusToBuy();
-	}
-
-	private void cancelTransactionClientProvider(Order order) {
-		order.getTransactionClient().setRejected();
-		order.getTransactionClient().setRejected();
-	}
-
-	private boolean notHasMinimumCountOrders(Map<Menu, Long> menusCount, Order order) {
-		return menusCount.get(order.getMenuToOrder()) < order.getMenuToOrder().getFirstMinimumNumberOfMenusToBuy();
 	}
 
 	private Map<Menu, Long> countMenusForType(List<Order> ordersForTomorrow) {

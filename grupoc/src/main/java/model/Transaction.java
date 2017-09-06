@@ -3,12 +3,12 @@ package model;
 public class Transaction {
 	private TypeTransaction typeTransaction;
 	private Double value;
-	private StatusTransaction statusTransaction = StatusTransaction.PENDING;
+	private TypeStatusTransaction statusTransaction = TypeStatusTransaction.PENDING;
 
 	public Transaction(TypeTransaction typeTransaction, Double value) {
 
 		this.typeTransaction = typeTransaction;
-		this.value = value;
+		this.setValue(value);
 	}
 
 	public void setValue(Double value) {
@@ -26,21 +26,25 @@ public class Transaction {
 		return typeTransaction;
 	}
 
+	public TypeTransaction getTypeStatusTransaction() {
+		return typeTransaction;
+	}
+
 	public Double getValue() {
 		return value;
 	}
 
 	public void setFinish() {
-		this.statusTransaction = StatusTransaction.FINISH;
+		this.statusTransaction = TypeStatusTransaction.FINISH;
 	}
 
 	public Boolean isNotRejected() {
 
-		return this.statusTransaction != StatusTransaction.REJECTED;
+		return this.statusTransaction != TypeStatusTransaction.REJECTED;
 	}
 
 	public void setRejected() {
-		this.statusTransaction = StatusTransaction.REJECTED;
+		this.statusTransaction = TypeStatusTransaction.REJECTED;
 
 	}
 

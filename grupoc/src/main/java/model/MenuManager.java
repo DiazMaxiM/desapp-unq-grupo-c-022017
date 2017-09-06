@@ -2,8 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+import sortingMenus.SortingMenuCriteria;
+
 public class MenuManager {
 	private ArrayList<Menu> menusOffered;
+	private ScoringManager scoringManager;
 
 	public MenuManager() {
 		this.menusOffered = new ArrayList<>();
@@ -24,6 +27,18 @@ public class MenuManager {
 
 	public void addMenuToMenusOffered(Menu menuToAdd) {
 		this.menusOffered.add(menuToAdd);
+	}
+
+	public ArrayList<Menu> orderMenus(SortingMenuCriteria sortingCriteria) {
+		return sortingCriteria.orderMenu();
+	}
+
+	public ScoringManager getScoringManager() {
+		return scoringManager;
+	}
+
+	public void setScoringManager(ScoringManager scoringManager) {
+		this.scoringManager = scoringManager;
 	}
 
 }
