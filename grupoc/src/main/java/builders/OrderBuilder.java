@@ -51,7 +51,7 @@ public class OrderBuilder {
 	 private Menu menuToOrder;
      private Integer numberOfMenusToOrder=1;
      private TypeOfDelivery typeOfDelivery= TypeOfDelivery.HOMEDELIVERY;
-     private DateTime dateOfDelivery = new DateTime("2017-09-07T07:22:05Z");
+     private DateTime dateOfDelivery = new DateTime().plusDays(2);
      private String deliveryTime= "13:30";
      private User client;
      private Provider provider;
