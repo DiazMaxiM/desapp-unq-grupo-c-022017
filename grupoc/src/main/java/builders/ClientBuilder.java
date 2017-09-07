@@ -52,7 +52,7 @@ public class ClientBuilder {
 	}
 	
 	public User getClient() throws InvalidAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
-			return new User("30-457346876","any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
+			return new User("30-457346876-8","any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
 					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)));
 	}
 	

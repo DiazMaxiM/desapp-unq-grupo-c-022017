@@ -28,16 +28,6 @@ public class Provider extends User {
 		this.servicesOffered.add(newService);
 	}
 
-	@Override
-	public boolean equals(Object provider) {
-		return super.getCuit().equals(((Provider) provider).getCuit());
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
 	public List<Service> getServicesOffered() {
 		return this.servicesOffered;
 	}

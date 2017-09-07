@@ -1,9 +1,14 @@
 package validation;
 
+import java.util.List;
+import java.util.Optional;
+
 import exception.InvalidAddressException;
+import exception.InvalidRegisterException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Telephone;
+import model.User;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
@@ -47,6 +52,15 @@ public class UserValidation extends Validation{
 	    	throw new InvalidCuitException("Ingrese un cuit valido");
 	    }	    	
 	    return true;
+	}
+
+	public boolean isNewUser(User newUser, List<User> users) throws InvalidRegisterException {
+		Long  usersWithSameEmail = users.stream().filter(user -> user.getEmail().equals(newUser.getEmail())).count();
+		Long  usersWithSameCuit = users.stream().filter(user -> user.equals(newUser)).count();
+		if(usersWithSameEmail>0||usersWithSameCuit>0){
+			throw new InvalidRegisterException("Ya existe un usuario");
+		}
+		return true;
 	}
 	
 
