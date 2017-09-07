@@ -48,19 +48,6 @@ import validation.UserValidation;
 public class ProviderTest {
 
 	@Test
-	public void testShouldPassWhenICreatAValidProvider()
-			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
-			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
-		Provider provider = new ProviderBuilder().build();
-		UserValidation validator = new UserValidation();
-		assertTrue(validator.isValidUser(provider.getCuit(), provider.getName(), provider.getSurname(),
-				provider.getEmail(), provider.getTelephone(), provider.getAddress()));
-
-	}
-
-	@Test
 	public void testTheAmountOfServicesOfferedByTheProviderShouldBe1WhenAddingAValidService()
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
