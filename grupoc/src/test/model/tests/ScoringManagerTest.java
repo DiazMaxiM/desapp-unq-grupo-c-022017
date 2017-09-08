@@ -16,6 +16,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import exception.InvalidValueScoreException;
 import junit.framework.Assert;
 import menuExceptions.InvalidDeliveryPriceException;
@@ -52,7 +53,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException {
+			InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		User client = Mockito.mock(User.class);
@@ -75,7 +76,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		User client = Mockito.mock(User.class);
@@ -98,7 +99,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Menu menu = Mockito.mock(Menu.class);
@@ -127,7 +128,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Menu menu = Mockito.mock(Menu.class);
@@ -154,7 +155,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Menu menu = Mockito.mock(Menu.class);
@@ -181,7 +182,7 @@ public class ScoringManagerTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		ScoringManager scoringManager = new ScoringManager();
 		Menu menu = Mockito.mock(Menu.class);

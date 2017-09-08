@@ -31,7 +31,7 @@ public class Validation {
 	}
  
 	public boolean isValidIntegerNumber(Integer integerNumber){
-		return integerNumber!= null;
+		return integerNumber!= null || integerNumber instanceof Integer;
 	}
 	
 	public boolean isValidDoubleNumber(Double doubleNumber){

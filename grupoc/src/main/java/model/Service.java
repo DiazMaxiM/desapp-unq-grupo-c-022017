@@ -20,18 +20,18 @@ public class Service {
 	private String serviceLogo; // Required
 	private Address serviceAddress; // Required
 	private String serviceDescription;// Required
-	private List<Menu> serviceMenusOffered; // Tiene que tener al menos 30 elementos y menos que 200
+	private List<Menu> serviceMenusOffered;
 	private String serviceWebDirection;
 	private String serviceEmail;// Required
 	private Telephone serviceTelephone;// Required
-	private HashMap<Days, List<String>> serviceWorkingHours;// Required
+	private HashMap<Days, List<TimeZone>> serviceWorkingHours;// Required
 	private List<Locality> serviceDeliveryLocations;
 	private int maximumNumberOfMenus = 20;
 	private ServiceValidation validator = new ServiceValidation();
 
 	public Service(String serviceName, String serviceLogo, Address serviceAddress, String serviceDescription,
 			String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Days, List<String>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
+			HashMap<Days, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
@@ -46,7 +46,7 @@ public class Service {
 
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,
 			String serviceDescription, String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Days, List<String>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {
+			HashMap<Days, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {
 
 		this.setServiceName(serviceName);
 		this.setServiceLogo(serviceLogo);
@@ -132,11 +132,11 @@ public class Service {
 		this.serviceTelephone = serviceTelephone;
 	}
 
-	public HashMap<Days, List<String>> getServiceWorkingHours() {
+	public HashMap<Days, List<TimeZone>> getServiceWorkingHours() {
 		return serviceWorkingHours;
 	}
 
-	public void setServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) {
+	public void setServiceWorkingHours(HashMap<Days, List<TimeZone>> serviceWorkingHours) {
 		this.serviceWorkingHours = serviceWorkingHours;
 	}
 

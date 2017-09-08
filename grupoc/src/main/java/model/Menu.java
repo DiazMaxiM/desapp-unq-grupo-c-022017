@@ -25,7 +25,7 @@ public class Menu {
 	private Price menuDeliveryPrice;
 	private DateTime startDateOfferMenu;
 	private DateTime endDateOfferMenu;
-	private List<String> deliveryTimesMenus;
+	private List<TimeZone> deliveryTimesMenus;
 	private Integer averageDeliveryTimeOfMenu;
 	private Price menuPrice;
 	private Integer firstMinimumNumberOfMenusToBuy;
@@ -39,7 +39,7 @@ public class Menu {
 	private MenuValidation validator = new MenuValidation();
 
 	public Menu(String menuName, String menuDescription, Category menuCategory, Price menuDeliveryPrice,
-			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<String> deliveryTimesMenus,
+			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
 			Integer averageDeliveryTimeOfMenu, Price menuPrice, Integer firstMinimumNumberOfMenusToBuy,
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service)
@@ -62,7 +62,7 @@ public class Menu {
 	}
 
 	private void createMenu(String menuName, String menuDescription, Category menuCategory, Price menuDeliveryPrice,
-			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<String> deliveryTimesMenus,
+			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
 			Integer averageDeliveryTimeOfMenu, Price menuPrice, Integer firstMinimumNumberOfMenusToBuy,
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service) {
@@ -142,11 +142,11 @@ public class Menu {
 		this.endDateOfferMenu = endDateOfferMenu;
 	}
 
-	public List<String> getDeliveryTimesMenus() {
+	public List<TimeZone> getDeliveryTimesMenus() {
 		return deliveryTimesMenus;
 	}
 
-	public void setDeliveryTimesMenus(List<String> deliveryTimesMenus) {
+	public void setDeliveryTimesMenus(List<TimeZone> deliveryTimesMenus) {
 		this.deliveryTimesMenus = deliveryTimesMenus;
 	}
 

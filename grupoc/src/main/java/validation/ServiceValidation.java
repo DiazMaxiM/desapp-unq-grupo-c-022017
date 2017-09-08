@@ -8,6 +8,7 @@ import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Days;
 import model.Telephone;
+import model.TimeZone;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -19,7 +20,7 @@ public class ServiceValidation extends Validation{
 	public boolean isAValidService(String serviceName, String serviceLogo,
     		Address serviceAddress,String serviceDescription, 
     		String serviceWebDirection,String serviceEmail,
-    		Telephone serviceTelephone,HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+    		Telephone serviceTelephone,HashMap<Days, List<TimeZone>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
 		
 		return isValidServiceName(serviceName)
 			   && isValidServiceLogo(serviceLogo)
@@ -39,7 +40,7 @@ public class ServiceValidation extends Validation{
 		return true;
 	}
 	
-	private boolean isValidServiceWorkingHours(HashMap<Days, List<String>> serviceWorkingHours) throws InvalidServiceWorkingHoursException {
+	private boolean isValidServiceWorkingHours(HashMap<Days, List<TimeZone>> serviceWorkingHours) throws InvalidServiceWorkingHoursException {
         if(serviceWorkingHours==null || serviceWorkingHours.isEmpty()){
         	throw new InvalidServiceWorkingHoursException("Ingrese las horas y dias de atencion");
         }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
@@ -15,12 +17,14 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import model.Address;
 import model.Days;
 import model.Locality;
 import model.MapPosition;
 import model.Service;
 import model.Telephone;
+import model.TimeZone;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -30,10 +34,11 @@ import serviceException.InvalidServiceWorkingHoursException;
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException {
+			InvalidCountryCodeException, InvalidTimeZoneException {
 		this.serviceAddress = this.address();
+		this.serviceWorkingHours = this.serviceWorkingHours();
 	}
-
+ 
 	private String serviceName = "Fast-Food";
 	private String serviceLogo = "Perez-H";
 	private Address serviceAddress;
@@ -41,7 +46,7 @@ public class ServiceBuilder {
 	private String serviceWebDirection = "";
 	private String serviceEmail = "perezH@gmail.com";
 	private Telephone serviceTelephone = this.telephone();
-	private HashMap<Days, List<String>> serviceWorkingHours = this.serviceWorkingHours();
+	private HashMap<Days, List<TimeZone>> serviceWorkingHours;
 	private List<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
 
 	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
@@ -52,10 +57,11 @@ public class ServiceBuilder {
 		return service;
 	}
 
-	private HashMap<Days, List<String>> serviceWorkingHours() {
-		HashMap<Days, List<String>> serviceWorkingHours = new HashMap<>();
-		List<String> workingHours = new ArrayList<>();
-		workingHours.add("17:00 a 24:00");
+	private HashMap<Days, List<TimeZone>> serviceWorkingHours() throws InvalidTimeZoneException {
+		HashMap<Days, List<TimeZone>> serviceWorkingHours = new HashMap<>();
+		List<TimeZone> workingHours = new ArrayList<>();
+		TimeZone lateShift = new TimeZone(17,00,22,30);
+		workingHours.add(lateShift);
 		serviceWorkingHours.put(Days.THURSDAY, workingHours);
 		serviceWorkingHours.put(Days.FRIDAY, workingHours);
 		serviceWorkingHours.put(Days.SATURDAY, workingHours);
@@ -121,7 +127,7 @@ public class ServiceBuilder {
 		return this;
 	}
 
-	public ServiceBuilder withServiceWorkingHours(final HashMap<Days, List<String>> aServiceWorkingHours) {
+	public ServiceBuilder withServiceWorkingHours(final HashMap<Days, List<TimeZone>> aServiceWorkingHours) {
 		this.serviceWorkingHours = aServiceWorkingHours;
 		return this;
 	}

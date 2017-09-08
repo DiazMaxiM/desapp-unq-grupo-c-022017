@@ -19,6 +19,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import exception.NoMenusFoundException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
@@ -57,7 +58,7 @@ public class MenuSearchByLocalityTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidLatitudeMapPositionException, InvalidLengthMapPositionException, InvalidTelephoneNumberException,
-			NoMenusFoundException {
+			NoMenusFoundException, InvalidTimeZoneException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();
@@ -83,7 +84,7 @@ public class MenuSearchByLocalityTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, NoMenusFoundException, InvalidLengthMapPositionException,
-			InvalidLatitudeMapPositionException {
+			InvalidLatitudeMapPositionException, InvalidTimeZoneException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();

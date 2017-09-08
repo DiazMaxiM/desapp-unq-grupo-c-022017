@@ -15,6 +15,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import exception.NoMenusFoundException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
@@ -49,7 +50,7 @@ public class MenuSearchByNameTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
 
 		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();
 
@@ -72,7 +73,7 @@ public class MenuSearchByNameTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
 
 		Menu menuMilanesas = new MenuBuilder().withMenuName("Milanesas").build();
 		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();

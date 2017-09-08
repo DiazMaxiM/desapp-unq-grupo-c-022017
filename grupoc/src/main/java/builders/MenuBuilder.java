@@ -15,6 +15,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
@@ -32,6 +33,7 @@ import model.Money;
 import model.Price;
 import model.Service;
 import model.Symbol;
+import model.TimeZone;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -44,8 +46,9 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 		this.service = this.getService();
+		this.deliveryTimesMenus = this.getDeliveryTimesMenus();
 	}
 
 	private Money moneyArg = new Money(Symbol.ARG);
@@ -55,7 +58,7 @@ public class MenuBuilder {
 	private Price menuDeliveryPrice = new Price(moneyArg, new Double(15));
 	private DateTime startDateOfferMenu = new DateTime();
 	private DateTime endDateOfferMenu = new DateTime();
-	private List<String> deliveryTimesMenus = this.getDeliveryTimesMenus();
+	private List<TimeZone> deliveryTimesMenus;
 	private Integer averageDeliveryTimeOfMenu = 30;
 	private Price menuPrice = new Price(moneyArg, new Double(40));
 	private Integer firstMinimumNumberOfMenusToBuy = 10;
@@ -78,7 +81,7 @@ public class MenuBuilder {
 
 	}
 
-	private List<String> getDeliveryTimesMenus() {
+	private List<TimeZone> getDeliveryTimesMenus() {
 		return new ArrayList<>();
 	}
 
@@ -86,7 +89,7 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
-			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 
 		return new ServiceBuilder().build();
 	}

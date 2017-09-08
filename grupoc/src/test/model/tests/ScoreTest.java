@@ -15,6 +15,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import exception.InvalidValueScoreException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
@@ -49,7 +50,7 @@ public class ScoreTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException {
+			InvalidCountryCodeException, InvalidTimeZoneException {
 		Score score = new ScoreBuilder().build();
 
 		Assert.assertTrue(score.isPending());
@@ -67,7 +68,7 @@ public class ScoreTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(3);
 		Assert.assertEquals(score.getValue(), new Integer(3));
@@ -86,7 +87,7 @@ public class ScoreTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(8);
 
@@ -103,7 +104,7 @@ public class ScoreTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException {
+			InvalidCountryCodeException, InvalidTimeZoneException {
 		User client = Mockito.mock(User.class);
 
 		Score score = new ScoreBuilder().setClient(client).build();
@@ -123,7 +124,7 @@ public class ScoreTest {
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException {
+			InvalidCountryCodeException, InvalidTimeZoneException {
 		Provider provider = Mockito.mock(Provider.class);
 
 		Score score = new ScoreBuilder().setProvider(provider).build();
