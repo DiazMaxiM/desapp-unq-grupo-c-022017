@@ -17,8 +17,7 @@ public class UserAdministration {
      public void registerUser(User user) throws InvalidRegisterException{
     	 if(validator.isNewUser(user,users)){
     		 this.users.add(user);
-    	 }
-    	 
+    	 } 	 
      }
      
      public List<User>getUsers(){

@@ -19,7 +19,7 @@ import userExceptions.InvalidLastNameException;
 
 public class ProviderBuilder {
 	
-	private String cuit = "30-678789567-9";
+	private String userCuit = "30-678789567-9";
 	private String userfirstName= "Rosali";
 	private String userLastName = "Zaracho";
 	private String userEmailAddress= "zaracho.rosali@gmail.com";
@@ -32,6 +32,36 @@ public class ProviderBuilder {
 	}
 	
 	public Provider build() throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException{
-		return new Provider(cuit, userfirstName, userLastName,userEmailAddress, userTelephone, userAddress);
+		return new Provider(userCuit, userfirstName, userLastName,userEmailAddress, userTelephone, userAddress);
+	}
+
+	public ProviderBuilder withName(String name) {
+		this.userfirstName = name;
+		return this;
+	}
+	
+	public ProviderBuilder withLastName(String lastName) {
+		this.userLastName = lastName;
+		return this;
+	}
+	
+	public ProviderBuilder withEmail(String email) {
+		this.userEmailAddress = email;
+		return this;
+	}
+	
+	public ProviderBuilder withTelephone(Telephone telephone) {
+		this.userTelephone = telephone;
+		return this;
+	}
+	
+	public ProviderBuilder withAddress(Address address) {
+		this.userAddress = address;
+		return this;
+	}
+	
+	public ProviderBuilder withCuit(String cuit) {
+		this.userCuit = cuit;
+		return this;
 	}
 }

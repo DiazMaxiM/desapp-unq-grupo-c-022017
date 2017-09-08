@@ -27,10 +27,14 @@ public class UserValidation extends Validation{
 	}
 
 	private boolean isValidEmailAddress(String userEmailAddress) throws InvalidEmailAddressException {
-		if (!isValidString(userEmailAddress)){
-			throw new InvalidEmailAddressException("Ingrese un correo electronico");
+		if (!isValidString(userEmailAddress)|| !isValidadEmail(userEmailAddress)){
+			throw new InvalidEmailAddressException("Ingrese un email valido");
 		}
 		return true;
+	}
+
+	private boolean isValidadEmail(String userEmailAddress) {
+		return userEmailAddress.contains("@");
 	}
 
 	private boolean isValidLastName(String userLastName) throws InvalidLastNameException {
