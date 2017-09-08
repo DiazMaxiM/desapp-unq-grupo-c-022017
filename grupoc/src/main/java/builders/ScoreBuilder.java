@@ -13,7 +13,6 @@ import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
@@ -39,7 +38,7 @@ public class ScoreBuilder {
 
 	public ScoreBuilder() throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException,
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
-			InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,

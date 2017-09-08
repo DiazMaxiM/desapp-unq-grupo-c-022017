@@ -19,7 +19,6 @@ import exception.InvalidTimeZoneException;
 import exception.InvalidValueScoreException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
@@ -43,7 +42,7 @@ public class ScoreTest {
 	public void testIfCreateNewScoreThenTheStatusIsPendingIsTrue()
 			throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException,
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
-			InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
@@ -61,7 +60,7 @@ public class ScoreTest {
 	public void testIfCreateNewScoreAndHasAScoreThenTheStatusIsPendingIsFalse()
 			throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException,
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
-			InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
@@ -80,7 +79,7 @@ public class ScoreTest {
 	public void testIfCreateNewScoreAndHasAScore8ThenInvalidValueScoreException()
 			throws InvalidServiceException, InvalidMenuNameException, InvalidMenuDescriptionException,
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
-			InvalidFirstMinimumNumberOfMenusToBuyException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
@@ -97,7 +96,7 @@ public class ScoreTest {
 	public void testIfCreateNewScoreAndHasAClientThenTheClientsAreEquals()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -117,7 +116,7 @@ public class ScoreTest {
 	public void testIfCreateNewScoreAndHasAProviderThenTheProvidersAreEquals()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,

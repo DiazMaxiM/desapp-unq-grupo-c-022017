@@ -21,7 +21,6 @@ import exception.InvalidValueScoreException;
 import junit.framework.Assert;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
@@ -46,7 +45,7 @@ public class ScoringManagerTest {
 	public void testIfAddNewScoreWhatNotValueScoreThenTheExistsScoresPendingForClient()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -69,7 +68,7 @@ public class ScoringManagerTest {
 	public void testIfAddNewScoreWhatHasValueScoreThenTheNotExistsScoresPendingForClient()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -92,7 +91,7 @@ public class ScoringManagerTest {
 	public void testIfAddTwoNewsScoresWithValueScore3And4ThenTheAverageIs3point5()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -121,7 +120,7 @@ public class ScoringManagerTest {
 	public void testIfAddTwentyNewsScoresWithAvarege1ThenRetunListWith1Element()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -148,7 +147,7 @@ public class ScoringManagerTest {
 	public void testIfAddTwentyNewsScoresWithAvarege3ThenRetunListWith0Element()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
@@ -175,7 +174,7 @@ public class ScoringManagerTest {
 	public void testIfGetListOrderForScoreThenGetFirtsMenuWithBestAverageScore()
 			throws InvalidServiceException, InvalidAddressException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
+			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
