@@ -5,6 +5,7 @@ import java.util.List;
 public class ProviderProcessor extends Thread {
 
 	private ScoringManager scoringManager;
+	@SuppressWarnings("unused")
 	private Mail mail;
 
 	public ProviderProcessor(ScoringManager scoringManager, Mail mail) {

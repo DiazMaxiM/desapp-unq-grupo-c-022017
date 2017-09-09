@@ -1,7 +1,6 @@
 package validation;
 
 import java.util.List;
-import java.util.Optional;
 
 import exception.InvalidAddressException;
 import exception.InvalidRegisterException;

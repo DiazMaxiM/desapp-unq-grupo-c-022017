@@ -220,7 +220,15 @@ public class Menu {
 	}
 
 	public void disabled() {
-		this.status = TypeStatusMenu.DISABLED;
+		this.setStatus(TypeStatusMenu.DISABLED);
+	}
+
+	public TypeStatusMenu getStatus() {
+		return status;
+	}
+
+	public void setStatus(TypeStatusMenu status) {
+		this.status = status;
 	}
 
 }

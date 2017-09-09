@@ -44,7 +44,6 @@ import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import validation.InvalidFormatTimeZoneException;
-import validation.UserValidation;
 
 public class ProviderTest {
 
