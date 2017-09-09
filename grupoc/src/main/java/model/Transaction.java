@@ -26,8 +26,8 @@ public class Transaction {
 		return typeTransaction;
 	}
 
-	public TypeTransaction getTypeStatusTransaction() {
-		return typeTransaction;
+	public TypeStatusTransaction getTypeStatusTransaction() {
+		return statusTransaction;
 	}
 
 	public Double getValue() {
