@@ -36,6 +36,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.InvalidFormatTimeZoneException;
 
 public class MenuSearchByCategoryTest {
 
@@ -50,7 +51,7 @@ public class MenuSearchByCategoryTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Menu menuPizza = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
 
@@ -73,7 +74,7 @@ public class MenuSearchByCategoryTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Menu menuBurguer = new MenuBuilder().withMenuCategory(Category.BURGER).build();
 		Menu menuEmpanadas = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();

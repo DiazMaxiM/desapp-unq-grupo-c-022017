@@ -24,14 +24,14 @@ public class Service {
 	private String serviceWebDirection;
 	private String serviceEmail;// Required
 	private Telephone serviceTelephone;// Required
-	private HashMap<Days, List<TimeZone>> serviceWorkingHours;// Required
+	private HashMap<Integer, List<TimeZone>> serviceWorkingHours;// Required
 	private List<Locality> serviceDeliveryLocations;
 	private int maximumNumberOfMenus = 20;
 	private ServiceValidation validator = new ServiceValidation();
 
 	public Service(String serviceName, String serviceLogo, Address serviceAddress, String serviceDescription,
 			String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Days, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
+			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
@@ -46,7 +46,7 @@ public class Service {
 
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,
 			String serviceDescription, String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Days, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {
+			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {
 
 		this.setServiceName(serviceName);
 		this.setServiceLogo(serviceLogo);
@@ -132,11 +132,11 @@ public class Service {
 		this.serviceTelephone = serviceTelephone;
 	}
 
-	public HashMap<Days, List<TimeZone>> getServiceWorkingHours() {
+	public HashMap<Integer, List<TimeZone>> getServiceWorkingHours() {
 		return serviceWorkingHours;
 	}
 
-	public void setServiceWorkingHours(HashMap<Days, List<TimeZone>> serviceWorkingHours) {
+	public void setServiceWorkingHours(HashMap<Integer, List<TimeZone>> serviceWorkingHours) {
 		this.serviceWorkingHours = serviceWorkingHours;
 	}
 

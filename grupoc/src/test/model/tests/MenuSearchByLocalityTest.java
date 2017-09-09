@@ -1,4 +1,4 @@
-package tests;
+ package tests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -42,6 +42,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.InvalidFormatTimeZoneException;
 
 public class MenuSearchByLocalityTest {
 
@@ -57,7 +58,7 @@ public class MenuSearchByLocalityTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidLatitudeMapPositionException, InvalidLengthMapPositionException, InvalidTelephoneNumberException,
-			NoMenusFoundException, InvalidTimeZoneException {
+			NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();
@@ -83,7 +84,7 @@ public class MenuSearchByLocalityTest {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, NoMenusFoundException, InvalidLengthMapPositionException,
-			InvalidLatitudeMapPositionException, InvalidTimeZoneException {
+			InvalidLatitudeMapPositionException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();

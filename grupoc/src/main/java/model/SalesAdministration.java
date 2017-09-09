@@ -8,6 +8,7 @@ import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
 import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
+import exception.InvalidTimeZoneException;
 import exception.PendingScoreException;
 import validation.SaleValidation;
 
@@ -26,7 +27,7 @@ public class SalesAdministration {
 
 	}
 	
-    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException{
+    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException{
     	 if(validator.isValidSale(order)){
     		 forSale(order); 
     	 }

@@ -38,6 +38,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.InvalidFormatTimeZoneException;
 
 public class MenuBuilder {
 
@@ -45,7 +46,7 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		this.service = this.getService();
 		this.deliveryTimesMenus = this.getDeliveryTimesMenus();
 	}
@@ -55,8 +56,8 @@ public class MenuBuilder {
 	private String menuDescription = "MenuDescription12345678910";
 	private Category menuCategory = Category.BURGER;
 	private Price menuDeliveryPrice = new Price(moneyArg, new Double(15));
-	private DateTime startDateOfferMenu = new DateTime();
-	private DateTime endDateOfferMenu = new DateTime();
+	private DateTime startDateOfferMenu =new DateTime().plusDays(7);
+	private DateTime endDateOfferMenu = new DateTime().plusDays(14);;
 	private List<TimeZone> deliveryTimesMenus;
 	private Integer averageDeliveryTimeOfMenu = 30;
 	private Price menuPrice = new Price(moneyArg, new Double(40));
@@ -88,7 +89,7 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
-			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException {
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		return new ServiceBuilder().build();
 	}

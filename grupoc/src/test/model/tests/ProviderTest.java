@@ -43,6 +43,7 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import validation.InvalidFormatTimeZoneException;
 import validation.UserValidation;
 
 public class ProviderTest {
@@ -54,7 +55,7 @@ public class ProviderTest {
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
 			InvalidAreaCodeException, InvalidCountryCodeException, InvalidCuitException, InvalidFirstNameException,
-			InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException {
+			InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -69,7 +70,7 @@ public class ProviderTest {
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
 			InvalidAreaCodeException, InvalidCountryCodeException, InvalidCuitException, InvalidFirstNameException,
-			InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException {
+			InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().withServiceName(null).build();
 		provider.addNewService(service);
@@ -89,7 +90,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -112,7 +113,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -143,7 +144,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);

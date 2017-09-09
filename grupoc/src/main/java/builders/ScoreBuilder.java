@@ -30,6 +30,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.InvalidFormatTimeZoneException;
 
 public class ScoreBuilder {
 	protected User client;
@@ -45,8 +46,8 @@ public class ScoreBuilder {
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException {
-		Menu menu = new MenuBuilder().build();
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+		   this.menu = new MenuBuilder().build();
 	}
 
 	public Score build() {

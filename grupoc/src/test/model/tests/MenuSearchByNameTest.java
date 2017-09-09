@@ -35,6 +35,7 @@ import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
+import validation.InvalidFormatTimeZoneException;
 
 public class MenuSearchByNameTest {
 
@@ -49,7 +50,7 @@ public class MenuSearchByNameTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();
 
@@ -61,7 +62,7 @@ public class MenuSearchByNameTest {
 		searchCriteria.menuSearch();
 	}
 
-	@Test
+	@Test 
 	public void testWhenLookForAMenuAndItIsInTheSystemShouldFindResults()
 			throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -72,7 +73,7 @@ public class MenuSearchByNameTest {
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException {
+			InvalidTelephoneNumberException, NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 
 		Menu menuMilanesas = new MenuBuilder().withMenuName("Milanesas").build();
 		Menu menuPastas = new MenuBuilder().withMenuName("Pastas").build();
