@@ -18,9 +18,9 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import exception.InvalidTimeZoneException;
 import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidFirstMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
@@ -37,6 +37,7 @@ import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 import sortingMenus.SortingMenuByPrice;
+import validation.InvalidFormatTimeZoneException;
 
 public class SortingMenuByPriceTest {
 
@@ -54,12 +55,12 @@ public class SortingMenuByPriceTest {
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
 			InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidFirstMinimumNumberOfMenusToBuyException,
-			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
-			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException {
+			InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
+			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		MenuManager menuManager = new MenuManager();
 		Menu menu = new MenuBuilder().withMenuPrice(120).build();
 		Menu menu2 = new MenuBuilder().withMenuPrice(50).build();
