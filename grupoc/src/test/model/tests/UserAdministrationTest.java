@@ -13,6 +13,7 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidRegisterException;
 import exception.InvalidStreetAddressException;
@@ -28,7 +29,7 @@ import userExceptions.InvalidLastNameException;
 public class UserAdministrationTest {
 
 	@Test
-	public void testWhenCreateAValidRegisterOfAFutureProviderTheSizeOfUserIs1() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException {
+	public void testWhenCreateAValidRegisterOfAFutureProviderTheSizeOfUserIs1() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		UserAdministration userAdministration = new UserAdministration();
 		Provider newUser                      = new ProviderBuilder().build();
 		userAdministration.registerUser(newUser);
@@ -36,7 +37,7 @@ public class UserAdministrationTest {
 	}
 	
 	@Test(expected=InvalidRegisterException.class)
-	public void testShouldFailWhenANewUserWantsRegistrerWithAEmailUsed() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+	public void testShouldFailWhenANewUserWantsRegistrerWithAEmailUsed() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		UserAdministration userAdministration = new UserAdministration();
 		Provider newUser1                         = new ProviderBuilder().build();
 		User newUser2                         = new ClientBuilder().build();
@@ -47,7 +48,7 @@ public class UserAdministrationTest {
 	}
 	
 	@Test(expected=InvalidRegisterException.class)
-	public void testShouldFailWhenANewUserWantsRegistrerWithACuitUsed() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+	public void testShouldFailWhenANewUserWantsRegistrerWithACuitUsed() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidRegisterException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		UserAdministration userAdministration = new UserAdministration();
 		Provider newUser1                     = new ProviderBuilder().build();
 		newUser1.setCuit("30-457346876-8");

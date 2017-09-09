@@ -13,13 +13,13 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import exception.InvalidValueScoreException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -47,12 +47,12 @@ public class ScoreTest {
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		Score score = new ScoreBuilder().build();
 
 		Assert.assertTrue(score.isPending());
@@ -65,12 +65,12 @@ public class ScoreTest {
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(3);
 		Assert.assertEquals(score.getValue(), new Integer(3));
@@ -84,12 +84,12 @@ public class ScoreTest {
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidAddressException, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidValueScoreException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		Score score = new ScoreBuilder().build();
 		score.setScore(8);
 
@@ -103,10 +103,10 @@ public class ScoreTest {
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+		    InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		User client = Mockito.mock(User.class);
 
 		Score score = new ScoreBuilder().setClient(client).build();
@@ -123,10 +123,10 @@ public class ScoreTest {
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		Provider provider = Mockito.mock(Provider.class);
 
 		Score score = new ScoreBuilder().setProvider(provider).build();

@@ -1,6 +1,7 @@
 package model;
 
 import exception.InvalidAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidTelephoneNumberException;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
@@ -18,7 +19,7 @@ public class User {
 	private Account account = new Account();
 	private UserValidation validator= new UserValidation();
 	
-	public User(String cuit,String userfirstName,String userLastName,String userEmailAddress,Telephone userTelephone,Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException{
+	public User(String cuit,String userfirstName,String userLastName,String userEmailAddress,Telephone userTelephone,Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException{
 		if(validator.isValidUser(cuit,userfirstName,userLastName,userEmailAddress,
 				               userTelephone,userAddress)){
 			createUser(cuit,userfirstName,userLastName,userEmailAddress,userTelephone,userAddress);

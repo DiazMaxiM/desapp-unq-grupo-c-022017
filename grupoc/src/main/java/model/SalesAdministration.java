@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
+import exception.NumberOfMenusExceededException;
 import exception.PendingScoreException;
 import orderExceptions.InvalidDeliveryTimeException;
 import serviceException.InvalidDeliveryLocation;
@@ -19,7 +20,7 @@ public class SalesAdministration {
 	ScoringManager scoringManager;
 	MenuManager menuManager;
 	Mail mail;
-	List<Order> ordersToConfirm = new ArrayList<>();
+	List<Order> ordersToConfirm = new ArrayList<>(); 
 	SaleValidation validator;
 
 	public SalesAdministration(ScoringManager scoringManager, MenuManager menuManager, Mail mail) {
@@ -30,7 +31,7 @@ public class SalesAdministration {
 
 	}
 	
-    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException{
+    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException{
     	 if(validator.isValidSale(order)){
     		 forSale(order); 
     	 }

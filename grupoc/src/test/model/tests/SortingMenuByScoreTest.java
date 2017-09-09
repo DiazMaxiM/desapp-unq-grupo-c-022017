@@ -17,13 +17,13 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import exception.InvalidValueScoreException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -56,10 +56,10 @@ public class SortingMenuByScoreTest {
 			InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
-			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidValueScoreException, InvalidTimeZoneException,
-			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		ScoringManager scoringManager = new ScoringManager();
 
 		Menu menu = Mockito.mock(Menu.class);

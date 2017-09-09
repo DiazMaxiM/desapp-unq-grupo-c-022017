@@ -3,6 +3,7 @@ package builders;
 import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import model.Address;
@@ -21,7 +22,7 @@ public class AddressBuilder {
 	}
 
 	public Address build()
-			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
+			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException {
 		return new Address(locality, street, numberStreet, floor, mapPosition);
 
 	}

@@ -11,6 +11,7 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidMenuException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidProviderException;
@@ -18,7 +19,6 @@ import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -59,7 +59,7 @@ public class OrderBuilder {
      private Provider provider;
      
      
-     public OrderBuilder() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException, InvalidFormatTimeZoneException{
+     public OrderBuilder() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidMapPositionException{
     	 this.menuToOrder= new MenuBuilder().build();
     	 this.client= new ClientBuilder().build();
     	 this.client.setMail("zaracho.rosali@gmail.com");
@@ -92,21 +92,31 @@ public class OrderBuilder {
 	}
 
 	public OrderBuilder withMenuToOrder(Menu menu) {
-		this.menuToOrder= menu;
+		this.menuToOrder = menu;
 		return this;
 		
 	}
 	
 	public OrderBuilder withTypeOfDelivery(TypeOfDelivery typeOfDelivery) {
-		this.typeOfDelivery= typeOfDelivery;
+		this.typeOfDelivery = typeOfDelivery;
 		return this;
 		
 	}
 	
 	public OrderBuilder withDeliveryTime(TimeZone deliveryTime) {
-		this.deliveryTime= deliveryTime;
+		this.deliveryTime = deliveryTime;
 		return this;
 		
+	}
+
+	public OrderBuilder withClient(User client) {
+		this.client = client;
+		return this;
+	}
+	
+	public OrderBuilder withProvider(Provider provider) {
+		this.provider = provider;
+		return this;
 	}
 	
 	

@@ -3,13 +3,17 @@ package builders;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Locality;
+import model.MapPosition;
 import model.Provider;
 import model.Telephone;
 import userExceptions.InvalidCuitException;
@@ -26,12 +30,13 @@ public class ProviderBuilder {
 	private Telephone userTelephone;
 	private Address userAddress;
 	
-	public ProviderBuilder() throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException{
+	public ProviderBuilder() throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException{
 		this.userTelephone= new Telephone("54","011","43567829");
-		this.userAddress = new Address(Locality.FLORENCIOVARELA, "damasco", "124", "",null);
+		MapPosition mapPosition = new MapPosition(new Double(678990), new Double (679977));
+		this.userAddress = new Address(Locality.FLORENCIOVARELA, "damasco", "124", "",mapPosition);
 	}
 	
-	public Provider build() throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException{
+	public Provider build() throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException{
 		return new Provider(userCuit, userfirstName, userLastName,userEmailAddress, userTelephone, userAddress);
 	}
 

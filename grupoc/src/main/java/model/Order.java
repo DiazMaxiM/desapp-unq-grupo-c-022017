@@ -21,7 +21,7 @@ public class Order {
 	private User client;
 	private Provider provider;
 	private Transaction transactionClient;
-	private Transaction transactionProvider;
+	private Transaction transactionProvider; 
 	private OrderValidation validator = new OrderValidation();
 	private DateTime dateOfOrder = new DateTime();
 

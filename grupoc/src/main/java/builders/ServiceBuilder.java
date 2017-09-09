@@ -10,6 +10,7 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
@@ -31,7 +32,7 @@ import validation.InvalidFormatTimeZoneException;
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		this.serviceAddress = this.address();
 		this.serviceWorkingHours = this.serviceWorkingHours();
 	}
@@ -48,7 +49,7 @@ public class ServiceBuilder {
 
 	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
-			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidMapPositionException {
 		Service service = new Service(serviceName, serviceLogo, serviceAddress, serviceDescription, serviceWebDirection,
 				serviceEmail, serviceTelephone, serviceWorkingHours, serviceDeliveryLocations);
 		return service;
@@ -79,7 +80,7 @@ public class ServiceBuilder {
 	}
 
 	private Address address() throws InvalidAddressException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
 
 	}

@@ -15,13 +15,13 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import exception.NoMenusFoundException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -56,9 +56,9 @@ public class MenuSearchByLocalityTest {
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidLatitudeMapPositionException, InvalidLengthMapPositionException, InvalidTelephoneNumberException,
-			NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			NoMenusFoundException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidMapPositionException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();
@@ -82,9 +82,9 @@ public class MenuSearchByLocalityTest {
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException,
 			InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,
-			InvalidDeliveryPriceException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
+			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, NoMenusFoundException, InvalidLengthMapPositionException,
-			InvalidLatitudeMapPositionException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidLatitudeMapPositionException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidMapPositionException {
 
 		Address serviceAddress = new AddressBuilder().withLocality(Locality.AVELLANEDA).build();
 		Service service = new ServiceBuilder().withServiceAddress(serviceAddress).build();

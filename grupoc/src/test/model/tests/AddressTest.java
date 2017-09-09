@@ -15,14 +15,14 @@ import model.MapPosition;
 
 public class AddressTest {
 
-	@Test(expected = InvalidLatitudeMapPositionException.class)
+	@Test(expected = InvalidMapPositionException.class)
 	public void testShouldFailWhenICreateAnInvalidAddressWithInvalidMapPosition() throws InvalidAddressException,
 			InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException {
-		MapPosition mapPosition = new MapPosition(null, new Double(12));
+		MapPosition mapPosition = null;
 		new Address(Locality.FLORENCIOVARELA, "monserrat", "558", "12", mapPosition);
 	}
-
+ 
 	@Test(expected = InvalidLocalityAddressException.class)
 	public void testShouldFailWhenICreateAnInvalidAddressWithInvalidLocality() throws InvalidAddressException,
 			InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException,

@@ -3,6 +3,7 @@ package validation;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidRegisterException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
@@ -16,7 +17,7 @@ import userExceptions.InvalidLastNameException;
 public class UserValidation extends Validation{
 
 	public boolean isValidUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
-			Telephone userTelephone, Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
+			Telephone userTelephone, Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException {
 		    return isValidCuit(cuit)
 		    	  && isValidFirstName(userfirstName)
 		    	  && isValidLastName(userLastName)

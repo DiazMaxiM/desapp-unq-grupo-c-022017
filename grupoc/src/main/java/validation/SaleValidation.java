@@ -9,6 +9,7 @@ import org.joda.time.Days;
 import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
+import exception.NumberOfMenusExceededException;
 import exception.PendingScoreException;
 import model.Locality;
 import model.Order;
@@ -26,7 +27,7 @@ public class SaleValidation extends Validation{
 		this.scoringManager= scoringManager;
 		 
 	}
-	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException {
+	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException {
 		return isNotHasPendingScoreForClient(order.getClient())
 			   && isHasClientBalanceToBuy(order)
 			   && isTheSaleWithinDeliveryLocationsAndTimes(order)
@@ -83,7 +84,7 @@ public class SaleValidation extends Validation{
 			isInTimeWorking= isInTimeWorking || timeZone.isWithinRangeofWorking(deliveryTimeOfClientWantsTheOrder);
 		}
 		return isInTimeWorking;
-	}
+	} 
 	
 	private boolean isThePurchaseMadeWithinOneBusinessDay(HashMap<Integer,List<TimeZone>> workingsHours,Integer dayOfWeek){
 		return workingsHours.containsKey(dayOfWeek);
@@ -129,9 +130,9 @@ public class SaleValidation extends Validation{
 				.getDays();
 		return days >= 2;
 	}
-	private boolean isWithinTheMaximumAmountOfMenuSales(Order order) throws InvalidPurchaseException {
+	private boolean isWithinTheMaximumAmountOfMenuSales(Order order) throws NumberOfMenusExceededException{
 		if(!isHasServiceWithMenusToSale(order)){
-	    	throw new InvalidPurchaseException("Se ha superado el limite de ventas");
+	    	throw new NumberOfMenusExceededException("Se ha superado el limite de ventas");
 	    }
 		return true;
 	}

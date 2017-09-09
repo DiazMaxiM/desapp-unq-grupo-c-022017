@@ -4,7 +4,6 @@ import org.joda.time.DateTime;
 
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -24,7 +23,7 @@ public class MenuValidation extends Validation{
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
 			Integer firstMinimumNumberOfMenusToBuy, Price firstminimumPriceOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
-			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay {
+			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay {
 		
 		return isValidMenuName(menuName)
 			   && isValidMenuDescription(menuDescription)

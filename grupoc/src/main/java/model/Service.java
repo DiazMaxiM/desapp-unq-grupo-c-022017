@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidServiceException;
 import exception.InvalidTelephoneNumberException;
 import exception.NumberOfMenusExceededException;
@@ -34,7 +35,7 @@ public class Service {
 			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
-			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidMapPositionException {
 
 		if (validator.isAValidService(serviceName, serviceLogo, serviceAddress, serviceDescription, serviceWebDirection,
 				serviceEmail, serviceTelephone, serviceWorkingHours)) {

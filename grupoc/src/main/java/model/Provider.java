@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidServiceException;
 import exception.InvalidTelephoneNumberException;
 import exception.NumberOfMenusExceededException;
@@ -20,7 +21,7 @@ public class Provider extends User {
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress)
 			throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException,
-			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
+			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException {
 		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
 
 	}

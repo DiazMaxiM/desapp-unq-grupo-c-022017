@@ -16,12 +16,12 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -60,9 +60,9 @@ public class SortingMenuByPriceTest {
 			InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException,
 			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
-			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
+			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		MenuManager menuManager = new MenuManager();
 		Menu menu = new MenuBuilder().withMenuPrice(120).build();
 		Menu menu2 = new MenuBuilder().withMenuPrice(50).build();

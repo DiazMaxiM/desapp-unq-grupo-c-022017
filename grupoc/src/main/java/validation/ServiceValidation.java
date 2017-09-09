@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import exception.InvalidAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
 import model.Telephone;
@@ -19,7 +20,7 @@ public class ServiceValidation extends Validation{
 	public boolean isAValidService(String serviceName, String serviceLogo,
     		Address serviceAddress,String serviceDescription, 
     		String serviceWebDirection,String serviceEmail,
-    		Telephone serviceTelephone,HashMap<Integer, List<TimeZone>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException {
+    		Telephone serviceTelephone,HashMap<Integer, List<TimeZone>> serviceWorkingHours) throws InvalidServiceNameException, InvalidAddressException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidMapPositionException {
 		
 		return isValidServiceName(serviceName)
 			   && isValidServiceLogo(serviceLogo)

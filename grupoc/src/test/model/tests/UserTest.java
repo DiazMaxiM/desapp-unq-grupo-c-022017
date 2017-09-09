@@ -8,8 +8,11 @@ import builders.ProviderBuilder;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
@@ -27,7 +30,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder().build();
 		UserValidation validator = new UserValidation();
 		assertTrue(validator.isValidUser(provider.getCuit(), provider.getName(), provider.getSurname(),
@@ -40,7 +43,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withName(null)
 				        .build();
@@ -55,7 +58,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withLastName("")
 				        .build();
@@ -70,7 +73,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withEmail("zaracho.rosali.gmail.com")
 				        .build();
@@ -85,7 +88,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withTelephone(null)
 				        .build();
@@ -100,7 +103,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withAddress(null)
 				        .build();
@@ -115,7 +118,7 @@ public class UserTest {
 			throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
 			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
-			InvalidEmailAddressException, InvalidTelephoneNumberException {
+			InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		User provider = new ProviderBuilder()
 				        .withCuit("")
 				        .build();

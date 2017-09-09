@@ -6,7 +6,6 @@ import org.joda.time.DateTime;
 
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
-import menuExceptions.InvalidDeliveryPriceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -44,7 +43,7 @@ public class Menu {
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service)
 			throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,
-			InvalidDeliveryPriceException, InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay {
