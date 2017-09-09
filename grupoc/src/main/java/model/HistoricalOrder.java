@@ -21,7 +21,7 @@ public class HistoricalOrder {
 		this.menu = menu;
 		this.price = price;
 		this.dateOfOrder = dateOfOrder;
-		this.typeOfDelivery = typeOfDelivery;
+		this.setTypeOfDelivery(typeOfDelivery);
 	}
 
 	public Score getScore() {
@@ -49,6 +49,16 @@ public class HistoricalOrder {
 	}
 
 	public String getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
+
+	public void setTypeOfDelivery(TypeOfDelivery typeOfDelivery) {
+		this.typeOfDelivery = typeOfDelivery;
+
 		switch (this.typeOfDelivery) {
 		case HOMEDELIVERY:
 			this.setDelivery("Sí");
@@ -57,10 +67,5 @@ public class HistoricalOrder {
 			this.setDelivery("No");
 			break;
 		}
-		return delivery;
-	}
-
-	public void setDelivery(String delivery) {
-		this.delivery = delivery;
 	}
 }
