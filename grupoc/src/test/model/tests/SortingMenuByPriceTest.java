@@ -12,6 +12,8 @@ import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidCountryCodeException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
@@ -60,7 +62,7 @@ public class SortingMenuByPriceTest {
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		MenuManager menuManager = new MenuManager();
 		Menu menu = new MenuBuilder().withMenuPrice(120).build();
 		Menu menu2 = new MenuBuilder().withMenuPrice(50).build();

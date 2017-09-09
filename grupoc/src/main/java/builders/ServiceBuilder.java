@@ -31,11 +31,11 @@ import validation.InvalidFormatTimeZoneException;
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		this.serviceAddress = this.address();
 		this.serviceWorkingHours = this.serviceWorkingHours();
 	}
- 
+	
 	private String serviceName = "Fast-Food";
 	private String serviceLogo = "Perez-H";
 	private Address serviceAddress;
@@ -74,17 +74,12 @@ public class ServiceBuilder {
 		return serviceDeliveryLocations;
 	}
 
-	private MapPosition mapPosition() {
-		try {
+	private MapPosition mapPosition() throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 			return new MapPosition(new Double(12345), new Double(34456));
-		} catch (InvalidLengthMapPositionException | InvalidLatitudeMapPositionException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	private Address address() throws InvalidAddressException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
 
 	}

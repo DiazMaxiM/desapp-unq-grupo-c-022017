@@ -26,10 +26,9 @@ public class TimeZoneTest {
 		assertTrue(timeWorking.isWithinRangeofWorking(timeWorking2));
 	}
 	
-	@Test(expected = InvalidTimeZoneException.class)
 	public void testShoulFailWhenATimeZoneIsWithinATimeRange() throws InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		TimeZone timeWorking= new TimeZone("8:30","12:00");	
 		TimeZone timeWorking2= new TimeZone("11:00","12:00");	
-		assertTrue(timeWorking.isWithinRangeofWorking(timeWorking2));
+		assertFalse(timeWorking.isWithinRangeofWorking(timeWorking2));
 	}
-}
+} 

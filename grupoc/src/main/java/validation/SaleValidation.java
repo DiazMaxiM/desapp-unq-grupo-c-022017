@@ -10,27 +10,61 @@ import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
 import exception.PendingScoreException;
+import model.Locality;
 import model.Order;
 import model.ScoringManager;
 import model.TimeZone;
 import model.TypeOfDelivery;
 import model.User;
+import orderExceptions.InvalidDeliveryTimeException;
+import serviceException.InvalidDeliveryLocation;
 
 public class SaleValidation extends Validation{
     
     ScoringManager scoringManager;
 	public SaleValidation(ScoringManager scoringManager){
 		this.scoringManager= scoringManager;
-		
+		 
 	}
-	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException {
+	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException {
 		return isNotHasPendingScoreForClient(order.getClient())
 			   && isHasClientBalanceToBuy(order)
+			   && isTheSaleWithinDeliveryLocationsAndTimes(order)
 			   && isTheSaleWithinTheWorkingHoursofTheService(order)
 		       && isTheSaleOfTheMenuWithinTheLimitOfPurchase(order)
 		       && isWithinTheMaximumAmountOfMenuSales(order);
 	}   
-
+ 
+	private boolean isTheSaleWithinDeliveryLocationsAndTimes(Order order) throws InvalidPurchaseException, InvalidDeliveryLocation, InvalidDeliveryTimeException, InvalidTimeZoneException{
+	   if(order.getTypeOfDelivery().equals(TypeOfDelivery.HOMEDELIVERY)){
+		   return isWithinDeliveryLocations(order)
+				  && isWithinDeliveryTimesOfMenus(order);
+	   }
+	   return true;
+	}
+	
+	
+	private boolean isWithinDeliveryTimesOfMenus(Order order) throws InvalidDeliveryTimeException, InvalidTimeZoneException {
+		boolean isTimeZoneOrderInMenuDeliveryTime = false;
+		List<TimeZone> menuDeliveryTimes = order.getMenuToOrder().getDeliveryTimesMenus();
+		TimeZone timeZoneOrder = order.getDeliveryTime();
+		for (TimeZone timeZone : menuDeliveryTimes) {
+			isTimeZoneOrderInMenuDeliveryTime = isTimeZoneOrderInMenuDeliveryTime || timeZone.isWithinRangeofWorking(timeZoneOrder);
+			
+		}
+		if (!isTimeZoneOrderInMenuDeliveryTime){
+			throw new InvalidDeliveryTimeException("El horario de entrega debe estar dentro de los horarios de delivey");
+		}
+		return isTimeZoneOrderInMenuDeliveryTime;
+	}
+	private boolean isWithinDeliveryLocations(Order order) throws InvalidPurchaseException, InvalidDeliveryLocation {
+		List<Locality> serviceDeliveryLocality = order.getMenuToOrder().getService().getServiceDeliveryLocations();
+		Locality localityClient = order.getClient().getAddress().getLocality();
+		if(!(serviceDeliveryLocality.contains(localityClient))){
+			throw new InvalidDeliveryLocation("Su localidad no esta dentro de los limites de entregas");
+		}
+		return true ;
+	}
 	private boolean isTheSaleWithinTheWorkingHoursofTheService(Order order) throws InvalidPurchaseException, InvalidTimeZoneException {
 		Integer dayOfWeek = order.getDateOfDelivery().getDayOfWeek();
 		HashMap<Integer,List<TimeZone>> workingsHours = order.getMenuToOrder().getService().getServiceWorkingHours();		

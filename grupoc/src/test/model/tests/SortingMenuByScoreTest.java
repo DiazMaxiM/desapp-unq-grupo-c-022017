@@ -13,6 +13,8 @@ import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidCountryCodeException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
@@ -57,7 +59,7 @@ public class SortingMenuByScoreTest {
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidDeliveryPriceException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidValueScoreException, InvalidTimeZoneException,
-			InvalidFormatTimeZoneException {
+			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		ScoringManager scoringManager = new ScoringManager();
 
 		Menu menu = Mockito.mock(Menu.class);

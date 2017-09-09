@@ -9,6 +9,8 @@ import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidCountryCodeException;
+import exception.InvalidLatitudeMapPositionException;
+import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidNumberStreetException;
@@ -46,11 +48,11 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		this.service = this.getService();
 		this.deliveryTimesMenus = this.getDeliveryTimesMenus();
 	}
-
+ 
 	private Money moneyArg = new Money(Symbol.ARG);
 	private String menuName = "MenuName";
 	private String menuDescription = "MenuDescription12345678910";
@@ -81,15 +83,17 @@ public class MenuBuilder {
 
 	}
 
-	private List<TimeZone> getDeliveryTimesMenus() {
-		return new ArrayList<>();
+	private List<TimeZone> getDeliveryTimesMenus() throws InvalidTimeZoneException, InvalidFormatTimeZoneException {
+		List<TimeZone> deliveryTimesMenus = new ArrayList<>();
+		deliveryTimesMenus.add(new TimeZone("18:00","22:00"));
+		return deliveryTimesMenus;
 	}
 
 	public Service getService() throws InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
-			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 
 		return new ServiceBuilder().build();
 	}

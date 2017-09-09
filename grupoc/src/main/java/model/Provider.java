@@ -22,7 +22,7 @@ public class Provider extends User {
 			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
 		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
 
-	} 
+	}  
 
 	public void addNewService(Service newService) throws InvalidServiceException {
 		this.servicesOffered.add(newService);

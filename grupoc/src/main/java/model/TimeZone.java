@@ -25,7 +25,7 @@ public class TimeZone {
         	setEndHours(endHours);   
     	}
     }
-
+ 
 	private LocalTime parseString(String hours) {
 		 DateTimeFormatter newDateTimeFormatter = DateTimeFormat.forPattern("HH:mm");
 		 LocalTime localTime = newDateTimeFormatter.parseLocalTime(hours);
@@ -40,11 +40,9 @@ public class TimeZone {
 		this.endHours =parseString(endHour);
 	}
 
-	public boolean  isWithinRangeofWorking(TimeZone timeZone) throws InvalidTimeZoneException {
-		if (!(isInStartTimeWorking(timeZone) && isInEndTimeWorking(timeZone))){
-			throw new InvalidTimeZoneException("El rango debe estar dentro de las horas de trabajo");
-		}
-		return true;
+	public boolean  isWithinRangeofWorking(TimeZone timeZone) {
+		return isInStartTimeWorking(timeZone) && isInEndTimeWorking(timeZone);
+		
 	}
 
 	private boolean isInEndTimeWorking(TimeZone timeZone) {

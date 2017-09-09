@@ -28,20 +28,20 @@ public class Mail {
 		this.mail = email;
 		mailConfiguration();
 
-	}
+	} 
 
 	public Mail getInstance() throws EmailException {
 		if (instance == null) {
 			instance = new Mail();
 		}
 		return instance;
-	}
+	} 
 
 	public void send(String to, String subject, String mensagge) throws EmailException {
 		mail.addTo(to);
 		mail.setSubject(subject);
 		mail.setMsg(mensagge);
-		mail.send();
+		mail.send(); 
 	}
 
 	public void sendMailDisabledProvider(String userEmailAddress) throws EmailException {

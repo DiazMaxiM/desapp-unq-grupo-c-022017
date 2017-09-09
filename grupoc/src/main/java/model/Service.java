@@ -57,7 +57,7 @@ public class Service {
 		this.setServiceEmail(serviceEmail);
 		this.setServiceTelephone(serviceTelephone);
 		this.setServiceWorkingHours(serviceWorkingHours);
-		this.setServiceDeliveryLocations(new ArrayList<>());
+		this.setServiceDeliveryLocations(serviceDeliveryLocations);
 	}
 
 	public List<Menu> getServiceMenusOffered() {

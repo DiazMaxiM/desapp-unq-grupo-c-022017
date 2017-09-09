@@ -10,6 +10,8 @@ import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
 import exception.PendingScoreException;
+import orderExceptions.InvalidDeliveryTimeException;
+import serviceException.InvalidDeliveryLocation;
 import validation.SaleValidation;
 
 public class SalesAdministration {
@@ -26,8 +28,8 @@ public class SalesAdministration {
 		this.validator= new SaleValidation(scoringManager);
 
 	}
-	
-    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException{
+	 
+    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException{
     	 if(validator.isValidSale(order)){
     		 forSale(order); 
     	 }

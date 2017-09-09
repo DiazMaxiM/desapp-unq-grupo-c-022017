@@ -29,7 +29,7 @@ public class ClientBuilder {
 	
 	public User build() {
 		return this.client;
-	}
+	} 
 
 	public void setName(String name) {
 		this.client.setName(name);
