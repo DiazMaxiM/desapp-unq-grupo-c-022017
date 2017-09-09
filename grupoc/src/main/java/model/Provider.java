@@ -15,6 +15,7 @@ import userExceptions.InvalidLastNameException;
 public class Provider extends User {
 	private List<Service> servicesOffered = new ArrayList<>();
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
+	private ArrayList<HistoricalOrder> historicalOrders = new ArrayList<HistoricalOrder>();
 
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress)
@@ -22,8 +23,7 @@ public class Provider extends User {
 			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException {
 		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
 
-	}  
-
+	}
 	public void addNewService(Service newService) throws InvalidServiceException {
 		this.servicesOffered.add(newService);
 	}
@@ -58,6 +58,10 @@ public class Provider extends User {
 		int indexServiceToDelete = this.getServicesOffered().indexOf(service);
 		this.getServicesOffered().get(indexServiceToDelete).removeMenuToDelete(menuToDelete);
 
+	}
+
+	public void addHistoricalOrder(HistoricalOrder historicalOrder) {
+		this.historicalOrders.add(historicalOrder);
 	}
 
 }
