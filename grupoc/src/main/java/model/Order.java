@@ -12,66 +12,71 @@ import orderExceptions.InvalidTypeOfDeliveryException;
 import validation.OrderValidation;
 
 public class Order {
-	  private TypeStatusOrder  typeStatusOrder;
-      private Menu menuToOrder;
-      private Integer numberOfMenusToOrder;
-      private TypeOfDelivery typeOfDelivery;
-      private DateTime dateOfDelivery;
-      private String deliveryTime;
-      private User   client; 
-      private Provider provider;
-      private Transaction transactionClient;
-      private Transaction transactionProvider;
-      private OrderValidation validator= new OrderValidation();
-      
-    public Order(Menu menuToOrder,Integer numberOfMenusToOrder,
-    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,
-    		     String deliveryTime,User client,Provider provider) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException{
-    	if(validator.isValidOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime,client,provider)){
-    		createOrder(menuToOrder,numberOfMenusToOrder,typeOfDelivery,dateOfDelivery,deliveryTime,client,provider);
-    	}
-    }
-    
-    public void createOrder(Menu menuToOrder,Integer numberOfMenusToOrder,
-    		     TypeOfDelivery typeOfDelivery,DateTime dateOfDelivery,String deliveryTime,User client,Provider provider){
-    	setMenuToOrder(menuToOrder);
-    	setNumberOfMenusToOrder(numberOfMenusToOrder);
-    	setTypeOfDelivery(typeOfDelivery);
-    	setDateOfDelivery(dateOfDelivery);
-    	setDeliveryTime(deliveryTime);
-    	setClient(client);
-    	setProvider(provider);
-    	
-    }
+	private TypeStatusOrder typeStatusOrder;
+	private Menu menuToOrder;
+	private Integer numberOfMenusToOrder;
+	private TypeOfDelivery typeOfDelivery;
+	private DateTime dateOfDelivery;
+	private TimeZone deliveryTime;
+	private User client;
+	private Provider provider;
+	private Transaction transactionClient;
+	private Transaction transactionProvider;
+	private OrderValidation validator = new OrderValidation();
+	private DateTime dateOfOrder = new DateTime();
+
+	public Order(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery, DateTime dateOfDelivery,
+			TimeZone deliveryTime, User client, Provider provider) throws InvalidMenuException,
+			InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException,
+			InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException {
+		if (validator.isValidOrder(menuToOrder, numberOfMenusToOrder, typeOfDelivery, dateOfDelivery, deliveryTime,
+				client, provider)) {
+			createOrder(menuToOrder, numberOfMenusToOrder, typeOfDelivery, dateOfDelivery, deliveryTime, client,
+					provider);
+		}
+	}
+
+	public void createOrder(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery,
+			DateTime dateOfDelivery, TimeZone deliveryTime, User client, Provider provider) {
+		setMenuToOrder(menuToOrder);
+		setNumberOfMenusToOrder(numberOfMenusToOrder);
+		setTypeOfDelivery(typeOfDelivery);
+		setDateOfDelivery(dateOfDelivery);
+		setDeliveryTime(deliveryTime);
+		setClient(client);
+		setProvider(provider);
+	}
+
 	public Menu getMenuToOrder() {
 		return menuToOrder;
 	}
+
 	public void setMenuToOrder(Menu menuToOrder) {
 		this.menuToOrder = menuToOrder;
 	}
+
 	public Integer getNumberOfMenusToOrder() {
 		return numberOfMenusToOrder;
 	}
+
 	public void setNumberOfMenusToOrder(Integer numberOfMenusToOrder) {
 		this.numberOfMenusToOrder = numberOfMenusToOrder;
 	}
+
 	public TypeOfDelivery getTypeOfDelivery() {
 		return typeOfDelivery;
 	}
+
 	public void setTypeOfDelivery(TypeOfDelivery typeOfDelivery) {
 		this.typeOfDelivery = typeOfDelivery;
 	}
+
 	public DateTime getDateOfDelivery() {
 		return dateOfDelivery;
 	}
+
 	public void setDateOfDelivery(DateTime dateOfDelivery) {
 		this.dateOfDelivery = dateOfDelivery;
-	}
-	public String getDeliveryTime() {
-		return deliveryTime;
-	}
-	public void setDeliveryTime(String deliveryTime) {
-		this.deliveryTime = deliveryTime;
 	}
 
 	public TypeStatusOrder getTypeStatusOrder() {
@@ -113,6 +118,21 @@ public class Order {
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
-      
-      
+
+	public TimeZone getDeliveryTime() {
+		return deliveryTime;
+	}
+
+	public void setDeliveryTime(TimeZone deliveryTime) {
+		this.deliveryTime = deliveryTime;
+	}
+
+	public DateTime getDateOfOrder() {
+		return dateOfOrder;
+	}
+
+	public void setDateOfOrder(DateTime dateOfOrder) {
+		this.dateOfOrder = dateOfOrder;
+	}
+
 }

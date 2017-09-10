@@ -6,8 +6,10 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
+
 import exception.BalanceInsufficient;
 import exception.InvalidPurchaseException;
+import exception.InvalidTimeZoneException;
 import exception.PendingScoreException;
 import validation.SaleValidation;
 
@@ -16,36 +18,36 @@ public class SalesAdministration {
 	MenuManager menuManager;
 	Mail mail;
 	List<Order> ordersToConfirm = new ArrayList<>();
-    SaleValidation validator;
+	SaleValidation validator;
 
 	public SalesAdministration(ScoringManager scoringManager, MenuManager menuManager, Mail mail) {
 		this.scoringManager = scoringManager;
 		this.menuManager = menuManager;
 		this.mail = mail;
-		this.validator= new SaleValidation(scoringManager);
+		this.validator = new SaleValidation(scoringManager);
 
 	}
-	
-    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException{
-    	 if(validator.isValidSale(order)){
-    		 forSale(order); 
-    	 }
-     }
 
+	public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException,
+			EmailException, InvalidTimeZoneException {
+		if (validator.isValidSale(order)) {
+			forSale(order);
+		}
+	}
 
 	private void forSale(Order order) throws BalanceInsufficient, InvalidPurchaseException, EmailException {
 		increaseNumberOfMenuSales(order);
-		createNewScoreOfClient(order);
 		chargeClientMenu(order);
 		payTheProvider(order);
-		//sendEmailClientAndProvider(order);
+		// sendEmailClientAndProvider(order);
 		addOrderToConfirm(order);
+		addOrderAsHistoricalOrder(order);
 	}
 
 	private void sendEmailClientAndProvider(Order order) throws EmailException {
-		 this.mail.sendMailProviderSale(order.getProvider().getEmail());
-		 this.mail.sendMailClientBuy(order.getClient().getEmail());
-		
+		this.mail.sendMailProviderSale(order.getProvider().getEmail());
+		this.mail.sendMailClientBuy(order.getClient().getEmail());
+
 	}
 
 	private void addOrderToConfirm(Order order) {
@@ -53,24 +55,24 @@ public class SalesAdministration {
 	}
 
 	private void payTheProvider(Order order) throws BalanceInsufficient {
-		 Provider provider = order.getProvider();
-		 Double priceToAcredit = calculatePriceToDiscount(order);
-	     Transaction newTransaction= new Transaction(TypeTransaction.CREDIT,priceToAcredit);
-	     provider.getAccount().addTransaction(newTransaction);
-	     order.setTransactionProvider(newTransaction);
+		Provider provider = order.getProvider();
+		Double priceToAcredit = calculatePriceToDiscount(order);
+		Transaction newTransaction = new Transaction(TypeTransaction.CREDIT, priceToAcredit);
+		provider.getAccount().addTransaction(newTransaction);
+		order.setTransactionProvider(newTransaction);
 	}
 
 	private void increaseNumberOfMenuSales(Order order) {
-		menuManager.increaseNumberOfMenuSales(order.getMenuToOrder(),order.getNumberOfMenusToOrder());
+		menuManager.increaseNumberOfMenuSales(order.getMenuToOrder(), order.getNumberOfMenusToOrder());
 
 	}
 
-	private  void chargeClientMenu(Order order) throws BalanceInsufficient, EmailException {
-		Double priceToDiscount= calculatePriceToDiscount(order);
-		Transaction newTransaction= new Transaction(TypeTransaction.DEBIT,priceToDiscount);
+	private void chargeClientMenu(Order order) throws BalanceInsufficient, EmailException {
+		Double priceToDiscount = calculatePriceToDiscount(order);
+		Transaction newTransaction = new Transaction(TypeTransaction.DEBIT, priceToDiscount);
 		newTransaction.setFinish();
 		order.getClient().getAccount().addTransaction(newTransaction);
-		order.setTransactionClient(newTransaction);		
+		order.setTransactionClient(newTransaction);
 	}
 
 	private Double calculatePriceToDiscount(Order order) {
@@ -82,10 +84,10 @@ public class SalesAdministration {
 		return priceToDiscount;
 	}
 
-
-	private void createNewScoreOfClient(Order order) {
-		Score newScore= new Score(order.getProvider(),order.getClient(),order.getMenuToOrder());
+	private Score createNewScoreOfClient(Order order) {
+		Score newScore = new Score(order.getProvider(), order.getClient(), order.getMenuToOrder());
 		this.scoringManager.addScore(newScore);
+		return newScore;
 	}
 
 	public List<Order> getSalesForDay(DateTime day) {
@@ -94,6 +96,13 @@ public class SalesAdministration {
 						&& order.getDateOfDelivery().getMonthOfYear() == day.getMonthOfYear()
 						&& order.getDateOfDelivery().getDayOfYear() == day.getDayOfYear())
 				.collect(Collectors.toList());
+	}
+
+	public void addOrderAsHistoricalOrder(Order order) {
+		order.getProvider()
+				.addHistoricalOrder(new HistoricalOrder(this.createNewScoreOfClient(order), order.getDateOfDelivery(),
+						order.getTypeStatusOrder(), order.getMenuToOrder(), calculatePriceToDiscount(order),
+						order.getDateOfOrder(), order.getTypeOfDelivery()));
 	}
 
 }

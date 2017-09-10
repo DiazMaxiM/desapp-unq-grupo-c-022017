@@ -19,5 +19,5 @@ public abstract class SortingMenuCriteria {
 
 	public abstract ArrayList<Menu> orderMenu();
 
-	public abstract ArrayList<Menu> menusToOrder();
+	public abstract Object menusToOrder();
 }

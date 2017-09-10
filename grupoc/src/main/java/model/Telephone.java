@@ -15,6 +15,7 @@ public class Telephone {
 	private String areaCode;
 	private String localNumber;
 	private List<String> areasCode = this.areasCode();
+	@SuppressWarnings("unused")
 	private Validation validator = new Validation();
 
 	public Telephone(String countryCode, String areaCode, String localNumber)

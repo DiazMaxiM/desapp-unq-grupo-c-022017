@@ -7,6 +7,7 @@ import exception.InvalidMenuException;
 import exception.InvalidProviderException;
 import model.Menu;
 import model.Provider;
+import model.TimeZone;
 import model.TypeOfDelivery;
 import model.User;
 import orderExceptions.InvalidDateOfDeliveryException;
@@ -17,7 +18,7 @@ import orderExceptions.InvalidTypeOfDeliveryException;
 public class OrderValidation extends Validation{
 
 	public boolean isValidOrder(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery,
-			DateTime dateOfDelivery, String deliveryTime,
+			DateTime dateOfDelivery, TimeZone deliveryTime,
 			User client, Provider provider) throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException {
 	    return isValidMenu(menuToOrder)
 	    	   && isValidNumberOfMenusToOrder(numberOfMenusToOrder)
@@ -28,8 +29,8 @@ public class OrderValidation extends Validation{
 	           && isValidProvider(provider);
 	}
 
-	private boolean isValidDeliveryTime(String deliveryTime) throws InvalidDeliveryTimeException {
-		if(!isValidString(deliveryTime)){
+	private boolean isValidDeliveryTime(TimeZone deliveryTime) throws InvalidDeliveryTimeException {
+		if(deliveryTime==null){
 			throw new InvalidDeliveryTimeException("Ingrese la hora de entrega");
 		}
 		return true;
