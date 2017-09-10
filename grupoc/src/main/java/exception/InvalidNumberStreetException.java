@@ -1,10 +1,8 @@
 package exception;
 
-import org.omg.CORBA.UserException;
-
-public class InvalidNumberStreetException extends UserException {
-
-	private static final long serialVersionUID = 4174085320665029046L;
+public class InvalidNumberStreetException extends Exception {
+	
+	private static final long serialVersionUID = 1L;
 
 	public InvalidNumberStreetException(String message) {
 		super(message);

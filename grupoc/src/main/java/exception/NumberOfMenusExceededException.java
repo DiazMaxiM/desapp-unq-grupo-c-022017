@@ -1,8 +1,6 @@
 package exception;
 
-import org.omg.CORBA.UserException;
-
-public class NumberOfMenusExceededException extends UserException {
+public class NumberOfMenusExceededException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
