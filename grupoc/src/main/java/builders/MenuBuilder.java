@@ -27,6 +27,7 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
 import model.Menu;
@@ -41,6 +42,7 @@ import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 import validation.InvalidFormatTimeZoneException;
+import validation.InvalidMenuPriceException;
 
 public class MenuBuilder {
 
@@ -64,7 +66,7 @@ public class MenuBuilder {
 	private Integer averageDeliveryTimeOfMenu = 30;
 	private Price menuPrice = new Price(moneyArg, new Double(40));
 	private Integer firstMinimumNumberOfMenusToBuy = 10;
-	private Price firstminimumPriceOfMenusToBuy = new Price(moneyArg, new Double(40));
+	private Price firstminimumPriceOfMenusToBuy = new Price(moneyArg, new Double(30));
 	private Integer secondMinimumNumberOfMenusToBuy = 50;
 	private Price secondMinimumPriceOfMenusToBuy = new Price(moneyArg, new Double(25));;
 	private Integer maximumNumberOfMunusSalesPerDay = 100;
@@ -75,7 +77,7 @@ public class MenuBuilder {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay {
+			InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 		return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
 				endDateOfferMenu, deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice,
 				firstMinimumNumberOfMenusToBuy, firstminimumPriceOfMenusToBuy, secondMinimumNumberOfMenusToBuy,
@@ -140,7 +142,7 @@ public class MenuBuilder {
 	}
 
 	public MenuBuilder withFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) {
-		Price price = new Price(moneyArg, new Double(firstminimumPriceOfMenusToBuy));
+		Price price = new Price(moneyArg,firstminimumPriceOfMenusToBuy);
 		this.firstminimumPriceOfMenusToBuy = price;
 		return this;
 	}
@@ -151,7 +153,7 @@ public class MenuBuilder {
 	}
 
 	public MenuBuilder withSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
-		Price price = new Price(moneyArg, new Double(secondMinimumPriceOfMenusToBuy));
+		Price price = new Price(moneyArg,secondMinimumPriceOfMenusToBuy);
 		this.secondMinimumPriceOfMenusToBuy = price;
 		return this;
 	}
@@ -161,8 +163,8 @@ public class MenuBuilder {
 		return this;
 	}
 
-	public MenuBuilder withMenuPrice(int price) {
-		this.menuPrice = new Price(moneyArg, new Double(price));
+	public MenuBuilder withMenuPrice(Double price) {
+		this.menuPrice = new Price(moneyArg,price);
 		return this;
 	}
 

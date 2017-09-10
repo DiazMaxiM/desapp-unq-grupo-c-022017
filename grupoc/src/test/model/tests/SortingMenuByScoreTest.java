@@ -32,6 +32,7 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.MenuManager;
@@ -45,6 +46,7 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 import sortingMenus.SortingMenuByScore;
 import validation.InvalidFormatTimeZoneException;
+import validation.InvalidMenuPriceException;
 
 public class SortingMenuByScoreTest {
 
@@ -59,7 +61,7 @@ public class SortingMenuByScoreTest {
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidTelephoneNumberException, InvalidValueScoreException, InvalidTimeZoneException,
-			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		ScoringManager scoringManager = new ScoringManager();
 
 		Menu menu = Mockito.mock(Menu.class);

@@ -32,6 +32,7 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.Provider;
@@ -46,6 +47,7 @@ import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import validation.InvalidFormatTimeZoneException;
+import validation.InvalidMenuPriceException;
 
 public class ProviderTest {
 
@@ -91,7 +93,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay,InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -114,7 +116,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay,InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);
@@ -145,7 +147,7 @@ public class ProviderTest {
 			InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMunusSalesPerDay,InvalidEndDateOfferMenuException,
-			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidAverageDeliveryTimeOfMenuException, NumberOfMenusExceededException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		Provider provider = new ProviderBuilder().build();
 		Service service = new ServiceBuilder().build();
 		provider.addNewService(service);

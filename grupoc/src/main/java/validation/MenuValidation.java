@@ -12,6 +12,7 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
 import model.Price;
@@ -23,7 +24,7 @@ public class MenuValidation extends Validation{
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
 			Integer firstMinimumNumberOfMenusToBuy, Price firstminimumPriceOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
-			Integer maximumNumberOfMunusSalesPerDay, Service service) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay {
+			Integer maximumNumberOfMunusSalesPerDay, Service service,Price menuPrice) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 		
 		return isValidMenuName(menuName)
 			   && isValidMenuDescription(menuDescription)
@@ -32,14 +33,54 @@ public class MenuValidation extends Validation{
 			   && isValidStartDateOfferMenu(startDateOfferMenu)
 			   && isValidEndDateOfferMenu(endDateOfferMenu)
 			   && isValidAverageDeliveryTimeOfMenu(averageDeliveryTimeOfMenu)
-			   && isValidFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy)
-			   && isValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy)
-			   && isValidSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy)
-			   && isValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy)
+			   && isHasAValidMinimumNumber(firstMinimumNumberOfMenusToBuy,secondMinimumNumberOfMenusToBuy)
+			   && isHasAValidPrices(firstminimumPriceOfMenusToBuy,secondMinimumPriceOfMenusToBuy,menuPrice)
 		       && isValidMaximumNumberOfMunusSalesPerDay(maximumNumberOfMunusSalesPerDay)
 		       && isValidService(service);
 	}
 	
+	private boolean isHasAValidPrices(Price firstminimumPriceOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
+			Price menuPrice) throws InvalidMinimumPriceOfMenusToBuyException, InvalidPricesException, InvalidMenuPriceException {
+		return isValidMenuPrice(menuPrice)
+			   && isValidFirstMinimumPriceOfMenusToBuy(firstminimumPriceOfMenusToBuy)
+			   && isValidSecondMinimumPriceOfMenusToBuy(secondMinimumPriceOfMenusToBuy)
+			   && isValidPrices(firstminimumPriceOfMenusToBuy,
+					            secondMinimumPriceOfMenusToBuy,
+					            menuPrice);		   
+		
+	}
+
+	private boolean isValidPrices(Price firstminimumPriceOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
+			Price menuPrice) throws InvalidPricesException {
+		if(!(firstminimumPriceOfMenusToBuy.getValue() < menuPrice.getValue()
+		   && secondMinimumPriceOfMenusToBuy.getValue() < firstminimumPriceOfMenusToBuy.getValue())){
+			throw new InvalidPricesException("El precio *Min2 debe ser menor que *Min1 y este debe ser menor a Precio");
+		}
+		return true;
+	}
+
+	private boolean isValidMenuPrice(Price menuPrice) throws InvalidMenuPriceException {
+		if(menuPrice.getValue() == null){
+			throw new InvalidMenuPriceException("Debe ingresar el precio del menu");
+		}
+		return true;
+	}
+
+	private boolean isHasAValidMinimumNumber(Integer firstMinimumNumberOfMenusToBuy,
+			Integer secondMinimumNumberOfMenusToBuy) throws InvalidMinimumNumberOfMenusToBuyException {
+		   return isValidFirstMinimumNumberOfMenusToBuy(firstMinimumNumberOfMenusToBuy)
+		         && isValidSecondMinimumNumberOfMenusToBuy(secondMinimumNumberOfMenusToBuy)
+			     && isMinimalExclusions(firstMinimumNumberOfMenusToBuy,secondMinimumNumberOfMenusToBuy);
+	}
+
+	private boolean isMinimalExclusions(Integer firstMinimumNumberOfMenusToBuy,
+			Integer secondMinimumNumberOfMenusToBuy) throws InvalidMinimumNumberOfMenusToBuyException {
+		  if(firstMinimumNumberOfMenusToBuy >= secondMinimumNumberOfMenusToBuy){
+			 throw new InvalidMinimumNumberOfMenusToBuyException("Las cantidades minimas deberán ser  mutuamente excluyentes");
+		}
+		return true;
+	}
+
 	private boolean isValidMenuDeliveryPrice(Price menuDeliveryPrice) throws InvalidMenuDeliveryPriceException{
 		if(isValidDoubleNumber(menuDeliveryPrice.getValue())){
 			return isHasValidDeliveryPrice(menuDeliveryPrice.getValue());

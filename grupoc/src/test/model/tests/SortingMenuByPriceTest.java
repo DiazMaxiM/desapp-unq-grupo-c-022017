@@ -30,6 +30,7 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.MenuManager;
@@ -40,6 +41,7 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 import sortingMenus.SortingMenuByPrice;
 import validation.InvalidFormatTimeZoneException;
+import validation.InvalidMenuPriceException;
 
 public class SortingMenuByPriceTest {
 
@@ -62,12 +64,28 @@ public class SortingMenuByPriceTest {
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		MenuManager menuManager = new MenuManager();
-		Menu menu = new MenuBuilder().withMenuPrice(120).build();
-		Menu menu2 = new MenuBuilder().withMenuPrice(50).build();
-		Menu menu3 = new MenuBuilder().withMenuPrice(1).build();
-		Menu menu4 = new MenuBuilder().withMenuPrice(30).build();
+		Menu menu =  new MenuBuilder()
+				    .withMenuPrice(new Double(120))
+				    .withFirstMinimumPriceOfMenusToBuy(new Double (80))
+				    .withSecondMinimumPriceOfMenusToBuy(new Double(60))
+				    .build();
+		Menu menu2 = new MenuBuilder()
+				    .withMenuPrice(new Double(80))
+				    .withFirstMinimumPriceOfMenusToBuy(new Double (40))
+				    .withSecondMinimumPriceOfMenusToBuy(new Double(30))
+				    .build();
+		Menu menu3 = new MenuBuilder()
+				    .withMenuPrice( new Double(10))
+				    .withFirstMinimumPriceOfMenusToBuy(new Double (8))
+					.withSecondMinimumPriceOfMenusToBuy(new Double(5))
+				    .build();
+		Menu menu4 = new MenuBuilder()
+				    .withMenuPrice(new Double(30))
+				    .withFirstMinimumPriceOfMenusToBuy(new Double (20))
+					.withSecondMinimumPriceOfMenusToBuy(new Double(10))
+				    .build();
 
 		menuManager.addMenuToMenusOffered(menu);
 		menuManager.addMenuToMenusOffered(menu2);

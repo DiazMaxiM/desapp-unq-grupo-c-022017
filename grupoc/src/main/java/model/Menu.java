@@ -14,7 +14,9 @@ import menuExceptions.InvalidMenuDescriptionException;
 import menuExceptions.InvalidMenuNameException;
 import menuExceptions.InvalidMinimumNumberOfMenusToBuyException;
 import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
+import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
+import validation.InvalidMenuPriceException;
 import validation.MenuValidation;
 
 public class Menu {
@@ -33,7 +35,7 @@ public class Menu {
 	private Price secondMinimumPriceOfMenusToBuy;
 	private Integer maximumNumberOfMenusSalesPerDay;
 	private Integer numberOfMenuSale = 0;
-	private Service service;
+	private Service service; 
 	private TypeStatusMenu status = TypeStatusMenu.ENABLED;
 	private MenuValidation validator = new MenuValidation();
 
@@ -46,12 +48,12 @@ public class Menu {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay {
+			InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 
 		if (validator.isAValidMenu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
 				endDateOfferMenu, averageDeliveryTimeOfMenu, firstMinimumNumberOfMenusToBuy,
 				firstminimumPriceOfMenusToBuy, secondMinimumNumberOfMenusToBuy, secondMinimumPriceOfMenusToBuy,
-				maximumNumberOfMunusSalesPerDay, service)) {
+				maximumNumberOfMunusSalesPerDay, service,menuPrice)) {
 
 			createMenu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu, endDateOfferMenu,
 					deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice, firstMinimumNumberOfMenusToBuy,
