@@ -1,5 +1,6 @@
 package validation;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,23 +12,27 @@ import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
 import exception.NumberOfMenusExceededException;
 import exception.PendingScoreException;
+import model.HolidaysChecker;
 import model.Locality;
 import model.Order;
 import model.ScoringManager;
 import model.TimeZone;
 import model.TypeOfDelivery;
 import model.User;
+import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
 import serviceException.InvalidDeliveryLocation;
 
 public class SaleValidation extends Validation{
     
     ScoringManager scoringManager;
+    HolidaysChecker holidayChecker = new HolidaysChecker();
+    
 	public SaleValidation(ScoringManager scoringManager){
 		this.scoringManager= scoringManager;
 		 
 	}
-	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException {
+	public boolean isValidSale(Order order) throws BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException, IOException, InvalidDateOfDeliveryException {
 		return isNotHasPendingScoreForClient(order.getClient())
 			   && isHasClientBalanceToBuy(order)
 			   && isTheSaleWithinDeliveryLocationsAndTimes(order)
@@ -66,16 +71,25 @@ public class SaleValidation extends Validation{
 		}
 		return true ;
 	}
-	private boolean isTheSaleWithinTheWorkingHoursofTheService(Order order) throws InvalidPurchaseException, InvalidTimeZoneException {
+	private boolean isTheSaleWithinTheWorkingHoursofTheService(Order order) throws InvalidPurchaseException, InvalidTimeZoneException, IOException, InvalidDateOfDeliveryException {
 		Integer dayOfWeek = order.getDateOfDelivery().getDayOfWeek();
 		HashMap<Integer,List<TimeZone>> workingsHours = order.getMenuToOrder().getService().getServiceWorkingHours();		
 		if(!(isThePurchaseMadeWithinOneBusinessDay(workingsHours,dayOfWeek)
+			 && isTheDeliveryDateIsNotMadeOnHoliday(order.getDateOfDelivery())
 			 && isThePurchaseWithinTheWorkingHoursOfBusinessDay(workingsHours,dayOfWeek, order.getDeliveryTime()))){
 			throw new InvalidPurchaseException("La compra debe ser dentro de los dias y horarios laborales");
 		}	
 		return true;		
 	}
 	
+	private boolean isTheDeliveryDateIsNotMadeOnHoliday(DateTime dateOfDelivery) throws IOException, InvalidDateOfDeliveryException {
+		 if (holidayChecker.isHolidays(dateOfDelivery)){
+			 throw new InvalidDateOfDeliveryException("No se realizan ventas los dias feriados");
+		 }
+			 			 
+		return true;
+			
+	}
 	private boolean isThePurchaseWithinTheWorkingHoursOfBusinessDay(HashMap<Integer, List<TimeZone>> workingsHours,
 			Integer dayOfWeek,TimeZone deliveryTimeOfClientWantsTheOrder) throws InvalidTimeZoneException {
 		boolean isInTimeWorking = false;

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +13,7 @@ import exception.InvalidPurchaseException;
 import exception.InvalidTimeZoneException;
 import exception.NumberOfMenusExceededException;
 import exception.PendingScoreException;
+import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
 import serviceException.InvalidDeliveryLocation;
 import validation.SaleValidation;
@@ -31,7 +33,7 @@ public class SalesAdministration {
 
 	}
 	
-    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException{
+    public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException, IOException, InvalidDateOfDeliveryException{
     	 if(validator.isValidSale(order)){
     		 forSale(order); 
     	 }

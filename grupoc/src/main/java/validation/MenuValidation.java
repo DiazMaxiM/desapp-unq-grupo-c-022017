@@ -15,6 +15,7 @@ import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
+import model.HolidaysChecker;
 import model.Price;
 import model.Service;
 
