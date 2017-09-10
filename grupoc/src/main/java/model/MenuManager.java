@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+
 import sortingMenus.SortingMenuCriteria;
 
 public class MenuManager {
@@ -13,9 +16,10 @@ public class MenuManager {
 	}
 
 	public ArrayList<Menu> getAllMenusOffered() {
-		return menusOffered;
+		checkCurrentMenusOffered();
+		return getMenusCurrents();
 	}
-
+  
 	public void addMenu(Menu menu) {
 		menusOffered.add(menu);
 	}
@@ -39,6 +43,28 @@ public class MenuManager {
 
 	public void setScoringManager(ScoringManager scoringManager) {
 		this.scoringManager = scoringManager;
+	}
+    
+    private void checkCurrentMenusOffered() {
+		this.menusOffered.forEach(menu -> checkCurrent(menu));
+		
+	}
+
+	private void checkCurrent(Menu menu) {
+		LocalDate today = new DateTime().toLocalDate();
+		if(menu.getEndDateOfferMenu().toLocalDate().isBefore(today)){
+		    menu.disabled();		
+		}
+	}
+	
+	private ArrayList<Menu> getMenusCurrents() {
+		ArrayList<Menu> menusCurrents = new ArrayList<Menu>();
+		for (Menu menu : this.menusOffered) {
+			if (menu.getStatus().equals(TypeStatusMenu.ENABLED)){
+				menusCurrents.add(menu);
+			}
+		}
+		return menusCurrents;
 	}
 
 }

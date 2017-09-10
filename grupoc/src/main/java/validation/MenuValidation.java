@@ -1,6 +1,7 @@
 package validation;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
@@ -15,7 +16,6 @@ import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Category;
-import model.HolidaysChecker;
 import model.Price;
 import model.Service;
 
@@ -31,8 +31,7 @@ public class MenuValidation extends Validation{
 			   && isValidMenuDescription(menuDescription)
 			   && isValidCategory(menuCategory)
 			   && isValidMenuDeliveryPrice(menuDeliveryPrice)
-			   && isValidStartDateOfferMenu(startDateOfferMenu)
-			   && isValidEndDateOfferMenu(endDateOfferMenu)
+			   && isHasValidStrarAndEndDatesCurrent(startDateOfferMenu,endDateOfferMenu)
 			   && isValidAverageDeliveryTimeOfMenu(averageDeliveryTimeOfMenu)
 			   && isHasAValidMinimumNumber(firstMinimumNumberOfMenusToBuy,secondMinimumNumberOfMenusToBuy)
 			   && isHasAValidPrices(firstminimumPriceOfMenusToBuy,secondMinimumPriceOfMenusToBuy,menuPrice)
@@ -40,6 +39,11 @@ public class MenuValidation extends Validation{
 		       && isValidService(service);
 	}
 	
+	private boolean isHasValidStrarAndEndDatesCurrent(DateTime startDateOfferMenu, DateTime endDateOfferMenu) throws InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException {
+		return isValidStartDateOfferMenu(startDateOfferMenu)
+			  && isValidEndDateOfferMenu(endDateOfferMenu,startDateOfferMenu);
+	}
+
 	private boolean isHasAValidPrices(Price firstminimumPriceOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
 			Price menuPrice) throws InvalidMinimumPriceOfMenusToBuyException, InvalidPricesException, InvalidMenuPriceException {
 		return isValidMenuPrice(menuPrice)
@@ -188,18 +192,30 @@ public class MenuValidation extends Validation{
 		return true;
 	}
 
-	private boolean isValidEndDateOfferMenu(DateTime endDateOfferMenu) throws InvalidEndDateOfferMenuException {
-		if(!isValidDate(endDateOfferMenu)){
+	private boolean isValidEndDateOfferMenu(DateTime endDateOfferMenu,DateTime startDateOfferMenu) throws InvalidEndDateOfferMenuException {
+		if(!isValidDate(endDateOfferMenu) || !isValidEndDate(endDateOfferMenu, startDateOfferMenu)){
 			throw new InvalidEndDateOfferMenuException("La fecha de fin no es valida");
 		}
 		return true;
 	}
 
+	private boolean isValidEndDate(DateTime endDateOfferMenu, DateTime startDateOfferMenu) {
+		return endDateOfferMenu.toLocalDate().isEqual(startDateOfferMenu.toLocalDate()) 
+				|| endDateOfferMenu.toLocalDate().isAfter(startDateOfferMenu.toLocalDate());
+	}
+
 	private boolean isValidStartDateOfferMenu(DateTime startDateOfferMenu) throws InvalidStartDateOfferMenuException {
-		if(!isValidDate(startDateOfferMenu)){
+		if(!isValidDate(startDateOfferMenu) || ! isValidStartDate(startDateOfferMenu)){
 			throw new InvalidStartDateOfferMenuException("La fecha ingresada no es valida");
 		}
 		return true;
+	}
+
+
+	private boolean isValidStartDate(DateTime startDateOfferMenu) {
+		LocalDate today = new DateTime().toLocalDate();
+		return  startDateOfferMenu.toLocalDate().isEqual(today)
+				|| startDateOfferMenu.toLocalDate().isAfter(today);
 	}
 
 	private boolean isValidMenuDescription(String menuDescription) throws InvalidMenuDescriptionException {

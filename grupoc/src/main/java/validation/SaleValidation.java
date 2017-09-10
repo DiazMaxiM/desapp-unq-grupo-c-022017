@@ -40,7 +40,7 @@ public class SaleValidation extends Validation{
 		       && isTheSaleOfTheMenuWithinTheLimitOfPurchase(order)
 		       && isWithinTheMaximumAmountOfMenuSales(order);
 	}   
- 
+  
 	private boolean isTheSaleWithinDeliveryLocationsAndTimes(Order order) throws InvalidPurchaseException, InvalidDeliveryLocation, InvalidDeliveryTimeException, InvalidTimeZoneException{
 	   if(order.getTypeOfDelivery().equals(TypeOfDelivery.HOMEDELIVERY)){
 		   return isWithinDeliveryLocations(order)

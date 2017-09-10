@@ -38,6 +38,8 @@ import validation.InvalidMenuPriceException;
 import validation.MenuValidation;
 
 import static org.junit.Assert.*;
+
+import org.joda.time.DateTime;
 public class MenuTest {
 
 	@Test()
@@ -143,7 +145,43 @@ public class MenuTest {
 			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		new MenuBuilder().withStartDateOfferMenu(null).build();
 	}
+	
+	@Test(expected = InvalidStartDateOfferMenuException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithStartDateOfferMenuBeforeToday() throws InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidAverageDeliveryTimeOfMenuException,
+			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
+			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
+		
+		DateTime startDate = new DateTime(2017,9,6,0,0);
+		new MenuBuilder().withStartDateOfferMenu(startDate).build();
+	}
 
+	@Test(expected = InvalidEndDateOfferMenuException.class)
+	public void testShouldFailWhenICreateAnInvalidMenuWithEndDateOfferMenuBeforeStartDate() throws InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidAverageDeliveryTimeOfMenuException,
+			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
+			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+		    InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
+		
+		DateTime startDate = new DateTime(2017,9,10,0,0);
+		DateTime endDate = new DateTime(2017,9,6,0,0);
+		new MenuBuilder()
+		.withStartDateOfferMenu(startDate)
+		.withEndDateOfferMenu(endDate)               
+		.build();
+	}
+	
 	@Test(expected = InvalidEndDateOfferMenuException.class)
 	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidEndDateOfferMenu() throws InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException,
