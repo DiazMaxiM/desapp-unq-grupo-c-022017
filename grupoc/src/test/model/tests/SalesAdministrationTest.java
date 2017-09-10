@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
+import org.junit.Assert;
 import org.junit.Test;
 import builders.OrderBuilder;
 import exception.BalanceInsufficient;
@@ -79,17 +80,6 @@ public class SalesAdministrationTest {
 			
 	}
 	
-	@Test(expected = BalanceInsufficient.class)
-	public void testShouldFailWhenAClienthasInsufficientBalance() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
-		Mail mail= new Mail().getInstance();
-		Order   order   = new OrderBuilder().build();
-		MenuManager menuManager= new MenuManager();
-		menuManager.addMenu(order.getMenuToOrder());
-		ScoringManager scoringManager = new ScoringManager();
-		SalesAdministration salesAdministration= new SalesAdministration(scoringManager,menuManager,mail);
-		salesAdministration.saleMenu(order);		
-	}
-	
 	@Test(expected=InvalidPurchaseException.class)
 	public void testShouldFailWhenAClientWantsBuyAMenuThatIsOutOf48hours() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
 		Mail mail= new Mail().getInstance();
@@ -123,19 +113,55 @@ public class SalesAdministrationTest {
 	}
 	
 	@Test()
-	public void testShoulPassWhenAClientMakesAValidPurchase() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
-		
+	public void testTheBalanceOfCustumerWith100PesosMustBe60PesosWhenBuyAMenuOf40PesosWithLocalDelivery()throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
 		Mail mail= new Mail().getInstance();
 		Order   order   = new OrderBuilder()
-				          .build();				      
-		Transaction transaction= new Transaction(TypeTransaction.CREDIT,new Double(500));
+				          .build();			
+		Transaction transaction= new Transaction(TypeTransaction.CREDIT,new Double(100));
 		order.getClient().getAccount().addTransaction(transaction);
 		MenuManager menuManager= new MenuManager();
 		menuManager.addMenu(order.getMenuToOrder());
 		ScoringManager scoringManager = new ScoringManager();
 		SalesAdministration salesAdministration= new SalesAdministration(scoringManager,menuManager,mail);
 		salesAdministration.saleMenu(order);
+		Assert.assertEquals(new Double(60),order.getClient().getAccount().balance());
 	}
+	
+	@Test()
+	public void testTheBalanceOfCustumerWith100PesosMustBe5PesosWhenBuy2MenusOf40PesosWithHomeDelivery()throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
+		Mail mail= new Mail().getInstance();
+		Order   order   = new OrderBuilder()
+				          .withNumberOfMenusToOrder(2)
+				          .withTypeOfDelivery(TypeOfDelivery.HOMEDELIVERY)
+				          .build();
+		order.getClient().getAddress().setLocality(Locality.FLORENCIOVARELA);
+		Transaction transaction= new Transaction(TypeTransaction.CREDIT,new Double(100));
+		order.getClient().getAccount().addTransaction(transaction);
+		MenuManager menuManager= new MenuManager();
+		menuManager.addMenu(order.getMenuToOrder());
+		ScoringManager scoringManager = new ScoringManager();
+		SalesAdministration salesAdministration= new SalesAdministration(scoringManager,menuManager,mail);
+		salesAdministration.saleMenu(order);
+		Assert.assertEquals(new Double(5),order.getClient().getAccount().balance());
+	}
+	
+	@Test(expected = BalanceInsufficient.class)
+	public void testShouldFailWhenIClientWantsBuy3MenusOf40Pesos()throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
+		Mail mail= new Mail().getInstance();
+		Order   order   = new OrderBuilder()
+				          .withNumberOfMenusToOrder(3)
+				          .build();
+		order.getClient().getAddress().setLocality(Locality.FLORENCIOVARELA);
+		Transaction transaction= new Transaction(TypeTransaction.CREDIT,new Double(100));
+		order.getClient().getAccount().addTransaction(transaction);
+		MenuManager menuManager= new MenuManager();
+		menuManager.addMenu(order.getMenuToOrder());
+		ScoringManager scoringManager = new ScoringManager();
+		SalesAdministration salesAdministration= new SalesAdministration(scoringManager,menuManager,mail);
+		salesAdministration.saleMenu(order);
+	
+	}
+	
 	
 	@Test(expected=InvalidPurchaseException.class)
 	public void testShouldFailWhenAClientWantsBuyAMenuIsOutOfDayWorkingOfTheService()throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
@@ -185,7 +211,7 @@ public class SalesAdministrationTest {
 		SalesAdministration salesAdministration= new SalesAdministration(scoringManager,menuManager,mail);
 		salesAdministration.saleMenu(order);			
 	}
-	
+	 
 	@Test(expected=InvalidPurchaseException.class)
 	public void testShouldFailWhenAClientWantsBuyAMenuIsOutOfTimeWorkingOfTheService()throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, EmailException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException, NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException{
 		Mail mail = new Mail().getInstance(); 

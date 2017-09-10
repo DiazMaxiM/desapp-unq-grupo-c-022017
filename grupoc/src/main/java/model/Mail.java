@@ -39,7 +39,7 @@ public class Mail {
 
 	public void send(String to, String subject, String mensagge) throws EmailException {
 		mail.addTo(to);
-		mail.setSubject(subject);
+		mail.setSubject(subject); 
 		mail.setMsg(mensagge);
 		mail.send(); 
 	}

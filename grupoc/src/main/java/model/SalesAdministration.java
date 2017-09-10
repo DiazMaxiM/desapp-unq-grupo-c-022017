@@ -81,7 +81,7 @@ public class SalesAdministration {
 
 	private Double calculatePriceToDiscount(Order order) {
 		Double priceToDiscount = order.getNumberOfMenusToOrder()
-				* order.getMenuToOrder().getMenuDeliveryPrice().getValue();
+				* order.getMenuToOrder().getMenuPrice().getValue();
 		if (order.getTypeOfDelivery() == TypeOfDelivery.HOMEDELIVERY) {
 			priceToDiscount += order.getMenuToOrder().getMenuDeliveryPrice().getValue();
 		}
