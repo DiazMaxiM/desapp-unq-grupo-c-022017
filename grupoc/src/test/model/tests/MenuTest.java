@@ -18,7 +18,7 @@ import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMaximumNumberOfMenusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
 import menuExceptions.InvalidMenuDescriptionException;
@@ -46,7 +46,7 @@ public class MenuTest {
 			InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -60,6 +60,20 @@ public class MenuTest {
 				                          menu.getSecondMinimumPriceOfMenusToBuy(), menu.getMaximumNumberOfMenusSalesPerDay(), 
 				                          menu.getService(),menu.getMenuPrice()));
 	}
+	
+	@Test(expected = InvalidMaximumNumberOfMenusSalesPerDay.class)
+	public void testShouldFailWhenICreateAnInvalidMaximumNumberOfMenusSalesPerDay() throws InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidAverageDeliveryTimeOfMenuException,
+			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
+			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
+		new MenuBuilder().withMaximumNumberOfMenusSalesPerDay(null).build();
+	}
  
 	@Test(expected = InvalidMenuNameException.class)
 	public void testShouldFailWhenICreateAnInvalidMenuWithAShortName() throws InvalidMenuNameException,
@@ -67,7 +81,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -80,7 +94,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -94,7 +108,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -108,7 +122,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -122,7 +136,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -136,7 +150,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -151,7 +165,7 @@ public class MenuTest {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -166,7 +180,7 @@ public class MenuTest {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -181,7 +195,7 @@ public class MenuTest {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -196,7 +210,7 @@ public class MenuTest {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -211,7 +225,7 @@ public class MenuTest {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
@@ -225,7 +239,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -239,7 +253,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -256,7 +270,7 @@ public class MenuTest {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
@@ -267,14 +281,14 @@ public class MenuTest {
 		   .withSecondMinimumPriceOfMenusToBuy(new Double(30))
 		   .build();
 	}
-	
+	 
 	@Test(expected=InvalidMenuPriceException.class)
 	public void testShouldFailWhenICreateAnInvalidMenuWithInvalidMenuPrice() throws InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException,
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException, InvalidMinimumNumberOfMenusToBuyException,
-			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidAddressException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidAddressException,
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,

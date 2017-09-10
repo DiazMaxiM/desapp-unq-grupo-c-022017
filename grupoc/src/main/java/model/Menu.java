@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMaximumNumberOfMenusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
 import menuExceptions.InvalidMenuDescriptionException;
@@ -48,7 +48,7 @@ public class Menu {
 			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 
 		if (validator.isAValidMenu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
 				endDateOfferMenu, averageDeliveryTimeOfMenu, firstMinimumNumberOfMenusToBuy,

@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMaximumNumberOfMenusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
 import menuExceptions.InvalidMenuDescriptionException;
@@ -24,7 +24,7 @@ public class MenuValidation extends Validation{
 			DateTime startDateOfferMenu, DateTime endDateOfferMenu, Integer averageDeliveryTimeOfMenu,
 			Integer firstMinimumNumberOfMenusToBuy, Price firstminimumPriceOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy, Price secondMinimumPriceOfMenusToBuy,
-			Integer maximumNumberOfMunusSalesPerDay, Service service,Price menuPrice) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
+			Integer maximumNumberOfMunusSalesPerDay, Service service,Price menuPrice) throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidServiceException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 		
 		return isValidMenuName(menuName)
 			   && isValidMenuDescription(menuDescription)
@@ -35,7 +35,7 @@ public class MenuValidation extends Validation{
 			   && isValidAverageDeliveryTimeOfMenu(averageDeliveryTimeOfMenu)
 			   && isHasAValidMinimumNumber(firstMinimumNumberOfMenusToBuy,secondMinimumNumberOfMenusToBuy)
 			   && isHasAValidPrices(firstminimumPriceOfMenusToBuy,secondMinimumPriceOfMenusToBuy,menuPrice)
-		       && isValidMaximumNumberOfMunusSalesPerDay(maximumNumberOfMunusSalesPerDay)
+		       && isValidMaximumNumberOfMenusSalesPerDay(maximumNumberOfMunusSalesPerDay)
 		       && isValidService(service);
 	}
 	
@@ -106,9 +106,9 @@ public class MenuValidation extends Validation{
 		return true;
 	}
 
-	private boolean isValidMaximumNumberOfMunusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) throws InvalidMaximumNumberOfMunusSalesPerDay {
+	private boolean isValidMaximumNumberOfMenusSalesPerDay(Integer maximumNumberOfMunusSalesPerDay) throws InvalidMaximumNumberOfMenusSalesPerDay {
 		if(!isValidIntegerNumber(maximumNumberOfMunusSalesPerDay)){
-			throw new InvalidMaximumNumberOfMunusSalesPerDay("Ingrese la cantidad maxima de ventas de menus por dia");
+			throw new InvalidMaximumNumberOfMenusSalesPerDay("Ingrese la cantidad maxima de ventas de menus por dia");
 		}
 		return true;
 	}

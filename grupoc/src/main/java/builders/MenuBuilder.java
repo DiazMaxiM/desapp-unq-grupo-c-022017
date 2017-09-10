@@ -20,7 +20,7 @@ import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
 import menuExceptions.InvalidEndDateOfferMenuException;
-import menuExceptions.InvalidMaximumNumberOfMunusSalesPerDay;
+import menuExceptions.InvalidMaximumNumberOfMenusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
 import menuExceptions.InvalidMenuDeliveryPriceException;
 import menuExceptions.InvalidMenuDescriptionException;
@@ -77,7 +77,7 @@ public class MenuBuilder {
 			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
 			InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
-			InvalidMaximumNumberOfMunusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
+			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 		return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
 				endDateOfferMenu, deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice,
 				firstMinimumNumberOfMenusToBuy, firstminimumPriceOfMenusToBuy, secondMinimumNumberOfMenusToBuy,
@@ -165,6 +165,11 @@ public class MenuBuilder {
 
 	public MenuBuilder withMenuPrice(Double price) {
 		this.menuPrice = new Price(moneyArg,price);
+		return this;
+	}
+
+	public MenuBuilder withMaximumNumberOfMenusSalesPerDay(Integer maximumNumberOfMenusSalesPerDay) {
+		this.maximumNumberOfMunusSalesPerDay = maximumNumberOfMenusSalesPerDay;
 		return this;
 	}
 
