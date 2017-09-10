@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.joda.time.DateTime;
 
-public class SalesProcessor extends Thread {
+public class SalesProcessor {
 	private SalesAdministration salesAdministration;
 	private Mail mail;
 
@@ -16,7 +16,7 @@ public class SalesProcessor extends Thread {
 	}
 
 	public void run() {
-		DateTime tomorrowDay = DateTime.now().plusDays(1).toDateTime();
+		DateTime tomorrowDay = DateTime.now().toDateTime();
 
 		List<Order> ordersForTomorrow = this.salesAdministration.getSalesForDay(tomorrowDay);
 
