@@ -174,8 +174,8 @@ public class MenuTest {
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
 		    InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
 		
-		DateTime startDate = new DateTime(2017,9,10,0,0);
-		DateTime endDate = new DateTime(2017,9,6,0,0);
+		DateTime startDate = new DateTime().plusDays(1);
+		DateTime endDate = new DateTime().minusDays(1);
 		new MenuBuilder()
 		.withStartDateOfferMenu(startDate)
 		.withEndDateOfferMenu(endDate)               

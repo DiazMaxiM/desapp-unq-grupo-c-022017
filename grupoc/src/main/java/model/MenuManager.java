@@ -55,7 +55,7 @@ public class MenuManager {
 		if(menu.getEndDateOfferMenu().toLocalDate().isBefore(today)){
 		    menu.disabled();		
 		}
-	}
+	} 
 	
 	private ArrayList<Menu> getMenusCurrents() {
 		ArrayList<Menu> menusCurrents = new ArrayList<Menu>();

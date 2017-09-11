@@ -55,7 +55,7 @@ public class OrderBuilder {
 	 private Menu menuToOrder;
      private Integer numberOfMenusToOrder=1;
      private TypeOfDelivery typeOfDelivery= TypeOfDelivery.LOCALDELIVERY;
-     private DateTime dateOfDelivery = new DateTime().plusDays(7);
+     private DateTime dateOfDelivery = new DateTime().plusDays(2);
      private TimeZone deliveryTime;
      private User client;
      private Provider provider;

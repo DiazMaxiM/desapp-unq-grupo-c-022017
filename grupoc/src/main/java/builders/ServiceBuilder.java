@@ -60,6 +60,9 @@ public class ServiceBuilder {
 		List<TimeZone> workingHours = new ArrayList<>();
 		TimeZone lateShift = new TimeZone("17:00","22:30");
 		workingHours.add(lateShift);
+		serviceWorkingHours.put(1, workingHours);
+		serviceWorkingHours.put(2, workingHours);
+		serviceWorkingHours.put(3, workingHours);
 		serviceWorkingHours.put(4, workingHours);
 		serviceWorkingHours.put(5, workingHours);
 		serviceWorkingHours.put(6, workingHours);

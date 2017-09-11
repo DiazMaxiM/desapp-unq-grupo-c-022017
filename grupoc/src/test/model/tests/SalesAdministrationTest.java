@@ -1,5 +1,8 @@
 package tests;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
@@ -44,6 +47,7 @@ import model.Order;
 import model.SalesAdministration;
 import model.Score;
 import model.ScoringManager;
+import model.Service;
 import model.TimeZone;
 import model.Transaction;
 import model.TypeOfDelivery;
@@ -169,6 +173,14 @@ public class SalesAdministrationTest {
 		Order  order   = new OrderBuilder()
 				         .withDateOfDelivery(new DateTime().plusDays(2))
 				         .build();
+		Service service = order.getMenuToOrder().getService();
+		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
+		List<TimeZone> workingHours = new ArrayList<>();
+		TimeZone lateShift = new TimeZone("17:00","22:30");
+		workingHours.add(lateShift);
+		serviceWorkingHours.put(6, workingHours);
+		serviceWorkingHours.put(7, workingHours);
+		service.setServiceWorkingHours(serviceWorkingHours);
 		Transaction transaction= new Transaction(TypeTransaction.CREDIT,new Double(500));
 		order.getClient().getAccount().addTransaction(transaction);
 		MenuManager menuManager= new MenuManager();
