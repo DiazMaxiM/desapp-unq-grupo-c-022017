@@ -1,8 +1,11 @@
 package tests;
 
+import static org.mockito.Mockito.never;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -51,7 +54,7 @@ public class SalesProcessorTest {
 
 		Menu menu2 = Mockito.mock(Menu.class);
 
-		Mockito.when(menu2.getFirstMinimumNumberOfMenusToBuy()).thenReturn(2);
+		Mockito.when(menu2.getFirstMinimumNumberOfMenusToBuy()).thenReturn(1);
 		Mockito.when(menu2.getSecondMinimumNumberOfMenusToBuy()).thenReturn(3);
 		Mockito.when(menu2.getFirstminimumPriceOfMenusToBuy()).thenReturn(priceMinimumMenu1);
 		Mockito.when(menu2.getSecondMinimumPriceOfMenusToBuy()).thenReturn(priceMaximunMenu1);
@@ -83,7 +86,7 @@ public class SalesProcessorTest {
 
 		Mail mail = Mockito.mock(Mail.class);
 		SalesAdministration salesAdministration = Mockito.mock(SalesAdministration.class);
-		// Mockito.when(salesAdministration.getSalesForDay(DateTime.now().)).thenReturn(ordersList);
+		Mockito.when(salesAdministration.getSalesForDay(new DateTime(2017, 9, 11, 0, 0))).thenReturn(ordersList);
 
 		SalesProcessor salesProcessor = new SalesProcessor(salesAdministration, mail);
 
@@ -91,7 +94,11 @@ public class SalesProcessorTest {
 
 		Mockito.verify(TransactionClientOrder1).setValue(2.5);
 		Mockito.verify(TransactionClientOrder2).setValue(2.5);
-		Mockito.verify(TransactionClientOrder3).setValue(2.5);
+		Mockito.verify(TransactionClientOrder4).setValue(2.5);
+		Mockito.verify(TransactionProviderOrder1).setValue(2.5);
+		Mockito.verify(TransactionProviderOrder2).setValue(2.5);
+		Mockito.verify(TransactionProviderOrder4).setValue(2.5);
+		Mockito.verify(TransactionClientOrder3, never()).setValue(6.0);
 
 	}
 

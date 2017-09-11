@@ -16,7 +16,8 @@ public class SalesProcessor {
 	}
 
 	public void run() {
-		DateTime tomorrowDay = DateTime.now().toDateTime();
+		DateTime tomorrowDay = new DateTime(DateTime.now().getYear(), DateTime.now().getMonthOfYear(),
+				DateTime.now().getDayOfMonth(), 0, 0);
 
 		List<Order> ordersForTomorrow = this.salesAdministration.getSalesForDay(tomorrowDay);
 

@@ -11,7 +11,7 @@ import org.joda.time.DateTime;
 
 import com.google.gson.Gson;
 
-public class HolidaysChecker<V> {
+public class HolidaysChecker {
 
 	public Boolean isHolidays(DateTime date) throws IOException {
 
