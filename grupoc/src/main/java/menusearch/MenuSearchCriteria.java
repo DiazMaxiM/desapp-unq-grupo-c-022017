@@ -6,26 +6,39 @@ import java.util.stream.Stream;
 import exception.NoMenusFoundException;
 import model.Menu;
 import model.MenuManager;
+import model.SearchResult;
 
 public abstract class MenuSearchCriteria {
 
 	private MenuManager menuManager;
 	private Object searchCriteria;
 
-	public Menu[] menuSearch() throws NoMenusFoundException {
+	public ArrayList<SearchResult> menuSearch() throws NoMenusFoundException {
+		ArrayList<Menu> menusOrdered = this.orderMenus();
+		ArrayList<SearchResult> searchResult = new ArrayList<SearchResult>();
+		menusOrdered.forEach(menu -> searchResult.add(new SearchResult(menu)));
+
+		return searchResult;
+	}
+
+	public ArrayList<Menu> orderMenus() throws NoMenusFoundException {
 		ArrayList<Menu> allMenus = this.getMenuManager().getAllMenusOffered();
+
 		Stream<Menu> menuSearchResult = allMenus.stream()
 				.filter(m -> this.getPropertyToCompare(m) == this.getSearchCriteria());
 
-		Menu[] result = menuSearchResult.toArray(Menu[]::new);
-		if (!this.areElementsAsAResult(result)) {
+		ArrayList<Menu> resultInArray = new ArrayList<>();
+		menuSearchResult.forEach(resultInArray::add);
+
+		if (!this.areElementsAsAResult(resultInArray)) {
 			throw new NoMenusFoundException("No se han encontrado resultados para su búsqueda");
 		}
-		return result;
+
+		return resultInArray;
 	}
 
-	public boolean areElementsAsAResult(Menu[] result) {
-		return !(result.length == 0);
+	public boolean areElementsAsAResult(ArrayList<Menu> result) {
+		return result.size() != 0;
 	}
 
 	public Object getSearchCriteria() {
