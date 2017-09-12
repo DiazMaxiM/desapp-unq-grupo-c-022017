@@ -86,7 +86,8 @@ public class SalesProcessorTest {
 
 		Mail mail = Mockito.mock(Mail.class);
 		SalesAdministration salesAdministration = Mockito.mock(SalesAdministration.class);
-		Mockito.when(salesAdministration.getSalesForDay(new DateTime(2017, 9, 11, 0, 0))).thenReturn(ordersList);
+		Mockito.when(salesAdministration.getSalesForDay(new DateTime(DateTime.now().getYear(),
+				DateTime.now().getMonthOfYear(), DateTime.now().getDayOfMonth(), 0, 0))).thenReturn(ordersList);
 
 		SalesProcessor salesProcessor = new SalesProcessor(salesAdministration, mail);
 

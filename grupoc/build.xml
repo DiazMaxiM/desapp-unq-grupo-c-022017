@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="grupoc">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/commons/commons-email/1.5/commons-email-1.5.jar"/>
+        <pathelement location="../../../.m2/repository/com/sun/mail/javax.mail/1.5.6/javax.mail-1.5.6.jar"/>
+        <pathelement location="../../../.m2/repository/javax/activation/activation/1.1/activation-1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/commons/commons-text/1.1/commons-text-1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar"/>
+        <pathelement location="../../../.m2/repository/joda-time/joda-time-hibernate/1.4/joda-time-hibernate-1.4.jar"/>
+        <pathelement location="../../../.m2/repository/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+        <pathelement location="../../../.m2/repository/commons-io/commons-io/1.3.2/commons-io-1.3.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/json/json/20170516/json-20170516.jar"/>
+        <pathelement location="../../../.m2/repository/com/google/code/gson/gson/2.8.1/gson-2.8.1.jar"/>
+    </path>
+    <path id="grupoc.classpath">
+        <pathelement location="target/classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+        <pathelement location="target/test-classes"/>
+    </path>
+    <path id="run.SortingMenuByPriceTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MenuSearchByLocalityTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.SalesAdministrationTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.grupoc.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.ProviderTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MenuSearchByNameTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.SortingMenuByScoreTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.ServiceTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.AccountTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.java.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.model.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.MenuSearchByCategorityTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.tests.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.TelephoneTest.classpath">
+        <path refid="grupoc.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/test/model">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/test/model"/>
+            <classpath refid="grupoc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="grupoc.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="SortingMenuByPriceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.SortingMenuByPriceTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.SortingMenuByPriceTest.classpath"/>
+        </junit>
+    </target>
+    <target name="MenuSearchByLocalityTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.MenuSearchByLocalityTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MenuSearchByLocalityTest.classpath"/>
+        </junit>
+    </target>
+    <target name="SalesAdministrationTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.SalesAdministrationTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.SalesAdministrationTest.classpath"/>
+        </junit>
+    </target>
+    <target name="grupoc">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.AccountTest" todir="${junit.output.dir}"/>
+            <test name="tests.AddressTest" todir="${junit.output.dir}"/>
+            <test name="tests.HolidaysCheckerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MailTest" todir="${junit.output.dir}"/>
+            <test name="tests.MapPositionTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByCategoryTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByLocalityTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByNameTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuTest" todir="${junit.output.dir}"/>
+            <test name="tests.OrderTest" todir="${junit.output.dir}"/>
+            <test name="tests.ProviderTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesProcessorTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoringManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.ServiceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByPriceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.TelephoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TimeZoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TransactionTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.grupoc.classpath"/>
+        </junit>
+    </target>
+    <target name="ProviderTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.ProviderTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ProviderTest.classpath"/>
+        </junit>
+    </target>
+    <target name="MenuSearchByNameTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.MenuSearchByNameTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MenuSearchByNameTest.classpath"/>
+        </junit>
+    </target>
+    <target name="SortingMenuByScoreTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.SortingMenuByScoreTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.SortingMenuByScoreTest.classpath"/>
+        </junit>
+    </target>
+    <target name="ServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.ServiceTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ServiceTest.classpath"/>
+        </junit>
+    </target>
+    <target name="AccountTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.AccountTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AccountTest.classpath"/>
+        </junit>
+    </target>
+    <target name="java">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.java.classpath"/>
+        </junit>
+    </target>
+    <target name="model">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.AccountTest" todir="${junit.output.dir}"/>
+            <test name="tests.AddressTest" todir="${junit.output.dir}"/>
+            <test name="tests.HolidaysCheckerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MailTest" todir="${junit.output.dir}"/>
+            <test name="tests.MapPositionTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByCategoryTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByLocalityTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByNameTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuTest" todir="${junit.output.dir}"/>
+            <test name="tests.OrderTest" todir="${junit.output.dir}"/>
+            <test name="tests.ProviderTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesProcessorTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoringManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.ServiceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByPriceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.TelephoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TimeZoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TransactionTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.model.classpath"/>
+        </junit>
+    </target>
+    <target name="MenuSearchByCategorityTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.MenuSearchByCategorityTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MenuSearchByCategorityTest.classpath"/>
+        </junit>
+    </target>
+    <target name="tests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.AccountTest" todir="${junit.output.dir}"/>
+            <test name="tests.AddressTest" todir="${junit.output.dir}"/>
+            <test name="tests.HolidaysCheckerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MailTest" todir="${junit.output.dir}"/>
+            <test name="tests.MapPositionTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByCategoryTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByLocalityTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuSearchByNameTest" todir="${junit.output.dir}"/>
+            <test name="tests.MenuTest" todir="${junit.output.dir}"/>
+            <test name="tests.OrderTest" todir="${junit.output.dir}"/>
+            <test name="tests.ProviderTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.SalesProcessorTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.ScoringManagerTest" todir="${junit.output.dir}"/>
+            <test name="tests.ServiceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByPriceTest" todir="${junit.output.dir}"/>
+            <test name="tests.SortingMenuByScoreTest" todir="${junit.output.dir}"/>
+            <test name="tests.TelephoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TimeZoneTest" todir="${junit.output.dir}"/>
+            <test name="tests.TransactionTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserAdministrationTest" todir="${junit.output.dir}"/>
+            <test name="tests.UserTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.tests.classpath"/>
+        </junit>
+    </target>
+    <target name="TelephoneTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TelephoneTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TelephoneTest.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
+
