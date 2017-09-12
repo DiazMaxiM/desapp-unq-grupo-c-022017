@@ -1,0 +1,24 @@
+﻿====== TAG Entrega 1 1.0==========
+
+NEW FEATURES
+* Registro de usuarios
+* Proveedor puede ofrecer servicios y menús.
+* Un proveedor puede ofrecer como máximo 20 menús.
+* Un proveedor puede agregar, eliminar y actualizar sus menús.
+* Un proveedor tiene una lista con todos los pedidos históricos.
+* Cliente puede comprar menús
+* Un menú puede ser puntuado del 1 al 5.
+* Si un cliente tiene puntuaciones pendientes se bloquea para comprar
+* Un proveedor con que tenga más de 20 puntuaciones y dos o menos de promedio es dado de baja.
+* Cuando un proveedor es dado de baja se le envía un e-mail informandole.
+* Los pedidos de menús son admitidos hasta 48hs antes de la hora de entrega.
+* Un usuario (cliente o proveedor) tiene una cuenta.
+* Un cliente puede agregar crédito a su cuenta.
+* Búsqueda de menús por nombre, categoría y localidad.
+* Ordenamiento de menús por precio y por puntuación de menor a mayor
+* Un proceso que a las 00hs se activa para actualizar los pedidos y enviar los mails correspondientes.
+* Uso de una Api para la consulta de días feriados
+* Prototipo Mapa
+
+KNOW ISSUES
+* El ordenamiento de menús debería admitir también el ordenamiento de mayor a menor
