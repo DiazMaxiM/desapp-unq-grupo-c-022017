@@ -7,6 +7,7 @@ before_install:
 install:
   - mvn -N io.takari:maven:wrapper
   - ./mvnw install -Dmaven.javadoc.skip=true -B -V
- after_success:
-    - mvn clean test 
+ script:
+    - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+    - mvn clean verify 
 
