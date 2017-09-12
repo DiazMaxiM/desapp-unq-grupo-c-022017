@@ -50,10 +50,15 @@ public class SalesProcessor {
 	private void sendMailsToConfirm(Order order) {
 		try {
 			mail.sendMailConfirmSaleProvider(order.getProvider().getEmail());
+		} catch (Exception e) {
+			// TODO se utiliza un try para no cortar el procesor por problema de
+			// envio de mail
+		}
+		try {
 			mail.sendMailConfirmSaleClient(order.getClient().getEmail());
 		} catch (Exception e) {
-			// TODO Revisar
-
+			// TODO se utiliza un try para no cortar el procesor por problema de
+			// envio de mail
 		}
 
 	}
