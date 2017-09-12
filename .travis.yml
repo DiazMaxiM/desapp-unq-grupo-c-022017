@@ -4,7 +4,7 @@ jdk:
   - oraclejdk8
 
 before_install:
-- cd desapp-unq-grupo-c-022017
+- cd grupoc
 
 install:
   - mvn -N io.takari:maven:wrapper
