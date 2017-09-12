@@ -81,7 +81,7 @@ public class MenuValidation extends Validation{
 	private boolean isMinimalExclusions(Integer firstMinimumNumberOfMenusToBuy,
 			Integer secondMinimumNumberOfMenusToBuy) throws InvalidMinimumNumberOfMenusToBuyException {
 		  if(firstMinimumNumberOfMenusToBuy >= secondMinimumNumberOfMenusToBuy){
-			 throw new InvalidMinimumNumberOfMenusToBuyException("Las cantidades minimas deberán ser  mutuamente excluyentes");
+			 throw new InvalidMinimumNumberOfMenusToBuyException("Las cantidades minimas deberan ser  mutuamente excluyentes");
 		}
 		return true;
 	}
