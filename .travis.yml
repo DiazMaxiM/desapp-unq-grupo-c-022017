@@ -3,13 +3,7 @@ sudo: required
 jdk:
   - oraclejdk8
 
-before_install:
-- cd grupoc
-
-install:
-  - mvn -N io.takari:maven:wrapper
-  - mvn install -DskipTest=true
-script:
-  - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
-  - mvn clean verify 
-  - mvn clean test
+addons:
+    apt:
+    packages:
+    - oracle-java8-installer
