@@ -2,9 +2,5 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
-
-before_install:
-- cd grupoc
-
 script:
-  - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+  - cd grupoc && mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
