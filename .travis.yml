@@ -2,12 +2,10 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
-install: ant deps
 
 addons:
     apt:
     packages:
     - oracle-java8-installer
 script: 
-    - ant build
-    - ant tests
+    - mvn test -B
