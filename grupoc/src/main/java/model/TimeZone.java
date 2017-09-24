@@ -8,8 +8,9 @@ import exception.InvalidTimeZoneException;
 import validation.InvalidFormatTimeZoneException;
 import validation.TimeZoneValidation;
 
-public class TimeZone {
-    private LocalTime startHours;
+public class TimeZone extends Entity{
+	private static final long serialVersionUID = 1L;
+	private LocalTime startHours;
     private LocalTime endHours;
     private TimeZoneValidation validator = new TimeZoneValidation();
     
@@ -19,7 +20,10 @@ public class TimeZone {
     	} 
     }  
     
-    private void evaluateTimeZone(String startHours,String endHours) throws InvalidTimeZoneException, InvalidFormatTimeZoneException{
+    public TimeZone() {
+	}
+
+	private void evaluateTimeZone(String startHours,String endHours) throws InvalidTimeZoneException, InvalidFormatTimeZoneException{
     	if(validator.ishasValidFormaterTimeZone(parseString(startHours),parseString(endHours))){
     		setStartHours(startHours);
         	setEndHours(endHours);   
