@@ -9,7 +9,8 @@ import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import validation.UserValidation;
 
-public class User {
+public class User extends Entity{
+	private static final long serialVersionUID = 1L;
 	private String cuit;
 	private String  name;
 	private String surname;
@@ -18,6 +19,8 @@ public class User {
 	private Address address;
 	private Account account = new Account();
 	private UserValidation validator= new UserValidation();
+	
+	public User(){}
 	
 	public User(String cuit,String userfirstName,String userLastName,String userEmailAddress,Telephone userTelephone,Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException{
 		if(validator.isValidUser(cuit,userfirstName,userLastName,userEmailAddress,
@@ -101,5 +104,6 @@ public class User {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
 
 }

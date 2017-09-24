@@ -107,12 +107,8 @@
 	<!-- ________________________________________ -->
 	<!-- ________________________________________ -->
 	
-	<bean id="persistence.personrepository" class="ar.edu.unq.repositories.PersonRepository" >
+	<bean id="persistence.userRepository" 
+	     class="repositories.UserRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	<bean id="persistence.carrepository" class="ar.edu.unq.repositories.CarRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	
-
 </beans>
