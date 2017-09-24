@@ -1,3 +1,4 @@
+package tests;
 
 
 import static org.junit.Assert.assertEquals;
@@ -6,8 +7,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
-import builders.MenuBuilder;
+import builders.ScoreBuilder;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidAverageDeliveryTimeOfMenuException;
@@ -22,6 +24,7 @@ import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import exception.InvalidTimeZoneException;
+import exception.InvalidValueScoreException;
 import menuExceptions.InvalidEndDateOfferMenuException;
 import menuExceptions.InvalidMaximumNumberOfMenusSalesPerDay;
 import menuExceptions.InvalidMenuCategoryException;
@@ -34,28 +37,22 @@ import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Menu;
 import model.MenuManager;
+import model.Score;
+import model.ScoringManager;
+import model.User;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
 import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
-import sortingMenus.SortingMenuByPrice;
+import sortingMenus.SortingMenuByScore;
 import validation.InvalidFormatTimeZoneException;
 import validation.InvalidMenuPriceException;
 
-public class SortingMenuByPriceTest {
+public class SortingMenuByScoreTest {
 
 	@Test
-	public void testWhenIOrderAListOfMenusAndItIsEmptyItReturnsAnEmptyList() {
-		MenuManager menuManager = new MenuManager();
-		SortingMenuByPrice sortingMenuByPrice = new SortingMenuByPrice(menuManager);
-
-		assertEquals(0, menuManager.orderMenus(sortingMenuByPrice).size());
-	}
-
-	@Test
-	public void testWhenIOrderAListOfMenusWithMenusWithDifferentPricesReturnsAListSortedByPriceFromLowestToHighest()
-			throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException,
+	public void test() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
 			InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException,
 			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
@@ -64,43 +61,38 @@ public class SortingMenuByPriceTest {
 			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
 			InvalidServiceEmailException, InvalidServiceWorkingHoursException,
 			InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidTelephoneNumberException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
+			InvalidTelephoneNumberException, InvalidValueScoreException, InvalidTimeZoneException,
+			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException {
+		ScoringManager scoringManager = new ScoringManager();
+
+		Menu menu = Mockito.mock(Menu.class);
+		Menu menu2 = Mockito.mock(Menu.class);
+		Menu menu3 = Mockito.mock(Menu.class);
+		User client = Mockito.mock(User.class);
+
+		Score score1 = new ScoreBuilder().setClient(client).setMenu(menu).build();
+		score1.setScore(3);
+		scoringManager.addScore(score1);
+
+		Score score2 = new ScoreBuilder().setClient(client).setMenu(menu2).build();
+		score2.setScore(4);
+		scoringManager.addScore(score2);
+
+		Score score3 = new ScoreBuilder().setClient(client).setMenu(menu3).build();
+		score3.setScore(1);
+		scoringManager.addScore(score3);
+
 		MenuManager menuManager = new MenuManager();
-		Menu menu =  new MenuBuilder()
-				    .withMenuPrice(new Double(120))
-				    .withFirstMinimumPriceOfMenusToBuy(new Double (80))
-				    .withSecondMinimumPriceOfMenusToBuy(new Double(60))
-				    .build();
-		Menu menu2 = new MenuBuilder()
-				    .withMenuPrice(new Double(80))
-				    .withFirstMinimumPriceOfMenusToBuy(new Double (40))
-				    .withSecondMinimumPriceOfMenusToBuy(new Double(30))
-				    .build();
-		Menu menu3 = new MenuBuilder()
-				    .withMenuPrice( new Double(10))
-				    .withFirstMinimumPriceOfMenusToBuy(new Double (8))
-					.withSecondMinimumPriceOfMenusToBuy(new Double(5))
-				    .build();
-		Menu menu4 = new MenuBuilder()
-				    .withMenuPrice(new Double(30))
-				    .withFirstMinimumPriceOfMenusToBuy(new Double (20))
-					.withSecondMinimumPriceOfMenusToBuy(new Double(10))
-				    .build();
+		menuManager.setScoringManager(scoringManager);
+		SortingMenuByScore sortingMenuByScore = new SortingMenuByScore(menuManager);
+		ArrayList<Menu> menusOrdered = menuManager.orderMenus(sortingMenuByScore);
 
-		menuManager.addMenuToMenusOffered(menu);
-		menuManager.addMenuToMenusOffered(menu2);
-		menuManager.addMenuToMenusOffered(menu3);
-		menuManager.addMenuToMenusOffered(menu4);
+		assertTrue(scoringManager.getMenusWithAverage().size() == 3);
+		assertEquals(3, menusOrdered.size());
 
-		SortingMenuByPrice sortingMenuByPrice = new SortingMenuByPrice(menuManager);
-		ArrayList<Menu> menusOrdered = menuManager.orderMenus(sortingMenuByPrice);
-
-		assertEquals(4, menusOrdered.size());
 		assertTrue(menusOrdered.get(0).equals(menu3));
-		assertTrue(menusOrdered.get(1).equals(menu4));
+		assertTrue(menusOrdered.get(1).equals(menu));
 		assertTrue(menusOrdered.get(2).equals(menu2));
-		assertTrue(menusOrdered.get(3).equals(menu));
-
 	}
 
 }
