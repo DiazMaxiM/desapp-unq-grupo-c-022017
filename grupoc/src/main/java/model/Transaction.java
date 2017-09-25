@@ -1,6 +1,8 @@
 package model;
 
-public class Transaction {
+public class Transaction extends Entity {
+
+	private static final long serialVersionUID = 1L;
 	private TypeTransaction typeTransaction;
 	private Double value;
 	private TypeStatusTransaction statusTransaction = TypeStatusTransaction.PENDING;
@@ -9,6 +11,10 @@ public class Transaction {
 
 		this.typeTransaction = typeTransaction;
 		this.setValue(value);
+	}
+
+	public Transaction() {
+
 	}
 
 	public void setValue(Double value) {

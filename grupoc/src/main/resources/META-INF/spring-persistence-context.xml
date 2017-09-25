@@ -116,5 +116,8 @@
 	     class="repositories.TimeZoneRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
-	
+	<bean id="persistence.transactionRepository" 
+	     class="repositories.TransactionRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

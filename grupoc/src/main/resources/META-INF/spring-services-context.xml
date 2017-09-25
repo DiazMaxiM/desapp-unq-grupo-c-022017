@@ -19,5 +19,8 @@
 	<bean id="services.timeZone" class="services.TimeZoneService">
 		<property name="repository" ref="persistence.timeZoneRepository" />
 	</bean>
+	<bean id="services.transaction" class="services.TransactionService">
+		<property name="repository" ref="persistence.transactionRepository" />
+	</bean>
 	
 </beans>
