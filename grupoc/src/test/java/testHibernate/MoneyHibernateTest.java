@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import model.Transaction;
-import model.TypeTransaction;
-import services.TransactionService;
+import model.Money;
+import model.Symbol;
+import services.MoneyService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/META-INF/spring-persistence-context.xml", "/META-INF/spring-services-context.xml" })
 
-public class TransactionHibernateTest {
+public class MoneyHibernateTest {
 
 	@Autowired
-	private TransactionService transactionService;
+	private MoneyService moneyService;
 
 	@Test
 	public void testSaveTimeZone() {
-		transactionService.save(new Transaction(TypeTransaction.CREDIT, 5.0));
-		assertEquals(1, transactionService.retriveAll().size());
+		moneyService.save(new Money(Symbol.ARG));
+		assertEquals(1, moneyService.retriveAll().size());
 
 	}
 

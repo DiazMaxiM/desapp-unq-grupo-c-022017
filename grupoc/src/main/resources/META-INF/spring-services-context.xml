@@ -10,6 +10,8 @@
 	<bean id="services.general" class="services.GeneralService">
 		<property name="userService" ref="services.user" />
 		<property name="timeZoneService" ref="services.timeZone" />
+		<property name="transactionService" ref="services.transaction" />
+		<property name="moneyService" ref="services.money" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
@@ -21,6 +23,9 @@
 	</bean>
 	<bean id="services.transaction" class="services.TransactionService">
 		<property name="repository" ref="persistence.transactionRepository" />
+	</bean>
+	<bean id="services.money" class="services.MoneyService">
+		<property name="repository" ref="persistence.moneyRepository" />
 	</bean>
 	
 </beans>

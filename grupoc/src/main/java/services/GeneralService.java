@@ -1,19 +1,26 @@
 package services;
 
-import model.Transaction;
-
 public class GeneralService {
 
 	public UserService userService;
 	public TimeZoneService timeZoneService;
-	public Transaction transaction;
+	public TransactionService transactionService;
+	public MoneyService moneyService;
 
-	public Transaction getTransaction() {
-		return this.transaction;
+	public MoneyService getMoneyService() {
+		return this.moneyService;
 	}
 
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
+	public void setMoneyService(MoneyService moneyService) {
+		this.moneyService = moneyService;
+	}
+
+	public TransactionService getTransactionService() {
+		return this.transactionService;
+	}
+
+	public void setTransactionService(TransactionService transactionService) {
+		this.transactionService = transactionService;
 	}
 
 	public TimeZoneService getTimeZoneService() {

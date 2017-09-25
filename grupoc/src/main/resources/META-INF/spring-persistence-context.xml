@@ -120,4 +120,8 @@
 	     class="repositories.TransactionRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.moneyRepository" 
+	     class="repositories.MoneyRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>
