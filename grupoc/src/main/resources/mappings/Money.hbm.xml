@@ -8,6 +8,11 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<property name="symbol" />
+		<property name="symbol" >
+        <type name="org.hibernate.type.EnumType">
+            <param name="enumClass">model.Symbol</param>
+            <param name="useNamed">true</param>
+        </type>       
+    </property>
 	</class>
 </hibernate-mapping>

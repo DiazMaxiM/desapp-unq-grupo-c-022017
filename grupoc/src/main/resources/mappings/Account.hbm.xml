@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping default-access="field"
+ 	default-cascade="save-update">
+ 	<class name="model.Account">
+ 		<id column="ID" name="id">
+ 			<generator class="native" />
+ 		</id>
+ 		 <list name="transactions" cascade="save-update" inverse="false">
+        	<key column="transactions_user"/>
+        	<list-index column="indice"></list-index> 
+        	<one-to-many class="model.Transaction"/>
+        </list>
+ 	</class>
+ </hibernate-mapping>

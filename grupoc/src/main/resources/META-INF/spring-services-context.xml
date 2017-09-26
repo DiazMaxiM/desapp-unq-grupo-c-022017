@@ -13,6 +13,7 @@
 		<property name="transactionService" ref="services.transaction" />
 		<property name="moneyService" ref="services.money" />
 		<property name="addressService" ref="services.address" />
+		<property name="accountService" ref="services.account" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
@@ -36,5 +37,8 @@
 	</bean>
 	<bean id="services.address" class="services.AddressService">
 		<property name="repository" ref="persistence.addressRepository" />
+	</bean>
+	<bean id="services.account" class="services.AccountService">
+		<property name="repository" ref="persistence.accountRepository" />
 	</bean>
 </beans>

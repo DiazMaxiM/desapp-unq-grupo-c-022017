@@ -6,6 +6,7 @@ public class GeneralService {
 	public TimeZoneService timeZoneService;
 	public TransactionService transactionService;
 	public MoneyService moneyService;
+	public AccountService accountService;
 	public TelephoneService telephoneService;
 	public MapPositionService mapPositionService;
 	public AddressService addressService;
@@ -24,6 +25,14 @@ public class GeneralService {
 
 	public void setMoneyService(MoneyService moneyService) {
 		this.moneyService = moneyService;
+	}
+
+	public AccountService getAccountService() {
+		return this.accountService;
+	}
+
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
 	}
 
 	public TransactionService getTransactionService() {
