@@ -2,6 +2,8 @@ package testHibernate;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,10 @@ public class MoneyHibernateTest {
 	@Test
 	public void testSaveTimeZone() {
 		moneyService.save(new Money(Symbol.ARG));
-		assertEquals(1, moneyService.retriveAll().size());
+		List<Money> a = moneyService.retriveAll();
+
+		assertEquals(1, a.size());
+		assertEquals(Symbol.ARG, a.get(0).getSymbol());
 
 	}
 

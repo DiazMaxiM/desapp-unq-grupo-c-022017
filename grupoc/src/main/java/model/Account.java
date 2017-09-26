@@ -5,7 +5,7 @@ import java.util.List;
 
 import exception.BalanceInsufficient;
 
-public class Account {
+public class Account extends Entity {
 	private List<Transaction> transactions = new ArrayList<Transaction>();
 
 	public void addTransaction(Transaction transaction) throws BalanceInsufficient {
