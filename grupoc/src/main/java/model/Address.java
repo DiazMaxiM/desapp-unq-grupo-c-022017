@@ -6,8 +6,9 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import validation.AddressValidation;
 
-public class Address {
+public class Address extends Entity{
 
+	private static final long serialVersionUID = 1L;
 	private Locality locality;
 	private String street;
 	private String numberStreet;
@@ -15,6 +16,10 @@ public class Address {
 	private MapPosition mapPosition;
 	private AddressValidation validator= new AddressValidation();
 
+	public Address(){
+		
+	}
+	
 	public Address(Locality locality, String street, String numberStreet, String floor, MapPosition mapPosition)
 			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException {
 		if (validator.isAValidAddress(locality, street, numberStreet,mapPosition)) {

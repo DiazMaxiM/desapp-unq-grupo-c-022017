@@ -4,13 +4,14 @@
     "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.User">
+	<class name="model.Address">
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<property name="cuit" />
-		<property name="name" />
-		<property name="mail" />
-		<property name="surname" />
+		<property name="floor" />
+		<property name="locality"/>
+		<one-to-one name="mapPosition" class="model.MapPosition" cascade="save-update"></one-to-one>
+		<property name="numberStreet"/>
+		<property name="street"/>
 	</class>
 </hibernate-mapping>

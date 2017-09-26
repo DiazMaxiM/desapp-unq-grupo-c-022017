@@ -12,6 +12,7 @@
 		<property name="timeZoneService" ref="services.timeZone" />
 		<property name="transactionService" ref="services.transaction" />
 		<property name="moneyService" ref="services.money" />
+		<property name="addressService" ref="services.address" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
@@ -32,5 +33,8 @@
 	</bean>
 	<bean id="services.mapPosition" class="services.MapPositionService">
 		<property name="repository" ref="persistence.mapPositionRepository" />
+	</bean>
+	<bean id="services.address" class="services.AddressService">
+		<property name="repository" ref="persistence.addressRepository" />
 	</bean>
 </beans>

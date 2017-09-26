@@ -132,4 +132,8 @@
 		  class="repositories.MapPositionRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.addressRepository"
+		  class="repositories.AddressRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

@@ -8,6 +8,15 @@ public class GeneralService {
 	public MoneyService moneyService;
 	public TelephoneService telephoneService;
 	public MapPositionService mapPositionService;
+	public AddressService addressService;
+
+	public AddressService getAddressService() {
+		return addressService;
+	}
+
+	public void setAddressService(AddressService addressService) {
+		this.addressService = addressService;
+	}
 
 	public MoneyService getMoneyService() {
 		return this.moneyService;
