@@ -10,13 +10,17 @@ import exception.InvalidCountryCodeException;
 import exception.InvalidLocalNumberException;
 import validation.Validation;
 
-public class Telephone {
+public class Telephone extends Entity {
+	private static final long serialVersionUID = 1L;
 	private String countryCode = "54"; // Area Code Argentina
 	private String areaCode;
 	private String localNumber;
 	private List<String> areasCode = this.areasCode();
 	@SuppressWarnings("unused")
 	private Validation validator = new Validation();
+
+	public Telephone() {
+	}
 
 	public Telephone(String countryCode, String areaCode, String localNumber)
 			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {

@@ -124,4 +124,8 @@
 	     class="repositories.MoneyRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.telephoneRepository"
+		  class="repositories.TelephoneRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

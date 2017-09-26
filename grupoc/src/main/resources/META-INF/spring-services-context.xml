@@ -27,5 +27,7 @@
 	<bean id="services.money" class="services.MoneyService">
 		<property name="repository" ref="persistence.moneyRepository" />
 	</bean>
-	
+	<bean id="services.telephone" class="services.TelephoneService">
+		<property name="repository" ref="persistence.telephoneRepository" />
+	</bean>
 </beans>
