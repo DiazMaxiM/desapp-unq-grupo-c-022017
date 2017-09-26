@@ -4,10 +4,14 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import validation.MapPositionValidation;
 
-public class MapPosition {
+public class MapPosition extends Entity {
+	private static final long serialVersionUID = 1L;
 	private Double latitude;
 	private Double length;
-	private MapPositionValidation validator= new MapPositionValidation();
+	private MapPositionValidation validator = new MapPositionValidation();
+
+	public MapPosition() {
+	}
 
 	public MapPosition(Double latitude, Double length)
 			throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {

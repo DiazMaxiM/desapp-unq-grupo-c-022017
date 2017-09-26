@@ -128,4 +128,8 @@
 		  class="repositories.TelephoneRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.mapPositionRepository"
+		  class="repositories.MapPositionRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

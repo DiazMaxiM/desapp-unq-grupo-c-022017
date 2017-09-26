@@ -30,4 +30,7 @@
 	<bean id="services.telephone" class="services.TelephoneService">
 		<property name="repository" ref="persistence.telephoneRepository" />
 	</bean>
+	<bean id="services.mapPosition" class="services.MapPositionService">
+		<property name="repository" ref="persistence.mapPositionRepository" />
+	</bean>
 </beans>
