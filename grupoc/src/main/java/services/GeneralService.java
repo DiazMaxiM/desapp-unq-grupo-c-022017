@@ -7,6 +7,8 @@ public class GeneralService {
 	public TransactionService transactionService;
 	public MoneyService moneyService;
 	public AccountService accountService;
+	public TelephoneService telephoneService;
+	public MapPositionService mapPositionService;
 
 	public MoneyService getMoneyService() {
 		return this.moneyService;
@@ -46,6 +48,22 @@ public class GeneralService {
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public TelephoneService getTelephoneService() {
+		return telephoneService;
+	}
+
+	public void setTelephoneService(TelephoneService telephoneService) {
+		this.telephoneService = telephoneService;
+	}
+
+	public MapPositionService getMapPositionService() {
+		return mapPositionService;
+	}
+
+	public void setMapPositionService(MapPositionService mapPositionService) {
+		this.mapPositionService = mapPositionService;
 	}
 
 }
