@@ -20,7 +20,7 @@ public class TelephoneHibernateTest {
 	private TelephoneService telephoneService;
 
 	@Test
-	public void testSaveTimeZone() {
+	public void testSaveTelephone() {
 		telephoneService.save(new Telephone());
 		assertEquals(1, telephoneService.retriveAll().size());
 
