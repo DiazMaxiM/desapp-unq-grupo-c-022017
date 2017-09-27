@@ -8,9 +8,12 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
+		<one-to-one name="account" class="model.Account"></one-to-one>
+		<one-to-one name="address" class="model.Address"></one-to-one>
 		<property name="cuit" />
 		<property name="name" />
 		<property name="mail" />
 		<property name="surname" />
+		<one-to-one name="telephone" class="model.Telephone"></one-to-one>
 	</class>
 </hibernate-mapping>
