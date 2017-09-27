@@ -302,6 +302,10 @@
 
 		</dependency>
 
+		<!-- /CXF -->
+
+		<!-- Jackson -->
+
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -320,6 +324,7 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<!-- /Jackson -->
   	</dependencies>
   	
   	<build>
