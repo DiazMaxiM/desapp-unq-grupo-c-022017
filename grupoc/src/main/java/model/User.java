@@ -1,5 +1,7 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import exception.InvalidAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidTelephoneNumberException;
@@ -9,28 +11,33 @@ import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import validation.UserValidation;
 
-public class User extends Entity{
+@XmlRootElement(name = "user")
+
+public class User extends Entity {
 	private static final long serialVersionUID = 1L;
 	private String cuit;
-	private String  name;
+	private String name;
 	private String surname;
 	private String mail;
 	private Telephone telephone;
 	private Address address;
 	private Account account = new Account();
-	private UserValidation validator= new UserValidation();
-	
-	public User(){}
-	
-	public User(String cuit,String userfirstName,String userLastName,String userEmailAddress,Telephone userTelephone,Address userAddress) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException{
-		if(validator.isValidUser(cuit,userfirstName,userLastName,userEmailAddress,
-				               userTelephone,userAddress)){
-			createUser(cuit,userfirstName,userLastName,userEmailAddress,userTelephone,userAddress);
+	private UserValidation validator = new UserValidation();
+
+	public User() {
+	}
+
+	public User(String cuit, String userfirstName, String userLastName, String userEmailAddress,
+			Telephone userTelephone, Address userAddress) throws InvalidAddressException,
+			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
+			InvalidEmailAddressException, InvalidMapPositionException {
+		if (validator.isValidUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress)) {
+			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
 		}
 	}
 
 	private void createUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
-			Telephone userTelephone, Address userAddress) {	
+			Telephone userTelephone, Address userAddress) {
 		setCuit(cuit);
 		setName(userfirstName);
 		setSurname(userLastName);
@@ -38,12 +45,12 @@ public class User extends Entity{
 		setTelephone(userTelephone);
 		setAddress(userAddress);
 	}
-	
+
 	@Override
 	public boolean equals(Object user) {
 		return this.getCuit().equals(((User) user).getCuit());
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();
@@ -104,6 +111,5 @@ public class User extends Entity{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-
 
 }

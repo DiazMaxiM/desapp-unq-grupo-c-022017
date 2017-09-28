@@ -13,7 +13,10 @@
 			classpath*:/META-INF/spring-services-context.xml
 		</param-value>
 	</context-param>
-
+<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>/WEB-INF/applicationContext*.xml</param-value>
+	</context-param>
 	<context-param>
 		<param-name>configuration</param-name>
 		<param-value>development</param-value>
@@ -23,7 +26,18 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	
+
+
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 	<session-config>
 		<session-timeout>7200</session-timeout>
 	</session-config>
