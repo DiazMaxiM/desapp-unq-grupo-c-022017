@@ -26,9 +26,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
-	<jaxrs:server id="user" address="/"  > 
+	<jaxrs:server id="post" address="/"  > 
 		<jaxrs:serviceBeans>
-			<ref bean="usersRest" />
+			<ref bean="postsRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -43,9 +43,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 
-  
-	<bean id="usersRest" class="rest.UsersRest">
-		<property name="userRepository" ref="repositories.UserRepository" />
+    <bean id="dao.post" class="repositories.PostDAO" />
+	
+	<bean id="postsRest" class="rest.PostsRest">
+		<property name="postRepository" ref="dao.post" />
 	</bean>
-
+	
 </beans>
