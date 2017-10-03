@@ -12,7 +12,6 @@ import userExceptions.InvalidLastNameException;
 import validation.UserValidation;
 
 @XmlRootElement(name = "user")
-
 public class User extends Entity {
 	private static final long serialVersionUID = 1L;
 	private String cuit;
