@@ -5,15 +5,18 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.User">
-		<id column="ID" name="id">
-			<generator class="native" />
-		</id>
-		<one-to-one name="account" class="model.Account"></one-to-one>
-		<one-to-one name="address" class="model.Address"></one-to-one>
+		<id column="idAddress" name="id">
+			<generator class="foreign" >
+ 			<param name="property">address</param>
+ 		</generator>		
+ 		</id>
+		<one-to-one name="telephone" cascade="all" class="model.Telephone" />
+		<one-to-one name="address" cascade="all" class="model.Address" />
+		
 		<property name="cuit" />
 		<property name="name" />
 		<property name="mail" />
 		<property name="surname" />
-		<one-to-one name="telephone" class="model.Telephone"></one-to-one>
+		
 	</class>
 </hibernate-mapping>

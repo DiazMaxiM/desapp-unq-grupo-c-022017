@@ -15,6 +15,9 @@ public class Telephone extends Entity {
 	private String countryCode = "54"; // Area Code Argentina
 	private String areaCode;
 	private String localNumber;
+
+	private User user;
+
 	private List<String> areasCode = this.areasCode();
 	@SuppressWarnings("unused")
 	private Validation validator = new Validation();
@@ -92,6 +95,11 @@ public class Telephone extends Entity {
 
 	public void setLocalNumber(String localNumber) {
 		this.localNumber = localNumber;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+
 	}
 
 }

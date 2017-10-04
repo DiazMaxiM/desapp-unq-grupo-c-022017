@@ -5,11 +5,14 @@
  <hibernate-mapping default-access="field"
  	default-cascade="save-update">
  	<class name="model.Telephone">
- 		<id column="ID" name="id">
- 			<generator class="native" />
+ 		<id column="idUser" name="id">
+ 			<generator class="foreign" >
+ 			<param name="property">user</param>
+ 			            </generator>
  		</id>
  		<property name="countryCode" />
  		<property name="areaCode" />
  		<property name="localNumber" />
+ 		        <one-to-one name="user" constrained="true" class="model.User" />
  	</class>
  </hibernate-mapping>

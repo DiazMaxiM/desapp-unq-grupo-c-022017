@@ -5,6 +5,9 @@ import exception.InvalidLengthMapPositionException;
 import validation.MapPositionValidation;
 
 public class MapPosition extends Entity {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private Double latitude;
 	private Double length;
@@ -40,4 +43,5 @@ public class MapPosition extends Entity {
 	public void setLength(Double length) {
 		this.length = length;
 	}
+
 }

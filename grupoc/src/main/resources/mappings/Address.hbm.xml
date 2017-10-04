@@ -5,12 +5,27 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.Address">
-		<id column="ID" name="id">
-			<generator class="native" />
-		</id>
+	<id column="idAddress" name="id">
+		<generator class="native" />
+ 			
+ 		</id>
+	
+		<property name="locality">
+		<type name="org.hibernate.type.EnumType">
+            <param name="enumClass">model.Locality</param>
+            <param name="useNamed">true</param>
+        </type> 
+        </property>
 		<property name="floor" />
-		<property name="locality"/>
-		<one-to-one name="mapPosition" class="model.MapPosition" cascade="save-update"></one-to-one>
+		
+		<component name="mapPosition" class="model.MapPosition">
+			<property name="latitude" type="double">
+				<column name="latitude" not-null="true" />
+			</property>
+			<property name="length" type="double">
+				<column name="length" not-null="true" />
+			</property>
+		</component>
 		<property name="numberStreet"/>
 		<property name="street"/>
 	</class>

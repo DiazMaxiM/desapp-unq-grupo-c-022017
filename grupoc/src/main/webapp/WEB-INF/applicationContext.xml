@@ -44,7 +44,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
     
 	<bean id="usersRest" class="rest.UsersRest">
-		<property name="userRepository" ref="persistence.userRepository" />
+		<property name="userService" ref="services.user" />
 	</bean>
 	
 </beans>

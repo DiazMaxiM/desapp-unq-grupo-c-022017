@@ -6,7 +6,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import validation.AddressValidation;
 
-public class Address extends Entity{
+public class Address extends Entity {
 
 	private static final long serialVersionUID = 1L;
 	private Locality locality;
@@ -14,21 +14,23 @@ public class Address extends Entity{
 	private String numberStreet;
 	private String floor;
 	private MapPosition mapPosition;
-	private AddressValidation validator= new AddressValidation();
+	private AddressValidation validator = new AddressValidation();
 
-	public Address(){
-		
+	public Address() {
+
 	}
-	
+
 	public Address(Locality locality, String street, String numberStreet, String floor, MapPosition mapPosition)
-			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException {
-		if (validator.isAValidAddress(locality, street, numberStreet,mapPosition)) {
+			throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidMapPositionException {
+		if (validator.isAValidAddress(locality, street, numberStreet, mapPosition)) {
 			createAddress(locality, street, numberStreet, floor, mapPosition);
 		}
 	}
 
 	private void createAddress(Locality locality, String street, String numberStreet, String floor,
 			MapPosition mapPosition) {
+		this.mapPosition = mapPosition;
 		this.setLocality(locality);
 		this.setStreet(street);
 		this.setFloor(floor);
@@ -75,4 +77,5 @@ public class Address extends Entity{
 	public void setMapPosition(MapPosition mapPosition) {
 		this.mapPosition = mapPosition;
 	}
+
 }

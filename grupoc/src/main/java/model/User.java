@@ -30,6 +30,7 @@ public class User extends Entity {
 			Telephone userTelephone, Address userAddress) throws InvalidAddressException,
 			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
 			InvalidEmailAddressException, InvalidMapPositionException {
+
 		if (validator.isValidUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress)) {
 			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
 		}
@@ -37,6 +38,7 @@ public class User extends Entity {
 
 	private void createUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress) {
+		userTelephone.setUser(this);
 		setCuit(cuit);
 		setName(userfirstName);
 		setSurname(userLastName);
