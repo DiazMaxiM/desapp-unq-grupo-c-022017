@@ -1,0 +1,20 @@
+.homeHeader{
+	background-color: red;
+}
+
+.titulo{
+	color: white;
+}
+
+.subtitulo{
+	background-color: red;
+	text-align: center;
+	color: white
+
+}
+
+.componentSearch{
+   height: 50px !IMPORTANT;
+   width:100% !IMPORTANT;
+   border-radius: 0px !IMPORTANT;
+} 
