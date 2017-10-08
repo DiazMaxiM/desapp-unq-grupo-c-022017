@@ -13,6 +13,7 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import userExceptions.InvalidPasswordException;
 
 public class UserValidation extends Validation{
 
@@ -63,6 +64,13 @@ public class UserValidation extends Validation{
 		Long  usersWithSameCuit = users.stream().filter(user -> user.equals(newUser)).count();
 		if(usersWithSameEmail>0||usersWithSameCuit>0){
 			throw new InvalidRegisterException("Ya existe un usuario");
+		}
+		return true;
+	}
+    
+	public boolean isValidPassword(String password) throws InvalidPasswordException {
+		if(!isValidString(password)){
+			throw new InvalidPasswordException("Debe ingresar una contrasenha");
 		}
 		return true;
 	}

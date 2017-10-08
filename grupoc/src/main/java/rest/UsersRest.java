@@ -27,6 +27,7 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import userExceptions.InvalidPasswordException;
 
 @Path("/users")
 public class UsersRest {
@@ -98,5 +99,28 @@ public class UsersRest {
 	public Double getBalanceUser(@PathParam("id") final String id){
 		return this.userService.getBalance(id);
 	}
+	
+	// http://localhost:8080/grupoc/rest/users/updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/1
+	@GET
+	@Path("/updateuser/{id}/{password}/{countryCode}/{areaCode}/{localNumber}/{locality}/{street}/{numberStreet}/{floor}/{latitude}/{length}")
+	@Produces("application/json")
+	public boolean updateUser(@PathParam("id") final String id,@PathParam("password") final String password, @PathParam("countryCode") final String countryCode,
+		@PathParam("areaCode") final String areaCode, @PathParam("localNumber") final String localNumber,
+		@PathParam("locality") final String locality, @PathParam("street") final String street,
+		@PathParam("numberStreet") final String numberStreet, @PathParam("floor") final String floor,
+		@PathParam("latitude") final String latitude, @PathParam("length") final String length){
+        try {
+        	this.userService.updateUser(id,password,countryCode,areaCode,localNumber,locality,street,numberStreet,floor,latitude,length);
+		} catch (NumberFormatException | InvalidLengthMapPositionException | InvalidLatitudeMapPositionException
+				| InvalidLocalNumberException | InvalidAreaCodeException | InvalidCountryCodeException
+				| InvalidNumberStreetException | InvalidStreetAddressException | InvalidLocalityAddressException
+				| InvalidMapPositionException | InvalidPasswordException e) {
+			// TODO Auto-generated catch block
+		    e.printStackTrace();
+			return false;
+		}
+           return true;
+		}
+
 
 }

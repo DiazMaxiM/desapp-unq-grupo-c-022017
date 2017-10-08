@@ -8746,3 +8746,785 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 9; columnNumber: 10; Il co
 2017-10-08 12:52:52,379 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - Table 'unqdb.user' doesn't exist
 2017-10-08 12:54:42,210 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop foreign key FK_4kui4gsc6y1ledfwio36e0bu4
 2017-10-08 12:54:42,211 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - Table 'unqdb.historicalorder' doesn't exist
+2017-10-08 14:21:55,662 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 14:21:55,665 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 14:21:55,665 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 14:21:55,666 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 14:21:55,666 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 14:21:55,666 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 14:21:55,666 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 14:21:55,667 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 14:21:55,667 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 14:21:55,667 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 14:21:55,667 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 14:21:55,668 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 14:22:16,335 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 14:22:24,478 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 14:22:24,485 WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper (SqlExceptionHelper.java:144) - SQL Error: -104, SQLState: 23505
+2017-10-08 14:22:24,485 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper (SqlExceptionHelper.java:146) - violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+2017-10-08 14:22:24,496 WARN  org.apache.cxf.common.logging.LogUtils (LogUtils.java:452) - Application {http://rest/}UsersRest has thrown exception, unwinding now
+org.apache.cxf.interceptor.Fault: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:163)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:343)
+	at org.springframework.orm.hibernate4.HibernateTemplate.executeWithNativeSession(HibernateTemplate.java:308)
+	at org.springframework.orm.hibernate4.HibernateTemplate.flush(HibernateTemplate.java:837)
+	at repositories.HibernateGenericDAO.save(HibernateGenericDAO.java:65)
+	at services.UserService.newUser(UserService.java:52)
+	at services.UserService$$FastClassBySpringCGLIB$$98d47aba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:267)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.newUser(<generated>)
+	at rest.UsersRest.newUser(UsersRest.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:72)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:62)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3124)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3581)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.springframework.orm.hibernate4.HibernateTemplate$27.doInHibernate(HibernateTemplate.java:840)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:340)
+	... 51 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.fetchResult(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.executeUpdate(Unknown Source)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 62 more
+Caused by: org.hsqldb.HsqlException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.Constraint.getException(Unknown Source)
+	at org.hsqldb.index.IndexAVLMemory.insert(Unknown Source)
+	at org.hsqldb.persist.RowStoreAVL.indexRow(Unknown Source)
+	at org.hsqldb.TransactionManager2PL.addInsertAction(Unknown Source)
+	at org.hsqldb.Session.addInsertAction(Unknown Source)
+	at org.hsqldb.Table.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementDML.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementInsert.getResult(Unknown Source)
+	at org.hsqldb.StatementDMQL.execute(Unknown Source)
+	at org.hsqldb.Session.executeCompiledStatement(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 68 more
+2017-10-08 14:22:24,758 WARN  org.apache.cxf.phase.PhaseInterceptorChain (PhaseInterceptorChain.java:447) - Exception in handleFault on interceptor org.apache.cxf.binding.xml.interceptor.XMLFaultOutInterceptor@9a7ff22
+org.apache.cxf.interceptor.Fault: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:163)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:343)
+	at org.springframework.orm.hibernate4.HibernateTemplate.executeWithNativeSession(HibernateTemplate.java:308)
+	at org.springframework.orm.hibernate4.HibernateTemplate.flush(HibernateTemplate.java:837)
+	at repositories.HibernateGenericDAO.save(HibernateGenericDAO.java:65)
+	at services.UserService.newUser(UserService.java:52)
+	at services.UserService$$FastClassBySpringCGLIB$$98d47aba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:267)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.newUser(<generated>)
+	at rest.UsersRest.newUser(UsersRest.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:72)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:62)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3124)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3581)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.springframework.orm.hibernate4.HibernateTemplate$27.doInHibernate(HibernateTemplate.java:840)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:340)
+	... 51 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.fetchResult(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.executeUpdate(Unknown Source)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 62 more
+Caused by: org.hsqldb.HsqlException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.Constraint.getException(Unknown Source)
+	at org.hsqldb.index.IndexAVLMemory.insert(Unknown Source)
+	at org.hsqldb.persist.RowStoreAVL.indexRow(Unknown Source)
+	at org.hsqldb.TransactionManager2PL.addInsertAction(Unknown Source)
+	at org.hsqldb.Session.addInsertAction(Unknown Source)
+	at org.hsqldb.Table.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementDML.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementInsert.getResult(Unknown Source)
+	at org.hsqldb.StatementDMQL.execute(Unknown Source)
+	at org.hsqldb.Session.executeCompiledStatement(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 68 more
+2017-10-08 14:22:24,760 ERROR org.apache.cxf.interceptor.AbstractFaultChainInitiatorObserver (AbstractFaultChainInitiatorObserver.java:115) - Error occurred during error handling, give up!
+org.apache.cxf.interceptor.Fault: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_2MGXHOSJ23LTG093T3PJAMTTV]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:163)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:343)
+	at org.springframework.orm.hibernate4.HibernateTemplate.executeWithNativeSession(HibernateTemplate.java:308)
+	at org.springframework.orm.hibernate4.HibernateTemplate.flush(HibernateTemplate.java:837)
+	at repositories.HibernateGenericDAO.save(HibernateGenericDAO.java:65)
+	at services.UserService.newUser(UserService.java:52)
+	at services.UserService$$FastClassBySpringCGLIB$$98d47aba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:267)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.newUser(<generated>)
+	at rest.UsersRest.newUser(UsersRest.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:72)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:62)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3124)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3581)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.springframework.orm.hibernate4.HibernateTemplate$27.doInHibernate(HibernateTemplate.java:840)
+	at org.springframework.orm.hibernate4.HibernateTemplate.doExecute(HibernateTemplate.java:340)
+	... 51 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.fetchResult(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.executeUpdate(Unknown Source)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 62 more
+Caused by: org.hsqldb.HsqlException: violación del restricción de integridad: violación de índice o clave única; UK_2MGXHOSJ23LTG093T3PJAMTTV table: USER
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.Constraint.getException(Unknown Source)
+	at org.hsqldb.index.IndexAVLMemory.insert(Unknown Source)
+	at org.hsqldb.persist.RowStoreAVL.indexRow(Unknown Source)
+	at org.hsqldb.TransactionManager2PL.addInsertAction(Unknown Source)
+	at org.hsqldb.Session.addInsertAction(Unknown Source)
+	at org.hsqldb.Table.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementDML.insertSingleRow(Unknown Source)
+	at org.hsqldb.StatementInsert.getResult(Unknown Source)
+	at org.hsqldb.StatementDMQL.execute(Unknown Source)
+	at org.hsqldb.Session.executeCompiledStatement(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 68 more
+2017-10-08 14:23:52,168 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 14:23:52,171 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 14:23:52,171 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 14:23:52,171 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 14:23:52,172 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 14:23:52,172 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 14:23:52,172 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 14:23:52,172 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 14:23:52,173 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 14:23:52,173 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 14:23:52,173 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 14:23:52,174 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 14:24:14,671 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:16:03,569 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 15:16:03,572 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 15:16:03,572 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 15:16:03,572 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 15:16:03,573 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 15:16:03,573 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 15:16:03,573 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 15:16:03,574 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 15:16:03,574 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 15:16:03,574 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 15:16:03,574 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 15:16:03,575 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 15:16:25,991 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:17:17,317 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:20:28,806 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 15:20:28,810 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 15:20:28,810 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 15:20:28,810 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 15:20:28,811 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 15:20:28,811 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 15:20:28,812 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 15:20:28,812 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 15:20:28,813 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 15:20:28,813 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 15:20:28,815 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 15:20:28,815 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 15:21:14,774 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:21:41,508 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:26:09,130 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 15:26:09,133 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 15:26:09,134 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 15:26:09,134 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 15:26:09,135 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 15:26:09,135 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 15:26:09,135 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 15:26:09,135 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 15:26:09,136 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 15:26:09,136 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 15:26:09,136 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 15:26:09,137 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 15:26:23,212 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:26:33,433 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:26:33,604 WARN  org.apache.cxf.common.logging.LogUtils (LogUtils.java:452) - Application {http://rest/}UsersRest has thrown exception, unwinding now
+org.apache.cxf.interceptor.Fault: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.orm.hibernate4.HibernateSystemException: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:218)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.convertHibernateAccessException(HibernateTransactionManager.java:730)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:592)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:726)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:497)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:277)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.updateUser(<generated>)
+	at rest.UsersRest.updateUser(UsersRest.java:113)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:98)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:117)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.performSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:114)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90)
+	at org.hibernate.internal.SessionImpl.fireSaveOrUpdate(SessionImpl.java:684)
+	at org.hibernate.internal.SessionImpl.saveOrUpdate(SessionImpl.java:676)
+	at org.hibernate.engine.spi.CascadingActions$5.cascade(CascadingActions.java:235)
+	at org.hibernate.engine.internal.Cascade.cascadeToOne(Cascade.java:350)
+	at org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:293)
+	at org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:161)
+	at org.hibernate.engine.internal.Cascade.cascade(Cascade.java:118)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.cascadeOnFlush(AbstractFlushingEventListener.java:167)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.prepareEntityFlushes(AbstractFlushingEventListener.java:158)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEverythingToExecutions(AbstractFlushingEventListener.java:91)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:55)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:425)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:177)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:584)
+	... 45 more
+2017-10-08 15:26:33,704 WARN  org.apache.cxf.phase.PhaseInterceptorChain (PhaseInterceptorChain.java:447) - Exception in handleFault on interceptor org.apache.cxf.binding.xml.interceptor.XMLFaultOutInterceptor@269387b0
+org.apache.cxf.interceptor.Fault: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.orm.hibernate4.HibernateSystemException: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:218)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.convertHibernateAccessException(HibernateTransactionManager.java:730)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:592)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:726)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:497)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:277)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.updateUser(<generated>)
+	at rest.UsersRest.updateUser(UsersRest.java:113)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:98)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:117)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.performSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:114)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90)
+	at org.hibernate.internal.SessionImpl.fireSaveOrUpdate(SessionImpl.java:684)
+	at org.hibernate.internal.SessionImpl.saveOrUpdate(SessionImpl.java:676)
+	at org.hibernate.engine.spi.CascadingActions$5.cascade(CascadingActions.java:235)
+	at org.hibernate.engine.internal.Cascade.cascadeToOne(Cascade.java:350)
+	at org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:293)
+	at org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:161)
+	at org.hibernate.engine.internal.Cascade.cascade(Cascade.java:118)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.cascadeOnFlush(AbstractFlushingEventListener.java:167)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.prepareEntityFlushes(AbstractFlushingEventListener.java:158)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEverythingToExecutions(AbstractFlushingEventListener.java:91)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:55)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:425)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:177)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:584)
+	... 45 more
+2017-10-08 15:26:33,715 ERROR org.apache.cxf.interceptor.AbstractFaultChainInitiatorObserver (AbstractFaultChainInitiatorObserver.java:115) - Error occurred during error handling, give up!
+org.apache.cxf.interceptor.Fault: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.apache.cxf.service.invoker.AbstractInvoker.createFault(AbstractInvoker.java:170)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:136)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:204)
+	at org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:101)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:94)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: org.springframework.orm.hibernate4.HibernateSystemException: attempted to assign id from null one-to-one property [model.Telephone.user]; nested exception is org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:218)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.convertHibernateAccessException(HibernateTransactionManager.java:730)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:592)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:726)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:497)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:277)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at services.UserService$$EnhancerBySpringCGLIB$$29f7160d.updateUser(<generated>)
+	at rest.UsersRest.updateUser(UsersRest.java:113)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:188)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:104)
+	... 30 more
+Caused by: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [model.Telephone.user]
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:98)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:117)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.performSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:114)
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90)
+	at org.hibernate.internal.SessionImpl.fireSaveOrUpdate(SessionImpl.java:684)
+	at org.hibernate.internal.SessionImpl.saveOrUpdate(SessionImpl.java:676)
+	at org.hibernate.engine.spi.CascadingActions$5.cascade(CascadingActions.java:235)
+	at org.hibernate.engine.internal.Cascade.cascadeToOne(Cascade.java:350)
+	at org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:293)
+	at org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:161)
+	at org.hibernate.engine.internal.Cascade.cascade(Cascade.java:118)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.cascadeOnFlush(AbstractFlushingEventListener.java:167)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.prepareEntityFlushes(AbstractFlushingEventListener.java:158)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEverythingToExecutions(AbstractFlushingEventListener.java:91)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:55)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:425)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:177)
+	at org.springframework.orm.hibernate4.HibernateTransactionManager.doCommit(HibernateTransactionManager.java:584)
+	... 45 more
+2017-10-08 15:47:30,176 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 15:47:30,179 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 15:47:30,180 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 15:47:30,180 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 15:47:30,180 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 15:47:30,180 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 15:47:30,181 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 15:47:30,181 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 15:47:30,181 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 15:47:30,182 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 15:47:30,182 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 15:47:30,182 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 15:51:26,885 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 15:51:26,890 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 15:51:26,891 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 15:51:26,891 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 15:51:26,892 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 15:51:26,892 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 15:51:26,893 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 15:51:26,893 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 15:51:26,893 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 15:51:26,894 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 15:51:26,894 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 15:51:26,895 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 15:51:45,042 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 15:52:12,304 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:03:08,735 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 16:03:08,739 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 16:03:08,740 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 16:03:08,740 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 16:03:08,740 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 16:03:08,741 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 16:03:08,741 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 16:03:08,741 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 16:03:08,742 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 16:03:08,742 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 16:03:08,743 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 16:03:08,743 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 16:03:31,843 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:03:42,030 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:10:16,629 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 16:10:16,632 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 16:10:16,632 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 16:10:16,632 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 16:10:16,633 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 16:10:16,633 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 16:10:16,633 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 16:10:16,633 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 16:10:16,634 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 16:10:16,634 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 16:10:16,635 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 16:10:16,635 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 16:10:26,729 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:10:36,806 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:11:48,480 WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper (SqlExceptionHelper.java:144) - SQL Error: 0, SQLState: null
+2017-10-08 16:11:48,481 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper (SqlExceptionHelper.java:146) - Borrow prepareStatement from pool failed
+2017-10-08 16:14:06,939 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table HistoricalOrder drop constraint FK_4kui4gsc6y1ledfwio36e0bu4
+2017-10-08 16:14:06,942 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.HISTORICALORDER
+2017-10-08 16:14:06,942 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Provider drop constraint FK_r5mm7dm9y7be31d58pcl3uwg4
+2017-10-08 16:14:06,942 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PROVIDER
+2017-10-08 16:14:06,943 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Service drop constraint FK_rqobe36pppyvuxd6ny5rd2f0c
+2017-10-08 16:14:06,943 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.SERVICE
+2017-10-08 16:14:06,944 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Telephone drop constraint FK_snjdyaegjkyjyojnewwwfmfbq
+2017-10-08 16:14:06,944 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TELEPHONE
+2017-10-08 16:14:06,944 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table Transaction drop constraint FK_ad7ovxijkgcmp43wxkdy7fj4d
+2017-10-08 16:14:06,944 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.TRANSACTION
+2017-10-08 16:14:06,945 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:425) - HHH000389: Unsuccessful: alter table User drop constraint FK_oidlpt3w74aa9f4bxdiamid0w
+2017-10-08 16:14:06,945 ERROR org.hibernate.tool.hbm2ddl.SchemaExport (SchemaExport.java:426) - usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.USER
+2017-10-08 16:14:17,595 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#newUser and rest.UsersRest#newUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:14:26,827 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:15:11,217 WARN  org.apache.cxf.jaxrs.utils.JAXRSUtils (JAXRSUtils.java:474) - No operation matching request path "/grupoc/rest/users/updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/" is found, Relative Path: /updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/, HTTP Method: GET, ContentType: */*, Accept: text/html,application/xhtml+xml,image/webp,image/apng,application/xml;q=0.9,*/*;q=0.8,. Please enable FINE/TRACE log level for more details.
+2017-10-08 16:15:11,219 WARN  org.apache.cxf.jaxrs.impl.WebApplicationExceptionMapper (WebApplicationExceptionMapper.java:73) - javax.ws.rs.ClientErrorException
+	at org.apache.cxf.jaxrs.utils.SpecExceptions.toHttpException(SpecExceptions.java:110)
+	at org.apache.cxf.jaxrs.utils.ExceptionUtils.toHttpException(ExceptionUtils.java:158)
+	at org.apache.cxf.jaxrs.utils.JAXRSUtils.findTargetMethod(JAXRSUtils.java:478)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:216)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:88)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+
+2017-10-08 16:15:19,013 WARN  org.apache.cxf.jaxrs.utils.JAXRSUtils (JAXRSUtils.java:474) - No operation matching request path "/grupoc/rest/users/updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/" is found, Relative Path: /updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/, HTTP Method: GET, ContentType: */*, Accept: text/html,application/xhtml+xml,image/webp,image/apng,application/xml;q=0.9,*/*;q=0.8,. Please enable FINE/TRACE log level for more details.
+2017-10-08 16:15:19,014 WARN  org.apache.cxf.jaxrs.impl.WebApplicationExceptionMapper (WebApplicationExceptionMapper.java:73) - javax.ws.rs.ClientErrorException
+	at org.apache.cxf.jaxrs.utils.SpecExceptions.toHttpException(SpecExceptions.java:110)
+	at org.apache.cxf.jaxrs.utils.ExceptionUtils.toHttpException(ExceptionUtils.java:158)
+	at org.apache.cxf.jaxrs.utils.JAXRSUtils.findTargetMethod(JAXRSUtils.java:478)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:216)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:88)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+
+2017-10-08 16:15:42,351 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results
+2017-10-08 16:16:02,138 WARN  org.apache.cxf.jaxrs.utils.JAXRSUtils (JAXRSUtils.java:474) - No operation matching request path "/grupoc/rest/users/updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/" is found, Relative Path: /updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/, HTTP Method: GET, ContentType: */*, Accept: text/html,application/xhtml+xml,image/webp,image/apng,application/xml;q=0.9,*/*;q=0.8,. Please enable FINE/TRACE log level for more details.
+2017-10-08 16:16:02,139 WARN  org.apache.cxf.jaxrs.impl.WebApplicationExceptionMapper (WebApplicationExceptionMapper.java:73) - javax.ws.rs.ClientErrorException
+	at org.apache.cxf.jaxrs.utils.SpecExceptions.toHttpException(SpecExceptions.java:110)
+	at org.apache.cxf.jaxrs.utils.ExceptionUtils.toHttpException(ExceptionUtils.java:158)
+	at org.apache.cxf.jaxrs.utils.JAXRSUtils.findTargetMethod(JAXRSUtils.java:478)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:216)
+	at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:88)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+	at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:249)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:248)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:222)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:153)
+	at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:181)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:289)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:214)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:265)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:326)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+
+2017-10-08 16:16:22,284 WARN  org.apache.cxf.jaxrs.model.OperationResourceInfoComparator (OperationResourceInfoComparator.java:113) - Both rest.UsersRest#updateUser and rest.UsersRest#updateUser are equal candidates for handling the current request which can lead to unpredictable results

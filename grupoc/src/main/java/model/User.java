@@ -9,6 +9,7 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import userExceptions.InvalidPasswordException;
 import validation.UserValidation;
 
 @XmlRootElement(name = "user")
@@ -123,6 +124,18 @@ public class User extends Entity {
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return this.password;
+	}
+
+	public void updateInformation(String password,Telephone telephone, Address address) throws InvalidPasswordException {
+		if(this.validator.isValidPassword(password)){
+			update(password,telephone,address);
+		}
+	}
+
+	private void update(String password, Telephone telephone, Address address) {
+		setPassword(password);
+		setTelephone(telephone);
+		setAddress(address);	
 	}
 
 }

@@ -27,6 +27,7 @@ import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import userExceptions.InvalidPasswordException;
 
 public class UserService extends GenericService<User> {
 
@@ -82,6 +83,19 @@ public class UserService extends GenericService<User> {
 		User user = repo.findById(id);
 		return user.getAccount().balance();
 
+	}
+	@Transactional
+	public void updateUser(String id, String password,String countryCode, String areaCode,
+			String localNumber, String locality, String street, String numberStreet, String floor, String latitude,
+			String length) throws NumberFormatException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException, InvalidPasswordException {
+		UserRepository repo = (UserRepository) this.getRepository();
+		User user = repo.findById(id);
+		MapPosition mapPosition = new MapPosition(new Double(latitude), new Double(length));
+		Telephone telephone = repo.findTelephoneById(id);
+		telephone.updateInformation(countryCode, areaCode, localNumber);
+		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
+		user.updateInformation(password,telephone,address);
+		
 	}
 
 }

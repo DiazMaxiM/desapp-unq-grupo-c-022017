@@ -102,4 +102,13 @@ public class Telephone extends Entity {
 
 	}
 
+	public void updateInformation(String countryCode, String areaCode, String localNumber) throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+	     if(isAValidTelephone(countryCode, areaCode, localNumber)){
+	    	 setCountryCode(countryCode);
+	    	 setAreaCode(areaCode);
+	    	 setLocalNumber(localNumber);
+	     }
+		
+	}
+
 }
