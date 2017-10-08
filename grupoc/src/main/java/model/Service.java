@@ -16,7 +16,7 @@ import serviceException.InvalidServiceNameException;
 import serviceException.InvalidServiceWorkingHoursException;
 import validation.ServiceValidation;
 
-public class Service {
+public class Service extends Entity {
 	private String serviceName; // Required
 	private String serviceLogo; // Required
 	private Address serviceAddress; // Required

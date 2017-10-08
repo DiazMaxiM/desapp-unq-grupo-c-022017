@@ -2,7 +2,7 @@ package model;
 
 import org.joda.time.DateTime;
 
-public class HistoricalOrder {
+public class HistoricalOrder extends Entity {
 
 	private Score score;
 	private DateTime deliveryTime;

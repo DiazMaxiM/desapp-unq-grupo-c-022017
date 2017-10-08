@@ -21,5 +21,21 @@
 		<property name="mail" unique="true"/>
 		<property name="surname" />
 		<property name="password" />
+		<joined-subclass name="model.Provider" extends="model.User">
+				<key column="idUser" />
+				<property name="status" column="status" />
+				<list name = "servicesOffered" cascade="all" inverse="false" >
+         <key column = "idUser"/>
+         <list-index column = "idx"/>
+         <one-to-many class="model.Service"/>
+      	</list>
+		<list name = "historicalOrders" cascade="all" inverse="false" >
+         <key column = "idUser"/>
+         <list-index column = "idx"/>
+         <one-to-many class="model.HistoricalOrder"/>
+      	</list>
+		</joined-subclass>
+		
+		
 	</class>
 </hibernate-mapping>
