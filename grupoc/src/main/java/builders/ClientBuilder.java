@@ -23,14 +23,18 @@ import userExceptions.InvalidLastNameException;
 
 public class ClientBuilder {
 	protected User client;
-    
-	public ClientBuilder() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidMapPositionException {
-		this.client=this.getClient();		
+
+	public ClientBuilder() throws InvalidAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
+			InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException,
+			InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException,
+			InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException,
+			InvalidTelephoneNumberException, InvalidMapPositionException {
+		this.client = this.getClient();
 	}
-	
+
 	public User build() {
 		return this.client;
-	} 
+	}
 
 	public void setName(String name) {
 		this.client.setName(name);
@@ -51,10 +55,15 @@ public class ClientBuilder {
 	public void setAddress(Address address) {
 		this.client.setAddress(address);
 	}
-	
-	public User getClient() throws InvalidAddressException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
-			return new User("30-457346876-8","any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"), new Address(
-					Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)));
+
+	public User getClient() throws InvalidAddressException, InvalidCuitException, InvalidFirstNameException,
+			InvalidLastNameException, InvalidEmailAddressException, InvalidTelephoneNumberException,
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException,
+			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
+			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+		return new User("30-457346876-8", "any", "person", "any@person.com", new Telephone("54", "011", "4444-4444"),
+				new Address(Locality.AVELLANEDA, "Saenz Peña", "1000", "PB", new MapPosition(-34.796581, -58.276012)),
+				null);
 	}
-	
+
 }

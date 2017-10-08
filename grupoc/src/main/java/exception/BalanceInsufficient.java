@@ -1,6 +1,6 @@
 package exception;
 
-public class BalanceInsufficient extends Exception {
+public class BalanceInsufficient extends SystemException {
 
 	private static final long serialVersionUID = 1L;
 

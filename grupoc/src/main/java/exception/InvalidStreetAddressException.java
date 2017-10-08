@@ -1,6 +1,6 @@
 package exception;
 
-public class InvalidStreetAddressException extends Exception {
+public class InvalidStreetAddressException extends SystemException {
 
 	private static final long serialVersionUID = 1L;
 

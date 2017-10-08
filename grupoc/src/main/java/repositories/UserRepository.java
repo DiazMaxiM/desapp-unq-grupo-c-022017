@@ -1,5 +1,7 @@
 package repositories;
 
+import java.util.List;
+
 import model.User;
 
 public class UserRepository extends HibernateGenericDAO<User> implements GenericRepository<User> {
@@ -9,6 +11,13 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 	@Override
 	protected Class<User> getDomainClass() {
 		return User.class;
+	}
+
+	public User findByEmail(String email) {
+		List<User> find = (List<User>) this.getHibernateTemplate()
+				.find("from " + this.persistentClass.getName() + " where mail ='" + email + "'");
+		List<User> list = find;
+		return list.get(0);
 	}
 
 }

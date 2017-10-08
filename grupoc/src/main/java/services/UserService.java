@@ -9,6 +9,7 @@ import exception.InvalidLatitudeMapPositionException;
 import exception.InvalidLengthMapPositionException;
 import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
+import exception.InvalidLoggingException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
@@ -18,6 +19,7 @@ import model.Locality;
 import model.MapPosition;
 import model.Telephone;
 import model.User;
+import repositories.UserRepository;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
@@ -28,9 +30,10 @@ public class UserService extends GenericService<User> {
 	private static final long serialVersionUID = -2932116622242535843L;
 
 	@Transactional
-	public User newUser(String name, String surname, String cuit, String mail, String countryCode, String areaCode,
-			String localNumber, String locality, String street, String numberStreet, String floor, String latitude,
-			String length) throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException,
+	public User newUser(String pass, String name, String surname, String cuit, String mail, String countryCode,
+			String areaCode, String localNumber, String locality, String street, String numberStreet, String floor,
+			String latitude, String length)
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException,
 			InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException,
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
@@ -41,10 +44,21 @@ public class UserService extends GenericService<User> {
 		Telephone telephone = new Telephone(countryCode, areaCode, localNumber);
 
 		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
-		User newUser = new User(cuit, name, surname, mail, telephone, address);
+		User newUser = new User(cuit, name, surname, mail, telephone, address, pass);
 
 		this.getRepository().save(newUser);
+
 		return newUser;
+	}
+
+	public User loggingUser(String mail, String pass) throws InvalidLoggingException {
+		UserRepository repo = (UserRepository) this.getRepository();
+		User user = repo.findByEmail(mail);
+		if (user.getPassword().equals(pass)) {
+			return user;
+		}
+		throw new InvalidLoggingException("Error en el logging");
+
 	}
 
 }

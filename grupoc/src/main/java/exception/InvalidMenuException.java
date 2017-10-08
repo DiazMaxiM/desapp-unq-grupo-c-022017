@@ -1,8 +1,9 @@
 package exception;
 
-public class InvalidMenuException extends Exception {
+public class InvalidMenuException extends SystemException {
 	private static final long serialVersionUID = 1L;
-	public InvalidMenuException(String msg){
+
+	public InvalidMenuException(String msg) {
 		super(msg);
 	}
 

@@ -22,22 +22,24 @@ public class User extends Entity {
 	private Address address;
 	private Account account = new Account();
 	private UserValidation validator = new UserValidation();
+	private String password;
 
 	public User() {
 	}
 
 	public User(String cuit, String userfirstName, String userLastName, String userEmailAddress,
-			Telephone userTelephone, Address userAddress) throws InvalidAddressException,
+			Telephone userTelephone, Address userAddress, String pass) throws InvalidAddressException,
 			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
 			InvalidEmailAddressException, InvalidMapPositionException {
 
 		if (validator.isValidUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress)) {
-			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
+			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress, pass);
 		}
 	}
 
 	private void createUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
-			Telephone userTelephone, Address userAddress) {
+			Telephone userTelephone, Address userAddress, String pass) {
+		setPassword(pass);
 		userTelephone.setUser(this);
 		setCuit(cuit);
 		setName(userfirstName);
@@ -45,6 +47,11 @@ public class User extends Entity {
 		setMail(userEmailAddress);
 		setTelephone(userTelephone);
 		setAddress(userAddress);
+	}
+
+	private void setPassword(String pass) {
+		this.password = pass;
+
 	}
 
 	@Override
@@ -111,6 +118,11 @@ public class User extends Entity {
 
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return this.password;
 	}
 
 }

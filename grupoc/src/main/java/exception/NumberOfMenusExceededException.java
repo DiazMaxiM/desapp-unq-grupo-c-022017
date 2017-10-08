@@ -1,6 +1,6 @@
 package exception;
 
-public class NumberOfMenusExceededException extends Exception {
+public class NumberOfMenusExceededException extends SystemException {
 
 	private static final long serialVersionUID = 1L;
 

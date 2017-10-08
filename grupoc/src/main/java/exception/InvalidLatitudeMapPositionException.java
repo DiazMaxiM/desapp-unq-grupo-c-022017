@@ -1,6 +1,6 @@
 package exception;
 
-public class InvalidLatitudeMapPositionException extends Exception {
+public class InvalidLatitudeMapPositionException extends SystemException {
 
 	private static final long serialVersionUID = 1L;
 

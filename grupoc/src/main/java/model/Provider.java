@@ -19,12 +19,13 @@ public class Provider extends User {
 	private ArrayList<HistoricalOrder> historicalOrders = new ArrayList<HistoricalOrder>();
 
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,
-			Telephone userTelephone, Address userAddress)
-			throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException,
-			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException {
-		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress);
+			Telephone userTelephone, Address userAddress, String password) throws InvalidAddressException,
+			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
+			InvalidEmailAddressException, InvalidMapPositionException {
+		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress, password);
 
 	}
+
 	public void addNewService(Service newService) throws InvalidServiceException {
 		this.servicesOffered.add(newService);
 	}

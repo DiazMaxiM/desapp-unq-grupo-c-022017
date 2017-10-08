@@ -1,6 +1,6 @@
 package exception;
 
-public class InvalidLengthMapPositionException extends Exception{
+public class InvalidLengthMapPositionException extends SystemException {
 
 	private static final long serialVersionUID = 1L;
 

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import exception.InvalidAreaCodeException;
+import exception.InvalidCountryCodeException;
+import exception.InvalidLocalNumberException;
 import model.Telephone;
 import services.TelephoneService;
 
@@ -20,8 +23,9 @@ public class TelephoneHibernateTest {
 	private TelephoneService telephoneService;
 
 	@Test
-	public void testSaveTelephone() {
-		telephoneService.save(new Telephone());
+	public void testSaveTelephone()
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+		telephoneService.save(new Telephone("54", "011", "43511464"));
 		assertEquals(1, telephoneService.retriveAll().size());
 
 	}
