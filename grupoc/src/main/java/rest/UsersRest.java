@@ -91,5 +91,12 @@ public class UsersRest {
 	}
        return true;
 	}
+	
+	@GET
+	@Path("/getBalanceUser/{id}")
+	@Produces("application/json")
+	public Double getBalanceUser(@PathParam("id") final String id){
+		return this.userService.getBalance(id);
+	}
 
 }

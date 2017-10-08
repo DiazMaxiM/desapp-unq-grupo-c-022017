@@ -72,4 +72,11 @@ public class UserService extends GenericService<User> {
 		repo.save(user);
 	}
 
+	public Double getBalance(String id) {
+		UserRepository repo = (UserRepository) this.getRepository();
+		User user = repo.findById(id);
+		return user.getAccount().balance();		
+		
+	}
+
 }
