@@ -5,14 +5,38 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.User">
-		<id column="idAddress" name="id">
+		<id column="idUser" name="id">
 			<generator class="foreign" >
  			<param name="property">address</param>
  		</generator>		
  		</id>
 		<one-to-one name="telephone" cascade="all" class="model.Telephone" />
 		<one-to-one name="address" cascade="all" class="model.Address" />
-		<one-to-one name="account" cascade="all" class="model.Account" />
+		<component name="account" class="model.Account">
+		<set name="transactions" table="Transactions">
+		
+           <key column="idAddress"/>
+           
+  <composite-element class="model.Transaction"> <!-- class attribute required -->
+       
+        <property name="value" />
+		
+		<property name="typeTransaction" >
+        <type name="org.hibernate.type.EnumType">
+            <param name="enumClass">model.TypeTransaction</param>
+            <param name="useNamed">true</param>
+        </type>       
+    </property>
+		<property name="statusTransaction">
+		<type name="org.hibernate.type.EnumType">
+            <param name="enumClass">model.TypeStatusTransaction</param>
+            <param name="useNamed">true</param>
+        </type>
+        </property>
+     
+    </composite-element>
+    </set>
+		</component>
 		<property name="cuit" unique="true" />
 		<property name="name" />
 		<property name="mail" unique="true"/>

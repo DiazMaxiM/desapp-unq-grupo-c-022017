@@ -1,12 +1,12 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import exception.BalanceInsufficient;
 
 public class Account extends Entity {
-	private List<Transaction> transactions = new ArrayList<Transaction>();
+	private Set<Transaction> transactions = new HashSet<Transaction>();
 
 	public void addTransaction(Transaction transaction) throws BalanceInsufficient {
 		if (isBalanceInsufficient(transaction)) {
