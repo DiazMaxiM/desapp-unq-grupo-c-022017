@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import exception.BalanceInsufficient;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
@@ -75,6 +76,20 @@ public class UsersRest {
 
 	public void setUserService(final UserService userService) {
 		this.userService = userService;
+	}
+	
+	@GET
+	@Path("/addTransactionUser/{id}/{typeTransaction}/{value}")
+	@Produces("application/json")
+	public boolean addTransactionUser(@PathParam("id") final String id, @PathParam("typeTransaction") final String typeTransaction, @PathParam("value") final String value){
+       try {
+		this.userService.addTransaction(id,typeTransaction,value);
+	} catch (BalanceInsufficient e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return false;
+	}
+       return true;
 	}
 
 }

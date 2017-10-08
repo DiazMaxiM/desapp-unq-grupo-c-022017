@@ -17,8 +17,12 @@ body {
 }
 
 .squareButton{ 
-	border-radius: 0px !IMPORTANT;;
 	color: white;
 	background-color: orange;
+	width: 100%;
 
+}
+
+.login{
+	background-color: white;
 }

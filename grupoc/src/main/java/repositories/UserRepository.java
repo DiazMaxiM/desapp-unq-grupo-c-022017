@@ -19,5 +19,10 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		List<User> list = find;
 		return list.get(0);
 	}
-
+	public User findById(String id) {
+		List<User> find = (List<User>) this.getHibernateTemplate()
+				.find("from " + this.persistentClass.getName() + " where id ='" + id + "'");
+		List<User> list = find;
+		return list.get(0);
+	}
 }

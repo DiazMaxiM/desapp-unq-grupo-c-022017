@@ -12,12 +12,11 @@
  		</id>
 		<one-to-one name="telephone" cascade="all" class="model.Telephone" />
 		<one-to-one name="address" cascade="all" class="model.Address" />
-		
+		<one-to-one name="account" cascade="all" class="model.Account" />
 		<property name="cuit" unique="true" />
 		<property name="name" />
 		<property name="mail" unique="true"/>
 		<property name="surname" />
 		<property name="password" />
-		
 	</class>
 </hibernate-mapping>

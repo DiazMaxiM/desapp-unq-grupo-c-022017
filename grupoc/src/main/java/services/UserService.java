@@ -2,6 +2,7 @@ package services;
 
 import javax.transaction.Transactional;
 
+import exception.BalanceInsufficient;
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
@@ -18,6 +19,8 @@ import model.Address;
 import model.Locality;
 import model.MapPosition;
 import model.Telephone;
+import model.Transaction;
+import model.TypeTransaction;
 import model.User;
 import repositories.UserRepository;
 import userExceptions.InvalidCuitException;
@@ -59,6 +62,14 @@ public class UserService extends GenericService<User> {
 		}
 		throw new InvalidLoggingException("Error en el logging");
 
+	}
+	@Transactional
+	public void addTransaction(String id, String typeTransaction, String value) throws BalanceInsufficient {
+		UserRepository repo = (UserRepository) this.getRepository();
+		User user = repo.findById(id);
+		Transaction transaction = new Transaction(TypeTransaction.valueOf(typeTransaction),new Double(value));
+		user.getAccount().addTransaction(transaction);
+		repo.save(user);
 	}
 
 }

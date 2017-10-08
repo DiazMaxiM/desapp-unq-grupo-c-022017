@@ -5,8 +5,10 @@
  <hibernate-mapping default-access="field"
  	default-cascade="save-update">
  	<class name="model.Account">
- 		<id column="ID" name="id">
- 			<generator class="native" />
+ 		<id column="idUser" name="id">
+ 			<generator class="foreign" >
+ 			<param name="property">user</param>
+ 			            </generator>
  		</id>
  		 <list name="transactions" cascade="save-update" inverse="false">
         	<key column="transactions_user"/>
