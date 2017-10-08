@@ -54,6 +54,8 @@ public class UserService extends GenericService<User> {
 		return newUser;
 	}
 
+	@Transactional
+
 	public User loggingUser(String mail, String pass) throws InvalidLoggingException {
 		UserRepository repo = (UserRepository) this.getRepository();
 		User user = repo.findByEmail(mail);
@@ -63,20 +65,23 @@ public class UserService extends GenericService<User> {
 		throw new InvalidLoggingException("Error en el logging");
 
 	}
+
 	@Transactional
 	public void addTransaction(String id, String typeTransaction, String value) throws BalanceInsufficient {
 		UserRepository repo = (UserRepository) this.getRepository();
 		User user = repo.findById(id);
-		Transaction transaction = new Transaction(TypeTransaction.valueOf(typeTransaction),new Double(value));
+		Transaction transaction = new Transaction(TypeTransaction.valueOf(typeTransaction), new Double(value));
 		user.getAccount().addTransaction(transaction);
 		repo.save(user);
 	}
 
+	@Transactional
+
 	public Double getBalance(String id) {
 		UserRepository repo = (UserRepository) this.getRepository();
 		User user = repo.findById(id);
-		return user.getAccount().balance();		
-		
+		return user.getAccount().balance();
+
 	}
 
 }
