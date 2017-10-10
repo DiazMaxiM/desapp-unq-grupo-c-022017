@@ -42,9 +42,14 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 
-    
+    <bean id="dao.post" class="repositories.PostDAO" />
+	
+	<bean id="postsRest" class="rest.PostsRest">
+		<property name="postRepository" ref="dao.post" />
+	</bean>
+   <!-- 
 	<bean id="usersRest" class="rest.UsersRest">
 		<property name="userService" ref="services.user" />
 	</bean>
-	
+	-->
 </beans>
