@@ -4,12 +4,14 @@ import java.io.IOException;
 
 import org.joda.time.DateTime;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import model.HolidaysChecker;
 
 public class HolidaysCheckerTest {
 
+	@Ignore
 	@Test
 	public void test() throws IOException {
 		HolidaysChecker h = new HolidaysChecker();

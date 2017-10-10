@@ -2,6 +2,7 @@ package testHibernate;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class UserHibernateTest {
 	@Autowired
 	private UserService userService;
 
+	@Ignore
 	@Test
 	public void testSaveUser() {
 		userService.save(new User());

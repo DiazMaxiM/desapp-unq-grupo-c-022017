@@ -2,6 +2,7 @@ package testHibernate;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class TelephoneHibernateTest {
 	@Autowired
 	private TelephoneService telephoneService;
 
+	@Ignore
 	@Test
 	public void testSaveTelephone()
 			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
