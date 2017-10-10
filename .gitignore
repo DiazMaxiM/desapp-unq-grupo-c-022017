@@ -5,3 +5,9 @@
 grupoc/logapp.log
 grupoc/logapp.log
 *.log
+
+.classpath
+.settings
+.project
+/target
+/bin/
