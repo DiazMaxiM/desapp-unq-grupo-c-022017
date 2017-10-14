@@ -1,7 +1,15 @@
 {
-    "home": "Home",
-    "about": "MAbout",
-    "email": "email",
-    "contact": "Contact"
-
+    "ingresar": "Ingresar",
+    "registrar": "Registrar",
+    "tituloPantallaPrincipal": "Bienvenido a MorfiYa",
+    "elijeCriterioDeBusqueda": "Elejir Criterio de Busqueda",
+    "nombre": "nombre",
+    "localidad": "localidad",
+    "precio": "precio",
+    "buscarPor": "Buscar Por",
+    "buscar": "Buscar",
+    "nombreDeUsuario": "Nombre de Usuario",
+    "nombreDeUsuarioRequerido": "Nombre de Usuario Requerido",
+    "contrasenia": "Contraseña",
+    "contraseniaRequerido": "Contraseña requerida"
 }
