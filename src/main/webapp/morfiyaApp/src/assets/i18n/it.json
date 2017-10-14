@@ -1,15 +1,15 @@
 {
-    "ingresar": "Ingresar",
-    "registrar": "Registrar",
-    "tituloPantallaPrincipal": "Bienvenido a MorfiYa",
-    "elijeCriterioDeBusqueda": "Elejir Criterio de Busqueda",
-    "nombre": "nombre",
-    "localidad": "localidad",
-    "precio": "precio",
-    "buscarPor": "Buscar Por",
-    "buscar": "Buscar",
-    "nombreDeUsuario": "Nombre de Usuario",
-    "nombreDeUsuarioRequerido": "Nombre de Usuario Requerido",
-    "contrasenia": "Contraseña",
-    "contraseniaRequerido": "Contraseña requerida"
+    "ingresar": "Accesso",
+    "registrar": "Registrare",
+    "tituloPantallaPrincipal": "Benvenuti a MorfiYa",
+    "elijeCriterioDeBusqueda": "Seleziona Criteri di ricerca",
+    "nombre": "nome",
+    "localidad": "località",
+    "precio": "prezzo",
+    "buscarPor": "Cerca per",
+    "buscar": "Cercare",
+    "nombreDeUsuario": "Nome utente",
+    "nombreDeUsuarioRequerido": "Nome utente obbligatorio",
+    "contrasenia": "Password",
+    "contraseniaRequerido": "Password obbligatorio"
 }
