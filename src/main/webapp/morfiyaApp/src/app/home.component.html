@@ -1,220 +1,96 @@
 <div class="col-12 homeHeader non-lateral-padding">
-   <nav class="navbar navbar-expand-lg navbar-light">
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand titulo">MorfiYa</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link titulo" data-toggle="modal" data-target="#exampleModalLong">Ingresar</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link titulo" data-toggle="modal" data-target="#modalRegistro">Registrar</a>
-      </li>
-    </ul>
-  </div>
-</nav>	
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand titulo">MorfiYa</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link titulo" data-toggle="modal" data-target="#exampleModalLong">Ingresar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link titulo" data-toggle="modal" data-target="#modalRegistro">Registrar</a>
+                </li>
+            </ul>
+            <div class="lang-bar">
+                <a (click)="changeLang('en')">EN</a>
+                <a (click)="changeLang('hy')">ՀՅ</a>
+            </div>
+        </div>
+    </nav>
 </div>
 <div class="col-12">
-	<div class="col-sm-3 col-md-4 mx-auto subtitulo non-lateral-padding">
-		<h2>Delivery de comida online</h2>
-	</div>
+    <div class="col-sm-3 col-md-4 mx-auto subtitulo non-lateral-padding">
+        <h2>{{ 'about' | translate }}</h2>
+    </div>
 </div>
 <div class="col-12 non-lateral-padding">
     <div class="col-11 mx-auto">
-		<div class="row non-lateral-padding">
-			<div class="col-12 col-sm-12 col-md-3 non-lateral-padding">
-			    <select class="custom-select componentSearch">
+        <div class="row non-lateral-padding">
+            <div class="col-12 col-sm-12 col-md-3 non-lateral-padding">
+                <select class="custom-select componentSearch">
 		             <option selected>Elije el criterio de búsqueda </option>
 		             <option value="1">Nombre</option>
 		             <option value="2">Localidad</option>
 		             <option value="3">Precio</option>
 		        </select>
-			</div>
-			<div class="col-12 col-sm-12 col-md-6 non-lateral-padding">
-			    <input type="text" class="form-control componentSearch" placeholder="Buscar por..." aria-label="Buscar por...">
-			</div>
-			<div class="col-4 col-sm-2 col-md-2 non-lateral-padding">
-			    <button type="button" class="btn btn-lg squareButton componentSearch">Buscar</button>
-			 </div>
-		</div>
-	</div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 non-lateral-padding">
+                <input type="text" class="form-control componentSearch" placeholder="Buscar por..." aria-label="Buscar por...">
+            </div>
+            <div class="col-4 col-sm-2 col-md-2 non-lateral-padding">
+                <button type="button" class="btn btn-lg squareButton componentSearch">Buscar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal login-->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header homeHeader">
-            <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa-Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header homeHeader">
+                <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa-Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
             </button>
+            </div>
+            <div [hidden]="submitted" class="modal-body">
+                <form name="form" (ngSubmit)="f.form.valid && logginUser()" #f="ngForm" novalidate>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+                        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">Login</button>
+                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                        />
+                        <a class="btn btn-link">Register</a>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div [hidden]="submitted" class="modal-body">
-    		<form (ngSubmit)="onSubmit()" #userForm="ngForm">
-      			<div class="form-group col-12">
-        			<label for="email">Email</label>
-        			<input type="text" class="form-control" id="email"
-               		required
-               		[(ngModel)]="model.email" name="email"
-                    #email="ngModel">
-        			<div [hidden]="email.valid || email.pristine"
-             		class="alert alert-danger">
-         			La dirección de Email es obligatorio
-        			</div>
-      			</div>
-      			<div class="form-group col-12">
-        			<label for="password">Password</label>
-        			<input type="password" class="form-control" id="password"
-               		required
-               		[(ngModel)]="model.password" name="password"
-                    #password="ngModel">
-        			<div [hidden]="password.valid || password.pristine"
-             		class="alert alert-danger">
-         			El password es obligatorio
-        			</div>
-      			</div>
-      			<div class="col-12">
-      			    <button type="submit" class="btn btn-success squareButton" [disabled]="!userForm.form.valid">Ingresar</button>
-      			</div>    
-      		</form>
-       	</div>
     </div>
-  </div>
 </div>
 <!-- Modal Registro cliente-->
 <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header homeHeader">
-            <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa-Registro</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header homeHeader">
+                <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa-Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div [hidden]="submitted" class="modal-body">
-        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-            <div class="form-group col-12">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre"
-                  required
-                  [(ngModel)]="model.nombre" name="nombre"
-                    #nombre="ngModel">
-              <div [hidden]="nombre.valid || nombre.pristine"
-                class="alert alert-danger">
-              El nombre es obligatorio
-              </div>
             </div>
-            <div class="form-group col-12">
-              <label for="apellido">Apellido</label>
-              <input type="text" class="form-control" id="apellido"
-                  required
-                  [(ngModel)]="model.apellido" name="apellido"
-                    #apellido="ngModel">
-              <div [hidden]="apellido.valid || apellido.pristine"
-                class="alert alert-danger">
-              El Apellido es obligatorio
-              </div>
+            <div [hidden]="submitted" class="modal-body">
             </div>
-            <div class="form-group col-12">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email"
-                  required
-                  [(ngModel)]="model.email" name="email"
-                    >
-              <div [hidden]="email.valid || email.pristine"
-                class="alert alert-danger">
-              La dirección de Email es obligatorio
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <label for="cuit">Cuit</label>
-              <input type="text" class="form-control" id="cuit"
-                  required
-                  [(ngModel)]="model.cuit" name="cuit"
-                    #cuit="ngModel">
-              <div [hidden]="cuit.valid || cuit.pristine"
-                class="alert alert-danger">
-              El Cuit es obligatorio
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <label for="localidad">Localidad</label>
-              <input type="text" class="form-control" id="localidad"
-                  required
-                  [(ngModel)]="model.cuit" name="cuit"
-                    #localidad="ngModel">
-              <div [hidden]="localidad.valid || localidad.pristine"
-                class="alert alert-danger">
-              La Localidad es obligatoria
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <label for="numero">Calle Nro</label>
-              <input type="number" class="form-control" id="numero"
-                  required
-                  [(ngModel)]="model.numero" name="numero"
-                    #numero="ngModel">
-              <div [hidden]="numero.valid || numero.pristine"
-                class="alert alert-danger">
-              El número de calle es obligatorio
-              </div>
-            </div>
-             <div class="form-group col-12">
-              <label for="latiud">Latitud</label>
-              <input type="number" class="form-control" id="latitud"
-                  required
-                  [(ngModel)]="model.latitud" name="latitud"
-                    #latitud="ngModel">
-              <div [hidden]="latitud.valid || latitud.pristine"
-                class="alert alert-danger">
-                 La Latitud es obligatorio
-              </div>
-            </div>
-             <div class="form-group col-12">
-              <label for="longitud">Longitud</label>
-              <input type="number" class="form-control" id="longitud"
-                  required
-                  [(ngModel)]="model.longitud" name="longitud"
-                    #longitud="ngModel">
-              <div [hidden]="longitud.valid || longitud.pristine"
-                class="alert alert-danger">
-              La Longitud es obligatorio
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password"
-                  required
-                  [(ngModel)]="model.password" name="password"
-                    #password="ngModel">
-              <div [hidden]="password.valid || password.pristine"
-                class="alert alert-danger">
-              El password es obligatorio
-              </div>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="proveedor" value="option1" checked>
-                      Proveedor
-                     </label>
-                  </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="cliente" value="option2"> Cliente
-                    </label>
-                </div>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary squareButton" [disabled]="!userForm.form.valid">Registarme</button>
-            </div>    
-          </form>
         </div>
     </div>
-  </div>
 </div>
-
-
