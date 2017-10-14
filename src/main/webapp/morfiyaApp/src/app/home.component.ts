@@ -14,9 +14,9 @@ export class HomeComponent  {
     console.log(lang);
   }
   constructor(private http: HttpClient,private translate: TranslateService){
-    translate.addLangs(['en', 'hy']);
-    translate.setDefaultLang('en');
-    translate.use('en');
+    translate.addLangs(['en', 'es','it']);
+    translate.setDefaultLang('es');
+    translate.use('es');
   }
   logginUser(): void {
   console.log('http://localhost:8080/grupoc/rest/users/loggingUser/'+this.model.username+'/'+this.model.password);
