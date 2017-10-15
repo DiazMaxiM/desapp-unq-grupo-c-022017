@@ -16,5 +16,10 @@
     "editarDatos":"Edit Profile",
     "consultarSaldo": "Check Balance",
     "cerrarSesion": "Sign Out",
-    "misPedidos": "My Orders"
+    "misPedidos": "My Orders",
+    "saldoActual": "Current Balance",
+    "agregarSaldo": "Load Balance",
+    "cancelar": "Cancel",
+    "confirmar": "Confirm"
+
 }

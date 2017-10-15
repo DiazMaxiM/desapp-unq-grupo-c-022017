@@ -16,5 +16,9 @@
     "editarDatos":"Editar perfil",
     "consultarSaldo": "Consultar Saldo",
     "cerrarSesion": "Cerrar Sesion",
-    "misPedidos": "Mis Pedidos"
+    "misPedidos": "Mis Pedidos",
+    "saldoActual": "Saldo Actual",
+    "agregarSaldo": "Agregar Saldo",
+    "cancelar": "Cancelar",
+    "confirmar": "Confirmar"
 }
