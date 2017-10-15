@@ -15,6 +15,6 @@
     "hola": "Hello",
     "editarDatos":"Edit Profile",
     "consultarSaldo": "Check Balance",
-    "cerrarSecion": "Sign Out",
+    "cerrarSesion": "Sign Out",
     "misPedidos": "My Orders"
 }

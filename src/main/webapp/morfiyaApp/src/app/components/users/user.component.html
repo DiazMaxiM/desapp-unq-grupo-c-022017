@@ -16,20 +16,15 @@
                     <a class="nav-link titulo">{{ 'misPedidos' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link titulo" data-toggle="modal" data-target="#singOutModal">{{ 'cerrarSesion' | translate }}</a>
+                    <a class="nav-link titulo" data-toggle="modal" data-target="#loginOutModal">{{ 'cerrarSesion' | translate }}</a>
                 </li>
             </ul>
-            <div class="lang-bar">
-                <a (click)="changeLang('es')">ES</a>
-                <a (click)="changeLang('en')">EN</a>
-                <a (click)="changeLang('it')">IT</a>
-            </div>
         </div>
     </nav>
 </div>
 <router-outlet></router-outlet>
 <!-- Modal -->
-<div class="modal fade" id="singOutModal" tabindex="-1" role="dialog" aria-labelledby="singOutModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="singOutModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -40,7 +35,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'cancelar' | translate }}</button>
-        <button type="button" routerLink="/home"class="btn btn-primary">{{ 'salir' | translate }}</button>
+        <button type="button" (click)="backToHome()" class="btn btn-primary" data-dismiss="modal" #closeBtn>{{ 'salir' | translate }}</button>
       </div>
     </div>
   </div>
