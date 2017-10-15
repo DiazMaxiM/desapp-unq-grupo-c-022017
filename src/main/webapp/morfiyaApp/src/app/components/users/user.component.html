@@ -4,15 +4,27 @@
     <span class="navbar-toggler-icon"></span>
   </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand titulo">Nombre de Usuario</a>
+            <a class="navbar-brand titulo">{{ 'hola' | translate }} {{'juan'}}!</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link titulo" data-toggle="modal" data-target="#exampleModalLong">Modificar Datos</a>
+                <li class="nav-item">
+                    <a routerLink="/users/edit" class="nav-link titulo">{{ 'editarDatos' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link titulo" data-toggle="modal" data-target="#modalRegistro">Consultar Saldo</a>
+                    <a routerLink="/users/balance"class="nav-link titulo">{{ 'consultarSaldo' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link titulo">{{ 'misPedidos' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link titulo">{{ 'cerrarSesion' | translate }}</a>
                 </li>
             </ul>
+            <div class="lang-bar">
+                <a (click)="changeLang('es')">ES</a>
+                <a (click)="changeLang('en')">EN</a>
+                <a (click)="changeLang('it')">IT</a>
+            </div>
         </div>
     </nav>
 </div>
+<router-outlet></router-outlet>

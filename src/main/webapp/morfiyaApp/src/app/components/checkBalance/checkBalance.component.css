@@ -1,0 +1,13 @@
+.checkBalance{
+	background-color: white;
+}
+
+.titleBalance{
+	text-align: center;
+}
+
+.squareButton{
+  width:100% !IMPORTANT;
+  margin-bottom: 10px;
+  border-radius: 0px !IMPORTANT; 
+}

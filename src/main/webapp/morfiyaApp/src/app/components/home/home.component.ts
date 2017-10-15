@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from './../../services/userServices/user.service';
+
+
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',

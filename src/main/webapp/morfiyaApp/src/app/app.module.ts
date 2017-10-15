@@ -9,6 +9,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { RouterModule} from '@angular/router';
 import { UserComponent } from './components/users/user.component';
+import { EditUserComponent } from './components/editUser/editUser.component';
+import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -18,7 +20,9 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    EditUserComponent,
+    CheckBalanceComponent,
   ],
   imports: [
     BrowserModule,

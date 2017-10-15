@@ -11,5 +11,10 @@
     "nombreDeUsuario": "UserName",
     "nombreDeUsuarioRequerido": "UserName is required",
     "contrasenia": "Password",
-    "contraseniaRequerido": "Password is required"
+    "contraseniaRequerido": "Password is required",
+    "hola": "Hello",
+    "editarDatos":"Edit Profile",
+    "consultarSaldo": "Check Balance",
+    "cerrarSecion": "Sign Out",
+    "misPedidos": "My Orders"
 }

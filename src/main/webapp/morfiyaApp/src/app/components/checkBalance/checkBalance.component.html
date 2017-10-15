@@ -1,0 +1,36 @@
+<div class="col-12">
+    <div class="col-sm-4 col-md-4 mx-auto non-lateral-padding checkBalance">
+      <div class="col-12">
+         <h3 class="titleBalance">{{ 'saldoActual' | translate }}</h3>
+      	 <h4 class="titleBalance">{{ '200' }}</h4>
+      </div>
+      <div class="col-6 mx-auto">
+          <button type="button" class="btn btn-success squareButton" data-toggle="modal" data-target="#balanceModal">{{ 'agregarSaldo' | translate }}</button>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Saldo-->
+<div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="balanceModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="balanceModalLabel">{{ 'agregarSaldo' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group row">
+  			<div class="col-12">
+    			<input class="form-control" type="number" value="0" id="example-number-input">
+  			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'cancelar' | translate }}</button>
+        <button type="button" class="btn btn-primary">{{ 'confirmar' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

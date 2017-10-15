@@ -11,5 +11,10 @@
     "nombreDeUsuario": "Nombre de Usuario",
     "nombreDeUsuarioRequerido": "Nombre de Usuario Requerido",
     "contrasenia": "Contraseña",
-    "contraseniaRequerido": "Contraseña requerida"
+    "contraseniaRequerido": "Contraseña requerida",
+    "hola": "!Hola",
+    "editarDatos":"Editar perfil",
+    "consultarSaldo": "Consultar Saldo",
+    "cerrarSecion": "Cerrar Sesión",
+    "misPedidos": "Mis Pedidos"
 }

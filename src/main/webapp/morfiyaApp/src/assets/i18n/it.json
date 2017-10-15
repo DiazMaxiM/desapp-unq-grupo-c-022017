@@ -11,5 +11,10 @@
     "nombreDeUsuario": "Nome utente",
     "nombreDeUsuarioRequerido": "Nome utente obbligatorio",
     "contrasenia": "Password",
-    "contraseniaRequerido": "Password obbligatorio"
+    "contraseniaRequerido": "Password obbligatorio",
+    "hola": "Ciao",
+    "editarDatos": "Modifica Profilo",
+    "consultarSaldo": "Consulta l'equilibrio",
+    "cerrarSecion": "Chiudi Sessione",
+    "misPedidos":"I Miei Ordini"
 }
