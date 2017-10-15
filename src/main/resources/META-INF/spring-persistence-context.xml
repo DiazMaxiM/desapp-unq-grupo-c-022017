@@ -140,4 +140,12 @@
 		  class="repositories.AccountRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.menuRepository"
+		  class="repositories.MenuRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="persistence.priceRepository"
+		  class="repositories.PriceRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>
