@@ -11,7 +11,8 @@ import { RouterModule} from '@angular/router';
 import { UserComponent } from './components/users/user.component';
 import { EditUserComponent } from './components/editUser/editUser.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
-
+import { UserService} from './services/userServices/user.service';
+import { HttpModule } from '@angular/http';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -27,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -39,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
       ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

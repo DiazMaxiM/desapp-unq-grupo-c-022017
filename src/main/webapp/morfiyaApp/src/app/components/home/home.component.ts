@@ -1,31 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
-import { RouterModule, Routes } from '@angular/router';
 import { UserService } from './../../services/userServices/user.service';
+import {ViewChild, ElementRef} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent  {
   public model:any = {};
+  private idUser: number;
+   @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
     this.translate.use(lang);
-    console.log(lang);
   }
-  constructor(private http: HttpClient,private translate: TranslateService){
+  constructor(public userService: UserService,private router:Router,private translate: TranslateService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
   }
-  logginUser(): void {
-  console.log('http://localhost:8080/grupoc/rest/users/loggingUser/'+this.model.username+'/'+this.model.password);
-  this.http.get('http://localhost:8080/grupoc/rest/users/loggingUser/'+this.model.username+'/'+this.model.password).subscribe(data => {
-      console.log(data);
-    });
+
+  async logginUser(){
+    this.idUser = await this.userService.loggingUser(this.model.email,this.model.password);
+    this.closeModal();
+    this.router.navigate(['users']);
+  }
+
+  //call this wherever you want to close modal
+    private closeModal(): void {
+        this.closeBtn.nativeElement.click();
   }
 }
