@@ -1,14 +1,14 @@
 package model;
 
-public class Price {
+public class Price extends Entity {
 	private Money money;
 	private Double value;
-	
-	public Price(Money money, Double value){
+
+	public Price(Money money, Double value) {
 		this.setMoney(money);
 		this.setValue(value);
 	}
-	
+
 	public Money getMoney() {
 		return money;
 	}
@@ -24,6 +24,5 @@ public class Price {
 	public void setValue(Double value) {
 		this.value = value;
 	}
-	
-	
+
 }

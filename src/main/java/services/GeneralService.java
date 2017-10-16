@@ -10,6 +10,27 @@ public class GeneralService {
 	public TelephoneService telephoneService;
 	public MapPositionService mapPositionService;
 	public AddressService addressService;
+	public MenuService menuService;
+	public PriceService priceService;
+
+	public PriceService getPriceService() {
+		return priceService;
+	}
+
+	public void setPriceService(PriceService priceService) {
+		this.priceService = priceService;
+	}
+
+	//
+	public MenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(MenuService menuService) {
+		this.menuService = menuService;
+	}
+
+	//
 
 	public AddressService getAddressService() {
 		return addressService;
@@ -18,6 +39,8 @@ public class GeneralService {
 	public void setAddressService(AddressService addressService) {
 		this.addressService = addressService;
 	}
+
+	//
 
 	public MoneyService getMoneyService() {
 		return this.moneyService;

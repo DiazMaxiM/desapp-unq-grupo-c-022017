@@ -14,6 +14,8 @@
 		<property name="moneyService" ref="services.money" />
 		<property name="addressService" ref="services.address" />
 		<property name="accountService" ref="services.account" />
+		<property name="menuService" ref="services.menu" />
+		<property name="priceService" ref="services.price" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
@@ -40,5 +42,11 @@
 	</bean>
 	<bean id="services.account" class="services.AccountService">
 		<property name="repository" ref="persistence.accountRepository" />
+	</bean>
+	<bean id="services.menu" class="services.MenuService">
+		<property name="repository" ref="persistence.menuRepository" />
+	</bean>
+	<bean id="services.price" class="services.PriceService">
+		<property name="repository" ref="persistence.priceRepository" />
 	</bean>
 </beans>

@@ -19,7 +19,10 @@ import menuExceptions.InvalidStartDateOfferMenuException;
 import validation.InvalidMenuPriceException;
 import validation.MenuValidation;
 
-public class Menu {
+public class Menu extends Entity {
+
+	private static final long serialVersionUID = 1L;
+
 	private String menuName;
 	private String menuDescription;
 	private Category menuCategory;
@@ -35,7 +38,7 @@ public class Menu {
 	private Price secondMinimumPriceOfMenusToBuy;
 	private Integer maximumNumberOfMenusSalesPerDay;
 	private Integer numberOfMenuSale = 0;
-	private Service service; 
+	private Service service;
 	private TypeStatusMenu status = TypeStatusMenu.ENABLED;
 	private MenuValidation validator = new MenuValidation();
 
@@ -45,15 +48,15 @@ public class Menu {
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service)
 			throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,
-			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 
 		if (validator.isAValidMenu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
 				endDateOfferMenu, averageDeliveryTimeOfMenu, firstMinimumNumberOfMenusToBuy,
 				firstminimumPriceOfMenusToBuy, secondMinimumNumberOfMenusToBuy, secondMinimumPriceOfMenusToBuy,
-				maximumNumberOfMunusSalesPerDay, service,menuPrice)) {
+				maximumNumberOfMunusSalesPerDay, service, menuPrice)) {
 
 			createMenu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu, endDateOfferMenu,
 					deliveryTimesMenus, averageDeliveryTimeOfMenu, menuPrice, firstMinimumNumberOfMenusToBuy,
