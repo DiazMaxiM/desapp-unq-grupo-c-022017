@@ -25,7 +25,7 @@ export class HomeComponent  {
   }
 
   async logginUser(){
-    this.idUser = await this.userService.loggingUser(this.model.email,this.model.password);
+    this.userService.loggingUser(this.model.email,this.model.password);
     this.closeModal();
     this.router.navigate(['users']);
   }

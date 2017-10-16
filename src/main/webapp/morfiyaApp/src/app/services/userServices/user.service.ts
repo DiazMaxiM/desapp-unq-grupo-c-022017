@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable()
 export class UserService {
-
-  constructor(private http: Http) {
+  private url = '/conexion-servidor/';
+  constructor(private http: HttpClient) {
   }
 
-  async loggingUser(email: String,password :String): Promise<number>{
+  loggingUser(email: String,password :String){
 
-    const response = await  this.http.get('http://localhost:8080/grupoc/rest/users/loggingUser/'+email+'/'+password).toPromise();
-    return response.json();
+    this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
