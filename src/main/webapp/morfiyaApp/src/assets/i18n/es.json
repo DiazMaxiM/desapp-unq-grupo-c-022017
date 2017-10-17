@@ -20,5 +20,11 @@
     "saldoActual": "Saldo Actual",
     "agregarSaldo": "Agregar Saldo",
     "cancelar": "Cancelar",
-    "confirmar": "Confirmar"
+    "confirmar": "Confirmar",
+    "puntuacion": "Puntuación: ",
+    "direccion": "Dirección: ",
+    "categoria": "Categoría: ",
+    "verMenu": "Ver menú",
+    "paginaAnterior": "Anterior",
+    "paginaSiguiente": "Siguiente"
 }
