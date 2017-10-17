@@ -22,6 +22,8 @@ import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import miniObjects.ErrorJson;
+import miniObjects.UserJson;
 import model.User;
 import services.UserService;
 import userExceptions.InvalidCuitException;
@@ -57,7 +59,7 @@ public class UsersRest {
 		try {
 			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
 					locality, street, numberStreet, floor, latitude, length);
-			return Response.ok(user.getId(), user.getName()).build();
+			return Response.ok().build();
 		} catch (InvalidLocalNumberException | InvalidAreaCodeException | InvalidCountryCodeException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.NOT_FOUND).build();
@@ -74,9 +76,9 @@ public class UsersRest {
 
 		try {
 			User user = userService.loggingUser(mail, pass);
-			return Response.ok(user.getId(), user.getName()).build();
+			return Response.ok(new UserJson(user.getId(), user.getName())).build();
 		} catch (InvalidLoggingException e) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(100)).build();
 		}
 
 	}
