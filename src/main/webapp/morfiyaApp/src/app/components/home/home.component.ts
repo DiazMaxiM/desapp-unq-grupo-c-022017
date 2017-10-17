@@ -3,11 +3,8 @@ import {TranslateService} from '@ngx-translate/core';
 import { UserService } from './../../services/userServices/user.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
-<<<<<<< HEAD
 import {MessageService} from './../../services/messageServices/message.service';
-=======
 import { AlertService } from '../../alert/services/index';
->>>>>>> 255ae6dd85334772734745e57a497108393a50c3
 
 @Component({
   selector: 'home',
@@ -22,11 +19,8 @@ export class HomeComponent  {
   changeLang(lang: string) {
     this.translate.use(lang);
   }
-<<<<<<< HEAD
-  constructor(public userService: UserService,private router:Router,private translate: TranslateService, public messageService : MessageService){
-=======
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService){
->>>>>>> 255ae6dd85334772734745e57a497108393a50c3
+
+  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
