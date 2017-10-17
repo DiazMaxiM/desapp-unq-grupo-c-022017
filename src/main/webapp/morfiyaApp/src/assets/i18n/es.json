@@ -21,6 +21,16 @@
     "agregarSaldo": "Agregar Saldo",
     "cancelar": "Cancelar",
     "confirmar": "Confirmar",
+    "puntuacion": "Puntuación: ",
+    "direccion": "Dirección: ",
+    "categoria": "Categoría: ",
+    "verMenu": "Ver menú",
+    "paginaAnterior": "Anterior",
+    "paginaSiguiente": "Siguiente"
+    "misPedidos": "Mis Pedidos",
+    "saldoActual": "Saldo Actual",
+    "agregarSaldo": "Agregar Saldo",
+    "cancelar": "Cancelar",
+    "confirmar": "Confirmar",
     "100": "Error logeo"
-
 }
