@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { UserService } from './../../services/userServices/user.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
+import { AlertService } from '../../alert/services/index';
 
 @Component({
   selector: 'home',
@@ -17,7 +18,7 @@ export class HomeComponent  {
   changeLang(lang: string) {
     this.translate.use(lang);
   }
-  constructor(public userService: UserService,private router:Router,private translate: TranslateService){
+  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
@@ -28,7 +29,8 @@ export class HomeComponent  {
      this.userService.login(this.model.email,this.model.password).subscribe(data => 
      {this.respuestaLogin(data)},
      err => {
-      console.log(JSON.parse(err._body).code);
+      this.alertService.clear();
+      this.alertService.error(this.translate.instant(JSON.parse(err._body).code.toString()));
      }
      );
     

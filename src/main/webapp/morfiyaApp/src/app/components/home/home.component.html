@@ -58,8 +58,11 @@
             </button>
             </div>
             <div [hidden]="submitted" class="modal-body">
+
                 <form name="form" (ngSubmit)="f.form.valid && logginUser()" #f="ngForm" novalidate>
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <alert></alert>
+
                         <label for="username">{{ 'nombreDeUsuario' | translate }}</label>
                         <input type="text" class="form-control" name="username" [(ngModel)]="model.email" #email="ngModel" required />
                         <div *ngIf="f.submitted && !email.valid" class="help-block">{{ 'emailDeUsuarioRequerido' | translate }}</div>

@@ -16,9 +16,11 @@
     "editarDatos": "Modifica Profilo",
     "consultarSaldo": "Consulta l'equilibrio",
     "cerrarSesion": "Chiudi Sessione",
-    "misPedidos":"I Miei Ordini",
+    "misPedidos": "I Miei Ordini",
     "saldoActual": "Equilibrio Corrente",
     "agregarSaldo": "Equilibrio del Carico",
     "cancelar": "Annullare",
-    "confirmar": "Per Confermare"
+    "confirmar": "Per Confermare",
+    "100": "Errore Accesso"
+
 }

@@ -12,6 +12,9 @@ import { UserComponent } from './components/users/user.component';
 import { EditUserComponent } from './components/editUser/editUser.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
+import { AlertComponent } from './alert/directives/index';
+import { AlertService } from './alert/services/index';
+
 import { HttpModule,JsonpModule} from '@angular/http';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,6 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
     UserComponent,
     EditUserComponent,
     CheckBalanceComponent,
+    AlertComponent,    
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
       ],
-  providers: [UserService],
+  providers: [UserService,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

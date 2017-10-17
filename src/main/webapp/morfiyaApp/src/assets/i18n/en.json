@@ -13,13 +13,14 @@
     "contrasenia": "Password",
     "contraseniaRequerido": "Password is required",
     "hola": "Hello",
-    "editarDatos":"Edit Profile",
+    "editarDatos": "Edit Profile",
     "consultarSaldo": "Check Balance",
     "cerrarSesion": "Sign Out",
     "misPedidos": "My Orders",
     "saldoActual": "Current Balance",
     "agregarSaldo": "Load Balance",
     "cancelar": "Cancel",
-    "confirmar": "Confirm"
+    "confirmar": "Confirm",
+    "100": "Error login"
 
 }
