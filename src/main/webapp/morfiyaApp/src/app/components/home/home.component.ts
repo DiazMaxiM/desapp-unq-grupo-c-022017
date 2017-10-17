@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { UserService } from './../../services/userServices/user.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
-
 
 @Component({
   selector: 'home',
@@ -12,22 +13,25 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent  {
   public model:any = {};
-  private idUser: number;
+  private idUser: any;
    @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
     this.translate.use(lang);
   }
-  constructor(public userService: UserService,private router:Router,private translate: TranslateService){
+  constructor(public userService: UserService,private router:Router,private translate: TranslateService,private http: HttpClient){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
   }
 
-  async logginUser(){
-    this.userService.loggingUser(this.model.email,this.model.password);
-    this.closeModal();
-    this.router.navigate(['users']);
+  logginUser(){
+
+     return this.http.get('/grupoc/rest/users/loggingUser/'+ this.model.email+'/'+ this.model.password).subscribe(res=>{
+        this.idUser = res ;
+        this.closeModal();
+        this.router.navigate(['users']);
+    });
   }
 
   //call this wherever you want to close modal
