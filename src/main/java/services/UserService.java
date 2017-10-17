@@ -58,11 +58,11 @@ public class UserService extends GenericService<User> {
 	}
 
 	@Transactional
-	public Integer loggingUser(String mail, String pass) throws InvalidLoggingException {
+	public User loggingUser(String mail, String pass) throws InvalidLoggingException {
 		UserRepository repo = (UserRepository) this.getRepository();
 		List<User> user = repo.findByEmail(mail);
 		if (user.size() == 1 && user.get(0).getPassword().equals(pass)) {
-			return user.get(0).getId();
+			return user.get(0);
 		}
 		throw new InvalidLoggingException("Error en el logging");
 

@@ -41,7 +41,7 @@ public class UsersRest {
 	@GET
 	@Path("/newuser/{pass}/{name}/{surname}/{cuit}/{mail}/{countryCode}/{areaCode}/{localNumber}/{locality}/{street}/{numberStreet}/{floor}/{latitude}/{length}")
 	@Produces("application/json")
-	public Integer newUser(@PathParam("pass") final String pass, @PathParam("name") final String name,
+	public Response newUser(@PathParam("pass") final String pass, @PathParam("name") final String name,
 			@PathParam("surname") final String surname, @PathParam("cuit") final String cuit,
 			@PathParam("mail") final String mail, @PathParam("countryCode") final String countryCode,
 			@PathParam("areaCode") final String areaCode, @PathParam("localNumber") final String localNumber,
@@ -57,10 +57,10 @@ public class UsersRest {
 		try {
 			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
 					locality, street, numberStreet, floor, latitude, length);
-			return user.getId();
+			return Response.ok(user.getId(), user.getName()).build();
 		} catch (InvalidLocalNumberException | InvalidAreaCodeException | InvalidCountryCodeException e) {
 			e.printStackTrace();
-			return null;
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 
 	}
@@ -73,7 +73,8 @@ public class UsersRest {
 	) {
 
 		try {
-			return Response.ok(userService.loggingUser(mail, pass)).build();
+			User user = userService.loggingUser(mail, pass);
+			return Response.ok(user.getId(), user.getName()).build();
 		} catch (InvalidLoggingException e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
