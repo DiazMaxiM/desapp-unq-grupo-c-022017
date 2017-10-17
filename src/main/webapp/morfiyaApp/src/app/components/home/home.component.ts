@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent  {
   public model:any = {};
-  private idUser = {};
+  private user = {};
    @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
@@ -28,15 +28,15 @@ export class HomeComponent  {
      this.userService.login(this.model.email,this.model.password).subscribe(data => 
      {this.respuestaLogin(data)},
      err => {
-      console.log(err);
+      console.log(JSON.parse(err._body).code);
      }
      );
     
   }
 
   respuestaLogin(data){
-
-       console.log(data);
+       
+       this.user= data;
        this.closeModal();
        this.router.navigate(['users']);
   }
