@@ -1,5 +1,7 @@
 package repositories;
 
+import java.util.List;
+
 import model.Menu;
 
 public class MenuRepository extends HibernateGenericDAO<Menu> implements GenericRepository<Menu> {
@@ -9,5 +11,11 @@ public class MenuRepository extends HibernateGenericDAO<Menu> implements Generic
 	@Override
 	protected Class<Menu> getDomainClass() {
 		return Menu.class;
+	}
+
+	public List<Menu> findMenuForName(String name) {
+		List<Menu> find = (List<Menu>) this.getHibernateTemplate()
+				.find("from " + this.persistentClass.getName() + " where menuName ='" + name + "'");
+		return find;
 	}
 }
