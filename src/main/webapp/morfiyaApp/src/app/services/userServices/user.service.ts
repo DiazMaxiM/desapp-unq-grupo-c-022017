@@ -10,8 +10,16 @@ export class UserService {
   }
 
   login(email: String,password :String){
-    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());
-              
+    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());            
+  }
+
+  balance(id: String){
+    return this.http.get('/grupoc/rest/users/getBalanceUser/'+id).map((res:Response)=>res.json());
+  }
+
+  addBalance(id: String, value:String){
+    console.log(id);
+    return this.http.get('/grupoc/rest/users/addTransactionUser/' + id +'/CREDIT/'+value).map((res:Response)=>res.json());
   }
 
 }
