@@ -13,6 +13,8 @@ import { EditUserComponent } from './components/editUser/editUser.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
 import { HttpModule,JsonpModule} from '@angular/http';
+import { MessageService} from './services/messageServices/message.service';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -42,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
       ],
-  providers: [UserService],
+  providers: [UserService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

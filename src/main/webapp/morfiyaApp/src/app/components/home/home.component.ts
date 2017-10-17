@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { UserService } from './../../services/userServices/user.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
+import {MessageService} from './../../services/messageServices/message.service';
 
 @Component({
   selector: 'home',
@@ -17,7 +18,7 @@ export class HomeComponent  {
   changeLang(lang: string) {
     this.translate.use(lang);
   }
-  constructor(public userService: UserService,private router:Router,private translate: TranslateService){
+  constructor(public userService: UserService,private router:Router,private translate: TranslateService, public messageService : MessageService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
@@ -37,6 +38,7 @@ export class HomeComponent  {
   respuestaLogin(data){
        
        this.user= data;
+       this.sendData();
        this.closeModal();
        this.router.navigate(['users']);
   }
@@ -45,4 +47,10 @@ export class HomeComponent  {
     private closeModal(): void {
         this.closeBtn.nativeElement.click();
   }
+
+  private sendData(): void {
+        // send message to subscribers via observable subject
+        this.messageService.sendMessage(this.user);
+    }
+
 }
