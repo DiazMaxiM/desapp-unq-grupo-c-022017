@@ -56,14 +56,10 @@ public class UsersRest {
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException {
 		User user = null;
-		try {
-			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
-					locality, street, numberStreet, floor, latitude, length);
-			return Response.ok().build();
-		} catch (InvalidLocalNumberException | InvalidAreaCodeException | InvalidCountryCodeException e) {
-			e.printStackTrace();
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
+		user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber, locality,
+				street, numberStreet, floor, latitude, length);
+		return Response.ok().entity(new UserJson(user.getId(), user.getName())).build();
+		return Response.status(Response.Status.NOT_FOUND).build();
 
 	}
 
