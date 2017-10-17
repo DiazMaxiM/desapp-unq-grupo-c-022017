@@ -2,7 +2,7 @@
     "ingresar": "Ingresar",
     "registrar": "Registrar",
     "tituloPantallaPrincipal": "Bienvenido a MorfiYa",
-    "elijeCriterioDeBusqueda": "Elejir Criterio de Busqueda",
+    "eligeCriterioDeBusqueda": "Elegir Criterio de Busqueda",
     "nombre": "nombre",
     "localidad": "localidad",
     "precio": "precio",
@@ -13,12 +13,14 @@
     "contrasenia": "Contraseña",
     "contraseniaRequerido": "Contraseña requerida",
     "hola": "!Hola",
-    "editarDatos":"Editar perfil",
+    "editarDatos": "Editar perfil",
     "consultarSaldo": "Consultar Saldo",
     "cerrarSesion": "Cerrar Sesion",
     "misPedidos": "Mis Pedidos",
     "saldoActual": "Saldo Actual",
     "agregarSaldo": "Agregar Saldo",
     "cancelar": "Cancelar",
-    "confirmar": "Confirmar"
+    "confirmar": "Confirmar",
+    "100": "Error logeo"
+
 }

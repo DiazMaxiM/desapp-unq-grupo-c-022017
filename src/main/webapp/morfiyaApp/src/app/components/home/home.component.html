@@ -31,7 +31,7 @@
         <div class="row non-lateral-padding">
             <div class="col-12 col-sm-12 col-md-3 non-lateral-padding">
                 <select class="custom-select componentSearch">
-		             <option selected>{{ 'elijeCriterioDeBusqueda' | translate }}</option>
+		             <option selected>{{ 'eligeCriterioDeBusqueda' | translate }}</option>
 		             <option value="1">{{ 'nombre' | translate }}</option>
 		             <option value="2">{{ 'localidad' | translate }}</option>
 		             <option value="3">{{ 'precio' | translate }}</option>
@@ -58,8 +58,11 @@
             </button>
             </div>
             <div [hidden]="submitted" class="modal-body">
+
                 <form name="form" (ngSubmit)="f.form.valid && logginUser()" #f="ngForm" novalidate>
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <alert></alert>
+
                         <label for="username">{{ 'nombreDeUsuario' | translate }}</label>
                         <input type="text" class="form-control" name="username" [(ngModel)]="model.email" #email="ngModel" required />
                         <div *ngIf="f.submitted && !email.valid" class="help-block">{{ 'emailDeUsuarioRequerido' | translate }}</div>
