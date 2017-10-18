@@ -56,11 +56,43 @@ public class UsersRest {
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException {
 		User user = null;
-		user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber, locality,
-				street, numberStreet, floor, latitude, length);
-		return Response.ok().entity(new UserJson(user.getId(), user.getName())).build();
-		return Response.status(Response.Status.NOT_FOUND).build();
-
+		try {
+			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
+					locality, street, numberStreet, floor, latitude, length);
+			return Response.ok().entity(new UserJson(user.getId(), user.getName())).build();
+		} catch (InvalidLocalNumberException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(101)).build();
+		} catch (InvalidAreaCodeException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(102)).build();
+		} catch (InvalidCountryCodeException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(103)).build();
+		} catch (InvalidAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(104)).build();
+		} catch (InvalidTelephoneNumberException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(105)).build();
+		} catch (InvalidCuitException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(106)).build();
+		} catch (InvalidFirstNameException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(107)).build();
+		} catch (InvalidLastNameException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(108)).build();
+		} catch (InvalidEmailAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(109)).build();
+		} catch (InvalidMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(110)).build();
+		} catch (NumberFormatException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(111)).build();
+		} catch (InvalidLengthMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(112)).build();
+		} catch (InvalidLatitudeMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(113)).build();
+		} catch (InvalidNumberStreetException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(114)).build();
+		} catch (InvalidStreetAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(115)).build();
+		} catch (InvalidLocalityAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(116)).build();
+		}
 	}
 
 	@GET
@@ -86,16 +118,15 @@ public class UsersRest {
 	@GET
 	@Path("/addTransactionUser/{id}/{typeTransaction}/{value}")
 	@Produces("application/json")
-	public boolean addTransactionUser(@PathParam("id") final String id,
+	public Response addTransactionUser(@PathParam("id") final String id,
 			@PathParam("typeTransaction") final String typeTransaction, @PathParam("value") final String value) {
 		try {
 			this.userService.addTransaction(id, typeTransaction, value);
+			Response.ok().build();
 		} catch (BalanceInsufficient e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
 		}
-		return true;
+		return null;
 	}
 
 	@GET
@@ -109,7 +140,7 @@ public class UsersRest {
 	@GET
 	@Path("/updateuser/{id}/{password}/{countryCode}/{areaCode}/{localNumber}/{locality}/{street}/{numberStreet}/{floor}/{latitude}/{length}")
 	@Produces("application/json")
-	public boolean updateUser(@PathParam("id") final String id, @PathParam("password") final String password,
+	public Response updateUser(@PathParam("id") final String id, @PathParam("password") final String password,
 			@PathParam("countryCode") final String countryCode, @PathParam("areaCode") final String areaCode,
 			@PathParam("localNumber") final String localNumber, @PathParam("locality") final String locality,
 			@PathParam("street") final String street, @PathParam("numberStreet") final String numberStreet,
@@ -118,15 +149,39 @@ public class UsersRest {
 		try {
 			this.userService.updateUser(id, password, countryCode, areaCode, localNumber, locality, street,
 					numberStreet, floor, latitude, length);
-		} catch (NumberFormatException | InvalidLengthMapPositionException | InvalidLatitudeMapPositionException
-				| InvalidLocalNumberException | InvalidAreaCodeException | InvalidCountryCodeException
-				| InvalidNumberStreetException | InvalidStreetAddressException | InvalidLocalityAddressException
-				| InvalidMapPositionException | InvalidPasswordException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+			return Response.ok().build();
+		} catch (NumberFormatException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(118)).build();
 
+		} catch (InvalidLengthMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(119)).build();
+
+		} catch (InvalidLatitudeMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(120)).build();
+
+		} catch (InvalidLocalNumberException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(121)).build();
+
+		} catch (InvalidAreaCodeException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(122)).build();
+
+		} catch (InvalidCountryCodeException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(123)).build();
+
+		} catch (InvalidNumberStreetException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(124)).build();
+
+		} catch (InvalidStreetAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(125)).build();
+
+		} catch (InvalidLocalityAddressException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(126)).build();
+
+		} catch (InvalidMapPositionException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(127)).build();
+
+		} catch (InvalidPasswordException e) {
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(128)).build();
+		}
+	}
 }

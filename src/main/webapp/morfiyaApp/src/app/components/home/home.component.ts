@@ -29,11 +29,14 @@ export class HomeComponent  {
      this.userService.login(this.model.email,this.model.password).subscribe(data => 
      {this.respuestaLogin(data)},
      err => {
-      this.alertService.clear();
+      
+      this.model.email="";
+      this.model.password="";
       this.alertService.error(this.translate.instant(JSON.parse(err._body).code.toString()));
-     }
-     );
-    
+      setInterval (() => {
+        this.alertService.clear();
+      }, 2000)
+    });
   }
 
   respuestaLogin(data){

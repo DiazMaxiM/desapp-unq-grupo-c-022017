@@ -21,6 +21,22 @@
     "agregarSaldo": "Agregar Saldo",
     "cancelar": "Cancelar",
     "confirmar": "Confirmar",
-    "100": "Error logeo"
+    "100": "Error logeo",
+    "101": "Error localidad invalida",
+    "102": "Error codigo de area invalido",
+    "103": "Error codigo de pais invalido",
+    "104": "Error direccion invalida",
+    "105": "Error numero de telefono invalido",
+    "106": "Error cuit invalido",
+    "107": "Error nombre invalido",
+    "108": "Error apellido invalido",
+    "109": "Error email invalido",
+    "110": "Error posicionamiento invalido ",
+    "111": "Error no se que es",
+    "112": "Error longitud en el mapa no valido",
+    "113": "Error latitud en el mapa no valido",
+    "114": "Error numero de direccion invalido",
+    "115": "Error nombre de calle invalido",
+    "116": "Error localidad invalida"
 
 }
