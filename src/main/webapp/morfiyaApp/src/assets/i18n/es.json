@@ -37,6 +37,11 @@
     "113": "Error latitud en el mapa no valido",
     "114": "Error numero de direccion invalido",
     "115": "Error nombre de calle invalido",
-    "116": "Error localidad invalida"
-
+    "116": "Error localidad invalida",
+    "puntuacion": "Puntuación: ",
+    "direccion": "Dirección: ",
+    "categoria": "Categoría: ",
+    "verMenu": "Ver menú",
+    "paginaAnterior": "Anterior",
+    "paginaSiguiente": "Siguiente"
 }

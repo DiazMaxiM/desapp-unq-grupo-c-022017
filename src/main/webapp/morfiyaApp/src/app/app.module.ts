@@ -16,6 +16,9 @@ import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
 
 import { HttpModule,JsonpModule} from '@angular/http';
+import { MessageService} from './services/messageServices/message.service';
+import { MenusComponent } from './components/menus/menus.component';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -27,7 +30,8 @@ export function createTranslateLoader(http: HttpClient) {
     UserComponent,
     EditUserComponent,
     CheckBalanceComponent,
-    AlertComponent,    
+    AlertComponent, 
+    MenusComponent   
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
       ],
-  providers: [UserService,AlertService],
+
+  providers: [UserService,AlertService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
