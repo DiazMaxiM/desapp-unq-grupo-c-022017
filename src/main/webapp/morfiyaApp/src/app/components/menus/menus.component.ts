@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class MenusComponent {
   @ViewChild('closeBtn') closeBtn: ElementRef;
   
-  constructor(private router:Router){}
+  constructor(private router:Router){
+    
+  }
 
 }

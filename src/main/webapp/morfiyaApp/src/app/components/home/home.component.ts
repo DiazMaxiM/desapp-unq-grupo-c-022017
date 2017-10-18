@@ -56,4 +56,8 @@ export class HomeComponent  {
         this.messageService.sendMessage(this.user);
     }
 
+  search()  {
+    this.router.navigate(['menus']);
+  }
+
 }
