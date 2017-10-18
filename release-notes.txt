@@ -22,3 +22,14 @@ NEW FEATURES
 
 KNOW ISSUES
 * El ordenamiento de menús debería admitir también el ordenamiento de mayor a menor
+
+﻿====== TAG Entrega 2 1.0==========
+ * I18n- US_ES
+ * Alta y modificación de Cliente (con validaciones)
+ * Alta y modificación de Proveedor (con validaciones)
+ * Búsqueda de Menú por nombre
+ * Ingresar Saldo de Cliente y Proveedor
+ * Mostrar saldo al Cliente y Proveedor
+ * Deploy mapa en Heroku
+ 
+ 
