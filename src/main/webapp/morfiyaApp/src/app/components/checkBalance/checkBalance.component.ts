@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../services/userServices/user.service';
 import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
+import {User} from './../../model/user';
 
 @Component({
   selector: 'checkBalance',
@@ -9,7 +10,7 @@ import {ViewChild, ElementRef} from '@angular/core';
   styleUrls: ['./checkBalance.component.css']
 })
 export class CheckBalanceComponent implements OnInit {
-  message: any
+  user: User
   idUser : String
   balance : String
   @ViewChild('closeBtn') closeBtn: ElementRef;
@@ -17,8 +18,8 @@ export class CheckBalanceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.message = this.messageService.getMessage();
-    this.idUser = this.message.id;
+    this.user = this.messageService.getMessage();
+    this.idUser = this.user.id;
     this.checkbalance();
   }
 

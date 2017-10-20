@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {User} from './../../model/user';
 
 @Injectable()
 export class UserService {
@@ -10,7 +11,7 @@ export class UserService {
   }
 
   login(email: String,password :String){
-    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());            
+    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json() as User);            
   }
 
   balance(id: String){

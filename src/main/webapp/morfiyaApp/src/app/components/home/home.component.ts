@@ -5,6 +5,7 @@ import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
 import { AlertService } from '../../alert/services/index';
+import {User} from './../../model/user';
 
 @Component({
   selector: 'home',
@@ -13,7 +14,7 @@ import { AlertService } from '../../alert/services/index';
 })
 export class HomeComponent  {
   public model:any = {};
-  private user = {};
+  private user;
    @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
@@ -43,7 +44,7 @@ export class HomeComponent  {
 
   respuestaLogin(data){
        
-       this.user= data;
+       this.user= data as User;
        this.sendData();
        this.closeModal();
        this.router.navigate(['users']);
