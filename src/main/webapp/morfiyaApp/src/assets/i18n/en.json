@@ -21,6 +21,10 @@
     "agregarSaldo": "Load Balance",
     "cancelar": "Cancel",
     "confirmar": "Confirm",
-    "100": "Error login"
+    "100": "Error login",
+    "117":"Succesful transaction",
+    "118":"Could not complete transaction",
+    "119":"Enter only positive numbers",
+    "email": "E-mail"
 
 }

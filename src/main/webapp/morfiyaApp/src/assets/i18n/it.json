@@ -21,6 +21,10 @@
     "agregarSaldo": "Equilibrio del Carico",
     "cancelar": "Annullare",
     "confirmar": "Per Confermare",
-    "100": "Errore Accesso"
+    "100": "Errore Accesso",
+    "117":"Operazione di successo",
+    "118":"Impossibile completare la transazione",
+    "119":"Inserisci solo numeri positivi",
+    "email": "Posta elettronica"
 
 }

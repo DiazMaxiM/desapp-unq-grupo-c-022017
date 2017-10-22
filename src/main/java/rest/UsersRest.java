@@ -122,11 +122,11 @@ public class UsersRest {
 			@PathParam("typeTransaction") final String typeTransaction, @PathParam("value") final String value) {
 		try {
 			this.userService.addTransaction(id, typeTransaction, value);
-			Response.ok().build();
+			return Response.ok().build();
 		} catch (BalanceInsufficient e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
 		}
-		return null;
+	
 	}
 
 	@GET

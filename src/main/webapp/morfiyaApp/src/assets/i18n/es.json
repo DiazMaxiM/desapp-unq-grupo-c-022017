@@ -43,5 +43,9 @@
     "categoria": "Categoría: ",
     "verMenu": "Ver menú",
     "paginaAnterior": "Anterior",
-    "paginaSiguiente": "Siguiente"
+    "paginaSiguiente": "Siguiente",
+    "117":"Transacción exitosa",
+    "118":"No se pudo realizar la transacción",
+    "119":"Ingrese sólo números positivos",
+    "email": "Correo electrónico"
 }
