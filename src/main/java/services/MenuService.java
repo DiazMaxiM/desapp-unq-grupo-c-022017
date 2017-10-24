@@ -11,9 +11,6 @@ public class MenuService extends GenericService<Menu> {
 
 	public List<Menu> listMenuForName(String name) {
 		MenuRepository repo = (MenuRepository) this.getRepository();
-
 		return repo.findMenuForName(name);
-
 	}
-
 }

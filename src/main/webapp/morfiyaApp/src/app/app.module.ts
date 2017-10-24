@@ -14,10 +14,10 @@ import { CheckBalanceComponent } from './components/checkBalance/checkBalance.co
 import { UserService} from './services/userServices/user.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
-
 import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
 import { MenusComponent } from './components/menus/menus.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,7 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
     EditUserComponent,
     CheckBalanceComponent,
     AlertComponent, 
-    MenusComponent   
+    MenusComponent,
+    MenuComponent   
   ],
   imports: [
     BrowserModule,

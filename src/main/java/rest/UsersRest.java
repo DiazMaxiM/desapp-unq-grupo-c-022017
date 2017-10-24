@@ -1,6 +1,3 @@
-/**
- *
- */
 package rest;
 
 import javax.ws.rs.GET;
@@ -40,7 +37,7 @@ public class UsersRest {
 
 	private UserService userService;
 
-	// http://localhost:8080/123/grupoc/rest/users/newuser/rosali/zaracho/123/ro@zaracho/54/011/43511464/AVELLANEDA/mitre/5000/0/1/1
+	// http://localhost:8080/123/grupoc/rest/users/newuser/123/rosali/zaracho/123/ro@zaracho/54/011/43511464/AVELLANEDA/mitre/5000/0/1/1
 	@GET
 	@Path("/newuser/{pass}/{name}/{surname}/{cuit}/{mail}/{countryCode}/{areaCode}/{localNumber}/{locality}/{street}/{numberStreet}/{floor}/{latitude}/{length}")
 	@Produces("application/json")

@@ -1,6 +1,11 @@
+.name-service {
+   font-weight: bolder;
+   font-size:1.5rem;
+}
+
 .homeHeader{
-   background-color: #f52f41;
-   margin-bottom: 10px;
+   background-color: #f52f41; 
+   vertical-align: center; 
 }
 
 .titulo{
@@ -29,7 +34,7 @@
    height: 50px !IMPORTANT;
    width:100% !IMPORTANT;
    border-radius: 0px !IMPORTANT; 
-   margin-bottom: 5px; 
+
    }
 }
 
@@ -55,7 +60,7 @@ a:hover{
    background-color: #FFFFFF;
    width: 75%;
    padding: 1%;
-   margin-bottom: 1%;
+
 }
 
 .image-menu {
@@ -64,7 +69,6 @@ a:hover{
 }
 
 #pagination{
-   margin-top: 2%;
    width: 87%;
 }
 
@@ -72,13 +76,45 @@ a:hover{
    width: 60% !IMPORTANT;
 }
 
-
-
 ul {
    list-style: none;
 }
 
-.details-service {
+menu>.details-service {
    color: #FFF;
    font-size: 0.9rem;
+}
+
+.boton-agregar-menu {
+   color: #FFF !IMPORTANT;
+   background-color: red !IMPORTANT;
+
+}
+
+.boton-agregar-menu:hover {
+   color: red !IMPORTANT;
+   background-color: #FFF !IMPORTANT;
+   border-radius: 45px !IMPORTANT;
+}
+
+.grupo-menu {
+   background-color: #FFF !IMPORTANT;
+   color : grey;
+   border: grey;
+   margin-bottom: 5px;
+}
+
+.navbar-menu{
+   background-color: #ff3d4e !IMPORTANT;
+   border:solid white 0.5px;
+   border-radius: 5px;
+   color: #FFF !IMPORTANT;
+}
+
+.nav-item {
+   margin-right: 15% !IMPORTANT;
+}
+
+a {
+   color: white !IMPORTANT; 
 }
