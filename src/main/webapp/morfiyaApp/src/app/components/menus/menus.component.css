@@ -1,3 +1,52 @@
+.homeHeader{
+   background-color: #f52f41;
+   margin-bottom: 10px;
+}
+
+.titulo{
+   color: white !IMPORTANT;
+}
+
+.subtitulo{
+   background-color: #f52f41;
+   text-align: center;
+   color: white
+}
+
+.componentSearch{
+   height: 50px !IMPORTANT;
+   width:100% !IMPORTANT;
+   border-radius: 0px !IMPORTANT;
+} 
+
+.buttonLogin{
+   color: white;
+   background-color: orange;
+}
+
+@media (max-width: 991px) { 
+   .componentSearch{
+   height: 50px !IMPORTANT;
+   width:100% !IMPORTANT;
+   border-radius: 0px !IMPORTANT; 
+   margin-bottom: 5px; 
+   }
+}
+
+a:hover,
+button:hover,
+select:hover {
+   cursor:pointer;
+}
+
+a:hover{
+   text-shadow: 2px 2px 2px #000;
+}
+
+.lang-bar {
+   color: white;
+}
+
 .page-link{
    color:red;
 }
