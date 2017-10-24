@@ -23,6 +23,7 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import miniObjects.ErrorJson;
+import miniObjects.UserDataJson;
 import miniObjects.UserJson;
 import model.User;
 import services.UserService;
@@ -184,4 +185,12 @@ public class UsersRest {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(128)).build();
 		}
 	}
+	
+	@GET
+	@Path("/getUserData/{id}")
+	@Produces("application/json")
+	public Response getUser(@PathParam("id") final String id) {
+		return Response.ok(this.userService.getUserData(id)).build();
+	}
+	
 }

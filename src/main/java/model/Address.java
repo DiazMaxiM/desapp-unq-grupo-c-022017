@@ -78,4 +78,12 @@ public class Address extends Entity {
 		this.mapPosition = mapPosition;
 	}
 
+	public void updateInformation(Locality locality, String street, String numberStreet, String floor,
+			MapPosition mapPosition) throws InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidMapPositionException {
+		if (validator.isAValidAddress(locality, street, numberStreet, mapPosition)) {
+			createAddress(locality, street, numberStreet, floor, mapPosition);
+		}
+		
+	}
+
 }

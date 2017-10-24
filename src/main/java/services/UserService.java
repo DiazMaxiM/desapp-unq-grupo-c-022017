@@ -17,6 +17,7 @@ import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
+import miniObjects.UserDataJson;
 import model.Address;
 import model.Locality;
 import model.MapPosition;
@@ -24,6 +25,7 @@ import model.Telephone;
 import model.Transaction;
 import model.TypeTransaction;
 import model.User;
+import repositories.MapPositionRepository;
 import repositories.UserRepository;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
@@ -97,9 +99,19 @@ public class UserService extends GenericService<User> {
 		MapPosition mapPosition = new MapPosition(new Double(latitude), new Double(length));
 		Telephone telephone = repo.findTelephoneById(id);
 		telephone.updateInformation(countryCode, areaCode, localNumber);
-		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
+		Address address = repo.findAddressById(id);
+		address.updateInformation(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);	
 		user.updateInformation(password, telephone, address);
+		repo.update(user);
 
 	}
+	
+	@Transactional
+	public UserDataJson getUserData(String id) {
+		UserRepository repo = (UserRepository) this.getRepository();
+		User user = repo.findById(id);
+		return new UserDataJson(user);
+	}
+	
 
 }

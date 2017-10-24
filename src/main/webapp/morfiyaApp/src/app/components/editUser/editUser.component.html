@@ -1,40 +1,122 @@
 <div class="col-12">
-    <div class="col-sm-8 col-md-8 mx-auto non-lateral-padding editInformation">
-      <form class="container" id="needs-validation" novalidate>
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
+    <div [hidden]="submitted" class="col-sm-8 col-md-8 mx-auto non-lateral-padding editInformation">
+      <form class="container" name="form" (ngSubmit)="f.form.valid && updateUser()" #f="ngForm" novalidate>
+        <div class="col-12 non-lateral-padding">
+                <div class="dropdown-divider"></div>
+                <alert></alert>
+            <h2>{{ 'datosPersonales' | translate }}</h2>
+        </div>
+        <div class="col-12 non-lateral-padding form-inline">
+          <div class="col-12 col-sm-6 col-md-6 non-lateral-padding">
+            <p class="form-control-static"> <strong>{{ 'nombre' | translate }}</strong>: {{userName}}</p>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 non-lateral-padding">
+            <p class="form-control-static"><strong>{{ 'apellido' | translate }}</strong>: {{surname}}</p>
+          </div>
       </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
+      <div class="dropdown-divider"></div>
+      <div class="col-12 non-lateral-padding form-inline">
+          <div class= "col-12 col-sm-6 col-md-6 non-lateral-padding">
+              <p class="form-control-static"><strong>{{ 'cuit' | translate }}</strong>: {{cuit}}</p>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 non-lateral-padding">
+            <p class="form-control-static"><strong>{{ 'email' | translate }}</strong>: {{mail}}</p>
+          </div>
+      </div>  
+      <div class="dropdown-divider"></div>
+      <div class="col-12 non-lateral-padding">
+          <div class="col-12  non-lateral-padding">
+              <label for="validationCustom05"><strong>{{ 'direccion' | translate }}</strong></label>
+          </div>
+          <div class="col-12 non-lateral-padding">
+                <div> 
+                    <div class="col-6 non-lateral-padding">
+                            <label><strong>{{ 'calle' | translate }}</strong></label>
+                            <div class="col-4">
+                            <input class="form-control" type="text" id="example-number-input" [(ngModel)]="street" name="street" required>
+                            </div>
+                    </div> 
+                    <div class="col-6">
+                            <label><strong>{{ 'numero' | translate }}</strong></label>
+                            <div class="col-2">
+                            <input class="form-control" type="number" [(ngModel)]="numberStreet" name="numberStreet"  id="example-number-input" required>
+                            </div>
+                    </div> 
+                </div>  
+                <div class="diver"></div>
+                 <div class="col-12  non-lateral-padding">
+                        <div class=""> 
+                                <div class="col-6 non-lateral-padding">
+                                        <label><strong>{{ 'piso' | translate }}</strong></label>
+                                        <div class="col-4">
+                                        <input class="form-control" type="number" id="example-number-input" [(ngModel)]="floor" name="floor"required>
+                                        </div>
+                                </div> 
+                                <div class="col-6">
+                                        <label><strong>{{ 'localidad' | translate }}</strong></label>
+                                        <div class="col-2">
+                                        <input class="form-control" type="text" [(ngModel)]="locality" name="locality" id="example-number-input"required>
+                                        </div>
+                                </div> 
+                        </div>     
+                 </div> 
+                 <div class="diver"></div>
+                 <div class="col-12  non-lateral-padding  ">
+                        <div> 
+                                <div class="col-6 non-lateral-padding">
+                                        <label><strong>{{ 'latitud' | translate }}</strong></label>
+                                        <div class="col-4">
+                                        <input class="form-control" type="number" [(ngModel)]="latitude" name="latitude" id="example-number-input" required>
+                                        </div>
+                                </div> 
+                                <div class="col-6">
+                                        <label><strong>{{ 'longitud' | translate }}</strong></label>
+                                        <div class="col-2">
+                                        <input class="form-control" type="text"  [(ngModel)]="length" name="length" id="example-number-input" required>
+                                        </div>
+                                </div> 
+                        </div>     
+                 </div> 
+             </div>       
       </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
+      <div class="dropdown-divider"></div>
+      <div class="col-12 non-lateral-padding">
+          <div class="col-12 non-lateral-padding">
+              <label for="validationCustom05"><strong>{{ 'telefono' | translate }}</strong></label>
+          </div>
+          <div class="col-12 non-lateral-padding">
+            <div class="form-inline"> 
+                <div class="col-6 non-lateral-padding form-inline ">
+                        <label><strong>{{ 'codigoPais' | translate }}</strong></label>
+                        <div class="col-2">
+                        <input class="form-control" type="number" value="54" id="example-number-input" required>
+                        </div>
+                </div> 
+                <div class="col-6  form-inline">
+                        <label><strong>{{ 'codigoArea' | translate }}</strong></label>
+                        <div class="col-2">
+                        <input class="form-control" type="number" [(ngModel)]="areaCode" name="areaCode" id="example-number-input" required>
+                        </div>
+                </div> 
+            </div>  
+            <div class="diver"></div>
+             <div class="col-6  non-lateral-padding form-inline ">
+                    <label><strong>{{ 'numeroTelefonico' | translate }}</strong></label>
+                    <div class="col-2">
+                      <input class="form-control" type="number" [(ngModel)]="telephoneNumber" name="telephoneNumber" id="example-number-input" required>
+                    </div>
+             </div> 
+           </div>
+        </div>
+      <div class="dropdown-divider"></div>
+      <div class="col-12 non-lateral-padding">
+          <label for="validationCustom05"><strong>{{ 'contrasenia' | translate }}</strong>:</label>
+          <input type="text" [(ngModel)]="password" name="password" required>
+      </div> 
+      <div class="diver"></div>
+      <div class="col-12 non-lateral-padding">
+            <button class="col-4 btn btn-primary squareButton" type="submit">{{ 'actualizar' | translate }}</button>
       </div>
-    </div>
-  </div>
-  <button class="col-2 btn btn-primary squareButton" type="submit">Submit form</button>
-</form>
+  </form>
   </div>
 </div>

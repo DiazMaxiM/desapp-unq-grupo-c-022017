@@ -7,3 +7,9 @@
   margin-bottom: 10px;
   border-radius: 0px !IMPORTANT; 
 }
+
+.diver{
+  height: 0;
+  margin: .5rem 0;
+  overflow: hidden;
+}

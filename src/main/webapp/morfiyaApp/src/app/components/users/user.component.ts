@@ -13,12 +13,17 @@ export class UserComponent implements OnInit{
   user :String
   userCurrent: User
   idUser : String
+  message:User;
   
   constructor(private router:Router,public messageService : MessageService){}
   
   ngOnInit() {
-    this.userCurrent = this.messageService.getMessage();
-    this.user = this.userCurrent.name;
-    this.idUser = this.userCurrent.id;
+    this.messageService.currentMessage.subscribe(message => this.message = message);
+    this.user = this.message.name;
+    this.idUser = this.message.id;
+}
+
+backToHome(){
+  this.router.navigate(['home']);
 }
 }

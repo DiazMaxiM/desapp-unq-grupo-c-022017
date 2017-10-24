@@ -2,6 +2,7 @@ package repositories;
 
 import java.util.List;
 
+import model.Address;
 import model.Telephone;
 import model.User;
 
@@ -31,6 +32,13 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 		List<Telephone> find = (List<Telephone>) this.getHibernateTemplate()
 				.find("from " + "Telephone" + " where idUser ='" + idUser + "'");
 		List<Telephone> list = find;
+		return list.get(0);
+	}
+
+	public Address findAddressById(String idUser) {
+		List<Address> find = (List<Address>) this.getHibernateTemplate()
+				.find("from " + "Address" + " where idAddress ='" + idUser + "'");
+		List<Address> list = find;
 		return list.get(0);
 	}
 }

@@ -14,7 +14,7 @@ import {User} from './../../model/user';
 })
 export class HomeComponent  {
   public model:any = {};
-  private user;
+  private user : User = new User();
    @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
@@ -32,7 +32,6 @@ export class HomeComponent  {
      this.userService.login(this.model.email,this.model.password).subscribe(data => 
      {this.respuestaLogin(data)},
      err => {
-      
       this.model.email="";
       this.model.password="";
       this.alertService.error(this.translate.instant(JSON.parse(err._body).code.toString()));
@@ -43,8 +42,7 @@ export class HomeComponent  {
   }
 
   respuestaLogin(data){
-       
-       this.user= data as User;
+       this.user= Object.assign(new User,data);
        this.sendData();
        this.closeModal();
        this.router.navigate(['users']);
@@ -56,8 +54,7 @@ export class HomeComponent  {
   }
 
   private sendData(): void {
-        // send message to subscribers via observable subject
-        this.messageService.sendMessage(this.user);
+       this.messageService.changeMessage(this.user);
     }
 
   search()  {
