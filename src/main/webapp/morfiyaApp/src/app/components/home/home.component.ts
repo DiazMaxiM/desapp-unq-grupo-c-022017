@@ -42,8 +42,36 @@ export class HomeComponent  {
     });
   }
 
+  newUser() {
+    this.userService.register(this.model.cuit, this.model.name, this.model.surname, this.model.email, this.model.telephone, this.model.locality, this.model.street, this.model.numberStreet, this.model.floor, this.model.password).subscribe(data => 
+     {this.respuestaRegister(data)},
+     err => {
+      
+      this.model.cuit="";
+      this.model.name="";
+      this.model.surname="";
+      this.model.email="";
+      this.model.telephone="";
+      this.model.locality="";
+      this.model.street="";
+      this.model.numberStreet="";
+      this.model.floor="";
+      this.model.password="";
+      this.alertService.error(this.translate.instant(JSON.parse(err._body).code.toString()));
+      setInterval (() => {
+        this.alertService.clear();
+      }, 2000)
+    });
+  }
+
   respuestaLogin(data){
-       
+       this.user= data as User;
+       this.sendData();
+       this.closeModal();
+       this.router.navigate(['users']);
+  }
+
+  respuestaRegister(data){
        this.user= data as User;
        this.sendData();
        this.closeModal();

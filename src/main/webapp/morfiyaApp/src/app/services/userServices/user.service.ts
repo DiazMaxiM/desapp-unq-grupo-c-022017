@@ -23,4 +23,8 @@ export class UserService {
     return this.http.get('/grupoc/rest/users/addTransactionUser/' + id +'/CREDIT/'+value).map((res:Response)=>res.json());
   }
 
+  register(cuit: String, name: String, surname: String, email: String, telephone: String, locality: String, street: String, numberStreet: String, floor: String, password: String){
+    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json() as User);
+  }
+
 }

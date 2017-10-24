@@ -92,7 +92,70 @@
             </button>
             </div>
             <div [hidden]="submitted" class="modal-body">
+            
+            <form name="form" (ngSubmit)="f.form.valid && newUser()" #f="ngForm" novalidate>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <alert></alert>
+
+                        <label for="name">{{ 'nombre' | translate }}</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />
+                        <div *ngIf="f.submitted && !name.valid" class="help-block">{{ 'nombreDeUsuarioValido' | translate }}</div>
+                    </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !surname.valid }">
+                        <alert></alert>
+
+                        <label for="surname">{{ 'apellido' | translate }}</label>
+                        <input type="text" class="form-control" name="surname" [(ngModel)]="model.surname" #surname="ngModel" required />
+                        <div *ngIf="f.submitted && !surname.valid" class="help-block">{{ 'apellidoDeUsuarioValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <label for="email">{{ 'email' | translate }}</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+                        <div *ngIf="f.submitted && !email.valid" class="help-block">{{ 'emailValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                        <label for="password">{{ 'contrasenia' | translate }}</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                        <div *ngIf="f.submitted && !password.valid" class="help-block">{{ 'passwordValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !telephone.valid }">
+                        <label for="telephone">{{ 'telefono' | translate }}</label>
+                        <input type="telephone" class="form-control" name="telephone" [(ngModel)]="model.telephone" #telephone="ngModel" required />
+                        <div *ngIf="f.submitted && !telephone.valid" class="help-block">{{ 'telephoneValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cuit.valid }">
+                        <label for="cuit">{{ 'cuit' | translate }}</label>
+                        <input type="cuit" class="form-control" name="cuit" [(ngModel)]="model.cuit" #cuit="ngModel" required />
+                        <div *ngIf="f.submitted && !cuit.valid" class="help-block">{{ 'cuitValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !locality.valid }">
+                        <label for="locality">{{ 'localidad' | translate }}</label>
+                        <input type="locality" class="form-control" name="locality" [(ngModel)]="model.locality" #locality="ngModel" required />
+                        <div *ngIf="f.submitted && !locality.valid" class="help-block">{{ 'localidadValida' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !street.valid }">
+                        <label for="street">{{ 'calle' | translate }}</label>
+                        <input type="street" class="form-control" name="street" [(ngModel)]="model.street" #street="ngModel" required />
+                        <div *ngIf="f.submitted && !street.valid" class="help-block">{{ 'calleValida' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !numberStreet.valid }">
+                        <label for="numberStreet">{{ 'numeroDeCalle' | translate }}</label>
+                        <input type="numberStreet" class="form-control" name="numberStreet" [(ngModel)]="model.numberStreet" #numberStreet="ngModel" required />
+                        <div *ngIf="f.submitted && !numberStreet.valid" class="help-block">{{ 'numeroDeCalleValido' | translate }}</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !floor.valid }">
+                        <label for="floor">{{ 'piso' | translate }}</label>
+                        <input type="floor" class="form-control" name="floor" [(ngModel)]="model.floor" #floor="ngModel" required />
+                        <div *ngIf="f.submitted && !floor.valid" class="help-block">{{ 'pisoValido' | translate }}</div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <button [disabled]="loading" class="btn btn-primary">{{ 'registrar' | translate }}</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
-</div>
+    </div>
