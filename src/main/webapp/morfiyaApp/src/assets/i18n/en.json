@@ -54,7 +54,6 @@
     "telephoneValido": "Please enter a valid telephone",
     "cuit": "CUIT",
     "cuitValido": "Please enter a valid CUIT",
-    "localidad": "Locality",
     "localidadValida": "Please enter a valid locality",
     "calle": "Street",
     "calleValida": "Please enter a valid street",

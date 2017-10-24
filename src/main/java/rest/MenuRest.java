@@ -22,9 +22,7 @@ public class MenuRest {
 	@Path("/listMenu/{name}")
 	@Produces("application/json")
 	public Response listMenu(@PathParam("name") final String name) {
-
 		return Response.ok(menuService.listMenuForName(name)).build();
-
 	}
 
 	public void setMenuService(final MenuService menuService) {
