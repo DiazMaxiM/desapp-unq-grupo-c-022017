@@ -28,7 +28,6 @@ export class HomeComponent  {
   }
 
   logginUser(){
-     
      this.userService.login(this.model.email,this.model.password).subscribe(data => 
      {this.respuestaLogin(data)},
      err => {
@@ -64,18 +63,14 @@ export class HomeComponent  {
   }
 
   respuestaLogin(data){
-<<<<<<< HEAD
-       this.user= Object.assign(new User,data);
-=======
-       this.user= data as User;
+       this.user= Object.assign(new User,JSON.parse(data._body));
        this.sendData();
        this.closeModal();
        this.router.navigate(['users']);
   }
 
   respuestaRegister(data){
-       this.user= data as User;
->>>>>>> cd9ca61cd30b6524254c99717da7a0c6fe5366e8
+       this.user= Object.assign(new User,data);
        this.sendData();
        this.closeModal();
        this.router.navigate(['users']);

@@ -2,14 +2,8 @@
     "ingresar": "Ingresar",
     "registrar": "Registrar",
     "tituloPantallaPrincipal": "Bienvenido a MorfiYa",
-<<<<<<< HEAD
-    "eligeCriterioDeBusqueda": "Elegir Criterio de Busqueda",
-    "nombre": "Nombre",
-    "localidad": "Localidad",
-=======
     "eligeCriterioDeBusqueda": "Elegir criterio de búsqueda",
     "nombre": "Nombre",
->>>>>>> cd9ca61cd30b6524254c99717da7a0c6fe5366e8
     "precio": "Precio",
     "buscarPor": "Buscar Por",
     "buscar": "Buscar",
@@ -49,7 +43,6 @@
     "verMenu": "Ver menú",
     "paginaAnterior": "Anterior",
     "paginaSiguiente": "Siguiente",
-<<<<<<< HEAD
     "1001":"Transacción exitosa",
     "1002":"No se pudo realizar la transacción",
     "1003":"Ingrese sólo números positivos",
@@ -57,7 +50,6 @@
     "apellido":"Apellido",
     "cuit":"CUIT",
     "telefono":"Teléfono",
-    "direccion":"Dirección",
     "longitud":"Longitud",
     "latitud":"Latitud",
     "deseaSalir":"¿Desea Salir?",
@@ -81,28 +73,17 @@
     "126":"Localidad no válida",
     "127":"Posición en el mapa incorrecto",
     "128":"Contraseña no valida",
-    "emailDeUsuarioRequerido":"Email requerido"
-    
-    
-
-=======
+    "emailDeUsuarioRequerido":"Email requerido",
     "nombreDeUsuarioValido": "Ingrese un nombre válido",
-    "apellido": "Apellido",
     "apellidoDeUsuarioValido": "Ingrese un apellido válido",
-    "email": "E-mail",
     "emailValido": "Ingrese una dirección de e-mail válida",
     "passwordValido": "Ingrese una contraseña válida",
-    "telefono": "Teléfono",
     "telephoneValido": "Ingrese un teléfono válido",
-    "cuit": "CUIT",
     "cuitValido": "Ingrese un CUIT válido",
     "localidad": "Localidad",
     "localidadValida": "Ingrese una localidad válida",
-    "calle": "Calle",
     "calleValida": "Ingrese una calle válida",
     "numeroDeCalle": "Número de calle",
     "numeroDeCalleValido": "Ingrese un número de calle válido",
-    "piso": "Piso",
     "pisoValido": "Ingrese un número de piso válido"
->>>>>>> cd9ca61cd30b6524254c99717da7a0c6fe5366e8
 }

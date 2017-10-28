@@ -21,7 +21,6 @@
     "agregarSaldo": "Load Balance",
     "cancelar": "Cancel",
     "confirmar": "Confirm",
-<<<<<<< HEAD
     "100": "Error login",
     "1001":"Succesful transaction",
     "1002":"Could not complete transaction",
@@ -53,10 +52,7 @@
     "126":"Invalid locality",
     "127":"Incorrect map position",
     "128":"Invalid password",
-    "emailDeUsuarioRequerido":"Required email"
-    
-=======
-    "100": "Error: Login",
+    "emailDeUsuarioRequerido":"Required email",
     "101": "Error: Invalid location",
     "102": "Error: Invalid area code",
     "103": "Error: Invalid country code",
@@ -90,12 +86,9 @@
     "cuit": "CUIT",
     "cuitValido": "Please enter a valid CUIT",
     "localidadValida": "Please enter a valid locality",
-    "calle": "Street",
     "calleValida": "Please enter a valid street",
     "numeroDeCalle": "Street number",
     "numeroDeCalleValido": "Please enter a valid street number",
-    "piso": "Floor",
     "pisoValido": "Please enter a valid floor"
->>>>>>> cd9ca61cd30b6524254c99717da7a0c6fe5366e8
 
 }

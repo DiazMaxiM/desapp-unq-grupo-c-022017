@@ -7,6 +7,7 @@ import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'editUser',

@@ -10,7 +10,7 @@ export class UserService {
   }
 
   login(email: String,password :String){
-    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());            
+    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res);            
   }
 
   balance(id: String){
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   register(cuit: String, name: String, surname: String, email: String, telephone: String, locality: String, street: String, numberStreet: String, floor: String, password: String){
-    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json() as User);
+    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());
   }
 
 }
