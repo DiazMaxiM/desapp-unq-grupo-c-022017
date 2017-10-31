@@ -18,7 +18,6 @@ import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,7 +33,6 @@ export function createTranslateLoader(http: HttpClient) {
     AlertComponent, 
     MenusComponent,
     MenuComponent,
-    ForbiddenValidatorDirective   
   ],
   imports: [
     BrowserModule,
