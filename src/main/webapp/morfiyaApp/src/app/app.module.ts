@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule}   from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -18,6 +18,7 @@ import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -32,11 +33,13 @@ export function createTranslateLoader(http: HttpClient) {
     CheckBalanceComponent,
     AlertComponent, 
     MenusComponent,
-    MenuComponent   
+    MenuComponent,
+    ForbiddenValidatorDirective   
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     HttpClientModule,

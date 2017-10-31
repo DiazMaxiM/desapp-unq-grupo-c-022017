@@ -6,30 +6,41 @@ import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit {
+
   public model:any = {};
   private user : User = new User();
-   @ViewChild('closeBtn') closeBtn: ElementRef;
+  form: FormGroup;
+  @ViewChild('closeBtn') closeBtn: ElementRef;
   
   changeLang(lang: string) {
     this.translate.use(lang);
   }
 
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService){
+  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
   }
 
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+    });
+  }
+
   logginUser(){
-     this.userService.login(this.model.email,this.model.password).subscribe(data => 
-     {this.respuestaLogin(data)},
+    console.log(this.form.get('email').value);
+     this.userService.login(this.form.get('email').value,this.form.get('password').value).subscribe(data => 
+     {this.result(data)},
      err => {
       this.model.email="";
       this.model.password="";
@@ -41,20 +52,20 @@ export class HomeComponent  {
   }
 
   newUser() {
-    this.userService.register(this.model.cuit, this.model.name, this.model.surname, this.model.email, this.model.telephone, this.model.locality, this.model.street, this.model.numberStreet, this.model.floor, this.model.password).subscribe(data => 
-     {this.respuestaRegister(data)},
+    this.userService.register(this.model.cuitToRegister, this.model.nameToRegister, this.model.surnameToRegister, this.model.emailToRegister, this.model.telephoneToRegister, this.model.localityToRegister, this.model.streetToRegister, this.model.numberStreetToRegister, this.model.floorToRegister, this.model.passwordToRegister).subscribe(data => 
+     {this.result(data)},
      err => {
       
-      this.model.cuit="";
-      this.model.name="";
-      this.model.surname="";
-      this.model.email="";
+      this.model.cuitToRegister="";
+      this.model.nameToRegister="";
+      this.model.surnameToRegister="";
+      this.model.emailToRegister="";
       this.model.telephone="";
-      this.model.locality="";
-      this.model.street="";
-      this.model.numberStreet="";
-      this.model.floor="";
-      this.model.password="";
+      this.model.localityToRegister="";
+      this.model.streetToRegister="";
+      this.model.numberStreetToRegister="";
+      this.model.floorToRegister="";
+      this.model.passwordToRegister="";
       this.alertService.error(this.translate.instant(JSON.parse(err._body).code.toString()));
       setInterval (() => {
         this.alertService.clear();
@@ -62,31 +73,26 @@ export class HomeComponent  {
     });
   }
 
-  respuestaLogin(data){
+  result(data){
        this.user= Object.assign(new User,JSON.parse(data._body));
        this.sendData();
        this.closeModal();
        this.router.navigate(['users']);
   }
 
-  respuestaRegister(data){
-       this.user= Object.assign(new User,data);
-       this.sendData();
-       this.closeModal();
-       this.router.navigate(['users']);
-  }
-
   //call this wherever you want to close modal
-    private closeModal(): void {
-        this.closeBtn.nativeElement.click();
-  }
 
   private sendData(): void {
        this.messageService.changeMessage(this.user);
-    }
+    }  
 
   search()  {
     this.router.navigate(['menus']);
   }
+
+   //call this wherever you want to close modal
+   private closeModal(): void {
+    this.closeBtn.nativeElement.click();
+}
 
 }
