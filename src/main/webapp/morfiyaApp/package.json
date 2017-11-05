@@ -28,6 +28,8 @@
     "jquery": "^3.0.0",
     "ng-bootstrap-form-validation": "^1.0.10",
     "ng2-translate": "^5.0.0",
+    "ng2-validation": "^4.2.0",
+    "ng2-validation-manager": "^0.5.3",
     "popper.js": "^1.11.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

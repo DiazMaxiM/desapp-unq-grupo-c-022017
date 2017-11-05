@@ -53,7 +53,13 @@
     "126":"Posizione non valida",
     "127":"Posizione mappa errata",
     "128":"Password non valida",
-    "emailDeUsuarioRequerido":"Email richiesto"
+    "emailDeUsuarioRequerido":"Email richiesto",
+    "re-password":"Ripetere la password",
+    "posicion-en-el-mapa":"Posizione sulla mappa",
+    "campo-requerido":"Campo obbligatorio",
+    "1004": "Compila le informazioni mancanti",
+    "aceptar":"Accettare"
+
     
 
 }

@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
   }
 
   logginUser(){
-    console.log(this.form.get('email').value);
      this.userService.login(this.form.get('email').value,this.form.get('password').value).subscribe(data => 
      {this.result(data)},
      err => {

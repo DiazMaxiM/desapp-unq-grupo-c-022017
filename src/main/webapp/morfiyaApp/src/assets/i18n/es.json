@@ -38,7 +38,7 @@
     "115": "Error nombre de calle inválido",
     "116": "Error localidad inválida",
     "puntuacion": "Puntuación: ",
-    "direccion": "Dirección: ",
+    "direccion": "Dirección ",
     "categoria": "Categoría: ",
     "verMenu": "Ver menú",
     "paginaAnterior": "Anterior",
@@ -85,5 +85,12 @@
     "calleValida": "Ingrese una calle válida",
     "numeroDeCalle": "Número de calle",
     "numeroDeCalleValido": "Ingrese un número de calle válido",
-    "pisoValido": "Ingrese un número de piso válido"
+    "pisoValido": "Ingrese un número de piso válido",
+    "re-password":"Repetir contraseña",
+    "posicion-en-el-mapa":"Ubicación en el mapa",
+    "campo-requerido":"Campo requerido",
+    "1004": "Por favor, complete los datos faltantes",
+    "aceptar":"Aceptar"
+        
+
 }

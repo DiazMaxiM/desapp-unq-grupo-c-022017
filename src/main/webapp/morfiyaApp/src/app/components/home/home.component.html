@@ -59,7 +59,7 @@
             </div>
             <div class="modal-body">
                     <form class="form-horizontal" [formGroup]="form">
-                            
+                            <alert></alert>
                               <div class="form-group">
                                 <div class="col-12">
                                   <label for="email" class="control-label">{{ 'email' | translate }}</label>
@@ -86,7 +86,7 @@
 <!-- Modal Registro cliente-->
 <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-sm">
             <div class="modal-header homeHeader">
                 <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa {{ 'registrar' | translate }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

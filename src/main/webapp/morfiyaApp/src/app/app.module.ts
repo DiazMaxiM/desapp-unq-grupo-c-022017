@@ -18,6 +18,7 @@ import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
+import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -33,6 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     AlertComponent, 
     MenusComponent,
     MenuComponent,
+    FieldErrorDisplayComponent        
   ],
   imports: [
     BrowserModule,

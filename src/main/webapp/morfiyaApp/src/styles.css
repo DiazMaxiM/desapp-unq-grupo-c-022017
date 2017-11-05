@@ -26,3 +26,23 @@ body {
 .login{
 	background-color: white;
 }
+
+.componentSearch{
+	height: 50px !IMPORTANT;
+	width:100% !IMPORTANT;
+	border-radius: 0px !IMPORTANT;
+ } 
+ 
+ .buttonLogin{
+	 color: white;
+	 background-color: orange;
+ }
+ 
+ @media (max-width: 991px) { 
+	.componentSearch{
+	height: 50px !IMPORTANT;
+	width:100% !IMPORTANT;
+	border-radius: 0px !IMPORTANT; 
+	margin-bottom: 5px; 
+	}
+ }

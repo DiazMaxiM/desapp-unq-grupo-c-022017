@@ -89,6 +89,11 @@
     "calleValida": "Please enter a valid street",
     "numeroDeCalle": "Street number",
     "numeroDeCalleValido": "Please enter a valid street number",
-    "pisoValido": "Please enter a valid floor"
+    "pisoValido": "Please enter a valid floor",
+    "re-password":"Re-password",
+    "posicion-en-el-mapa":"Location on the map",
+    "campo-requerido":"Required field",
+    "1004": "Please complete the missing data",
+    "aceptar":"To accept"
 
 }

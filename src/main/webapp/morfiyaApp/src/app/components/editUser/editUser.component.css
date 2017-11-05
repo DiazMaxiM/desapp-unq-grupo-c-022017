@@ -1,5 +1,7 @@
 .editInformation{
-	background-color: white;
+  background-color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .squareButton{
@@ -13,10 +15,48 @@
   margin: .5rem 0;
   overflow: hidden;
 }
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
+
+.control-label.required:after { 
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+  top:2px;
 }
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
+.campo-form {
+  padding-left: 2px !IMPORTANT; 
+  padding-right: 2px !IMPORTANT; 
+}
+
+.modal-dialog {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+@media(max-width: 768px) {
+.modal-dialog {
+  min-height: calc(100vh - 20px);
+}
+}
+
+.homeHeader{
+	background-color: #f52f41;
+	margin-bottom: 10px;
+}
+
+.titulo{
+	color: white !IMPORTANT;
+}
+
+.information{
+  text-align: center;
+}
+
+.alert-information{
+  overflow: auto;
+  height: auto;
+  width: auto;
 }
