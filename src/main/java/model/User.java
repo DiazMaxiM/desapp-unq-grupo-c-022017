@@ -24,6 +24,7 @@ public class User extends Entity {
 	private Account account = new Account();
 	private UserValidation validator = new UserValidation();
 	private String password;
+	protected TypeUser typeUser = TypeUser.CLIENT;
 
 	public User() {
 	}
@@ -126,16 +127,17 @@ public class User extends Entity {
 		return this.password;
 	}
 
-	public void updateInformation(String password,Telephone telephone, Address address) throws InvalidPasswordException {
-		if(this.validator.isValidPassword(password)){
-			update(password,telephone,address);
+	public void updateInformation(String password, Telephone telephone, Address address)
+			throws InvalidPasswordException {
+		if (this.validator.isValidPassword(password)) {
+			update(password, telephone, address);
 		}
 	}
 
 	private void update(String password, Telephone telephone, Address address) {
 		setPassword(password);
 		setTelephone(telephone);
-		setAddress(address);	
+		setAddress(address);
 	}
 
 }

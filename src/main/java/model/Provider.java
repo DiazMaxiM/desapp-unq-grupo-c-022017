@@ -23,6 +23,7 @@ public class Provider extends User {
 			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
 			InvalidEmailAddressException, InvalidMapPositionException {
 		super(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress, password);
+		this.typeUser = TypeUser.PROVIDER;
 
 	}
 
