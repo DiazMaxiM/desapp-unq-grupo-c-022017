@@ -96,7 +96,9 @@
     "isNotValidNumber":"no es un número valido",
     "mustBeEqualTo":"debe ser igual al anterior",
     "formatoEmailIncorrecto":"Formato de correcto electrónico incorrecto",
-    "nuevoUsuario":"Nuevo Usuario"
+    "nuevoUsuario":"Nuevo Usuario",
+    "volver":"Volver"
+    
         
 
 }

@@ -100,6 +100,7 @@
     "isNotValidNumber":"is not valid number",
     "mustBeEqualTo":"must be equal",
     "formatoEmailIncorrecto":"Wrong email format",
-    "nuevoUsuario":"New User"
+    "nuevoUsuario":"New User",
+    "volver":"Back"
 
 }

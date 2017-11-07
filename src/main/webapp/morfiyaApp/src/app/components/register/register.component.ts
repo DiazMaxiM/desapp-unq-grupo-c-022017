@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
       $('#login').hide();
       $('#register').hide();
+      $('#backToHome').show();
       this.form = new ValidationManager({
         'name'        : 'required',
         'surname'     : 'required',
@@ -94,4 +95,5 @@ export class RegisterComponent implements OnInit {
       this.alertService.error(msgError);
       this.showModal(msgError);
     }
+    
 }
