@@ -4,6 +4,10 @@ import org.joda.time.DateTime;
 
 public class HistoricalOrder extends Entity {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Score score;
 	private DateTime deliveryTime;
 	private TypeStatusOrder typeStatusOrder;
