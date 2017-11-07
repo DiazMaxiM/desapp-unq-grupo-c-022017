@@ -3,6 +3,9 @@ import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
 import {User} from './../../model/user';
+
+declare var $:any;
+
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
@@ -18,6 +21,7 @@ export class UserComponent implements OnInit{
   constructor(private router:Router,public messageService : MessageService){}
   
   ngOnInit() {
+    this.showInformation();
     this.messageService.currentMessage.subscribe(message => this.message = message);
     this.user = this.message.name;
     this.idUser = this.message.id;
@@ -25,5 +29,16 @@ export class UserComponent implements OnInit{
 
 backToHome(){
   this.router.navigate(['home']);
+}
+
+showInformation(){
+   $('#login').hide();
+   $('#register').hide();
+   $('#hello').show();
+   $('#edit').show();
+   $('#balance').show();
+   $('#orders').show();
+   $('#close').show();
+
 }
 }

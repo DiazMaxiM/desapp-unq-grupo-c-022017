@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {Router} from '@angular/router';
+declare var $:any;
 
 @Component({
   selector: 'checkBalance',
@@ -56,20 +57,15 @@ export class CheckBalanceComponent implements OnInit {
 
   private resultBalance(status){
     if(status== 200){
+      this.alertService.clear();
       this.alertService.success(this.translate.instant("1001"));
-      setInterval (() => {
-        this.alertService.clear();
-      }, 2000);
+      $('#balanceModal').modal('hide');
+      this.clearValue();
       this.checkbalance()
       
     }
   }
-
-   //call this wherever you want to close modal
-   private closeModal(): void {
-    this.closeBtn.nativeElement.click();
-}
-
+  
 clearValue(){
     this.value = 0;
   }

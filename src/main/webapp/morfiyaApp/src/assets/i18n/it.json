@@ -3,9 +3,9 @@
     "registrar": "Registrare",
     "tituloPantallaPrincipal": "Benvenuti a MorfiYa",
     "eligeCriterioDeBusqueda": "Seleziona Criteri di ricerca",
-    "nombre": "nome",
-    "localidad": "località",
-    "precio": "prezzo",
+    "nombre": "Nome",
+    "localidad": "Località",
+    "precio": "Prezzo",
     "buscarPor": "Cerca per",
     "buscar": "Cercare",
     "nombreDeUsuario": "Nome utente",
@@ -58,7 +58,14 @@
     "posicion-en-el-mapa":"Posizione sulla mappa",
     "campo-requerido":"Campo obbligatorio",
     "1004": "Compila le informazioni mancanti",
-    "aceptar":"Accettare"
+    "aceptar":"Accettare",
+    "isNotValidEmail":"Non è un'e-mail valida",
+    "isRequired":"È obbligatorio",
+    "isNotValidNumber":"Non è un numero valido",
+    "mustBeEqualTo":"Deve essere lo stesso",
+    "formatoEmailIncorrecto":"Formato di posta elettronica non corretto",
+    "nuevoUsuario":"Nuovo utente"
+    
 
     
 

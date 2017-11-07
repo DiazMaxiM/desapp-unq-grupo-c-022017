@@ -1,27 +1,44 @@
+<header></header>
 <div class="col-12">
-    <div  class="col-sm-8 col-md-8 mx-auto editInformation">
+    <div  class="col-sm-8 col-md-8 mx-auto editInformation register">
+        <div class="col-12 non-lateral-padding">
+                <h3>{{ 'nuevoUsuario' | translate }}</h3>
+        </div>
         <div class="col-12 non-lateral-padding">
             <alert></alert>
         </div>
-        <form [formGroup]="form.getForm()" (ngSubmit)="updateUser()">
+        <form [formGroup]="form.getForm()" (ngSubmit)="newUser()">
           <div class="form-row">
             <div class="form-group col-12 col-md-6">
               <label>{{ 'nombre' | translate }}</label>
-              <input type="text" class="form-control" formControlName="name" readonly>
+              <input type="text" class="form-control" formControlName="name">
+              <div *ngIf="form.hasError('name')" class="alert-information alert alert-danger">
+                {{form.getError('name')|translate}}
+             </div>
+              
             </div>
             <div class="form-group col-12 col-md-6">
                 <label>{{ 'apellido' | translate }}</label>
-                <input type="text" class="form-control" formControlName="surname" readonly>
+                <input type="text" class="form-control" formControlName="surname">
+                <div *ngIf="form.hasError('surname')" class="alert-information alert alert-danger">
+                    {{form.getError('surname')|translate}}
+            </div>
             </div>
           </div> 
           <div class="form-row">
             <div class="form-group col-12 col-md-6">
                 <label>{{ 'cuit' | translate }}</label>
-                <input type="text" class="form-control" formControlName="cuit" readonly>
+                <input type="number" class="form-control" formControlName="cuit">
+                <div *ngIf="form.hasError('cuit')" class="alert-information alert alert-danger">
+                    {{form.getError('cuit')|translate}}
+            </div>
             </div>
             <div class="form-group col-12 col-md-6">
               <label>{{ 'email' | translate }}</label>
-              <input type="text" class="form-control" formControlName="email" readonly>
+              <input type="text" class="form-control" formControlName="email">
+              <div *ngIf="form.hasError('email')" class="alert-information alert alert-danger">
+                {{form.getError('email')|translate}}
+             </div>
             </div>
           </div>  
           <div class="form-row">
@@ -126,7 +143,7 @@
               </div>
             </div>
           </div>  
-            <button type="submit" class="btn btn-success">{{'actualizar'| translate }}</button>
+            <button type="submit" class="btn btn-success">{{'registrar'| translate }}</button>
           </form>
   </div>
 </div>

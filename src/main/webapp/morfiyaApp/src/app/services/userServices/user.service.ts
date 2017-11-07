@@ -30,8 +30,8 @@ export class UserService {
     return this.http.get('/grupoc/rest/users/updateuser/'+id+'/'+password+'/'+countryCode+'/'+areaCode+'/'+localNumber+'/'+locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 
-  register(cuit: String, name: String, surname: String, email: String, telephone: String, locality: String, street: String, numberStreet: String, floor: String, password: String){
-    return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res.json());
+  register(password: String, name: String, surname: String,cuit:string, email: String,countryCode: String, areaCode: String,localNumber: String, locality: String, street: String, numberStreet: String, floor: String,latitude: String,length: String){
+    return this.http.get('/grupoc/rest/users/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 
 }

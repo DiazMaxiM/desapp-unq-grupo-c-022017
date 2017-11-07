@@ -5,10 +5,12 @@ import { EditUserComponent } from './components/editUser/editUser.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo:'/home', pathMatch:'full'},
     { path: 'home', component: HomeComponent},
+    { path: 'register', component: RegisterComponent},
     { path: 'menus', component: MenusComponent},
     { path: 'menu', component: MenuComponent},    
     { path: 'users', component: UserComponent,

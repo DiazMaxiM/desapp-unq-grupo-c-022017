@@ -65,7 +65,7 @@
     "118":"Sólo números positivos",
     "119":"Longitud inválida",
     "120":"Latitud inválida",
-    "121":"Número de  teléfono no valido",
+    "121":"Número de teléfono no valido",
     "122":"Código de área no valido",
     "123":"Código de país no valido",
     "124":"Número de calle no valido",
@@ -73,7 +73,7 @@
     "126":"Localidad no válida",
     "127":"Posición en el mapa incorrecto",
     "128":"Contraseña no valida",
-    "emailDeUsuarioRequerido":"Email requerido",
+    "emailDeUsuarioRequerido":"Correo electrónico  requerido",
     "nombreDeUsuarioValido": "Ingrese un nombre válido",
     "apellidoDeUsuarioValido": "Ingrese un apellido válido",
     "emailValido": "Ingrese una dirección de e-mail válida",
@@ -90,7 +90,13 @@
     "posicion-en-el-mapa":"Ubicación en el mapa",
     "campo-requerido":"Campo requerido",
     "1004": "Por favor, complete los datos faltantes",
-    "aceptar":"Aceptar"
+    "aceptar":"Aceptar",
+    "isNotValidEmail":"No es un correo electrónico valido",
+    "isRequired":"requerido",
+    "isNotValidNumber":"no es un número valido",
+    "mustBeEqualTo":"debe ser igual al anterior",
+    "formatoEmailIncorrecto":"Formato de correcto electrónico incorrecto",
+    "nuevoUsuario":"Nuevo Usuario"
         
 
 }

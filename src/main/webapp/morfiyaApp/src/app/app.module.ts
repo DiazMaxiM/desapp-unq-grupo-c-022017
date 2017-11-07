@@ -10,6 +10,8 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { RouterModule} from '@angular/router';
 import { UserComponent } from './components/users/user.component';
 import { EditUserComponent } from './components/editUser/editUser.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
 import { AlertComponent } from './alert/directives/index';
@@ -19,6 +21,7 @@ import { MessageService} from './services/messageServices/message.service';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
+import { CustomFormsModule } from 'ng2-validation'
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,7 +37,9 @@ export function createTranslateLoader(http: HttpClient) {
     AlertComponent, 
     MenusComponent,
     MenuComponent,
-    FieldErrorDisplayComponent        
+    FieldErrorDisplayComponent,
+    RegisterComponent,
+    HeaderComponent        
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     JsonpModule,
     HttpClientModule,
+    CustomFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,0 +1,76 @@
+.editInformation{
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .squareButton{
+    margin-bottom: 10px;
+    border-radius: 0px !IMPORTANT; 
+  }
+  
+  .diver{
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+  }
+  
+  .control-label.required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top:2px;
+  }
+  
+  .campo-form {
+    padding-left: 2px !IMPORTANT; 
+    padding-right: 2px !IMPORTANT; 
+  }
+  
+  .modal-dialog {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  @media(max-width: 768px) {
+  .modal-dialog {
+    min-height: calc(100vh - 20px);
+  }
+  }
+  
+  .homeHeader{
+      background-color: #f52f41;
+      margin-bottom: 10px;
+  }
+  
+  .titulo{
+      color: white !IMPORTANT;
+  }
+  
+  .information{
+    text-align: center;
+  }
+  
+  .alert-information{
+    overflow: auto;
+    height: auto;
+    width: auto;
+  }
+
+  .register{
+    border: 1px solid brown;
+    box-shadow: 0px 0px 10px #ccc;
+    background: #fff;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}

@@ -4,8 +4,8 @@
     "tituloPantallaPrincipal": "Welcome to MorfiYa",
     "eligeCriterioDeBusqueda": "Choose search criteria",
     "nombre": "Name",
-    "localidad": "locality",
-    "precio": "price",
+    "localidad": "Locality",
+    "precio": "Price",
     "buscarPor": "Search for",
     "buscar": "Search",
     "nombreDeUsuario": "UserName",
@@ -94,6 +94,12 @@
     "posicion-en-el-mapa":"Location on the map",
     "campo-requerido":"Required field",
     "1004": "Please complete the missing data",
-    "aceptar":"To accept"
+    "aceptar":"To accept",
+    "isNotValidEmail":"Is not valid email",
+    "isRequired":" is required",
+    "isNotValidNumber":"is not valid number",
+    "mustBeEqualTo":"must be equal",
+    "formatoEmailIncorrecto":"Wrong email format",
+    "nuevoUsuario":"New User"
 
 }

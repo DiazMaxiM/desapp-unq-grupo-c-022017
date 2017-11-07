@@ -1,0 +1,21 @@
+.homeHeader{
+	background-color: #f52f41;
+	margin-bottom: 10px;
+}
+
+.titulo{
+	color: white !IMPORTANT;
+}
+
+.hide-link{
+	display: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
