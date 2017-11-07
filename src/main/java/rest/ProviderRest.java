@@ -29,7 +29,7 @@ import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 
-@Path("/providers")
+@Path("/")
 public class ProviderRest {
 
 	public static final int NUMBER_OF_POST = 1;

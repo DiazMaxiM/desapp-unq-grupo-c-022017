@@ -26,7 +26,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
-	<jaxrs:server id="user" address="/"  > 
+	<jaxrs:server id="user" address="/users"  > 
 		<jaxrs:serviceBeans>
 			<ref bean="usersRest" />
 		</jaxrs:serviceBeans>
@@ -44,6 +44,46 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
    
 	<bean id="usersRest" class="rest.UsersRest">
 		<property name="userService" ref="services.user" />
+	</bean>
+	
+	<jaxrs:server id="provider" address="/provider"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="providersRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+   
+	<bean id="providersRest" class="rest.ProviderRest">
+		<property name="providerService" ref="services.provider" />
+	</bean>
+	
+	
+	<jaxrs:server id="locality" address="/locality"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="localitysRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+   
+	<bean id="localitysRest" class="rest.LocalityRest">
 	</bean>
 	
 </beans>

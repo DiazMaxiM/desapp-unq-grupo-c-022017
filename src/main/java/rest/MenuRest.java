@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 import services.MenuService;
 
-@Path("/menu")
+@Path("/")
 public class MenuRest {
 
 	public static final int NUMBER_OF_POST = 1;

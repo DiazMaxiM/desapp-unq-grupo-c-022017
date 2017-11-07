@@ -20,7 +20,6 @@ import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import miniObjects.ErrorJson;
-import miniObjects.UserDataJson;
 import miniObjects.UserJson;
 import model.User;
 import services.UserService;
@@ -30,7 +29,7 @@ import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import userExceptions.InvalidPasswordException;
 
-@Path("/users")
+@Path("/")
 public class UsersRest {
 
 	public static final int NUMBER_OF_POST = 1;
@@ -124,7 +123,7 @@ public class UsersRest {
 		} catch (BalanceInsufficient e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
 		}
-	
+
 	}
 
 	@GET
@@ -182,12 +181,12 @@ public class UsersRest {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(128)).build();
 		}
 	}
-	
+
 	@GET
 	@Path("/getUserData/{id}")
 	@Produces("application/json")
 	public Response getUser(@PathParam("id") final String id) {
 		return Response.ok(this.userService.getUserData(id)).build();
 	}
-	
+
 }

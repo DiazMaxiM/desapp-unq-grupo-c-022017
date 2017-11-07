@@ -148,4 +148,8 @@
 		  class="repositories.PriceRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.providerRepository"
+		  class="repositories.ProviderRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

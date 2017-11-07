@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import model.Locality;
 
-@Path("/locality")
+@Path("/")
 public class LocalityRest {
 
 	public static final int NUMBER_OF_POST = 1;
