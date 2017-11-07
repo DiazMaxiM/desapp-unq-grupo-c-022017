@@ -140,4 +140,9 @@ public class User extends Entity {
 		setAddress(address);
 	}
 
+	public TypeUser getTypeUser() {
+		// TODO Auto-generated method stub
+		return this.typeUser;
+	}
+
 }
