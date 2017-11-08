@@ -14,10 +14,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
+import { ProviderService} from './services/providerService/provider.service';
+import { UtilsService} from './services/utilsServices/utils.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
 import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
+import { TypeRegisterService} from './services/typeRegisterService/typeRegister.service';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
@@ -61,7 +64,7 @@ export function createTranslateLoader(http: HttpClient) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService],
+  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

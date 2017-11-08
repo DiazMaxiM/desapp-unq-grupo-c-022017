@@ -56,9 +56,11 @@
                   </div>
                   <div class="form row">
                       <div class="col-12 col-md-12">
-                          <input type="text" class="form-control" formControlName="locality">
+                        <select class="custom-select col-12 col-md-12" formControlName="locality">
+                            <option *ngFor="let l of localities" [ngValue]="l">{{l}}</option>
+                          </select>
                           <div *ngIf="form.hasError('locality')" class="alert-information alert alert-danger">
-                                {{form.getError('locality')|translate}}
+                            {{form.getError('locality')|translate}}
                           </div>
                       </div>
                     </div>

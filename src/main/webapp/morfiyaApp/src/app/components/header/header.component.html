@@ -11,7 +11,7 @@
                         <a id="login" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" #closeBtn>{{ 'ingresar' | translate }}</a>
                     </li>
                     <li class="nav-item active">
-                        <a  id="register" class="nav-link titulo" routerLink="/register">{{ 'registrar' | translate }}</a>
+                        <a  id="register" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalRegister" >{{ 'registrar' | translate }}</a>
                     </li>
                     <li class="nav-item active">
                         <a  id="backToHome" class="nav-link titulo hide-link" routerLink="/home">{{ 'volver' | translate }}</a>
@@ -84,17 +84,25 @@
         </div>
     </div>
     <!-- Modal login-->
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header homeHeader">
                 <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa </h5>
-                <button type="button" (click)="resetForm()" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <div class="modal-body">
-                <button type="submit" class="btn btn-success btn-block" [disabled]="!loginForm.form.valid">{{ 'ingresar' | translate }}</button>
+            <div class="modal-body col-12">
+                <h3 class="centerTitulo">{{'eligirTipoRegistro' | translate}}</h3>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" (click)="registerClient()" class="btn btn-outline-primary componentSearch" >{{ 'client' | translate }}</button>
+                    </div>
+                    <div class="col">
+                         <button type="button" (click)="registerProvider()" class="btn btn-outline-warning componentSearch" >{{ 'provider' | translate }}</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

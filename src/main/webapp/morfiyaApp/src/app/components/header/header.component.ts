@@ -4,12 +4,14 @@ import { UserService } from './../../services/userServices/user.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
+import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ValidationManager} from "ng2-validation-manager";
 import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
+import { UtilsService} from './../../services/utilsServices/utils.service';
 
 declare var $:any;
 
@@ -29,7 +31,7 @@ export class HeaderComponent {
   }
   mensaje :String;
 
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder){
+  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
@@ -64,7 +66,6 @@ export class HeaderComponent {
        this.user= Object.assign(new User,JSON.parse(data._body));
        this.sendData();
        $('#modalLogin').modal('hide');
-       $('#modalRegister').modal('hide');
        this.router.navigate(['users']);
   }
 
@@ -85,6 +86,20 @@ export class HeaderComponent {
 
   resetForm(){
     this.form.reset();
+  }
+
+  registerClient(){
+    $('#modalRegister').modal('hide');
+    this.typeRegisterService.changeMessage("CLIENT");
+    this.router.navigate(['register']);
+
+  }
+
+  registerProvider(){
+    $('#modalRegister').modal('hide');
+    this.typeRegisterService.changeMessage("PROVIDER");
+    this.router.navigate(['register']);
+
   }
 
 

@@ -97,7 +97,12 @@
     "mustBeEqualTo":"debe ser igual al anterior",
     "formatoEmailIncorrecto":"Formato de correcto electrónico incorrecto",
     "nuevoUsuario":"Nuevo Usuario",
-    "volver":"Volver"
+    "volver":"Volver",
+    "client":"Cliente",
+    "provider":"Proveedor",
+    "eligirTipoRegistro":"Elija el tipo de registro",
+    "newClient":" Nuevo Cliente",
+    "newProvider":"Nuevo Proveedor"
     
         
 

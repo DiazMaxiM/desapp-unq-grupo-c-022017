@@ -101,6 +101,12 @@
     "mustBeEqualTo":"must be equal",
     "formatoEmailIncorrecto":"Wrong email format",
     "nuevoUsuario":"New User",
-    "volver":"Back"
+    "volver":"Back",
+    "client":"Client",
+    "provider":"Provider",
+    "eligirTipoRegistro":"Choose the type of registration",
+    "newClient":" New Client",
+    "newProvider":"New Provider"
+
 
 }

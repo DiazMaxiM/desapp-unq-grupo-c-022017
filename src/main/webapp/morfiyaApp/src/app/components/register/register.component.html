@@ -1,8 +1,9 @@
 <header></header>
 <div class="col-12">
-    <div  class="col-sm-8 col-md-8 mx-auto editInformation register">
+    <div  class="col-sm-8 col-md-8 mx-auto editInformation register containerRegister">
         <div class="col-12 non-lateral-padding">
-                <h3>{{ 'nuevoUsuario' | translate }}</h3>
+               <div id="newProvider" class="titleRegister"><h3>{{ 'newProvider' | translate }}</h3></div> 
+               <div id="newClient" class="titleRegister"><h3>{{ 'newClient' | translate }}</h3></div>
         </div>
         <div class="col-12 non-lateral-padding">
             <alert></alert>
@@ -73,9 +74,11 @@
                   </div>
                   <div class="form row">
                       <div class="col-12 col-md-12">
-                          <input type="text" class="form-control" formControlName="locality">
+                        <select class="custom-select col-12 col-md-12" formControlName="locality">
+                            <option *ngFor="let l of localities" [ngValue]="l">{{l}}</option>
+                          </select>
                           <div *ngIf="form.hasError('locality')" class="alert-information alert alert-danger">
-                                {{form.getError('locality')|translate}}
+                            {{form.getError('locality')|translate}}
                           </div>
                       </div>
                     </div>

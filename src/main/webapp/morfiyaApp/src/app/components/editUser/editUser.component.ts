@@ -8,6 +8,7 @@ import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
+import { UtilsService} from './../../services/utilsServices/utils.service';
 
 declare var $:any;
 
@@ -23,12 +24,13 @@ export class EditUserComponent implements OnInit {
   userName : string;
   userData : UserData;
   mensaje :String;
+  localities = JSON.stringify;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService){
+  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
   }
   
     ngOnInit() {
-      
+      this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
       this.messageService.currentMessage.subscribe(message => this.user = message);
       this.idUser = this.user.id;
       this.getUserData();
@@ -114,4 +116,9 @@ export class EditUserComponent implements OnInit {
       this.alertService.error(msgError);
       this.showModal(msgError);
     }
+
+    resultLocalities(data){
+      this.localities= JSON.parse(data._body);
+    }
+  
 }

@@ -88,7 +88,6 @@ export class HomeComponent implements OnInit {
        this.user= Object.assign(new User,JSON.parse(data._body));
        this.sendData();
        $('#modalLogin').modal('hide');
-       $('#modalRegister').modal('hide');
        this.router.navigate(['users']);
   }
 

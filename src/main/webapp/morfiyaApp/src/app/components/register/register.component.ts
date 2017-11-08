@@ -8,6 +8,8 @@ import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
+import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
+import { UtilsService} from './../../services/utilsServices/utils.service';
 
 declare var $:any;
 
@@ -21,13 +23,15 @@ export class RegisterComponent implements OnInit {
   user:User;
   idUser:string;
   userName : string;
-  userData : UserData;
   mensaje :String;
+  typeRegister: String;
+  localities = JSON.stringify;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService){
+  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
   }
   
     ngOnInit() {
+      this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
       $('#login').hide();
       $('#register').hide();
       $('#backToHome').show();
@@ -48,36 +52,45 @@ export class RegisterComponent implements OnInit {
         'password'    : 'required|rangeLength:3,50',
         'repassword'  : 'required|equalTo:password'
       });
-
+      this.typeRegisterService.currentMessage.subscribe(message => this.typeRegister = message);
+      this.checkTypeRegister();
+    }
+    checkTypeRegister(){
+      if("PROVIDER"==this.typeRegister){
+        $('#newProvider').show();
+      }
+      if("CLIENT"==this.typeRegister){
+        $('#newClient').show();
+      }
     }
 
 
     newUser() {
       if(this.form.isValid()){
-        this.userService.register(this.form.getValue('password'),this.form.getValue('name'),this.form.getValue('surname'),this.form.getValue('cuit'),this.form.getValue('email'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'), this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length')).subscribe(data => 
-          {this.result(data)},
-        err => {
-          this.form.reset();
-          this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
-        });
+        this.registerAccordingToRole();
       }else{
         this.showModal(this.translate.instant("1004"));
       }
     }
+
+    registerAccordingToRole(){
+      if("PROVIDER"==this.typeRegister){
+        this.registerProvider()
+      }
+      if("CLIENT"==this.typeRegister){
+        this.registerClient()
+      }
+    }
   
-    result(data){
-         this.user= Object.assign(new User,JSON.parse(data._body));
-         this.sendData();
-         $('#modalLogin').modal('hide');
-         $('#modalRegister').modal('hide');
-         this.router.navigate(['users']);
+    resultLocalities(data){
+      this.localities= JSON.parse(data._body);
     }
   
     //call this wherever you want to close modal
   
     private sendData(): void {
-         this.messageService.changeMessage(this.user);
-      }  
+      this.messageService.changeMessage(this.user);
+    }  
   
     search()  {
       this.router.navigate(['menus']);
@@ -94,6 +107,34 @@ export class RegisterComponent implements OnInit {
       this.alertService.clear();
       this.alertService.error(msgError);
       this.showModal(msgError);
+    }
+
+    registerProvider(){
+      this.userService.registerProvider(this.form.getValue('password'),this.form.getValue('name'),this.form.getValue('surname'),this.form.getValue('cuit'),this.form.getValue('email'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'), this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length')).subscribe(data => 
+        {this.result(data)},
+      err => {
+        this.form.reset();
+        this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
+      });
+
+    }
+
+    registerClient(){
+      this.userService.register(this.form.getValue('password'),this.form.getValue('name'),this.form.getValue('surname'),this.form.getValue('cuit'),this.form.getValue('email'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'), this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length')).subscribe(data => 
+        {this.result(data)},
+      err => {
+        this.form.reset();
+        this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
+      });
+
+    }
+
+    result(data){
+      this.user= Object.assign(new User,JSON.parse(data._body));
+      this.sendData();
+      $('#modalLogin').modal('hide');
+      $('#modalRegister').modal('hide');
+      this.router.navigate(['users']);
     }
     
 }

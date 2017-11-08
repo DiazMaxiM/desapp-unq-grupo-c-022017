@@ -65,7 +65,12 @@
     "mustBeEqualTo":"Deve essere lo stesso",
     "formatoEmailIncorrecto":"Formato di posta elettronica non corretto",
     "nuevoUsuario":"Nuovo utente",
-    "volver":"Torna indietro"
+    "volver":"Torna indietro",
+    "client":"Cliente",
+    "provider":"Fornitore",
+    "eligirTipoRegistro":"Scegliere il tipo di registrazione",
+    "newClient":" Nuovo cliente",
+    "newProvider":"Nuovo fornitore"
     
 
     
