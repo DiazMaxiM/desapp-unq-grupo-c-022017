@@ -2,6 +2,9 @@ package model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import exception.InvalidAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidTelephoneNumberException;
@@ -25,6 +28,7 @@ public class User extends Entity {
 	private UserValidation validator = new UserValidation();
 	private String password;
 	protected TypeUser typeUser = TypeUser.CLIENT;
+	private Log log;
 
 	public User() {
 	}
@@ -36,6 +40,10 @@ public class User extends Entity {
 
 		if (validator.isValidUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress)) {
 			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress, pass);
+			log = LogFactory.getLog(this.getClass());
+			if (log.isDebugEnabled()){
+				log.debug("***********************Salida Log4j de User**********" + '\n'+ '\n'+ '\n'+ '\n'+ '\n'+ '\n');
+			}
 		}
 	}
 
