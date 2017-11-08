@@ -56,7 +56,7 @@ public class UsersRest {
 		try {
 			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
 					locality, street, numberStreet, floor, latitude, length);
-			return Response.ok().entity(new UserJson(user.getId(), user.getName())).build();
+			return Response.ok().entity(new UserJson(user.getId(), user.getName(), user.getTypeUser())).build();
 		} catch (InvalidLocalNumberException e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(101)).build();
 		} catch (InvalidAreaCodeException e) {
@@ -101,7 +101,7 @@ public class UsersRest {
 
 		try {
 			User user = userService.loggingUser(mail, pass);
-			return Response.ok(new UserJson(user.getId(), user.getName())).build();
+			return Response.ok(new UserJson(user.getId(), user.getName(), user.getTypeUser())).build();
 		} catch (InvalidLoggingException e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(100)).build();
 		}

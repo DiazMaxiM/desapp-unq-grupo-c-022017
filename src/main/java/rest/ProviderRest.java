@@ -55,7 +55,7 @@ public class ProviderRest {
 		try {
 			user = this.providerService.newProvider(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
 					locality, street, numberStreet, floor, latitude, length);
-			return Response.ok().entity(new UserJson(user.getId(), user.getName())).build();
+			return Response.ok().entity(new UserJson(user.getId(), user.getName(), user.getTypeUser())).build();
 		} catch (InvalidLocalNumberException e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(101)).build();
 		} catch (InvalidAreaCodeException e) {

@@ -82,8 +82,29 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
+   <bean id="localitysRest" class="rest.LocalityRest">
+	</bean>
+	
+	<jaxrs:server id="dataFake" address="/dataFake"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="dataFakesRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
    
-	<bean id="localitysRest" class="rest.LocalityRest">
+	<bean id="dataFakesRest" class="rest.DataFakeRest">
+		<property name="providerService" ref="services.provider" />
+		<property name="userService" ref="services.user" />
+		<property name="menuService" ref="services.menu" />
 	</bean>
 	
 </beans>

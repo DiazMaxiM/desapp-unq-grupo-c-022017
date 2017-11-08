@@ -16,7 +16,7 @@ import userExceptions.InvalidLastNameException;
 public class Provider extends User {
 	private List<Service> servicesOffered = new ArrayList<>();
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
-	private ArrayList<HistoricalOrder> historicalOrders = new ArrayList<HistoricalOrder>();
+	private List<HistoricalOrder> historicalOrders = new ArrayList<>();
 
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress, String password) throws InvalidAddressException,
