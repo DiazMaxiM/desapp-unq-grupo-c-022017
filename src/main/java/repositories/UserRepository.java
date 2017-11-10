@@ -16,8 +16,7 @@ public class UserRepository extends HibernateGenericDAO<User> implements Generic
 	}
 
 	public List<User> findByEmail(String email) {
-		List<User> find = (List<User>) this.getHibernateTemplate()
-				.find("from " + this.persistentClass.getName() + " where mail ='" + email + "'");
+		List<User> find = (List<User>) this.getHibernateTemplate().find("from User where mail ='" + email + "'");
 		return find;
 	}
 

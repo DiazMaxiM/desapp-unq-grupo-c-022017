@@ -19,7 +19,6 @@ import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
-import model.Locality;
 import services.MenuService;
 import services.ProviderService;
 import services.UserService;
@@ -55,7 +54,7 @@ public class DataFakeRest {
 
 		}
 
-		return Response.ok(Locality.values()).build();
+		return Response.ok().build();
 	}
 
 	public void setMenuService(final MenuService menuService) {

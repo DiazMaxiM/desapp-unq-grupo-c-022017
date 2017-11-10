@@ -25,7 +25,6 @@ import model.Telephone;
 import model.Transaction;
 import model.TypeTransaction;
 import model.User;
-import repositories.MapPositionRepository;
 import repositories.UserRepository;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
@@ -63,7 +62,8 @@ public class UserService extends GenericService<User> {
 	public User loggingUser(String mail, String pass) throws InvalidLoggingException {
 		UserRepository repo = (UserRepository) this.getRepository();
 		List<User> user = repo.findByEmail(mail);
-		if (user.size() == 1 && user.get(0).getPassword().equals(pass)) {
+
+		if (user.size() == 1 && (user.get(0)).getPassword().equals(pass)) {
 			return user.get(0);
 		}
 		throw new InvalidLoggingException("Error en el logging");
@@ -100,19 +100,17 @@ public class UserService extends GenericService<User> {
 		Telephone telephone = repo.findTelephoneById(id);
 		telephone.updateInformation(countryCode, areaCode, localNumber);
 		Address address = repo.findAddressById(id);
-		address.updateInformation(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);	
+		address.updateInformation(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
 		user.updateInformation(password, telephone, address);
 		repo.update(user);
 
 	}
-	
+
 	@Transactional
 	public UserDataJson getUserData(String id) {
 		UserRepository repo = (UserRepository) this.getRepository();
 		User user = repo.findById(id);
 		return new UserDataJson(user);
 	}
-	
-
 
 }

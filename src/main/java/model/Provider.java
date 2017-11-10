@@ -18,6 +18,10 @@ public class Provider extends User {
 	private TypeStatusUsers status = TypeStatusUsers.ACTIVE;
 	private List<HistoricalOrder> historicalOrders = new ArrayList<>();
 
+	public Provider() {
+
+	}
+
 	public Provider(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress, String password) throws InvalidAddressException,
 			InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException,
