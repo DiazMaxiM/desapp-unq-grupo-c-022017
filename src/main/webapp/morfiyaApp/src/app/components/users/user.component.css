@@ -6,3 +6,11 @@
 .titulo{
 	color: white !IMPORTANT;
 }
+
+.information{
+	text-align: center;
+}
+
+.closeApp{
+	padding-bottom: 15px;
+}

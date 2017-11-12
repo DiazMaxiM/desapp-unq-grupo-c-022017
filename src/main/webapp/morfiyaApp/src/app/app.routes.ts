@@ -6,6 +6,7 @@ import { CheckBalanceComponent } from './components/checkBalance/checkBalance.co
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo:'/home', pathMatch:'full'},
@@ -22,6 +23,10 @@ export const appRoutes: Routes = [
       {
         path: 'balance',
         component: CheckBalanceComponent
+      },
+      {
+        path: 'services',
+        component: ServicesProviderComponent
       },
     ]},
     // otherwise redirect to home

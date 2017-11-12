@@ -17,6 +17,7 @@
    height: 50px !IMPORTANT;
    width:100% !IMPORTANT;
    border-radius: 0px !IMPORTANT;
+   margin-bottom: 10px; 
 } 
 
 .buttonLogin{
@@ -72,8 +73,6 @@ a:hover{
    width: 60% !IMPORTANT;
 }
 
-
-
 ul {
    list-style: none;
 }
@@ -81,4 +80,19 @@ ul {
 .details-service {
    color: #FFF;
    font-size: 0.9rem;
+}
+
+.hideItem{
+    display: none;
+}
+
+.titleSearch{
+    text-align: center;
+    padding: 15px;
+    color: orangered;
+}
+
+.background-Search{
+    background-color:lemonchiffon;
+    padding: 20px;
 }

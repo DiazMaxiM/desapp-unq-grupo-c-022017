@@ -66,14 +66,6 @@
     box-shadow: 0px 0px 10px #ccc;
     background: #fff;
 }
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type="number"] {
-    -moz-appearance: textfield;
-}
 
 .titleRegister{
   display: none;
@@ -84,3 +76,14 @@ input[type="number"] {
   border-bottom-color: rgb(104, 101, 101);
 }
 
+.col-form-label.required:after { 
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+  top:7px;
+}
+
+.is-invalid{
+  color: #a94442;;
+}

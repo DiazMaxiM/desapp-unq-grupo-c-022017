@@ -9,6 +9,7 @@ import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 
 declare var $:any;
 
@@ -24,9 +25,9 @@ export class EditUserComponent implements OnInit {
   userName : string;
   userData : UserData;
   mensaje :String;
-  localities = JSON.stringify;
+  localities;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
+  constructor(private formBuilder: FormBuilder,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
   }
   
     ngOnInit() {
@@ -35,23 +36,23 @@ export class EditUserComponent implements OnInit {
       this.idUser = this.user.id;
       this.getUserData();
   
-      this.form = new ValidationManager({
-        'name'        : 'required',
-        'surname'     : 'required',
-        'cuit'        : 'required',
-        'email'       : 'required',
-        'street'      : 'required',
-        'number'      : 'required',
-        'floor'       : 'required',
-        'locality'    : 'required',
-        'countryCode' : 'required',
-        'areaCode'    : 'required',
-        'localNumber' : 'required',
-        'length'    : 'required',
-        'latitude' : 'required',
-        'password'    : 'required|rangeLength:3,50',
-        'repassword'  : 'required|equalTo:password'
-      });
+      this.form = this.formBuilder.group({
+        name:[null,[Validators.required]],
+        surname:[null,[Validators.required]],
+        cuit:[null,[Validators.required]],
+        email:[null,[Validators.required,Validators.email]],
+        street:[null,[Validators.required]],
+        number:[null,[Validators.required]],
+        floor:['0',[Validators.required]],
+        countryCode:['54',[Validators.required]],
+        areaCode:['011',[Validators.required]],
+        localNumber:[null,[Validators.required]],
+        locality:[null,[Validators.required]],
+        length:[null,[Validators.required]],
+        latitude:[null,[Validators.required]],
+        password:[null,[Validators.required]],
+        repassword:[null,[Validators.required]]        
+      },{validator: this.checkIfMatchingPasswords('password', 'repassword')});
 
     }
   
@@ -81,15 +82,48 @@ export class EditUserComponent implements OnInit {
   
     }
 
+    validateAllFormFields(formGroup: FormGroup) {
+      Object.keys(formGroup.controls).forEach(field => {
+        const control = formGroup.get(field);
+        if (control instanceof FormControl) {
+          control.markAsTouched({ onlySelf: true });
+        } else if (control instanceof FormGroup) {
+          this.validateAllFormFields(control);
+        }
+      });
+    }
+
+    displayFieldCss(field: string) {
+      return {
+        'is-invalid': this.isFieldValid(field)
+      };
+    }
+
+    isFieldValid(field: string) {
+      return !this.form.get(field).valid && this.form.get(field).touched;
+    }
+
+    checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+      return (group: FormGroup) => {
+        let passwordInput = group.controls[passwordKey],
+            passwordConfirmationInput = group.controls[passwordConfirmationKey];
+        if (passwordInput.value !== passwordConfirmationInput.value) {
+          return passwordConfirmationInput.setErrors({notEquivalent: true})
+        }
+      }
+    }
+    
+
     updateUser(){
-      if(this.form.isValid()){
-        this.userService.updateUser(this.idUser,this.form.getValue('password'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'),this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length'))
+      if(this.form.valid){
+        this.userService.updateUser(this.idUser,this.form.value.password,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length)
         .subscribe(data => 
           {this.resultUpdate(data.status)},
           err => {
            this.showError(this.translate.instant(JSON.parse(err._body).code.toString()));
          });
       }else{
+        this.validateAllFormFields(this.form);
         this.showError(this.translate.instant("1004"));
       }
   

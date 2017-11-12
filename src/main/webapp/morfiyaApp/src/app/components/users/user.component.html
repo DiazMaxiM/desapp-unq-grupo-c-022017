@@ -4,15 +4,24 @@
 <div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="singOutModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="singOutModalLabel">{{ 'deseaSalir' | translate }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-header homeHeader">
+          <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+      </button>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'cancelar' | translate }}</button>
-        <button type="button" (click)="backToHome()" class="btn btn-primary" data-dismiss="modal" #closeBtn>{{ 'salir' | translate }}</button>
+      <div class="modal-body">
+          <h4 class="information">{{ 'deseaSalir' | translate }}</h4>
+      </div>
+      <div class="col-12" >
+        <div class="row closeApp">
+            <div class="col">
+                <button type="button"  class="btn btn-info componentSearch" data-dismiss="modal"  >{{ 'cancelar' | translate }}</button>
+            </div>
+            <div class="col">
+                 <button type="button" (click)="backToHome()" class="btn  btn-warning componentSearch" >{{ 'aceptar' | translate }}</button>
+            </div>
+        </div>
       </div>
     </div>
   </div>

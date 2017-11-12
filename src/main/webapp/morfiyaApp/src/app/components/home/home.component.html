@@ -4,23 +4,4 @@
         <h2>{{ 'tituloPantallaPrincipal' | translate }}</h2>
     </div>
 </div>
-<div class="col-12 non-lateral-padding">
-    <div class="col-11 mx-auto">
-        <div class="row non-lateral-padding">
-            <div class="col-12 col-sm-12 col-md-3 non-lateral-padding">
-                <select class="custom-select componentSearch">
-		             <option selected>{{ 'eligeCriterioDeBusqueda' | translate }}</option>
-		             <option value="1">{{ 'nombre' | translate }}</option>
-		             <option value="2">{{ 'localidad' | translate }}</option>
-		             <option value="3">{{ 'precio' | translate }}</option>
-		        </select>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 non-lateral-padding">
-                <input type="text" class="form-control componentSearch" placeholder="" aria-label="">
-            </div>
-            <div class="col-4 col-sm-2 col-md-2 non-lateral-padding">
-                <button type="button" class="btn btn-lg squareButton componentSearch" (click)="search()">{{ 'buscar' | translate }}</button>
-            </div>
-        </div>
-    </div>
-</div>
+<menus></menus>

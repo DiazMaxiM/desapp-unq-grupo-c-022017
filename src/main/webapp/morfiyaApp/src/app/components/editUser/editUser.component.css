@@ -60,3 +60,7 @@
   height: auto;
   width: auto;
 }
+
+.is-invalid{
+  color: #a94442;;
+}

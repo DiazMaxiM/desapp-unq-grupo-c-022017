@@ -16,8 +16,6 @@ public class Telephone extends Entity {
 	private String areaCode;
 	private String localNumber;
 
-	private User user;
-
 	private List<String> areasCode = this.areasCode();
 	@SuppressWarnings("unused")
 	private Validation validator = new Validation();
@@ -97,18 +95,14 @@ public class Telephone extends Entity {
 		this.localNumber = localNumber;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void updateInformation(String countryCode, String areaCode, String localNumber)
+			throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
+		if (isAValidTelephone(countryCode, areaCode, localNumber)) {
+			setCountryCode(countryCode);
+			setAreaCode(areaCode);
+			setLocalNumber(localNumber);
+		}
 
-	}
-
-	public void updateInformation(String countryCode, String areaCode, String localNumber) throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
-	     if(isAValidTelephone(countryCode, areaCode, localNumber)){
-	    	 setCountryCode(countryCode);
-	    	 setAreaCode(areaCode);
-	    	 setLocalNumber(localNumber);
-	     }
-		
 	}
 
 }
