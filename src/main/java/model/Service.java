@@ -45,6 +45,10 @@ public class Service extends Entity {
 		}
 	}
 
+	public Service() {
+
+	}
+
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,
 			String serviceDescription, String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
 			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {

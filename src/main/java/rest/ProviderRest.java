@@ -91,6 +91,13 @@ public class ProviderRest {
 		}
 	}
 
+	@GET
+	@Path("/getServices/{id}")
+	@Produces("application/json")
+	public Response getServices(@PathParam("id") final String id) {
+		return Response.ok().entity(this.providerService.getServicesByIdProvider(id)).build();
+	}
+
 	public void setProviderService(final ProviderService providerService) {
 		this.providerService = providerService;
 	}

@@ -3,9 +3,6 @@ package repositories;
 import java.io.Serializable;
 import java.util.List;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * Interface for generic DAO
  * 
