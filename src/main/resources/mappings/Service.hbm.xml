@@ -11,7 +11,7 @@
 		<property name="serviceName" />
         		<property name="serviceLogo" />
         
-		<one-to-one name="serviceAddress" cascade="all" class="model.Address" lazy="false />
+		<one-to-one name="serviceAddress" cascade="all" class="model.Address" />
         		<property name="serviceDescription" />
         <list name = "serviceMenusOffered" cascade="all" inverse="false" lazy="false" >
          <key column = "idMenu"/>
@@ -20,7 +20,7 @@
       </list> 
                 		<property name="serviceWebDirection" />
                 		<property name="serviceEmail" />
-      		<one-to-one name="serviceTelephone" cascade="all" class="model.Telephone" lazy="false />
+      		<one-to-one name="serviceTelephone" cascade="all" class="model.Telephone" lazy="false" />
         
 	
  
