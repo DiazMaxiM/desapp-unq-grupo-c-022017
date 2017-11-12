@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import exception.InvalidAddressException;
@@ -17,6 +19,7 @@ import model.Address;
 import model.Locality;
 import model.MapPosition;
 import model.Provider;
+import model.Service;
 import model.Telephone;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
@@ -50,4 +53,11 @@ public class ProviderService extends GenericService<Provider> {
 
 		return newProvider;
 	}
+
+	@Transactional
+	public List<Service> getServicesByIdProvider(String id) {
+		Provider provider = this.getRepository().findById(new Integer(id));
+		return provider.getServicesOffered();
+	}
+
 }

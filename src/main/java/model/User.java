@@ -41,8 +41,9 @@ public class User extends Entity {
 		if (validator.isValidUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress)) {
 			createUser(cuit, userfirstName, userLastName, userEmailAddress, userTelephone, userAddress, pass);
 			log = LogFactory.getLog(this.getClass());
-			if (log.isDebugEnabled()){
-				log.debug("***********************Salida Log4j de User**********" + '\n'+ '\n'+ '\n'+ '\n'+ '\n'+ '\n');
+			if (log.isDebugEnabled()) {
+				log.debug("***********************Salida Log4j de User**********" + '\n' + '\n' + '\n' + '\n' + '\n'
+						+ '\n');
 			}
 		}
 	}
@@ -50,7 +51,6 @@ public class User extends Entity {
 	private void createUser(String cuit, String userfirstName, String userLastName, String userEmailAddress,
 			Telephone userTelephone, Address userAddress, String pass) {
 		setPassword(pass);
-		userTelephone.setUser(this);
 		setCuit(cuit);
 		setName(userfirstName);
 		setSurname(userLastName);
