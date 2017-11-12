@@ -30,12 +30,10 @@ export class UserService {
     return this.http.get('/grupoc/rest/users/updateuser/'+id+'/'+password+'/'+countryCode+'/'+areaCode+'/'+localNumber+'/'+locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 
-  register(password: String, name: String, surname: String,cuit:string, email: String,countryCode: String, areaCode: String,localNumber: String, locality: String, street: String, numberStreet: String, floor: String,latitude: String,length: String){
+  register(password: string, name: string, surname: string,cuit:string, email: string,countryCode: string, areaCode: string,localNumber: string, locality: string, street: string, numberStreet: string, floor: string,latitude: string,length: String){
     return this.http.get('/grupoc/rest/users/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 
-  registerProvider(password: String, name: String, surname: String,cuit:string, email: String,countryCode: String, areaCode: String,localNumber: String, locality: String, street: String, numberStreet: String, floor: String,latitude: String,length: String){
-    return this.http.get('/grupoc/rest/provider/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
-  }
-
+  registerProvider(password: string, name: string, surname: string,cuit:string, email: string,countryCode: string, areaCode: string,localNumber: string, locality: string, street: string, numberStreet: string, floor: string,latitude: string,length: string){
+    return this.http.get('/grupoc/rest/provider/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);}
 }

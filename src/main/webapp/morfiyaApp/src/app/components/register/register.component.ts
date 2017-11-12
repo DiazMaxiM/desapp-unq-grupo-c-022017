@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, AfterViewChecked } from '@angular/core';
-import {ValidationManager} from "ng2-validation-manager";
 import { UserService } from './../../services/userServices/user.service';
 import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
@@ -8,6 +7,7 @@ import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
+import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 
@@ -19,15 +19,44 @@ declare var $:any;
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form;
   user:User;
   idUser:string;
   userName : string;
   mensaje :String;
   typeRegister: String;
-  localities = JSON.stringify;
+  localities:any;
+  form: FormGroup;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
+  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder){
+  }
+
+  isFieldValid(field: string) {
+    return !this.form.get(field).valid && this.form.get(field).touched;
+  }
+
+  isFieldHasError(field:string,condition:string){
+    return this.form.get(field).hasError(condition) && this.form.get(field).touched;;
+  }
+
+  displayFieldCss(field: string) {
+    return {
+      'is-invalid': this.isFieldValid(field)
+    };
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
+
+  reset(){
+    this.form.reset();
   }
   
     ngOnInit() {
@@ -35,26 +64,37 @@ export class RegisterComponent implements OnInit {
       $('#login').hide();
       $('#register').hide();
       $('#backToHome').show();
-      this.form = new ValidationManager({
-        'name'        : 'required',
-        'surname'     : 'required',
-        'cuit'        : 'required',
-        'email'       : 'required|email',
-        'street'      : 'required',
-        'number'      : 'required',
-        'floor'       : 'required',
-        'locality'    : 'required',
-        'countryCode' : 'required',
-        'areaCode'    : 'required',
-        'localNumber' : 'required',
-        'length'    : 'required',
-        'latitude' : 'required',
-        'password'    : 'required|rangeLength:3,50',
-        'repassword'  : 'required|equalTo:password'
-      });
       this.typeRegisterService.currentMessage.subscribe(message => this.typeRegister = message);
       this.checkTypeRegister();
+      this.form = this.formBuilder.group({
+        name:[null,[Validators.required]],
+        surname:[null,[Validators.required]],
+        cuit:[null,[Validators.required]],
+        email:[null,[Validators.required,Validators.email]],
+        street:[null,[Validators.required]],
+        number:[null,[Validators.required]],
+        floor:['0',[Validators.required]],
+        countryCode:['54',[Validators.required]],
+        areaCode:['011',[Validators.required]],
+        localNumber:[null,[Validators.required]],
+        locality:[null,[Validators.required]],
+        length:[null,[Validators.required]],
+        latitude:[null,[Validators.required]],
+        password:[null,[Validators.required]],
+        repassword:[null,[Validators.required]]        
+      },{validator: this.checkIfMatchingPasswords('password', 'repassword')})
     }
+
+    checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+      return (group: FormGroup) => {
+        let passwordInput = group.controls[passwordKey],
+            passwordConfirmationInput = group.controls[passwordConfirmationKey];
+        if (passwordInput.value !== passwordConfirmationInput.value) {
+          return passwordConfirmationInput.setErrors({notEquivalent: true})
+        }
+      }
+    }
+
     checkTypeRegister(){
       if("PROVIDER"==this.typeRegister){
         $('#newProvider').show();
@@ -63,12 +103,15 @@ export class RegisterComponent implements OnInit {
         $('#newClient').show();
       }
     }
-
+    resultLocalities(data){
+      this.localities= JSON.parse(data._body);
+    }
 
     newUser() {
-      if(this.form.isValid()){
+      if(this.form.valid){
         this.registerAccordingToRole();
       }else{
+        this.validateAllFormFields(this.form);
         this.showModal(this.translate.instant("1004"));
       }
     }
@@ -80,10 +123,6 @@ export class RegisterComponent implements OnInit {
       if("CLIENT"==this.typeRegister){
         this.registerClient()
       }
-    }
-  
-    resultLocalities(data){
-      this.localities= JSON.parse(data._body);
     }
   
     //call this wherever you want to close modal
@@ -110,23 +149,23 @@ export class RegisterComponent implements OnInit {
     }
 
     registerProvider(){
-      this.userService.registerProvider(this.form.getValue('password'),this.form.getValue('name'),this.form.getValue('surname'),this.form.getValue('cuit'),this.form.getValue('email'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'), this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length')).subscribe(data => 
+     this.userService.registerProvider(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
         {this.result(data)},
       err => {
         this.form.reset();
         this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
       });
-
+    
+     
     }
 
     registerClient(){
-      this.userService.register(this.form.getValue('password'),this.form.getValue('name'),this.form.getValue('surname'),this.form.getValue('cuit'),this.form.getValue('email'),this.form.getValue('countryCode'),this.form.getValue('areaCode'),this.form.getValue('localNumber'),this.form.getValue('locality').toUpperCase(),this.form.getValue('street'), this.form.getValue('number'),this.form.getValue('floor'),this.form.getValue('latitude'),this.form.getValue('length')).subscribe(data => 
+     this.userService.register(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
         {this.result(data)},
       err => {
         this.form.reset();
         this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
       });
-
     }
 
     result(data){
@@ -134,7 +173,11 @@ export class RegisterComponent implements OnInit {
       this.sendData();
       $('#modalLogin').modal('hide');
       $('#modalRegister').modal('hide');
+      if(this.typeRegister=="PROVIDER"){
+        this.typeRegisterService.changeMessage("PROVIDER");
+      }else{
+        this.typeRegisterService.changeMessage("CLIENT");
+      }
       this.router.navigate(['users']);
     }
-    
 }

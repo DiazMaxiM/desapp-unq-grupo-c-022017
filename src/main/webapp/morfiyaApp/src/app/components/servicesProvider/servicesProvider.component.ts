@@ -8,12 +8,12 @@ import {User} from './../../model/user';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 declare var $:any;
 @Component({
-  selector: 'menus',
-  templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.css']
+  selector: 'servicesProvider',
+  templateUrl: './servicesProvider.component.html',
+  styleUrls: ['./servicesProvider.component.css']
 })
 
-export class MenusComponent implements OnInit {
+export class ServicesProviderComponent implements OnInit {
   constructor(private router:Router,private translate: TranslateService,private utilsServices: UtilsService){
   }
 

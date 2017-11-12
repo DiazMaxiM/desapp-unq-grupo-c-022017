@@ -5,7 +5,6 @@
       </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand titulo">MorfiYa</a>
-                <a id ="hello" class="navbar-brand titulo hide-link">{{ 'hola' | translate }} {{user}}!</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a id="login" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" #closeBtn>{{ 'ingresar' | translate }}</a>
@@ -24,6 +23,9 @@
                     </li>
                     <li class="nav-item">
                         <a id="order" class="nav-link titulo hide-link">{{ 'misPedidos' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="services" routerLink="/users/services" class="nav-link titulo hide-link">{{ 'myServices' | translate }}</a>
                     </li>
                     <li class="nav-item">
                         <a id="close" class="nav-link titulo hide-link" data-toggle="modal" data-target="#loginOutModal">{{ 'cerrarSesion' | translate }}</a>
