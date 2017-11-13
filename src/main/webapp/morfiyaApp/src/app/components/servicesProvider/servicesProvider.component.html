@@ -13,11 +13,11 @@
                             <div class="col-12 row">
                                 <div class="col-10 row">
                                        <div class="col-12">
-                                                {{'serviceName'|translate}}:
+                                                {{'nombre'|translate}}:
                                                 {{service.serviceName}}
                                         </div>
                                         <div class="col-12">
-                                                {{'serviceEmail'|translate}}:
+                                                {{'email'|translate}}:
                                                 {{service.serviceEmail}}
                                         </div>
 
@@ -60,7 +60,7 @@
                                         <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('description')">
                                             <label class="col-form-label required">{{ 'description' | translate }}</label>
                                             <input type="text"  class="form-control" formControlName="description">
-                                            <app-field-error-display [displayError]="isFieldValid('description')" errorMsg=" {{'description'|translate}}">
+                                            <app-field-error-display [displayError]="isFieldValid('description')" errorMsg=" {{'descriptionRequired'|translate}}">
                                             </app-field-error-display>
                                         </div>
                                         <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('email')">
@@ -187,21 +187,19 @@
                                           </div>    
                                       <div  class="form-row">
                                         <div class="form-group col-12 col-md-12">
-                                          <label>{{'site'| translate }}</label>
+                                          <label>{{'siteWeb'| translate }}</label>
                                           <input type="text" class="form-control" name="site" formControlName="site">
                                           
                                         </div>
                                         <div class="form-group col-12 col-md-12">
-                                                <label>{{'maxLocality'| translate }}</label>
-                                                        <select class="form-control" formControlName="localityMax">
-                                                              <option *ngFor="let locality of localities" [value]="locality">{{locality}}</option>
-                                                          </select>      
-                                                          <app-field-error-display [displayError]="isFieldValid('localityMax')" errorMsg=" {{'localityRequired'|translate}}">
-                                                          </app-field-error-display>
+                                                <label>{{'localityWork'| translate }}</label>
+                                                <select class="form-control" formControlName="localityMax">
+                                                <option *ngFor="let locality of localities" [value]="locality">{{locality}}</option>
+                                                </select>      
                                         </div>
                                       </div>  
-                                        <button id="createService" class="btn btn-success" type="submit" (click)="newService()">{{'createService'| translate }}</button>
-                                        <button id="updateService" class="btn btn-success hide-item" type="submit" (click)="updateService()">{{'updateService'| translate }}</button>
+                                        <button id="createService" class="btn btn-success" type="submit" (click)="newService()">{{'create'| translate }}</button>
+                                        <button id="updateService" class="btn btn-success hide-item" type="submit" (click)="updateService()">{{'update'| translate }}</button>
                                       </form>
                         </div>
                 </div>

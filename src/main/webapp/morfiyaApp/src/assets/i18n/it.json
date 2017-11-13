@@ -99,6 +99,19 @@
     "locality":"Località",
     "category":"Categoria",
     "titleSearch":"I migliori piatti a portata di mano",
-    "myServices":"I miei servizi"           
+    "myServices":"I miei servizi",
+    "logo":"Logo",
+    "logoRequired":"Logo richiesto",
+    "description":"Descrizione",
+    "descritionRequired":"Descrizione richiesta",
+    "descriptionMin":"La descrizione deve contenere almeno 30 caratteri",
+    "descriptionMax":"La descrizione deve contenere un massimo di 200 caratteri",
+    "siteWeb": "Sito web/Facebook",
+    "timeZone":"Ore e giorni di attenzione",
+    "timeZoneRequired":"Ore e giorni di attenzione richiesti",
+    "localityWork":"Massima posizione di consegna",
+    "update":"Aggiornare",
+    "backToList":"Torna all'elenco",
+    "create":"Creare"          
 
 }
