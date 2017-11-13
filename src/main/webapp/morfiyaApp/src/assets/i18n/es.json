@@ -131,8 +131,6 @@
     "locality":"Localidad",
     "category":"Categoría",
     "titleSearch":"Los mejores platos a tu alcance",
-    "myServices":"Mis Servicios"
-    
-        
-
+    "myServices":"Mis Servicios",
+    "agregarSaldo" : "Agregar saldo"
 }
