@@ -13,8 +13,10 @@ import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from 
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 
-declare var $:any;
+ 
 
+declare var $:any;
+declare var currency : string;
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -26,9 +28,23 @@ export class HeaderComponent {
   private user : User = new User();
   form: FormGroup;
   submitted = false;
+
   changeLang(lang: string) {
     this.translate.use(lang);
+    this.setCurrency(lang);
   }
+
+  setCurrency(lang:string){
+    if (lang == 'ES'){
+      currency = 'ARS';
+    }else if (lang == 'EN'){
+      currency =  'USD';
+    }else {
+       currency = 'EUR';
+    }
+    this.utilsServices.setCurrency(currency);
+  }
+
   mensaje :String;
 
   constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
@@ -38,6 +54,7 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],

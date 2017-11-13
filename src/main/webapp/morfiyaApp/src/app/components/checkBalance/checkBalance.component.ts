@@ -6,7 +6,11 @@ import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {Router} from '@angular/router';
+import {Input,Output} from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { UtilsService} from './../../services/utilsServices/utils.service';
 declare var $:any;
+declare var currency: string;
 
 @Component({
   selector: 'checkBalance',
@@ -16,10 +20,13 @@ declare var $:any;
 export class CheckBalanceComponent implements OnInit {
   user: User
   idUser : String
-  balance : String
+  balance : String  
   value : number = 0;
+  currency = this.utilsServices.getCurrency();
+
   @ViewChild('closeBtn') closeBtn: ElementRef;
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService){
+  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
+  	
   }
 
   ngOnInit() {

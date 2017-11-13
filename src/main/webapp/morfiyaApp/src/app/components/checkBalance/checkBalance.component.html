@@ -2,7 +2,9 @@
     <div class="col-sm-4 col-md-4 mx-auto non-lateral-padding checkBalance">
       <div class="col-12">
          <h3 class="titleBalance">{{ 'saldoActual' | translate }}</h3>
-      	 <h4 class="titleBalance">{{balance}}</h4>
+      	 <h4 class="titleBalance"> 
+            {{balance | currency:currency:'symbol-narrow' }}
+        </h4>
       </div>
       <div class="col-6 mx-auto">
           <button type="button" class="btn btn-success squareButton" data-toggle="modal" data-target="#balanceModal">{{ 'agregarSaldo' | translate }}</button>
