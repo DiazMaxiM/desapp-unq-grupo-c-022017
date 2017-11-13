@@ -8,9 +8,10 @@
 }
 
 .subtitulo{
-	background-color: #f52f41;
+	background-color: crimson;
 	text-align: center;
-	color: white
+    color: white;
+    margin: 5px;
 }
 
 .componentSearch{

@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {Input,Output} from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import { LanguageService} from './../../services/languageService/languageService.service';
 declare var $:any;
 declare var currency: string;
 
@@ -22,14 +23,15 @@ export class CheckBalanceComponent implements OnInit {
   idUser : String
   balance : String  
   value : number = 0;
-  currency = this.utilsServices.getCurrency();
+  currency:String;
 
   @ViewChild('closeBtn') closeBtn: ElementRef;
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
+  constructor(public languague: LanguageService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
   	
   }
 
   ngOnInit() {
+    this.languague.currentMessage.subscribe(message =>this.currency=message);
     this.messageService.currentMessage.subscribe(message => this.user = message);
     this.idUser = this.user.id;
     this.checkbalance();

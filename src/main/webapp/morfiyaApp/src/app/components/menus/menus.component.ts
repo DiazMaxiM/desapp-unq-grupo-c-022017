@@ -53,7 +53,7 @@ export class MenusComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
+    /*this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));*/
   }
 
   resultLocalities(data){

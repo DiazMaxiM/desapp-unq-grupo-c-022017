@@ -12,11 +12,9 @@ import {ValidationManager} from "ng2-validation-manager";
 import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
-
- 
+import { LanguageService} from './../../services/languageService/languageService.service';
 
 declare var $:any;
-declare var currency : string;
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -28,6 +26,7 @@ export class HeaderComponent {
   private user : User = new User();
   form: FormGroup;
   submitted = false;
+  currency : string;
 
   changeLang(lang: string) {
     this.translate.use(lang);
@@ -35,22 +34,24 @@ export class HeaderComponent {
   }
 
   setCurrency(lang:string){
-    if (lang == 'ES'){
-      currency = 'ARS';
-    }else if (lang == 'EN'){
-      currency =  'USD';
+    console.log(lang);
+    if (lang == 'es'){
+      this.currency = 'ARS';
+    }else if (lang == 'en'){
+      this.currency =  'USD';
     }else {
-       currency = 'EUR';
+       this.currency = 'EUR';
     }
-    this.utilsServices.setCurrency(currency);
+    this.languague.changeMessage(this.currency);
   }
 
   mensaje :String;
 
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
+  constructor(public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
+    this.setCurrency('es');
   }
 
   ngOnInit() {

@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { UtilsService} from './../../services/utilsServices/utils.service';
-
+import { ProviderService} from './../../services/providerService/provider.service';
 declare var $:any;
 
 @Component({
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   localities:any;
   form: FormGroup;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder){
+  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder,private providerService: ProviderService){
   }
 
   isFieldValid(field: string) {
@@ -149,7 +149,7 @@ export class RegisterComponent implements OnInit {
     }
 
     registerProvider(){
-     this.userService.registerProvider(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
+     this.providerService.registerProvider(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
         {this.result(data)},
       err => {
         this.form.reset();

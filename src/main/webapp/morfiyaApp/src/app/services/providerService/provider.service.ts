@@ -12,4 +12,8 @@ export class ProviderService{
     return this.http.get('/grupoc/rest/provider/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 
+  getServices(id:string){
+    return this.http.get('/grupoc/rest/provider/getServices/'+id).map((res:Response)=>res);
+  }
+
 }

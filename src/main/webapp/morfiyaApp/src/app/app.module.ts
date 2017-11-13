@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
 import { ProviderService} from './services/providerService/provider.service';
+import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
@@ -66,7 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService],
+  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
