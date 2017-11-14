@@ -27,6 +27,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
 import { CustomFormsModule } from 'ng2-validation'
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
+import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -45,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     FieldErrorDisplayComponent,
     RegisterComponent,
     HeaderComponent,
-    ServicesProviderComponent        
+    ServicesProviderComponent,
+    CurrencyFormat        
   ],
   imports: [
     BrowserModule,

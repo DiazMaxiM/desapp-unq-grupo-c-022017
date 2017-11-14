@@ -10,14 +10,25 @@ import {Input,Output} from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { LanguageService} from './../../services/languageService/languageService.service';
+import { CurrencyFormat } from './../../pipes/currencyFormat.pipe';
+import { NgModule } from '@angular/core';
+
 declare var $:any;
 declare var currency: string;
+
 
 @Component({
   selector: 'checkBalance',
   templateUrl: './checkBalance.component.html',
-  styleUrls: ['./checkBalance.component.css']
+  styleUrls: ['./checkBalance.component.css'],
 })
+
+@NgModule({
+declarations: [
+CurrencyFormat
+]
+})
+
 export class CheckBalanceComponent implements OnInit {
   user: User
   idUser : String
@@ -79,5 +90,4 @@ clearValue(){
     this.value = 0;
   }
 
-  
 }
