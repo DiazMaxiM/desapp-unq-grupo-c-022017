@@ -64,3 +64,8 @@
 .is-invalid{
   color: #a94442;;
 }
+
+.update-button {
+  background-color: #f52f41;
+  border: #f52f41;
+}
