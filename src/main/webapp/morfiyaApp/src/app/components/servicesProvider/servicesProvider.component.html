@@ -1,12 +1,12 @@
 <div class="col-12">
     <div class="col-12 col-sm-12 col-md-10 mx-auto backgroundServices">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div id="myServices" class="col-12 col-sm-12 col-lg-6">
                     <div class="col-12 title">
                         {{'myServices'|translate}}
                     </div>
                     <div *ngFor="let service of services">
-                        <div class="col-12 list-group-item-action service non-lateral-padding">
+                        <div class="col-12 list-group-item-action service border-gray non-lateral-padding">
                             <div class="col-12 titleLogo">
                                 {{service.serviceLogo}}
                             </div>
@@ -23,7 +23,7 @@
 
                                 </div>
                                 <div class="col-12 col-md-2">
-                                    <div class="col-12 col-md-8 mx-auto">
+                                    <div class="col-12 col-md-8 center-inner-content ">
                                         <button (click)="update(service)" class="btn buttonUpdate text-white ">{{'update'|translate}}</button>
                                     </div>
                                 </div>
@@ -32,11 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div id="createNewService" class="col-12 col-sm-12 col-lg-6">
                         <div class="col-12 title">
                                 {{'newService'|translate}}
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 border-gray containerForm">
                                 <div class="col-12 non-lateral-padding">
                                         <alert></alert>
                                     </div>
@@ -59,8 +59,12 @@
                                       <div class="form-row">
                                         <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('description')">
                                             <label class="col-form-label required">{{ 'description' | translate }}</label>
-                                            <input type="text"  class="form-control" formControlName="description">
-                                            <app-field-error-display [displayError]="isFieldValid('description')" errorMsg=" {{'descriptionRequired'|translate}}">
+                                            <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('required') && form.controls['description'].touched" errorMsg=" {{'descritionRequired'|translate}}">
+                                            </app-field-error-display>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('minlength') && form.controls['description'].touched" errorMsg=" {{'descriptionMin'|translate}}">
+                                            </app-field-error-display>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('maxlength') && form.controls['description'].touched" errorMsg=" {{'descriptionMax'|translate}}">
                                             </app-field-error-display>
                                         </div>
                                         <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('email')">
@@ -197,9 +201,11 @@
                                                 <option *ngFor="let locality of localities" [value]="locality">{{locality}}</option>
                                                 </select>      
                                         </div>
-                                      </div>  
-                                        <button id="createService" class="btn btn-success" type="submit" (click)="newService()">{{'create'| translate }}</button>
-                                        <button id="updateService" class="btn btn-success hide-item" type="submit" (click)="updateService()">{{'update'| translate }}</button>
+                                      </div> 
+                                      <div class="col-12 non-lateral-padding">
+                                            <button id="createService" class="btn buttonCreate" type="submit" (click)="newService()">{{'create'| translate }}</button>
+                                            <button id="updateService" class="btn buttonUpdate hide-item" type="submit" (click)="updateService()">{{'update'| translate }}</button>
+                                      </div> 
                                       </form>
                         </div>
                 </div>

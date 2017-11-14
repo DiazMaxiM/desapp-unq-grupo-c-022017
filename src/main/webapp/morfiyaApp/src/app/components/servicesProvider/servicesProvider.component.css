@@ -15,8 +15,9 @@
 }
 
 .service{
-    padding: 15px;
-    border: 1px solid grey;
+   padding-top: 15px; 
+   margin-bottom: 15px;
+   padding-bottom: 15px;
 }
 
 .buttonNewService{
@@ -46,7 +47,8 @@
 
 .buttonUpdate{
     margin-top: 5px;
-    background-color: #025aa5!important;
+    border-radius: 0;
+    background-color: #005891 !important;
 }
 
 .col-form-label.required:after { 
@@ -64,3 +66,26 @@
   .hide-item{
       display: none;
   }
+
+  .border-gray{
+    border: 1px solid transparent;
+    border-color: #E5E5E5;
+}
+
+.containerForm{
+    padding-bottom: 10px;
+}
+
+.center-inner-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.buttonCreate{
+    border-radius: 0;
+    background-color: red;
+    color:white;
+    text-align: center;
+    width: 100%;
+}

@@ -34,11 +34,12 @@ export class ServicesProviderComponent implements OnInit {
     this.messageService.currentMessage.subscribe(message => this.user = message);
     this.idUser = this.user.id;
     this.getServices();
+    this.startWindow();
     this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
     this.form = this.formBuilder.group({
       name:[null,[Validators.required]],
       logo:[null,[Validators.required]],
-      description:[null,[Validators.required]],
+      description:[null,[Validators.required,Validators.minLength(30),Validators.maxLength(200)]],
       email:[null,[Validators.required,Validators.email]],
       street:[null,[Validators.required]],
       number:[null,[Validators.required]],
@@ -52,6 +53,12 @@ export class ServicesProviderComponent implements OnInit {
       site:[null,[]],
       localityMax:[null,[Validators.required]]        
     });
+  }
+
+  startWindow(){
+    if(window.screen.width <=768){
+      $('#createNewService').hide();
+    }
   }
 
   displayFieldCss(field: string) {
