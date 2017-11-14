@@ -24,3 +24,9 @@ input[type="number"] {
 .centerTitulo{
 	text-align: center
 }
+
+ .titulo:hover,
+ .button-lang:hover {
+ 	cursor:pointer;
+ 	text-shadow: 2px 2px #000;
+ }

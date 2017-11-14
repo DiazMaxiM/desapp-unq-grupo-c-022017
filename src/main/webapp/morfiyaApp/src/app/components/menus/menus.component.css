@@ -89,10 +89,14 @@ ul {
 .titleSearch{
     text-align: center;
     padding: 15px;
-    color: orangered;
+    color: #f52f41;;
 }
 
 .background-Search{
-    background-color:lemonchiffon;
+    background-color: #FFF;
     padding: 20px;
+}
+
+.squareButton {
+  background-color: #f52f41;
 }
