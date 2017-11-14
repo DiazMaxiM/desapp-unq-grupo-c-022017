@@ -32,4 +32,9 @@ KNOW ISSUES
  * Mostrar saldo al Cliente y Proveedor
  * Deploy mapa en Heroku
  
- 
+ ﻿====== TAG Entrega 3 1.0==========
+ * Formato moneda según locale
+ * Adaptar la aplicación Responsive web design
+ * Auditoria de servicios. 
+ * Creación de servicio
+ * Servicios del proveedor
