@@ -148,5 +148,6 @@
     "localityWork":"Maximum Delivery Location",
     "update":"Update",
     "backToList":"Back to list",
-    "create":"Create"
+    "create":"Create",
+    "newService":"New service"
 }
