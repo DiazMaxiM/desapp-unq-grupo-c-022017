@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
 import { ProviderService} from './services/providerService/provider.service';
+import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
@@ -28,6 +29,7 @@ import { ServicesProviderComponent } from './components/servicesProvider/service
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 
+import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterComponent,
     HeaderComponent,
     ServicesProviderComponent   ,
-    CallbackComponent     
+    CallbackComponent,
+    CurrencyFormat        
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,AuthService],
+  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

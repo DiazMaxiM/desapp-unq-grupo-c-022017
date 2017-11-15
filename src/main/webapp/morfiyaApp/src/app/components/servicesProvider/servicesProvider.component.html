@@ -1,0 +1,214 @@
+<div class="col-12">
+    <div class="col-12 col-sm-12 col-md-10 mx-auto backgroundServices">
+            <div class="row">
+                <div id="myServices" class="col-12 col-sm-12 col-lg-6">
+                    <div class="col-12 title">
+                        {{'myServices'|translate}}
+                    </div>
+                    <div *ngFor="let service of services">
+                        <div class="col-12 list-group-item-action service border-gray non-lateral-padding">
+                            <div class="col-12 titleLogo">
+                                {{service.serviceLogo}}
+                            </div>
+                            <div class="col-12 row">
+                                <div class="col-10 row">
+                                       <div class="col-12">
+                                                {{'nombre'|translate}}:
+                                                {{service.serviceName}}
+                                        </div>
+                                        <div class="col-12">
+                                                {{'email'|translate}}:
+                                                {{service.serviceEmail}}
+                                        </div>
+
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-8 center-inner-content ">
+                                        <button (click)="update(service)" class="btn buttonUpdate text-white ">{{'update'|translate}}</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="createNewService" class="col-12 col-sm-12 col-lg-6">
+                        <div class="col-12 title">
+                                {{'newService'|translate}}
+                        </div>
+                        <div class="col-12 border-gray containerForm">
+                                <div class="col-12 non-lateral-padding">
+                                        <alert></alert>
+                                    </div>
+                                    <form [formGroup]="form">
+                                      <div class="form-row">
+                                        <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('name')">
+                                          <label class="col-form-label required">{{ 'nombre' | translate }}</label>
+                                          <input type="text" class="form-control " formControlName="name">
+                                          <app-field-error-display [displayError]="isFieldValid('name')" errorMsg=" {{'nameRequired'|translate}}">
+                                          </app-field-error-display>
+                                
+                                        </div>
+                                        <div class="form-group col-12 col-md-12">
+                                            <label class="col-form-label required" [ngClass]="displayFieldCss('logo')">{{ 'logo' | translate }}</label>
+                                            <input type="text"  class="form-control" formControlName="logo">
+                                            <app-field-error-display [displayError]="isFieldValid('logo')" errorMsg=" {{'logoRequired'|translate}}">
+                                            </app-field-error-display>        
+                                        </div>
+                                      </div> 
+                                      <div class="form-row">
+                                        <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('description')">
+                                            <label class="col-form-label required">{{ 'description' | translate }}</label>
+                                            <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('required') && form.controls['description'].touched" errorMsg=" {{'descritionRequired'|translate}}">
+                                            </app-field-error-display>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('minlength') && form.controls['description'].touched" errorMsg=" {{'descriptionMin'|translate}}">
+                                            </app-field-error-display>
+                                            <app-field-error-display [displayError]="form.controls['description'].hasError('maxlength') && form.controls['description'].touched" errorMsg=" {{'descriptionMax'|translate}}">
+                                            </app-field-error-display>
+                                        </div>
+                                        <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('email')">
+                                          <label class="col-form-label required">{{ 'email' | translate }}</label>
+                                          <input type="text" class="form-control" formControlName="email">
+                                          <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
+                                                {{ 'emailRequired'|translate}}
+                                          </div>
+                                          <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched">
+                                                {{ 'emailInvalid'|translate}}
+                                          </div>
+                                        </div>
+                                      </div>  
+                                      <div class="form-row">
+                                            <div class="col-12">
+                                                    <label>{{'direccion'| translate }}</label>
+                                            </div>
+                                          <div class="form-group col-12 col-md-12">
+                                            <div class="form row">
+                                                <div class="col-6 col-md-6">
+                                                    <div class="col-12 non-lateral-padding" [ngClass]="displayFieldCss('street')">
+                                                        <label class="col-form-label required">{{'calle'| translate }}</label>
+                                                    </div>
+                                                    <div class="col-12 non-lateral-padding">
+                                                        <input type="text"  class="form-control" formControlName="street">
+                                                        <app-field-error-display [displayError]="isFieldValid('street')" errorMsg=" {{'streetRequired'|translate}}">
+                                                        </app-field-error-display> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 col-md-3 non-lateral-padding" [ngClass]="displayFieldCss('number')">
+                                                    <div class="col-12 non-lateral-padding">
+                                                        <label class="col-form-label required">{{'numero'| translate }}</label>
+                                                    </div>
+                                                    <div class="col-12 non-lateral-padding">
+                                                        <input type="number"  class="form-control" formControlName="number">
+                                                        <app-field-error-display [displayError]="isFieldValid('number')" errorMsg=" {{'numberRequired'|translate}}">
+                                                        </app-field-error-display>
+                                                    </div>
+                                                </div>
+                                                <div  class="col-3 col-md-3" [ngClass]="displayFieldCss('floor')">
+                                                    <div class="col-12 non-lateral-padding"> 
+                                                        <label class="col-form-label required">{{'piso'| translate }}</label>
+                                                    </div>
+                                                    <div class="col-12 non-lateral-padding">
+                                                        <input type="number" class="form-control" formControlName="floor">
+                                                        <app-field-error-display [displayError]="isFieldValid('floor')" errorMsg=" {{'floorRequired'|translate}}">
+                                                        </app-field-error-display>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-group col-12 col-md-12" [ngClass]="displayFieldCss('locality')">
+                                              <div class="col-12 non-lateral-padding">
+                                                  <label class="col-form-label required">{{'localidad'| translate }}</label>
+                                              </div>
+                                              <div class="form row">
+                                                  <div class="col-12 col-md-12">
+                                                              <select class="form-control" formControlName="locality">
+                                                                    <option *ngFor="let locality of localities" [value]="locality">{{locality}}</option>
+                                                                </select>      
+                                                                <app-field-error-display [displayError]="isFieldValid('locality')" errorMsg=" {{'localityRequired'|translate}}">
+                                                                </app-field-error-display>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="form-row">
+                                            <div class="form-group col-12 col-md-12">
+                                              <div class="col-12 non-lateral-padding">
+                                                  <label >{{'telefono'| translate }}</label>
+                                              </div>
+                                              <div class="form row">
+                                                  <div class="col-6 col-md-3" [ngClass]="displayFieldCss('countryCode')">
+                                                      <div class="col-12 non-lateral-padding">
+                                                            <label class="col-form-label required">{{'countryCode'| translate }}</label>
+                                                      </div>
+                                                      <div class="col-12 non-lateral-padding">
+                                                            <input type="number"  class="form-control" formControlName="countryCode">
+                                                            <app-field-error-display [displayError]="isFieldValid('countryCode')" errorMsg=" {{'countryCodeRequired'|translate}}">
+                                                            </app-field-error-display>
+                                                      </div>
+                                                  </div>
+                                                  <div  class="campo-form col-6 col-md-4 non-right-padding">
+                                                      <div class="col-12 non-lateral-padding" [ngClass]="displayFieldCss('areaCode')">
+                                                           <label class="col-form-label required">{{'areaCode'| translate }}</label>
+                                                      </div>
+                                                      <div class="col-12 non-lateral-padding">
+                                                            <input type="number"  class="form-control" formControlName="areaCode"> 
+                                                            <app-field-error-display [displayError]="isFieldValid('areaCode')" errorMsg=" {{'areaCodeRequired'|translate}}">
+                                                            </app-field-error-display>
+                                                     </div>
+                                                  </div>
+                                                  <div class="col-12 col-md-5" [ngClass]="displayFieldCss('localNumber')">
+                                                        <div class="col-12 non-lateral-padding">
+                                                            <label class="col-form-label required">{{'localNumber'| translate }}</label>
+                                                        </div>
+                                                        <div class="col-12 non-lateral-padding">
+                                                            <input type="number"  class="form-control" formControlName="localNumber">
+                                                            <app-field-error-display [displayError]="isFieldValid('localNumber')" errorMsg=" {{'localNumberRequired'|translate}}">
+                                                            </app-field-error-display>
+                                                        </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                            <div  class="form-group col-12 col-md-12">
+                                                <div class="col-12 non-lateral-padding">
+                                                    <label >{{'posicion-en-el-mapa'| translate }}</label>
+                                                </div>
+                                                <div class="form row">
+                                                    <div class="col-6 col-md-6" [ngClass]="displayFieldCss('length')">
+                                                        <label class="col-form-label required">{{'length'| translate }}</label>
+                                                        <input type="number" class="form-control" formControlName="length">
+                                                        <app-field-error-display [displayError]="isFieldValid('length')" errorMsg=" {{'lenghtRequired'|translate}}">
+                                                        </app-field-error-display>
+                                                    </div>
+                                                    <div  class="col-6 col-md-6" [ngClass]="displayFieldCss('latitude')">
+                                                        <label class="col-form-label required" >{{'latitude'| translate }}</label>
+                                                        <input type="number" class="form-control" formControlName="latitude">
+                                                        <app-field-error-display [displayError]="isFieldValid('latitude')" errorMsg=" {{'latitudeRequired'|translate}}">
+                                                        </app-field-error-display>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                          </div>    
+                                      <div  class="form-row">
+                                        <div class="form-group col-12 col-md-12">
+                                          <label>{{'siteWeb'| translate }}</label>
+                                          <input type="text" class="form-control" name="site" formControlName="site">
+                                          
+                                        </div>
+                                        <div class="form-group col-12 col-md-12">
+                                                <label>{{'localityWork'| translate }}</label>
+                                                <select class="form-control" formControlName="localityMax">
+                                                <option *ngFor="let locality of localities" [value]="locality">{{locality}}</option>
+                                                </select>      
+                                        </div>
+                                      </div> 
+                                      <div class="col-12 non-lateral-padding">
+                                            <button id="createService" class="btn buttonCreate" type="submit" (click)="newService()">{{'create'| translate }}</button>
+                                            <button id="updateService" class="btn buttonUpdate hide-item" type="submit" (click)="updateService()">{{'update'| translate }}</button>
+                                      </div> 
+                                      </form>
+                        </div>
+                </div>
+            </div>
+    </div>
+</div>

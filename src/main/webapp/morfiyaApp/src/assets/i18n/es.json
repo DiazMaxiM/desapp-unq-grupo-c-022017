@@ -22,8 +22,8 @@
     "confirmar": "Confirmar",
     "100": "Correo electrónico o password incorrectos",
     "101": "Error localidad inválida",
-    "102": "Error codigo de area inválido",
-    "103": "Error codigo de pais inválido",
+    "102": "Error código de área inválido",
+    "103": "Error código de país inválido",
     "104": "Error direccion inválida",
     "105": "Error numero de telefono inválido",
     "106": "Error cuit inválido",
@@ -121,8 +121,8 @@
     "repasswordRequired":"Ingrese nuevamente la contraseña",
     "emailInvalid":"Correo electrónico no válido",
     "repasswordEqual":"La contraseña debe ser igual a la ingresada",
-    "areaCode":"Código de área",
-    "countryCode":"Código de país",
+    "areaCode":"Código área",
+    "countryCode":"Código país",
     "localNumber":"Número de telefóno",
     "length":"Longitud",
     "latitude":"Latitud",
@@ -131,8 +131,20 @@
     "locality":"Localidad",
     "category":"Categoría",
     "titleSearch":"Los mejores platos a tu alcance",
-    "myServices":"Mis Servicios"
-    
-        
-
+    "myServices":"Mis Servicios",
+    "agregarSaldo" : "Agregar saldo",
+    "newService":"Nuevo servicio",
+    "logo":"Logo",
+    "logoRequired":"Logo requerido",
+    "description":"Descripción",
+    "descritionRequired":"Descripción requerida",
+    "descriptionMin":"La Descripción debe contener como mínimo 30 caracteres",
+    "descriptionMax":"La Descripcion debe contener como máximo 200 caracteres",
+    "siteWeb": "Sitio web/Facebook",
+    "timeZone":"Horario y días de atención",
+    "timeZoneRequired":"Horario y días de entrega requerido",
+    "localityWork":"Localidad de Entregas Máxima",
+    "update":"Actualizar",
+    "backToList":"Volver al listado",
+    "create":"Crear"
 }

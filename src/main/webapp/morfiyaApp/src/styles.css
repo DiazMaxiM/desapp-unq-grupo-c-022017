@@ -8,6 +8,10 @@ body {
 	padding-left: 0px !IMPORTANT;
 }
 
+.contenedor{
+	background-color: #FFF !IMPORTANT;
+}
+
 .non-right-padding{
    padding-right: 0px !IMPORTANT;
 }

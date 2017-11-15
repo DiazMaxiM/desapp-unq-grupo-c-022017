@@ -12,9 +12,9 @@ import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from 
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { AuthService } from '../../auth/auth.service';
+import { LanguageService} from './../../services/languageService/languageService.service';
 
 declare var $:any;
-
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -26,19 +26,37 @@ export class HeaderComponent {
   private user : User = new User();
   form: FormGroup;
   submitted = false;
+  currency : string;
+
   changeLang(lang: string) {
     this.translate.use(lang);
+    this.setCurrency(lang);
   }
+
+  setCurrency(lang:string){
+    console.log(lang);
+    if (lang == 'es'){
+      this.currency = 'ARS';
+    }else if (lang == 'en'){
+      this.currency =  'USD';
+    }else {
+       this.currency = 'EUR';
+    }
+    this.languague.changeMessage(this.currency);
+  }
+
   mensaje :String;
 
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
+
+  constructor(public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
-    
+    this.setCurrency('es');
   }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],

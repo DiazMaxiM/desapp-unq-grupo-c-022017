@@ -1,5 +1,5 @@
 .homeHeader{
-	background-color: #f52f41;
+	background-color: crimson;
 	margin-bottom: 10px;
 }
 
@@ -13,4 +13,14 @@
 
 .closeApp{
 	padding-bottom: 15px;
+}
+
+.cancel-button{
+	color: #FFF;
+	background-color: #f52f41 !IMPORTANT;
+}
+
+.boton-aceptar {
+	color: #FFF;
+	background-color: #1c8e20;
 }

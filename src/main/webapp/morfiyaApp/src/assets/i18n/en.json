@@ -61,7 +61,7 @@
     "106": "Error: Invalid CUIT",
     "107": "Error: Invalid name",
     "108": "Error: Invalid surname",
-    "109": "Error: Invalido e-mail",
+    "109": "Error: Invalid e-mail",
     "110": "Error: Invalid positioning",
     "111": "Error no se que es",
     "112": "Error: Invalid map length",
@@ -135,8 +135,19 @@
     "locality":"Locality",
     "category":"Category",
     "titleSearch":"The best dishes at your fingertips",
-    "myServices":"My Services"       
-    
-
-
+    "myServices":"My Services",
+    "logo":"Logo",
+    "logoRequired":"Logo required",
+    "description":"Description",
+    "descritionRequired":"Description required",
+    "descriptionMin":"The description must contain at least 30 characters",
+    "descriptionMax":"The description must contain a maximum of 200 characters",
+    "siteWeb": "Site web/Facebook",
+    "timeZone":"Hours and days of attention",
+    "timeZoneRequired":"Hours and days of attention required",
+    "localityWork":"Maximum Delivery Location",
+    "update":"Update",
+    "backToList":"Back to list",
+    "create":"Create",
+    "newService":"New service"
 }

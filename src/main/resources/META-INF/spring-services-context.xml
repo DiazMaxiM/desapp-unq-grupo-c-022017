@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd" >
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 			
+		xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+       http://www.springframework.org/schema/tx 
+	   http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	   http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd" >
+
 
 	<!-- beans de spring -->
 	<bean id="services.general" class="services.GeneralService">
@@ -53,4 +60,14 @@
 	<bean id="services.provider" class="services.ProviderService">
 		<property name="repository" ref="persistence.providerRepository" />
 	</bean>
+
+	<!-- BEAN ASPECTS -->
+	<bean name="aopLogging" class="aspects.LoggingAspect" />
+	<aop:config>
+		<aop:aspect ref="aopLogging">
+			<aop:pointcut id="pointcut" expression="execution(* 
+		rest.*.*(..))" />
+			<aop:around method="logAfter" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
 </beans>

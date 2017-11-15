@@ -6,23 +6,43 @@ import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {Router} from '@angular/router';
+import {Input,Output} from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { UtilsService} from './../../services/utilsServices/utils.service';
+import { LanguageService} from './../../services/languageService/languageService.service';
+import { CurrencyFormat } from './../../pipes/currencyFormat.pipe';
+import { NgModule } from '@angular/core';
+
 declare var $:any;
+declare var currency: string;
+
 
 @Component({
   selector: 'checkBalance',
   templateUrl: './checkBalance.component.html',
-  styleUrls: ['./checkBalance.component.css']
+  styleUrls: ['./checkBalance.component.css'],
 })
+
+@NgModule({
+declarations: [
+CurrencyFormat
+]
+})
+
 export class CheckBalanceComponent implements OnInit {
   user: User
   idUser : String
-  balance : String
+  balance : String  
   value : number = 0;
+  currency:String;
+
   @ViewChild('closeBtn') closeBtn: ElementRef;
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService){
+  constructor(public languague: LanguageService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
+  	
   }
 
   ngOnInit() {
+    this.languague.currentMessage.subscribe(message =>this.currency=message);
     this.messageService.currentMessage.subscribe(message => this.user = message);
     this.idUser = this.user.id;
     this.checkbalance();
@@ -70,5 +90,4 @@ clearValue(){
     this.value = 0;
   }
 
-  
 }

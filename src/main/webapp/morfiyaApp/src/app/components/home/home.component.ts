@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
   }
 
   //call this wherever you want to close modal
-
   private sendData(): void {
        this.messageService.changeMessage(this.user);
     }  
