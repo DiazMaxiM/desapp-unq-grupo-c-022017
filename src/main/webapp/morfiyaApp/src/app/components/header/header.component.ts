@@ -8,10 +8,10 @@ import {TypeRegisterService} from './../../services/typeRegisterService/typeRegi
 import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {ValidationManager} from "ng2-validation-manager";
 import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import { AuthService } from '../../auth/auth.service';
 
 declare var $:any;
 
@@ -31,10 +31,11 @@ export class HeaderComponent {
   }
   mensaje :String;
 
-  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService){
+  constructor(public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
+    
   }
 
   ngOnInit() {

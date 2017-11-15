@@ -9,6 +9,5 @@
 			<generator class="native" />
 		</id>
 		<property name="delivery" />
-        
 	</class>
 </hibernate-mapping>

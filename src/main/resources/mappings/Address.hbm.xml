@@ -6,10 +6,8 @@
 	default-cascade="save-update">
 	<class name="model.Address">
 	<id column="idAddress" name="id">
-		<generator class="native" />
- 			
+		<generator class="native" />	
  		</id>
-	
 		<property name="locality">
 		<type name="org.hibernate.type.EnumType">
             <param name="enumClass">model.Locality</param>
@@ -17,7 +15,6 @@
         </type> 
         </property>
 		<property name="floor" />
-		
 		<component name="mapPosition" class="model.MapPosition">
 			<property name="latitude" type="double">
 				<column name="latitude" not-null="true" />

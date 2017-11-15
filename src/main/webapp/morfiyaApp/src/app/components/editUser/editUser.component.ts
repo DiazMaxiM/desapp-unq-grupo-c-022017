@@ -10,6 +10,7 @@ import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
 
 declare var $:any;
 
@@ -27,7 +28,9 @@ export class EditUserComponent implements OnInit {
   mensaje :String;
   localities;
 
-  constructor(private formBuilder: FormBuilder,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
+  constructor(private formBuilder: FormBuilder,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService, public auth:AuthService){
+    this.auth.handleAuthentication()    
+    console.log(this.auth.getUser())
   }
   
     ngOnInit() {

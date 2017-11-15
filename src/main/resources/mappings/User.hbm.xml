@@ -13,8 +13,6 @@
 		<many-to-one name="telephone" cascade="all" class="model.Telephone" lazy="false" />
 		<one-to-one name="address" cascade="all" class="model.Address" lazy="false" />
 		<many-to-one name="account" cascade="all" class="model.Account"  lazy="false"/>
-	
-	
 		<property name="cuit" unique="true" />
 		<property name="name" />
 		<property name="mail" unique="true"/>
@@ -39,8 +37,6 @@
          <list-index column = "idx"/>
          <one-to-many class="model.HistoricalOrder"/>
       	</list>
-		</joined-subclass>
-		
-		
+		</joined-subclass>	
 	</class>
 </hibernate-mapping>

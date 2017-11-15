@@ -9,7 +9,6 @@
 			<generator class="native" />
 		</id>
 		<property name="value" />
-		
 		<property name="typeTransaction" >
         <type name="org.hibernate.type.EnumType">
             <param name="enumClass">model.TypeTransaction</param>
@@ -22,6 +21,5 @@
             <param name="useNamed">true</param>
         </type>
         </property>
-	
 	</class>
 </hibernate-mapping>

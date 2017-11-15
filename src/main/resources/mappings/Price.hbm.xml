@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
-	default-cascade="save-update">
+    default-cascade="save-update">
 	<class name="model.Price">
 		<id column="ID" name="id">
 			<generator class="native" />
@@ -16,8 +16,6 @@
         </type>
         </property>
 		</component>
-    <property name="value" />
-        
-    
+    <property name="value" /> 
 	</class>
 </hibernate-mapping>

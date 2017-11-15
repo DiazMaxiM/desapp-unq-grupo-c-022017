@@ -7,7 +7,6 @@
 	<class name="model.Menu">
 		<id column="idMenu" name="id">
 			<generator class="native" />
-	
  		</id>
 		<property name="menuName" />
         <property name="menuDescription" />
@@ -40,6 +39,5 @@
             	<param name="useNamed">true</param>
         	</type>       
     	</property>   	
-	</class>    
-
+	</class>
 </hibernate-mapping>

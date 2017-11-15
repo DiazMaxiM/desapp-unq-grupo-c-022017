@@ -3,6 +3,7 @@ import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
 import {User} from './../../model/user';
+import {AuthService} from '../../auth/auth.service';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 declare var $:any;
 
@@ -19,9 +20,12 @@ export class UserComponent implements OnInit{
   typeRol: String;
   message:User;
   
-  constructor(private router:Router,public messageService : MessageService,private typeRegisterService: TypeRegisterService){}
+  constructor(private router:Router,public messageService : MessageService,private typeRegisterService: TypeRegisterService,public auth: AuthService){
+
+  }
   
   ngOnInit() {
+    console.log(this.auth.isAuthenticated())
     this.messageService.currentMessage.subscribe(message => this.message = message);
     this.user = this.message.name;
     this.idUser = this.message.id;

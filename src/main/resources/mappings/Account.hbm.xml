@@ -3,11 +3,10 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
-	default-cascade="save-update">
+	default-cascade="save-update">	
 	<class name="model.Account">
 		<id column="idUser" name="id">
 			<generator class="native" />
-	
  		</id>
 		<property name="name" />
         <list name = "transactions" cascade="all" inverse="false" lazy="false" >
@@ -15,6 +14,5 @@
          <list-index column = "idx"/>
          <one-to-many class="model.Transaction"/>
       </list>
-	</class>    
-
+	</class>
 </hibernate-mapping>

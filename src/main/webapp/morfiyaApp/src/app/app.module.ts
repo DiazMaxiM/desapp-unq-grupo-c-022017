@@ -24,8 +24,10 @@ import { TypeRegisterService} from './services/typeRegisterService/typeRegister.
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
-import { CustomFormsModule } from 'ng2-validation'
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
+import { AuthService } from './auth/auth.service';
+import { CallbackComponent } from './callback/callback.component';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     FieldErrorDisplayComponent,
     RegisterComponent,
     HeaderComponent,
-    ServicesProviderComponent        
+    ServicesProviderComponent   ,
+    CallbackComponent     
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,6 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     JsonpModule,
     HttpClientModule,
-    CustomFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -66,7 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService],
+  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

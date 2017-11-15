@@ -7,7 +7,6 @@
  	<class name="model.Telephone">
  		<id column="idTelephone" name="id">
 		<generator class="native" />
- 			
  		</id>
  		<property name="countryCode" />
  		<property name="areaCode" />
