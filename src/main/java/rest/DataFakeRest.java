@@ -120,7 +120,7 @@ public class DataFakeRest {
 
 		Menu menu = new MenuBuilder().withMenuService(service).build();
 
-		// menuService.save(menu);
+		menuService.save(menu);
 
 		return Response.ok().build();
 	}

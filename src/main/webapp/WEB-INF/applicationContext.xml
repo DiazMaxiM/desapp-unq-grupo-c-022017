@@ -85,6 +85,24 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
    <bean id="localitysRest" class="rest.LocalityRest">
 	</bean>
 	
+	<jaxrs:server id="category" address="/category"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="categorysRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+   <bean id="categorysRest" class="rest.CategoryRest">
+	</bean>
+	
 	<jaxrs:server id="dataFake" address="/dataFake"  > 
 		<jaxrs:serviceBeans>
 			<ref bean="dataFakesRest" />

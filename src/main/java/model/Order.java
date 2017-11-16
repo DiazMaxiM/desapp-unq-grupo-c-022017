@@ -1,6 +1,7 @@
 package model;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import exception.InvalidClientException;
 import exception.InvalidMenuException;
@@ -16,19 +17,20 @@ public class Order {
 	private Menu menuToOrder;
 	private Integer numberOfMenusToOrder;
 	private TypeOfDelivery typeOfDelivery;
-	private DateTime dateOfDelivery;
+	private LocalDateTime dateOfDelivery;
 	private TimeZone deliveryTime;
 	private User client;
 	private Provider provider;
 	private Transaction transactionClient;
-	private Transaction transactionProvider; 
+	private Transaction transactionProvider;
 	private OrderValidation validator = new OrderValidation();
 	private DateTime dateOfOrder = new DateTime();
 
-	public Order(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery, DateTime dateOfDelivery,
-			TimeZone deliveryTime, User client, Provider provider) throws InvalidMenuException,
-			InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException,
-			InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException {
+	public Order(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery,
+			LocalDateTime dateOfDelivery, TimeZone deliveryTime, User client, Provider provider)
+			throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException,
+			InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidClientException,
+			InvalidProviderException {
 		if (validator.isValidOrder(menuToOrder, numberOfMenusToOrder, typeOfDelivery, dateOfDelivery, deliveryTime,
 				client, provider)) {
 			createOrder(menuToOrder, numberOfMenusToOrder, typeOfDelivery, dateOfDelivery, deliveryTime, client,
@@ -37,7 +39,7 @@ public class Order {
 	}
 
 	public void createOrder(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery,
-			DateTime dateOfDelivery, TimeZone deliveryTime, User client, Provider provider) {
+			LocalDateTime dateOfDelivery, TimeZone deliveryTime, User client, Provider provider) {
 		setMenuToOrder(menuToOrder);
 		setNumberOfMenusToOrder(numberOfMenusToOrder);
 		setTypeOfDelivery(typeOfDelivery);
@@ -71,11 +73,11 @@ public class Order {
 		this.typeOfDelivery = typeOfDelivery;
 	}
 
-	public DateTime getDateOfDelivery() {
+	public LocalDateTime getDateOfDelivery() {
 		return dateOfDelivery;
 	}
 
-	public void setDateOfDelivery(DateTime dateOfDelivery) {
+	public void setDateOfDelivery(LocalDateTime dateOfDelivery) {
 		this.dateOfDelivery = dateOfDelivery;
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
@@ -50,18 +51,20 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
-			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException,
+			InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException,
+			InvalidMapPositionException {
 		this.service = this.getService();
 		this.deliveryTimesMenus = this.getDeliveryTimesMenus();
 	}
- 
+
 	private Money moneyArg = new Money(Symbol.ARG);
 	private String menuName = "MenuName";
 	private String menuDescription = "MenuDescription12345678910";
 	private Category menuCategory = Category.BURGER;
 	private Price menuDeliveryPrice = new Price(moneyArg, new Double(15));
-	private DateTime startDateOfferMenu =new DateTime().plusDays(7);
-	private DateTime endDateOfferMenu = new DateTime().plusDays(14);;
+	private LocalDateTime startDateOfferMenu = new DateTime().plusDays(7).toLocalDateTime();
+	private LocalDateTime endDateOfferMenu = new DateTime().plusDays(14).toLocalDateTime();
 	private List<TimeZone> deliveryTimesMenus;
 	private Integer averageDeliveryTimeOfMenu = 30;
 	private Price menuPrice = new Price(moneyArg, new Double(40));
@@ -73,9 +76,8 @@ public class MenuBuilder {
 	private Service service;
 
 	public Menu build() throws InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException,
-			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException,
-			InvalidMenuDeliveryPriceException, InvalidAverageDeliveryTimeOfMenuException,
-			InvalidServiceException,
+			InvalidStartDateOfferMenuException, InvalidEndDateOfferMenuException, InvalidMenuDeliveryPriceException,
+			InvalidAverageDeliveryTimeOfMenuException, InvalidServiceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException {
 		return new Menu(menuName, menuDescription, menuCategory, menuDeliveryPrice, startDateOfferMenu,
@@ -87,7 +89,7 @@ public class MenuBuilder {
 
 	private List<TimeZone> getDeliveryTimesMenus() throws InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		List<TimeZone> deliveryTimesMenus = new ArrayList<>();
-		deliveryTimesMenus.add(new TimeZone("18:00","22:00"));
+		deliveryTimesMenus.add(new TimeZone("18:00", "22:00"));
 		return deliveryTimesMenus;
 	}
 
@@ -95,7 +97,9 @@ public class MenuBuilder {
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceException, InvalidServiceWorkingHoursException, InvalidTelephoneNumberException,
 			InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException,
-			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException,
+			InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException,
+			InvalidLatitudeMapPositionException, InvalidMapPositionException {
 
 		return new ServiceBuilder().build();
 	}
@@ -121,12 +125,12 @@ public class MenuBuilder {
 		return this;
 	}
 
-	public MenuBuilder withStartDateOfferMenu(DateTime dateOfferMenu) {
+	public MenuBuilder withStartDateOfferMenu(LocalDateTime dateOfferMenu) {
 		this.startDateOfferMenu = dateOfferMenu;
 		return this;
 	}
 
-	public MenuBuilder withEndDateOfferMenu(DateTime dateOfferMenu) {
+	public MenuBuilder withEndDateOfferMenu(LocalDateTime dateOfferMenu) {
 		this.endDateOfferMenu = dateOfferMenu;
 		return this;
 	}
@@ -142,7 +146,7 @@ public class MenuBuilder {
 	}
 
 	public MenuBuilder withFirstMinimumPriceOfMenusToBuy(Double firstminimumPriceOfMenusToBuy) {
-		Price price = new Price(moneyArg,firstminimumPriceOfMenusToBuy);
+		Price price = new Price(moneyArg, firstminimumPriceOfMenusToBuy);
 		this.firstminimumPriceOfMenusToBuy = price;
 		return this;
 	}
@@ -153,7 +157,7 @@ public class MenuBuilder {
 	}
 
 	public MenuBuilder withSecondMinimumPriceOfMenusToBuy(Double secondMinimumPriceOfMenusToBuy) {
-		Price price = new Price(moneyArg,secondMinimumPriceOfMenusToBuy);
+		Price price = new Price(moneyArg, secondMinimumPriceOfMenusToBuy);
 		this.secondMinimumPriceOfMenusToBuy = price;
 		return this;
 	}
@@ -164,7 +168,7 @@ public class MenuBuilder {
 	}
 
 	public MenuBuilder withMenuPrice(Double price) {
-		this.menuPrice = new Price(moneyArg,price);
+		this.menuPrice = new Price(moneyArg, price);
 		return this;
 	}
 

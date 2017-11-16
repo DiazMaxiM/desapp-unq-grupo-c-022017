@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.mail.EmailException;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -125,7 +126,7 @@ public class SalesAdministrationTest {
 			InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException,
 			NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException {
 		Mail mail = new Mail().getInstance();
-		DateTime dateOfDelivery = new DateTime("2017-09-03T07:22:05Z");
+		LocalDateTime dateOfDelivery = new DateTime("2017-09-03T07:22:05Z").toLocalDateTime();
 		Order order = new OrderBuilder().withDateOfDelivery(dateOfDelivery).build();
 		Transaction transaction = new Transaction(TypeTransaction.CREDIT, new Double(500));
 		order.getClient().getAccount().addTransaction(transaction);
@@ -281,7 +282,7 @@ public class SalesAdministrationTest {
 			InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException,
 			NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException {
 		Mail mail = new Mail().getInstance();
-		Order order = new OrderBuilder().withDateOfDelivery(new DateTime().plusDays(2)).build();
+		Order order = new OrderBuilder().withDateOfDelivery(new DateTime().plusDays(2).toLocalDateTime()).build();
 		Service service = order.getMenuToOrder().getService();
 		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
 		List<TimeZone> workingHours = new ArrayList<>();
@@ -411,7 +412,7 @@ public class SalesAdministrationTest {
 			InvalidFormatTimeZoneException, InvalidDeliveryLocation, InvalidMapPositionException,
 			NumberOfMenusExceededException, InvalidPricesException, InvalidMenuPriceException, IOException {
 		Mail mail = new Mail().getInstance();
-		Order order = new OrderBuilder().withDateOfDelivery(new DateTime(2017, 12, 8, 0, 0)).build();
+		Order order = new OrderBuilder().withDateOfDelivery(new DateTime(2017, 12, 8, 0, 0).toLocalDateTime()).build();
 		Transaction transaction = new Transaction(TypeTransaction.CREDIT, new Double(500));
 		order.getClient().getAccount().addTransaction(transaction);
 		MenuManager menuManager = new MenuManager();

@@ -25,6 +25,13 @@ public class MenuRest {
 		return Response.ok(menuService.listMenuForName(name)).build();
 	}
 
+	@GET
+	@Path("/listMenus")
+	@Produces("application/json")
+	public Response listMenu() {
+		return Response.ok(menuService.listMenus()).build();
+	}
+
 	public void setMenuService(final MenuService menuService) {
 		this.menuService = menuService;
 	}

@@ -1,6 +1,7 @@
 package model;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 public class HistoricalOrder extends Entity {
 
@@ -9,7 +10,7 @@ public class HistoricalOrder extends Entity {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Score score;
-	private DateTime deliveryTime;
+	private LocalDateTime deliveryTime;
 	private TypeStatusOrder typeStatusOrder;
 	private Menu menu;
 	private Double price;
@@ -17,10 +18,10 @@ public class HistoricalOrder extends Entity {
 	private TypeOfDelivery typeOfDelivery;
 	private String delivery;
 
-	public HistoricalOrder(Score score, DateTime deliveryTime, TypeStatusOrder typeStatusOrder, Menu menu, Double price,
-			DateTime dateOfOrder, TypeOfDelivery typeOfDelivery) {
+	public HistoricalOrder(Score score, LocalDateTime localDateTime, TypeStatusOrder typeStatusOrder, Menu menu,
+			Double price, DateTime dateOfOrder, TypeOfDelivery typeOfDelivery) {
 		this.score = score;
-		this.deliveryTime = deliveryTime;
+		this.deliveryTime = localDateTime;
 		this.typeStatusOrder = typeStatusOrder;
 		this.menu = menu;
 		this.price = price;
@@ -32,7 +33,7 @@ public class HistoricalOrder extends Entity {
 		return score;
 	}
 
-	public DateTime getDeliveryTime() {
+	public LocalDateTime getDeliveryTime() {
 		return deliveryTime;
 	}
 

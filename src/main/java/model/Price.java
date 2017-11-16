@@ -9,6 +9,10 @@ public class Price extends Entity {
 		this.setValue(value);
 	}
 
+	public Price() {
+
+	}
+
 	public Money getMoney() {
 		return money;
 	}

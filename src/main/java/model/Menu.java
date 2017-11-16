@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import exception.InvalidAverageDeliveryTimeOfMenuException;
 import exception.InvalidServiceException;
@@ -27,8 +27,8 @@ public class Menu extends Entity {
 	private String menuDescription;
 	private Category menuCategory;
 	private Price menuDeliveryPrice;
-	private DateTime startDateOfferMenu;
-	private DateTime endDateOfferMenu;
+	private LocalDateTime startDateOfferMenu;
+	private LocalDateTime endDateOfferMenu;
 	private List<TimeZone> deliveryTimesMenus;
 	private Integer averageDeliveryTimeOfMenu;
 	private Price menuPrice;
@@ -42,8 +42,12 @@ public class Menu extends Entity {
 	private TypeStatusMenu status = TypeStatusMenu.ENABLED;
 	private MenuValidation validator = new MenuValidation();
 
+	public Menu() {
+
+	}
+
 	public Menu(String menuName, String menuDescription, Category menuCategory, Price menuDeliveryPrice,
-			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
+			LocalDateTime startDateOfferMenu, LocalDateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
 			Integer averageDeliveryTimeOfMenu, Price menuPrice, Integer firstMinimumNumberOfMenusToBuy,
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service)
@@ -66,7 +70,7 @@ public class Menu extends Entity {
 	}
 
 	private void createMenu(String menuName, String menuDescription, Category menuCategory, Price menuDeliveryPrice,
-			DateTime startDateOfferMenu, DateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
+			LocalDateTime startDateOfferMenu, LocalDateTime endDateOfferMenu, List<TimeZone> deliveryTimesMenus,
 			Integer averageDeliveryTimeOfMenu, Price menuPrice, Integer firstMinimumNumberOfMenusToBuy,
 			Price firstminimumPriceOfMenusToBuy, Integer secondMinimumNumberOfMenusToBuy,
 			Price secondMinimumPriceOfMenusToBuy, Integer maximumNumberOfMunusSalesPerDay, Service service) {
@@ -129,20 +133,20 @@ public class Menu extends Entity {
 		this.menuDeliveryPrice = menuDeliveryPrice;
 	}
 
-	public DateTime getStartDateOfferMenu() {
+	public LocalDateTime getStartDateOfferMenu() {
 		return startDateOfferMenu;
 	}
 
-	public void setStartDateOfferMenu(DateTime startDateOfferMenu) {
+	public void setStartDateOfferMenu(LocalDateTime startDateOfferMenu) {
 
 		this.startDateOfferMenu = startDateOfferMenu;
 	}
 
-	public DateTime getEndDateOfferMenu() {
+	public LocalDateTime getEndDateOfferMenu() {
 		return endDateOfferMenu;
 	}
 
-	public void setEndDateOfferMenu(DateTime endDateOfferMenu) {
+	public void setEndDateOfferMenu(LocalDateTime endDateOfferMenu) {
 		this.endDateOfferMenu = endDateOfferMenu;
 	}
 

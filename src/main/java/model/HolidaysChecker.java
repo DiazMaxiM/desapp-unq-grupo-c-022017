@@ -7,17 +7,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import com.google.gson.Gson;
 
 public class HolidaysChecker {
 
-	public Boolean isHolidays(DateTime date) throws IOException {
+	public Boolean isHolidays(LocalDateTime localDateTime) throws IOException {
 
-		String year = new Integer(date.getYear()).toString();
-		String month = new Integer(date.getMonthOfYear()).toString();
-		String day = new Integer(date.getDayOfMonth()).toString();
+		String year = new Integer(localDateTime.getYear()).toString();
+		String month = new Integer(localDateTime.getMonthOfYear()).toString();
+		String day = new Integer(localDateTime.getDayOfMonth()).toString();
 		URL url = new URL("http://nolaborables.com.ar/api/v2/feriados/".concat(year));
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");

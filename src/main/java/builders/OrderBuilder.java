@@ -1,6 +1,7 @@
 package builders;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
@@ -52,42 +53,55 @@ import validation.InvalidFormatTimeZoneException;
 import validation.InvalidMenuPriceException;
 
 public class OrderBuilder {
-	 private Menu menuToOrder;
-     private Integer numberOfMenusToOrder=1;
-     private TypeOfDelivery typeOfDelivery= TypeOfDelivery.LOCALDELIVERY;
-     private DateTime dateOfDelivery = new DateTime().plusDays(2);
-     private TimeZone deliveryTime;
-     private User client;
-     private Provider provider;
-     
-     
-     public OrderBuilder() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException, InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay, InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException, InvalidServiceWorkingHoursException,InvalidEndDateOfferMenuException, InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidCuitException, InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidMapPositionException, InvalidPricesException, InvalidMenuPriceException{
-    	 this.menuToOrder= new MenuBuilder().build();
-    	 this.client= new ClientBuilder().build();
-    	 this.client.setMail("zaracho.rosali@gmail.com");
-    	 this.provider = new ProviderBuilder().build();
-    	 this.deliveryTime = new TimeZone("18:00","20:00");
-     }
-     
-     public Order build() throws InvalidMenuException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, InvalidClientException, InvalidProviderException{
-    	 return new Order(this.menuToOrder,this.numberOfMenusToOrder,this.typeOfDelivery,this.dateOfDelivery,this.deliveryTime,this.client,this.provider);
-     }
-    
-     public Menu getMenu(){
-    	 return this.menuToOrder;
-     }
+	private Menu menuToOrder;
+	private Integer numberOfMenusToOrder = 1;
+	private TypeOfDelivery typeOfDelivery = TypeOfDelivery.LOCALDELIVERY;
+	private LocalDateTime dateOfDelivery = new DateTime().plusDays(2).toLocalDateTime();
+	private TimeZone deliveryTime;
+	private User client;
+	private Provider provider;
 
-	public OrderBuilder withDateOfDelivery(DateTime dateOfDelivery) {
-		this.dateOfDelivery= dateOfDelivery;
+	public OrderBuilder() throws InvalidServiceException, InvalidAddressException, InvalidNumberStreetException,
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLocalNumberException,
+			InvalidAreaCodeException, InvalidCountryCodeException, InvalidMenuNameException,
+			InvalidMenuDescriptionException, InvalidMenuCategoryException, InvalidStartDateOfferMenuException,
+			InvalidMenuDeliveryPriceException, InvalidMinimumNumberOfMenusToBuyException,
+			InvalidMinimumPriceOfMenusToBuyException, InvalidMaximumNumberOfMenusSalesPerDay,
+			InvalidServiceNameException, InvalidServiceLogoException, InvalidServiceDescriptionException,
+			InvalidServiceEmailException, InvalidServiceWorkingHoursException, InvalidEndDateOfferMenuException,
+			InvalidAverageDeliveryTimeOfMenuException, InvalidTelephoneNumberException,
+			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidCuitException,
+			InvalidFirstNameException, InvalidLastNameException, InvalidEmailAddressException, InvalidTimeZoneException,
+			InvalidFormatTimeZoneException, InvalidMapPositionException, InvalidPricesException,
+			InvalidMenuPriceException {
+		this.menuToOrder = new MenuBuilder().build();
+		this.client = new ClientBuilder().build();
+		this.client.setMail("zaracho.rosali@gmail.com");
+		this.provider = new ProviderBuilder().build();
+		this.deliveryTime = new TimeZone("18:00", "20:00");
+	}
+
+	public Order build() throws InvalidMenuException, InvalidNumberOfMenusToOrderException,
+			InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException,
+			InvalidClientException, InvalidProviderException {
+		return new Order(this.menuToOrder, this.numberOfMenusToOrder, this.typeOfDelivery, this.dateOfDelivery,
+				this.deliveryTime, this.client, this.provider);
+	}
+
+	public Menu getMenu() {
+		return this.menuToOrder;
+	}
+
+	public OrderBuilder withDateOfDelivery(LocalDateTime dateOfDelivery) {
+		this.dateOfDelivery = dateOfDelivery;
 		return this;
 	}
-    
+
 	public OrderBuilder withNumberOfMenusToOrder(Integer numberOfMenusToOrder) {
-		this.numberOfMenusToOrder= numberOfMenusToOrder;
+		this.numberOfMenusToOrder = numberOfMenusToOrder;
 		return this;
 	}
-	
-	
+
 	public OrderBuilder withMaximunMenuToSell(Integer maximumNumberOfMunusSalesPerDay) {
 		this.menuToOrder.setMaximumNumberOfMenusSalesPerDay(maximumNumberOfMunusSalesPerDay);
 		return this;
@@ -96,30 +110,29 @@ public class OrderBuilder {
 	public OrderBuilder withMenuToOrder(Menu menu) {
 		this.menuToOrder = menu;
 		return this;
-		
+
 	}
-	
+
 	public OrderBuilder withTypeOfDelivery(TypeOfDelivery typeOfDelivery) {
 		this.typeOfDelivery = typeOfDelivery;
 		return this;
-		
+
 	}
-	
+
 	public OrderBuilder withDeliveryTime(TimeZone deliveryTime) {
 		this.deliveryTime = deliveryTime;
 		return this;
-		
+
 	}
 
 	public OrderBuilder withClient(User client) {
 		this.client = client;
 		return this;
 	}
-	
+
 	public OrderBuilder withProvider(Provider provider) {
 		this.provider = provider;
 		return this;
 	}
-	
-	
+
 }
