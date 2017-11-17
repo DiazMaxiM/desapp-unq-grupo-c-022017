@@ -17,13 +17,14 @@ export class MenusComponent implements OnInit {
   constructor(private router:Router,private translate: TranslateService,private utilsServices: UtilsService){
   }
 
-  @ViewChild('closeBtn') closeBtn: ElementRef;
   selectedValue: String
   searchs
   categories = [{name: "name" }, {name: "locality"}, {name: "price"},{name: "category"}];
   cotegorySearch = this.categories[0];
+  listOfElements;
+  searchValueOfList;
   localities;
-  locality;
+  categoriesJson;
 
   onChangeObj(typeSearch) {
     this.cotegorySearch = typeSearch;
@@ -32,19 +33,26 @@ export class MenusComponent implements OnInit {
 
   showTypeSearch(typeSearch){
     if(typeSearch.name=="locality"){
-      this.showLocalities();
+      this.showList(this.localities);
     }else{
-      this.hideLocalities();
+      if(typeSearch.name=='category'){
+         this.showList(this.categoriesJson);
+      }else{
+        this.hideList();
+      }
     }
 
   }
-  showLocalities(){
-    $('#localities').show();
+
+  showList(list:any){
+    $('#listToSelector').show();
+    this.listOfElements=list;
+    this.searchValueOfList=list[0];  
     $('#search').hide();  
   }
 
-  hideLocalities(){
-    $('#localities').hide();   
+  hideList(){
+    $('#listToSelector').hide();   
     $('#search').show();      
   }
 
@@ -53,11 +61,17 @@ export class MenusComponent implements OnInit {
   }
 
   ngOnInit(){
-    /*this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));*/
+    this.utilsServices.localities().subscribe(data =>this.resultLocalities(data))
+    this.utilsServices.categories().subscribe(data =>this.resultCategories(data))
   }
 
   resultLocalities(data){
+    console.log(data._body);
     this.localities= JSON.parse(data._body);
-    this.locality = this.localities[0];
+  }
+
+  resultCategories(data){
+    console.log(data._body);
+    this.categoriesJson= JSON.parse(data._body);
   }
 }

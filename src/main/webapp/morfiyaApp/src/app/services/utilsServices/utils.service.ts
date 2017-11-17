@@ -12,14 +12,7 @@ export class UtilsService {
     return this.http.get('/grupoc/rest/locality/listLocality').map((res:Response)=>res);
   }
 
-  setCurrency(curr: string) {
-    this.currency = curr;
-  }
-  
-  getCurrency() {
-  	if (this.currency==''){
-  		return 'USD';
-  	}
-    return this.currency;
+  categories(){
+    return this.http.get('/grupoc/rest/category/listCategory').map((res:Response)=>res);
   }
 }

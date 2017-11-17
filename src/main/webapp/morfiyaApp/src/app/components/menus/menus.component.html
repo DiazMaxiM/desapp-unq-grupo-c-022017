@@ -1,31 +1,34 @@
 <div class="col-12">
-    <div class="col-8 mx-auto background-Search contenedor">
+    <div class="col-12 col-sm-8 col-lg-8 mx-auto background-Search contenedor">
             <div class="col-12">
                     <div class=" titleSearch col-12 col-sm-12 col-md-8 mx-auto non-lateral-padding">
                         <h3>{{'titleSearch'|translate}}</h3>
                     </div>
             </div>
         <div class="col-12">
-                <div class="col-12 col-sm-12 col-md-3 mx-auto non-right-padding">
+                <div class="col-12 col-sm-4 col-lg-3 mx-auto non-lateral-padding">
                     <select [ngModel]="cotegorySearch" (ngModelChange)="onChangeObj($event)" class="custom-select componentSearch">
                         <option [ngValue]="i" *ngFor="let i of categories">{{i.name|translate}}</option>
                     </select>
                 </div>
         </div>
-            <div id="localities" class="col-12 non-right-padding col-sm-12 col-md-6 mx-auto hideItem">
-                    <select [ngModel]="locality"  class="custom-select componentSearch">
-                            <option [ngValue]="i" *ngFor="let i of localities">{{i}}</option>
-                    </select>
-            </div>
-            <div id="search" class="row col-12 col-sm-12 col-md-10 mx-auto non-lateral-padding">
-                   
-                    <div class="col-12 col-sm-12 col-md-8 non-lateral-padding">
-                            <input type="text" class="form-control componentSearch" placeholder="" aria-label="">
-                    </div>
-                    <div class="col-12 col-sm-2 col-md-4 non-left-padding">
-                        <button type="button" class="btn btn-lg squareButton componentSearch" (click)="search()">{{ 'buscar' | translate }}</button>
+        <div class="row col-12 col-sm-12 col-lg-9 mx-auto">
+                <div class="col-12 col-sm-12 col-lg-7 non-lateral-padding">
+                        <div id="listToSelector" class="col-12 non-lateral-padding col-12 hideItem">
+                                <select [ngModel]="searchValueOfList"  class="custom-select componentSearch">
+                                        <option [ngValue]="i" *ngFor="let i of listOfElements">{{i}}</option>
+                                </select>
+                        </div>
+                        <div id="search" class="col-12  non-lateral-padding">
+                                <input type="text" class="form-control componentSearch" placeholder="" aria-label="">
+                        </div>
                 </div>
-            </div>
+                <div class="col-12 col-sm-12 col-lg-4 non-lateral-padding">
+                        <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                            <button type="button" class="btn btn-lg squareButton componentSearch" (click)="search()">{{ 'buscar' | translate }}</button>
+                        </div>
+                </div>
+        </div>
     </div>
 </div>
 <div class="container-fluid" style="display:none">
