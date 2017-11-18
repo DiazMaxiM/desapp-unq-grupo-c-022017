@@ -9,6 +9,30 @@
             <alert></alert>
         </div>
         <form [formGroup]="form">
+                <div class="form-row">
+                        <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('cuit')">
+                            <label class="col-form-label required">{{ 'cuit' | translate }}</label>
+                            <input class="form-control" formControlName="cuit"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number"
+                            maxlength = "11"
+                         />
+                            <app-field-error-display [displayError]="form.controls['cuit'].hasError('required') && form.controls['cuit'].touched" errorMsg=" {{'cuitRequired'|translate}}">
+                            </app-field-error-display>
+                            <app-field-error-display [displayError]="form.controls['cuit'].hasError('max')" errorMsg=" {{'cuitMax'|translate}}">
+                            </app-field-error-display>
+                        </div>
+                        <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('email')">
+                          <label class="col-form-label required">{{ 'email' | translate }}</label>
+                          <input type="text" class="form-control" formControlName="email">
+                          <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
+                                {{ 'emailRequired'|translate}}
+                          </div>
+                          <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched">
+                                {{ 'emailInvalid'|translate}}
+                          </div>
+                        </div>
+                      </div>    
           <div class="form-row">
             <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('name')">
               <label class="col-form-label required">{{ 'nombre' | translate }}</label>
@@ -24,24 +48,6 @@
                 </app-field-error-display>        
             </div>
           </div> 
-          <div class="form-row">
-            <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('cuit')">
-                <label class="col-form-label required">{{ 'cuit' | translate }}</label>
-                <input type="number"  class="form-control" formControlName="cuit">
-                <app-field-error-display [displayError]="isFieldValid('cuit')" errorMsg=" {{'cuitRequired'|translate}}">
-                </app-field-error-display>
-            </div>
-            <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('email')">
-              <label class="col-form-label required">{{ 'email' | translate }}</label>
-              <input type="text" class="form-control" formControlName="email">
-              <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
-                    {{ 'emailRequired'|translate}}
-              </div>
-              <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched">
-                    {{ 'emailInvalid'|translate}}
-              </div>
-            </div>
-          </div>  
           <div class="form-row">
                 <div class="col-12">
                         <label>{{'direccion'| translate }}</label>

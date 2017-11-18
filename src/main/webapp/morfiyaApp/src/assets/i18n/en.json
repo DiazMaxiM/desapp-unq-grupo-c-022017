@@ -149,5 +149,6 @@
     "update":"Update",
     "backToList":"Back to list",
     "create":"Create",
-    "newService":"New service"
+    "newService":"New service",
+    "cuitMax":"The CUIT must be 11 digits"
 }

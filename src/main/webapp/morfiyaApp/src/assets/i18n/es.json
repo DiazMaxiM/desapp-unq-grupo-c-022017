@@ -146,5 +146,6 @@
     "localityWork":"Localidad de Entregas Máxima",
     "update":"Actualizar",
     "backToList":"Volver al listado",
-    "create":"Crear"
+    "create":"Crear",
+    "cuitMax":"El CUIT debe ser de 11 dígitos"
 }

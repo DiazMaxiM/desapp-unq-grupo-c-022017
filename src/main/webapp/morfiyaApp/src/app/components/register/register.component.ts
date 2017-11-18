@@ -11,6 +11,7 @@ import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { ProviderService} from './../../services/providerService/provider.service';
+import { NumberValidatorsService} from './../../services/numberValidatorsService/numberValidators.service';
 declare var $:any;
 
 @Component({
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   localities:any;
   form: FormGroup;
 
-  constructor(public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder,private providerService: ProviderService){
+  constructor(private numberValidator:NumberValidatorsService, public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder,private providerService: ProviderService){
   }
 
   isFieldValid(field: string) {
@@ -69,7 +70,7 @@ export class RegisterComponent implements OnInit {
       this.form = this.formBuilder.group({
         name:[null,[Validators.required]],
         surname:[null,[Validators.required]],
-        cuit:[null,[Validators.required]],
+        cuit:['',[Validators.required, NumberValidatorsService.max(11)]],
         email:[null,[Validators.required,Validators.email]],
         street:[null,[Validators.required]],
         number:[null,[Validators.required]],
@@ -179,5 +180,9 @@ export class RegisterComponent implements OnInit {
         this.typeRegisterService.changeMessage("CLIENT");
       }
       this.router.navigate(['users']);
+    }
+
+    completeDataWithCuit(cuit: any){
+      console.log(cuit);
     }
 }

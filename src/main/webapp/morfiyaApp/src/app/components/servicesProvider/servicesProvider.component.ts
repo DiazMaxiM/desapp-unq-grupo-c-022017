@@ -23,9 +23,7 @@ export class ServicesProviderComponent implements OnInit {
   services;
   form: FormGroup;
   localities:any;
-  
 
-  @ViewChild('closeBtn') closeBtn: ElementRef;
 
   constructor(private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
   }

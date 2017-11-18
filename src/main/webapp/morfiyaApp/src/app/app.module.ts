@@ -17,6 +17,8 @@ import { UserService} from './services/userServices/user.service';
 import { ProviderService} from './services/providerService/provider.service';
 import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
+import { MenusService} from './services/menusServices/menus.service';
+import { NumberValidatorsService} from './services/numberValidatorsService/numberValidators.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
 import { HttpModule,JsonpModule} from '@angular/http';
@@ -28,11 +30,16 @@ import {FieldErrorDisplayComponent} from './components/field-error-display/field
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig(), http, options);
 }
 
 @NgModule({
@@ -71,7 +78,12 @@ export function createTranslateLoader(http: HttpClient) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService],
+  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

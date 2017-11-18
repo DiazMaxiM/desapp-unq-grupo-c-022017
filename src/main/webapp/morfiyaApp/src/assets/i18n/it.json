@@ -113,6 +113,7 @@
     "localityWork":"Massima posizione di consegna",
     "update":"Aggiornare",
     "backToList":"Torna all'elenco",
-    "create":"Creare"          
+    "create":"Creare",
+    "cuitMax":"Il CUIT deve essere di 11 cifre"         
 
 }

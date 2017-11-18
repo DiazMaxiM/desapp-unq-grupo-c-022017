@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {User} from './../../model/user';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import { MenusService} from './../../services/menusServices/menus.service';
 declare var $:any;
 @Component({
   selector: 'menus',
@@ -14,7 +15,7 @@ declare var $:any;
 })
 
 export class MenusComponent implements OnInit {
-  constructor(private router:Router,private translate: TranslateService,private utilsServices: UtilsService){
+  constructor(private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
   }
 
   selectedValue: String
@@ -22,7 +23,7 @@ export class MenusComponent implements OnInit {
   categories = [{name: "name" }, {name: "locality"}, {name: "price"},{name: "category"}];
   cotegorySearch = this.categories[0];
   listOfElements;
-  searchValueOfList;
+  searchValueOfList='';
   localities;
   categoriesJson;
 
@@ -58,6 +59,7 @@ export class MenusComponent implements OnInit {
 
   search(){
     console.log(this.selectedValue);
+    this.menusService.getMenus().subscribe(menus =>console.log(menus));
   }
 
   ngOnInit(){
