@@ -15,4 +15,8 @@ export class UtilsService {
   categories(){
     return this.http.get('/grupoc/rest/category/listCategory').map((res:Response)=>res);
   }
+
+  getUserAfipData(cuit:string){
+    return this.http.get('https://soa.afip.gob.ar/sr-padron/v2/persona/'+cuit).map((res:Response)=>res);
+  }
 }

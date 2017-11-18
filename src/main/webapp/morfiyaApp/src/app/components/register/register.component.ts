@@ -153,7 +153,6 @@ export class RegisterComponent implements OnInit {
      this.providerService.registerProvider(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
         {this.result(data)},
       err => {
-        this.form.reset();
         this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
       });
     
@@ -183,6 +182,36 @@ export class RegisterComponent implements OnInit {
     }
 
     completeDataWithCuit(cuit: any){
-      console.log(cuit);
+      var stringCuit =String(cuit);
+      if(stringCuit.length==11){
+         this.utilsServices.getUserAfipData(cuit).subscribe(data=>this.showDataOfAfip(data));
+      }
     }
+
+    showDataOfAfip(dataUser:any){
+      this.cleanValueCuit('name');
+      this.cleanValueCuit('surname');
+      this.cleanValueCuit('street');
+      this.cleanValueCuit('number');
+      if(dataUser.status==200){
+        var userJson=JSON.parse(dataUser._body);
+        var dataUser=userJson.data;
+        if('nombre' in dataUser){
+          let compleNameToSplit = dataUser.nombre;
+          this.form.controls['name'].setValue(compleNameToSplit.split(" ")[1]);
+          this.form.controls['surname'].setValue(compleNameToSplit.split(" ")[0]);
+        }
+        if('domicilioFiscal' in dataUser){
+           let completeStreet= dataUser.domicilioFiscal.direccion;
+           this.form.controls['street'].setValue(completeStreet.split(" ")[0]);
+           this.form.controls['number'].setValue(completeStreet.split(" ")[1]);
+        }
+      }
+    }
+
+    cleanValueCuit(value:string){
+      this.form.controls[value].reset();
+    }
+
+
 }
