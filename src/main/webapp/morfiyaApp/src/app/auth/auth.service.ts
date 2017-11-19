@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
+import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 
 @Injectable()
@@ -11,9 +12,11 @@ export class AuthService {
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: 'http://localhost:4200/users/',
+    redirectUri: AUTH_CONFIG.callbackURL,
     scope: 'openid profile'
   });
+
+  userProfile: any;
 
   constructor(public router: Router) {}
 
@@ -26,25 +29,32 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/users']);
+        this.router.navigate(['/profile']);
       } else if (err) {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/home']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }
 
-  public getUser():any{
-    return this.auth0.client.userInfo(localStorage.getItem("access_token"),(err,profile)=>{
-      console.log(profile)
-      return (profile)
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
     });
   }
 
   private setSession(authResult): void {
     // Set the time that the access token will expire at
-    console.log("guardo datos")
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
@@ -57,7 +67,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    this.router.navigate(['home']);
   }
 
   public isAuthenticated(): boolean {
@@ -68,3 +78,4 @@ export class AuthService {
   }
 
 }
+

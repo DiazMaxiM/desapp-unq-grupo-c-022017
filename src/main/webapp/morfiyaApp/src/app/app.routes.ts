@@ -7,9 +7,13 @@ import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CallbackComponent } from './callback/callback.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo:'/home', pathMatch:'full'},
+    { path: 'profile', component: ProfileComponent },
+    { path: 'callback', component: CallbackComponent },
     { path: 'home', component: HomeComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'menus', component: MenusComponent},

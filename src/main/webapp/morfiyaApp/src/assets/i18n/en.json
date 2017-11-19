@@ -150,5 +150,6 @@
     "backToList":"Back to list",
     "create":"Create",
     "newService":"New service",
-    "cuitMax":"The CUIT must be 11 digits"
+    "cuitMax":"The CUIT must be 11 digits",
+    "loginAuth0":"Login by Auth0"
 }

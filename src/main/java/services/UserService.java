@@ -112,5 +112,17 @@ public class UserService extends GenericService<User> {
 		User user = repo.findById(id);
 		return new UserDataJson(user);
 	}
+	
+	@Transactional
+	public User loggingUserAuth0(String mail) throws InvalidLoggingException {
+		UserRepository repo = (UserRepository) this.getRepository();
+		List<User> user = repo.findByEmail(mail);
+
+		if (user.size() == 1) {
+			return user.get(0);
+		}
+		throw new InvalidLoggingException("Error en el logging");
+
+	}
 
 }

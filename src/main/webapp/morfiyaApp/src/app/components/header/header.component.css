@@ -30,3 +30,8 @@ input[type="number"] {
  	cursor:pointer;
  	text-shadow: 2px 2px #000;
  }
+
+ .button-blue-dark{
+	background-color: rgb(234, 83, 35);
+	color: white;
+ }

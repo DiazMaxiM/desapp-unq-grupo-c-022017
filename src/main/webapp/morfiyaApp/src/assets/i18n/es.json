@@ -147,5 +147,6 @@
     "update":"Actualizar",
     "backToList":"Volver al listado",
     "create":"Crear",
-    "cuitMax":"El CUIT debe ser de 11 dígitos"
+    "cuitMax":"El CUIT debe ser de 11 dígitos",
+    "loginAuth0":"Ingresar por Auth0"
 }

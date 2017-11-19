@@ -1,0 +1,19 @@
+<header></header>
+<div id="profileUser" style="display:none;"  class="col-12">
+  <div class="col-12 col-sm-10 col-lg-8 mx-auto backgroundWhite">
+      <div class="panel panel-default profile-area">
+          <div class="panel-heading">
+              <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+          </div>
+          <div class="panel-body">
+              <h2 class="titlePrincipal">{{'tituloPantallaPrincipal'|translate}}</h2>
+                   <h4 class="userGmail">{{ profile.name}}</h4>
+                   <div class="col-12 col-sm-12 col-lg-3 mx-auto non-lateral-padding">
+                        <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                            <button type="button" class="btn btn-lg squareButton componentSearch"  data-dismiss="modal" data-toggle="modal" data-target="#modalRegister">{{ 'registrar' | translate }}</button>
+                        </div>
+                   </div>
+          </div>
+        </div>
+  </div>
+</div>

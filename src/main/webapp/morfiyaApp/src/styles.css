@@ -20,12 +20,6 @@ body {
 	padding-left: 0px !IMPORTANT;
 }
 
-.squareButton{ 
-	color: white;
-	background-color: orange;
-	width: 100%;
-
-}
 
 .login{
 	background-color: white;
@@ -36,11 +30,6 @@ body {
 	width:100% !IMPORTANT;
 	border-radius: 0px !IMPORTANT;
  } 
- 
- .buttonLogin{
-	 color: white;
-	 background-color: orange;
- }
  
  @media (max-width: 991px) { 
 	.componentSearch{

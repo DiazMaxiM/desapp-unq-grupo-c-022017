@@ -29,8 +29,7 @@ export class EditUserComponent implements OnInit {
   localities;
 
   constructor(private formBuilder: FormBuilder,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService, public auth:AuthService){
-    this.auth.handleAuthentication()    
-    console.log(this.auth.getUser())
+    
   }
   
     ngOnInit() {

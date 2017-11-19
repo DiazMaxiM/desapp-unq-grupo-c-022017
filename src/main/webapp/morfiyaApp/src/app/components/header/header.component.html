@@ -14,22 +14,25 @@
                     <a id="register" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalRegister">{{ 'registrar' | translate }}</a>
                 </li>
                 <li class="nav-item active">
-                    <a id="backToHome" class="nav-link titulo hide-link" routerLink="/home">{{ 'volver' | translate }}</a>
-                </li>
-                <li class="nav-item">
                     <a id="edit" routerLink="/users/edit" class="nav-link titulo hide-link">{{ 'editarDatos' | translate }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a id="balance" routerLink="/users/balance" class="nav-link titulo hide-link">{{ 'consultarSaldo' | translate }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a id="order" class="nav-link titulo hide-link">{{ 'misPedidos' | translate }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a id="services" routerLink="/users/services" class="nav-link titulo hide-link">{{ 'myServices' | translate }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a id="close" class="nav-link titulo hide-link" data-toggle="modal" data-target="#loginOutModal">{{ 'cerrarSesion' | translate }}</a>
+                </li>
+                <li class="nav-item active">
+                    <a id="backToHome" class="nav-link titulo hide-link" routerLink="/home">{{ 'volver' | translate }}</a>
+                </li>
+                <li class="nav-item active">
+                    <a *ngIf="auth.isAuthenticated()" class="nav-link titulo" (click)="auth.logout()">{{ 'cerrarSesion' | translate }}</a>
                 </li>
             </ul>
             <div class="lang-bar">
@@ -46,14 +49,14 @@
         <div class="modal-content">
             <div class="modal-header homeHeader">
                 <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa {{ 'ingresar' | translate }}</h5>
-                <button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
-                      Log In
-                  </button>
                 <button type="button" (click)="resetForm()" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <div *ngIf="!auth.isAuthenticated()" class="col-12 non-lateral-padding">
+                     <button (click)="auth.login()" class="btn button-blue-dark btn-block">{{ 'loginAuth0' | translate }}</button>
+                </div>
                 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
                     <div class="form-group">
                         <alert></alert>

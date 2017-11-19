@@ -1,0 +1,31 @@
+.profile-area img {
+  max-width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.panel-body h3 {
+  margin-top: 0;
+}
+
+.backgroundWhite{
+  background-color: white;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.userGmail{
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.squareButton {
+  background-color: #f52f41;
+  color: white;
+}
+
+.titlePrincipal {
+  text-align: center;
+  padding: 15px;
+  color: #f52f41;
+}

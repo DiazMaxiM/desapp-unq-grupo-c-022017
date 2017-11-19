@@ -188,5 +188,18 @@ public class UsersRest {
 	public Response getUser(@PathParam("id") final String id) {
 		return Response.ok(this.userService.getUserData(id)).build();
 	}
+	
+	@GET
+	@Path("/loggingUserAuth/{mail}")
+	@Produces("application/json")
+	public Response loggingUserAuth0(@PathParam("mail") final String mail) {
+		try {
+			User user = userService.loggingUserAuth0(mail);
+			return Response.ok(new UserJson(user.getId(), user.getName(), user.getTypeUser())).build();
+		} catch (InvalidLoggingException e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+	}
 
 }

@@ -7,6 +7,7 @@ import { AlertService } from '../../alert/services/index';
 import {User} from './../../model/user';
 import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
+import { AuthService } from './../../auth/auth.service'
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { UtilsService} from './../../services/utilsServices/utils.service';
@@ -27,8 +28,9 @@ export class RegisterComponent implements OnInit {
   typeRegister: String;
   localities:any;
   form: FormGroup;
+  profile: any;
 
-  constructor(private numberValidator:NumberValidatorsService, public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder,private providerService: ProviderService){
+  constructor(public auth: AuthService,private numberValidator:NumberValidatorsService, public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,private formBuilder: FormBuilder,private providerService: ProviderService){
   }
 
   isFieldValid(field: string) {
@@ -64,7 +66,7 @@ export class RegisterComponent implements OnInit {
       this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
       $('#login').hide();
       $('#register').hide();
-      $('#backToHome').show();
+      $('#backToHome').css('display','block');
       this.typeRegisterService.currentMessage.subscribe(message => this.typeRegister = message);
       this.checkTypeRegister();
       this.form = this.formBuilder.group({
@@ -84,6 +86,7 @@ export class RegisterComponent implements OnInit {
         password:[null,[Validators.required]],
         repassword:[null,[Validators.required]]        
       },{validator: this.checkIfMatchingPasswords('password', 'repassword')})
+      this.profileUserGmail();
     }
 
     checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
@@ -212,6 +215,22 @@ export class RegisterComponent implements OnInit {
     cleanValueCuit(value:string){
       this.form.controls[value].reset();
     }
+
+    profileUserGmail(){
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile;   
+        this.autocompleteInfoWithProfileUser();
+      }
+    }
+    
+
+    autocompleteInfoWithProfileUser(){
+        this.form.controls['name'].setValue(this.profile.given_name);
+        this.form.controls['surname'].setValue(this.profile.family_name);
+        this.form.controls['email'].setValue(this.profile.nickname+'@gmail.com');
+
+    }
+    
 
 
 }

@@ -29,10 +29,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
 import { AuthService } from './auth/auth.service';
-import { CallbackComponent } from './callback/callback.component';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
-
+import { ProfileComponent } from './profile/profile.component';
+import { CallbackComponent } from './callback/callback.component';
 import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -57,7 +57,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HeaderComponent,
     ServicesProviderComponent   ,
     CallbackComponent,
-    CurrencyFormat        
+    CurrencyFormat,
+    ProfileComponent        
   ],
   imports: [
     BrowserModule,

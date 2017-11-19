@@ -13,6 +13,10 @@ export class UserService {
     return this.http.get('/grupoc/rest/users/loggingUser/'+email+'/'+password).map((res:Response)=>res);            
   }
 
+  loginAuth0(email: String){
+    return this.http.get('/grupoc/rest/users/loggingUserAuth/'+email).map((res:Response)=>res);            
+  }
+
   balance(id: String){
     return this.http.get('/grupoc/rest/users/getBalanceUser/'+id).map((res:Response)=>res.json());
   }
