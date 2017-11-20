@@ -43,7 +43,7 @@
                                             <label style="text-align: center">{{menu.menuName}}</label>
                                             <br>
                                             <label> {{ 'categoria' | translate }} {{menu.menuCategory|translate}}</label> <br>
-                                            <label> {{ 'price' | translate }} {{menu.menuPrice.value}}</label>
+                                            <label> {{ 'price' | translate }} {{menu.menuPrice.value|currencyFormat:currency}}</label>
                                         </div>
                                         <div class="col-xs-8 col-sm-4 col align-self-end">
                                             <button (click)="viewMenu()" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
