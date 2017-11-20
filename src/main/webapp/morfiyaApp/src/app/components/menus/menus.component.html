@@ -46,7 +46,16 @@
                                             <label> {{ 'price' | translate }} {{menu.menuPrice.value|currencyFormat:currency}}</label>
                                         </div>
                                         <div class="col-xs-8 col-sm-4 col align-self-end">
-                                            <button (click)="viewMenu()" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
+                                            <div *ngIf="user.typeUser=='USER'" class="col-12">
+                                                <button data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
+                                            </div> 
+                                            <div *ngIf="user.typeUser=='CLIENT'" class="col-12">
+                                                <button  (click)="viewMenu()" type="button" class="client btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
+                                            </div>  
+                                             <div *ngIf="user.typeUser=='PROVIDER'" class="col-12">
+                                                <button (click)="viewMenu()" type="button" class="provider btn btn-lg squareButton componentSearch"> {{ 'editar' | translate }} </button>
+                                             </div>     
+         
                                         </div>
                                 </div>
                         </div>

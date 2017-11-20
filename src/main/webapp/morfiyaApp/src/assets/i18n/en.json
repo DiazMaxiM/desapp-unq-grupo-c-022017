@@ -164,5 +164,7 @@
     "previous":"previous",
     "next":"next" ,
     "notResult": "No results found",
-    "searchMenu":"Search menu"
+    "searchMenu":"Search menu",
+    "verMas":"See more",
+    "comprar":"Buy"   
 }

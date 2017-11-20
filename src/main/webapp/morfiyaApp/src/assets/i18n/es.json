@@ -160,5 +160,8 @@
     "updateSearch":"Actualizar búsqueda",
     "previous":"anterior",
     "next":"siguiente",
-    "searchMenu":"Buscar menú"
+    "searchMenu":"Buscar menú",
+    "verMas":"Ver más",
+    "comprar":"Comprar",
+    "notResult":"No se encontraron resultados"
 }

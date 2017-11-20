@@ -13,7 +13,6 @@ declare var $:any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit{
-  @ViewChild('closeBtn') closeBtn: ElementRef;
   user :String
   userCurrent: User;
   idUser : String;
@@ -25,7 +24,6 @@ export class UserComponent implements OnInit{
   }
   
   ngOnInit() {
-    console.log(this.auth.isAuthenticated())
     this.messageService.currentMessage.subscribe(message => this.message = message);
     this.user = this.message.name;
     this.idUser = this.message.id;

@@ -11,6 +11,7 @@ import { UtilsService} from './../../services/utilsServices/utils.service';
 import { MenusService} from './../../services/menusServices/menus.service';
 import { LanguageService} from './../../services/languageService/languageService.service';
 import { ListMenusService} from './../../services/listMenusService/listMenus.service';
+import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 declare var $:any;
 declare var currency: string;
 @Component({
@@ -23,21 +24,35 @@ export class MenusComponent implements OnInit {
   p: number = 1;
   menus;
   currency:String;
-  constructor(public languague:LanguageService ,public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
+  user:User=null;
+  constructor(public messageService:MessageService ,public languague:LanguageService ,public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
+    
   }
 
-  
-
   ngOnInit(){
+          
     this.listMenuService.currentMessage.subscribe(data=>this.menus=data);
     this.languague.currentMessage.subscribe(message =>this.currency=message);
+    this.messageService.currentMessage.subscribe(message => this.resultData(message));
+  }
+  
+  resultData(data){
+    this.user=data
+    if(this.user.typeUser!=='USER'){
+      $('#login').hide();
+      $('#register').hide();
+    }
   }
 
   viewMenu(){
-    this.router.navigate(['menu']);
+    
   }
 
   updateSearch(){
-    this.router.navigate(['home']);
+    if(this.user.typeUser=="CLIENT"){
+      this.router.navigate(['users/search']);
+    }else{
+      this.router.navigate(['home']);
+    }
   }
 }
