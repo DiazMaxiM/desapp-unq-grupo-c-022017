@@ -157,5 +157,7 @@
     "VEGAN":"Vegano",
     "BURGER":"Hamburguesa",
     "allMenus":"Todos los menús",
-    "updateSearch":"Actualizar búsqueda"
+    "updateSearch":"Actualizar búsqueda",
+    "previous":"anterior",
+    "next":"siguiente"
 }

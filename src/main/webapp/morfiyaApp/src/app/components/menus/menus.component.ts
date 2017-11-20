@@ -16,10 +16,12 @@ declare var $:any;
 })
 
 export class MenusComponent implements OnInit {
+  p: number = 1;
+  menus;
   constructor(public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
   }
 
-  menus;
+  
 
   ngOnInit(){
     this.listMenuService.currentMessage.subscribe(data=>this.menus=data);

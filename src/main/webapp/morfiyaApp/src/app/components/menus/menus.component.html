@@ -1,6 +1,8 @@
-<header></header>
+<div class="col-12 non-lateral-padding">
+       <header></header>
+</div>
 <div  class="col-12">
-        <div class=" row col-12 col-sm-12 col-lg-10 mx-auto background-Search contenedor">
+        <div class=" row col-12 col-sm-12 col-lg-8 mx-auto background-Search contenedor">
                 <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding updateSearch">
                         <div class="col-12 col-sm-6 col-lg-4 mx-auto non-lateral-padding">
                             <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
@@ -10,7 +12,7 @@
                         </div>
                 </div>
                 <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding">
-                    <div *ngFor="let menu of menus">
+                    <div *ngFor="let menu of menus | paginate: { itemsPerPage: 20, currentPage: p }">
                         <div class="container-fluid col-12 list-group-item-action menu border-gray">
                                 <div class="row">
                                         <div class="col-xs-8 col-sm-4">
@@ -47,6 +49,16 @@
                                             <button (click)="viewMenu()" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
                                         </div>
                                 </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="col-8 col-sm-6 col-lg-6 mx-auto">
+                             <pagination-controls 
+                             (pageChange)="p = $event"
+                             autoHide="true"
+                             previousLabel="{{'previous'|translate}}"
+                             nextLabel="{{'next'|translate}}">
+                            </pagination-controls>
                         </div>
                     </div>
                 </div>

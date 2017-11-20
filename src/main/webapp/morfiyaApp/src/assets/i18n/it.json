@@ -7,7 +7,9 @@
     "localidad": "Località",
     "precio": "Prezzo:",
     "buscarPor": "Cerca per",
+    "verMenu": "Vedi menu",
     "buscar": "Cercare",
+    "categoria": "Categoria: ",
     "nombreDeUsuario": "Nome utente",
     "nombreDeUsuarioRequerido": "Nome utente obbligatorio",
     "contrasenia": "Password",
@@ -124,6 +126,8 @@
     "VEGAN":"Vegano",
     "BURGER":"Hamburger",
     "allMenus":"Tutti i menu",
-    "updateSearch":"Aggiorna ricerca"     
+    "updateSearch":"Aggiorna ricerca",
+    "previous":"precedente",
+    "next":"seguente"     
 
 }

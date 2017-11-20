@@ -160,5 +160,7 @@
     "VEGAN":"Vegan",
     "BURGER":"Burger",
     "allMenus":"All menus",
-    "updateSearch":"Update search"
+    "updateSearch":"Update search",
+    "previous":"previous",
+    "next":"next"  
 }

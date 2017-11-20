@@ -131,6 +131,18 @@ public class DataFakeRest {
 		Menu menu10 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
 		Menu menu11 = new MenuBuilder().withMenuCategory(Category.BURGER).build();
 		Menu menu12 = new MenuBuilder().withMenuCategory(Category.BEER).build();
+		Menu menu13 = new MenuBuilder().withMenuService(service).withMenuCategory(Category.VEGAN).build();
+		Menu menu14 = new MenuBuilder().withMenuCategory(Category.BEER).build();
+		Menu menu15 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
+		Menu menu16 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
+		Menu menu17 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
+		Menu menu18 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
+		Menu menu19 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
+		Menu menu20 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
+		Menu menu21 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
+		Menu menu22 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
+		Menu menu23 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
+		Menu menu24 = new MenuBuilder().withMenuCategory(Category.BEER).build();
 
 		menuService.save(menu1);
 		menuService.save(menu2);
@@ -144,6 +156,18 @@ public class DataFakeRest {
 		menuService.save(menu10);
 		menuService.save(menu11);
 		menuService.save(menu12);
+		menuService.save(menu13);
+		menuService.save(menu14);
+		menuService.save(menu15);
+		menuService.save(menu16);
+		menuService.save(menu17);
+		menuService.save(menu18);
+		menuService.save(menu19);
+		menuService.save(menu20);
+		menuService.save(menu21);
+		menuService.save(menu22);
+		menuService.save(menu23);
+		menuService.save(menu24);
 	
 
 		return Response.ok().build();
