@@ -40,6 +40,7 @@ backToHome(){
 
 showInformationClient(){
    $('#orders').show();
+   $('#searchMenu').show();
 
 }
 

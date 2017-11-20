@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { SearchMenuComponent } from './components/searchMenu/searchMenu.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {appRoutes} from './app.routes'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -60,6 +61,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ServicesProviderComponent   ,
     CallbackComponent,
     CurrencyFormat,
+    SearchMenuComponent,
     ProfileComponent        
   ],
   imports: [

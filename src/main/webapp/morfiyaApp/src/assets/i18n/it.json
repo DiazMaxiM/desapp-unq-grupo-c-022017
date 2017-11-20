@@ -129,6 +129,7 @@
     "updateSearch":"Aggiorna ricerca",
     "previous":"precedente",
     "next":"seguente",
-    "notResult": "Nessun risultato trovato"   
+    "notResult": "Nessun risultato trovato",
+    "searchMenu":"Menu di ricerca"   
 
 }

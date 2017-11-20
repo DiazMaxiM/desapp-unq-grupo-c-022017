@@ -163,5 +163,6 @@
     "updateSearch":"Update search",
     "previous":"previous",
     "next":"next" ,
-    "notResult": "No results found"
+    "notResult": "No results found",
+    "searchMenu":"Search menu"
 }

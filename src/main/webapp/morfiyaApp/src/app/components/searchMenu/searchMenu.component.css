@@ -1,0 +1,184 @@
+.homeHeader{
+	background-color: #f52f41;
+	margin-bottom: 10px;
+}
+
+.titulo{
+	color: white !IMPORTANT;
+}
+
+.subtitulo{
+	background-color: crimson;
+	text-align: center;
+    color: white;
+    margin: 5px;
+}
+
+.componentSearch{
+   height: 50px !IMPORTANT;
+   width:100% !IMPORTANT;
+   border-radius: 0px !IMPORTANT;
+} 
+
+.buttonLogin{
+	color: white;
+	background-color: orange;
+}
+
+@media (max-width: 991px) { 
+   .componentSearch{
+   height: 50px !IMPORTANT;
+   width:100% !IMPORTANT;
+   border-radius: 0px !IMPORTANT; 
+   margin-bottom: 5px; 
+   }
+}
+
+a:hover,
+button:hover,
+select:hover {
+   cursor:pointer;
+}
+
+a:hover{
+   text-shadow: 2px 2px 2px #000;
+}
+
+.lang-bar {
+   color: white;
+}
+
+.homeHeader{
+    background-color: #f52f41;
+    margin-bottom: 10px;
+ }
+ 
+ .titulo{
+    color: white !IMPORTANT;
+ }
+ 
+ .subtitulo{
+    background-color: crimson;
+    text-align: center;
+    color: white
+ }
+ 
+ .componentSearch{
+    height: 50px !IMPORTANT;
+    width:100% !IMPORTANT;
+    border-radius: 0px !IMPORTANT;
+    margin-bottom: 10px; 
+ } 
+ 
+ .buttonLogin{
+    color: white;
+    background-color: orange;
+ }
+ 
+ @media (max-width: 991px) { 
+    .componentSearch{
+    height: 50px !IMPORTANT;
+    width:100% !IMPORTANT;
+    border-radius: 0px !IMPORTANT; 
+    margin-bottom: 5px; 
+    }
+ }
+ 
+ a:hover,
+ button:hover,
+ select:hover {
+    cursor:pointer;
+ }
+ 
+ a:hover{
+    text-shadow: 2px 2px 2px #000;
+ }
+ 
+ .lang-bar {
+    color: white;
+ }
+ 
+ .page-link{
+    color:red;
+ }
+ 
+ .service{
+     padding-top: 15px; 
+     margin-bottom: 15px;
+     padding-bottom: 15px;
+  }
+ 
+ .container-fluid{
+    background-color: #FFFFFF;
+    width: 75%;
+    padding: 1%;
+    margin-bottom: 1%;
+ }
+ 
+ .image-menu {
+    max-width: 100%;
+    border: solid;
+ }
+ 
+ #pagination{
+    margin-top: 2%;
+    width: 87%;
+ }
+ 
+ .button-menu{
+    width: 60% !IMPORTANT;
+ }
+ 
+ ul {
+    list-style: none;
+ }
+ 
+ .details-service {
+    color: #FFF;
+    font-size: 0.9rem;
+ }
+ 
+ .hideItem{
+     display: none;
+ }
+ 
+ .titleSearch{
+     text-align: center;
+     padding: 15px;
+     color: #f52f41;;
+ }
+ 
+ .background-Search{
+     background-color: #FFF;
+     padding: 20px;
+ }
+ 
+ .squareButton {
+   background-color: #f52f41;
+   color: white;
+ }
+ 
+ .border-gray{
+     border: 1px solid transparent;
+     border-color: #E5E5E5;
+ }
+ 
+ .subtitulo{
+     background-color: crimson;
+     text-align: center;
+     color: white;
+     margin: 5px;
+ }
+ 
+ .updateSearch{
+     padding: 15px;
+ }
+ 
+ .refUpdate{
+    color: crimson !important;
+    font-size: 20px;
+ }
+
+ .information{
+    text-align: center;
+  }

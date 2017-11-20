@@ -1,0 +1,53 @@
+<div  class="col-12">
+        <div class="col-12 col-sm-8 col-lg-8 mx-auto background-Search contenedor">
+                <div class="col-12">
+                        <div class="titleSearch col-12 col-sm-12 col-md-8 mx-auto non-lateral-padding">
+                            <h3>{{'titleSearch'|translate}}</h3>
+                        </div>
+                </div>
+            <div class="col-12">
+                    <div class="col-12 col-sm-4 col-lg-3 mx-auto non-lateral-padding">
+                        <select [ngModel]="cotegorySearch" (ngModelChange)="onChangeObj($event)" class="custom-select componentSearch">
+                            <option [ngValue]="i" *ngFor="let i of categories">{{i.name|translate}}</option>
+                        </select>
+                    </div>
+            </div>
+            <div id="searchContainer" class="row col-12 col-sm-12 col-lg-9 mx-auto">
+                    <div class="col-12 col-sm-12 col-lg-7 non-lateral-padding">
+                            <div id="listToSelector" class="col-12 non-lateral-padding col-12 hideItem">
+                                    <select [ngModel]="searchValue" (ngModelChange)="onChangeItemSelect($event)" class="custom-select componentSearch">
+                                            <option [ngValue]="i" *ngFor="let i of listOfElements">{{i|translate}}</option>
+                                    </select>
+                            </div>
+                            <div id="search" class="col-12  non-lateral-padding">
+                                    <input [(ngModel)]="menuName" type="text"  class="form-control componentSearch" placeholder="" aria-label="">
+                            </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-4 non-lateral-padding">
+                            <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                                <button type="button" class="btn btn-lg squareButton componentSearch" (click)="search()">{{ 'buscar' | translate }}</button>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal update-->
+<div class="modal" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header homeHeader">
+                    <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="information">{{'notResult'|translate}}</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">{{'aceptar'| translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>

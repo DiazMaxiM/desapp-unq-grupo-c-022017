@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { SearchMenuComponent } from './components/searchMenu/searchMenu.component';
 import { UserComponent } from './components/users/user.component';
 import { EditUserComponent } from './components/editUser/editUser.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
@@ -31,6 +32,10 @@ export const appRoutes: Routes = [
       {
         path: 'services',
         component: ServicesProviderComponent
+      },
+      {
+        path: 'search',
+        component: SearchMenuComponent
       },
     ]},
     // otherwise redirect to home
