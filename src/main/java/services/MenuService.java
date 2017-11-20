@@ -13,7 +13,7 @@ public class MenuService extends GenericService<Menu> {
 
 	@Transactional
 	public List<Menu> listMenuForName(String name) {
-		MenuRepository repo = (MenuRepository) this.getRepository();
+		MenuRepository repo = (MenuRepository) this.getRepository(); 
 		return repo.findMenuForName(name);
 	}
 
@@ -27,5 +27,10 @@ public class MenuService extends GenericService<Menu> {
 	public  List<Menu> listMenuForCategory(String category) {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findMenuForCategory(category);
+	}
+
+	public  List<Menu> listMenuForLocality(String locality) {
+		MenuRepository repo = (MenuRepository) this.getRepository();
+		return repo.findMenuForLocality(locality);
 	}
 }

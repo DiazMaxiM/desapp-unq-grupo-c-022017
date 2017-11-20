@@ -44,8 +44,12 @@ export class MenusComponent implements OnInit {
     }
   }
 
-  viewMenu(){
-    
+  viewMenu(menu){
+    console.log(menu)
+  }
+
+  editMenu(menu){
+
   }
 
   updateSearch(){

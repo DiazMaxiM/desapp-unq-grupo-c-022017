@@ -50,10 +50,10 @@
                                                 <button data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
                                             </div> 
                                             <div *ngIf="user.typeUser=='CLIENT'" class="col-12">
-                                                <button  (click)="viewMenu()" type="button" class="client btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
+                                                <button  (click)="viewMenu(menu)" type="button" class="client btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
                                             </div>  
                                              <div *ngIf="user.typeUser=='PROVIDER'" class="col-12">
-                                                <button (click)="viewMenu()" type="button" class="provider btn btn-lg squareButton componentSearch"> {{ 'editar' | translate }} </button>
+                                                <button (click)="editMenu(menu)" type="button" class="provider btn btn-lg squareButton componentSearch"> {{ 'editar' | translate }} </button>
                                              </div>     
          
                                         </div>
