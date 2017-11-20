@@ -52,6 +52,12 @@ a:hover{
    color:red;
 }
 
+.service{
+    padding-top: 15px; 
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+ }
+
 .container-fluid{
    background-color: #FFFFFF;
    width: 75%;
@@ -100,4 +106,26 @@ ul {
 .squareButton {
   background-color: #f52f41;
   color: white;
+}
+
+.border-gray{
+    border: 1px solid transparent;
+    border-color: #E5E5E5;
+}
+
+.subtitulo{
+	background-color: crimson;
+	text-align: center;
+    color: white;
+    margin: 5px;
+}
+
+.updateSearch{
+    padding: 15px;
+}
+
+.refUpdate{
+   color: white !important;
+   font-size: 20px;
+   text-align: center;
 }

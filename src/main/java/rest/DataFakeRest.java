@@ -38,6 +38,7 @@ import menuExceptions.InvalidMinimumPriceOfMenusToBuyException;
 import menuExceptions.InvalidPricesException;
 import menuExceptions.InvalidStartDateOfferMenuException;
 import model.Address;
+import model.Category;
 import model.Locality;
 import model.MapPosition;
 import model.Menu;
@@ -118,9 +119,32 @@ public class DataFakeRest {
 
 		providerService.save(provider);
 
-		Menu menu = new MenuBuilder().withMenuService(service).build();
+		Menu menu1 = new MenuBuilder().withMenuService(service).build();
+		Menu menu2 = new MenuBuilder().withMenuCategory(Category.BEER).build();
+		Menu menu3 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
+		Menu menu4 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
+		Menu menu5 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
+		Menu menu6 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
+		Menu menu7 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
+		Menu menu8 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
+		Menu menu9 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
+		Menu menu10 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
+		Menu menu11 = new MenuBuilder().withMenuCategory(Category.BURGER).build();
+		Menu menu12 = new MenuBuilder().withMenuCategory(Category.BEER).build();
 
-		menuService.save(menu);
+		menuService.save(menu1);
+		menuService.save(menu2);
+		menuService.save(menu3);
+		menuService.save(menu4);
+		menuService.save(menu5);
+		menuService.save(menu6);
+		menuService.save(menu7);
+		menuService.save(menu8);
+		menuService.save(menu9);
+		menuService.save(menu10);
+		menuService.save(menu11);
+		menuService.save(menu12);
+	
 
 		return Response.ok().build();
 	}

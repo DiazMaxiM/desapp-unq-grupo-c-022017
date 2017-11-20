@@ -9,7 +9,6 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  @ViewChild('closeBtn') closeBtn: ElementRef;
   
   constructor(private router:Router){}
 

@@ -5,7 +5,7 @@
     "eligeCriterioDeBusqueda": "Choose search criteria",
     "nombre": "Name",
     "localidad": "Locality",
-    "precio": "Price",
+    "precio": "Price:",
     "buscarPor": "Search for",
     "buscar": "Search",
     "nombreDeUsuario": "UserName",
@@ -151,5 +151,14 @@
     "create":"Create",
     "newService":"New service",
     "cuitMax":"The CUIT must be 11 digits",
-    "loginAuth0":"Login by Auth0"
+    "loginAuth0":"Login by Auth0",
+    "PIZZA":"Pizza",
+    "BEER":"Beer",
+    "SUSHI":"Sushi",
+    "EMPANADAS":"Empanadas",
+    "GREEN":"Green",
+    "VEGAN":"Vegan",
+    "BURGER":"Burger",
+    "allMenus":"All menus",
+    "updateSearch":"Update search"
 }

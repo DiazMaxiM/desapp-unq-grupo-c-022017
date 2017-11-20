@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {User} from './../../model/user';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { MenusService} from './../../services/menusServices/menus.service';
+import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 declare var $:any;
 @Component({
   selector: 'menus',
@@ -15,65 +16,20 @@ declare var $:any;
 })
 
 export class MenusComponent implements OnInit {
-  constructor(private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
+  constructor(public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
   }
 
-  selectedValue: String
-  searchs
-  categories = [{name: "name" }, {name: "locality"}, {name: "price"},{name: "category"}];
-  cotegorySearch = this.categories[0];
-  listOfElements;
-  searchValueOfList='';
-  localities;
-  categoriesJson;
-
-  onChangeObj(typeSearch) {
-    this.cotegorySearch = typeSearch;
-    this.showTypeSearch(typeSearch);
-  }
-
-  showTypeSearch(typeSearch){
-    if(typeSearch.name=="locality"){
-      this.showList(this.localities);
-    }else{
-      if(typeSearch.name=='category'){
-         this.showList(this.categoriesJson);
-      }else{
-        this.hideList();
-      }
-    }
-
-  }
-
-  showList(list:any){
-    $('#listToSelector').show();
-    this.listOfElements=list;
-    this.searchValueOfList=list[0];  
-    $('#search').hide();  
-  }
-
-  hideList(){
-    $('#listToSelector').hide();   
-    $('#search').show();      
-  }
-
-  search(){
-    console.log(this.selectedValue);
-    this.menusService.getMenus().subscribe(menus =>console.log(menus));
-  }
+  menus;
 
   ngOnInit(){
-    this.utilsServices.localities().subscribe(data =>this.resultLocalities(data))
-    this.utilsServices.categories().subscribe(data =>this.resultCategories(data))
+    this.listMenuService.currentMessage.subscribe(data=>this.menus=data);
   }
 
-  resultLocalities(data){
-    console.log(data._body);
-    this.localities= JSON.parse(data._body);
+  viewMenu(){
+    this.router.navigate(['menu']);
   }
 
-  resultCategories(data){
-    console.log(data._body);
-    this.categoriesJson= JSON.parse(data._body);
+  updateSearch(){
+    this.router.navigate(['home']);
   }
 }

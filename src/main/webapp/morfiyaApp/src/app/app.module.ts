@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
+import { ListMenusService} from './services/listMenusService/listMenus.service';
 import { ProviderService} from './services/providerService/provider.service';
 import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
@@ -79,7 +80,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ),
       ],
 
-  providers: [UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+  providers: [ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

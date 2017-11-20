@@ -1,85 +1,54 @@
-<div class="col-12">
-    <div class="col-12 col-sm-8 col-lg-8 mx-auto background-Search contenedor">
-            <div class="col-12">
-                    <div class=" titleSearch col-12 col-sm-12 col-md-8 mx-auto non-lateral-padding">
-                        <h3>{{'titleSearch'|translate}}</h3>
+<header></header>
+<div  class="col-12">
+        <div class=" row col-12 col-sm-12 col-lg-10 mx-auto background-Search contenedor">
+                <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding updateSearch">
+                        <div class="col-12 col-sm-6 col-lg-4 mx-auto non-lateral-padding">
+                            <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                                    <button type="button" (click)="updateSearch()" class="btn refUpdate squareButton componentSearch" (click)="search()">{{ 'updateSearch' | translate }}</button>
+                            </div>                      
+
+                        </div>
+                </div>
+                <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding">
+                    <div *ngFor="let menu of menus">
+                        <div class="container-fluid col-12 list-group-item-action menu border-gray">
+                                <div class="row">
+                                        <div class="col-xs-8 col-sm-4">
+                                            <div *ngIf="menu.menuCategory=='BURGER'">
+                                                    <img class="image-menu" src="https://s3-eu-west-1.amazonaws.com/colectivia-static/deal_images/bd9/277/ca4/88b/d2d/bb1/29828/flat_standard/hamburguesa_puiana2.jpg?1395005491" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='BEER'">
+                                                    <img class="image-menu" src="https://estaticos.muyinteresante.es/media/cache/680x_thumb/uploads/images/gallery/5548e20641444aef0ed38df6/beneficios-cerveza1.jpg" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='SUSHI'">
+                                                    <img class="image-menu" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM8KglvjxcVrKMQpxEc8nWPDmMVlLDDJQQcjblmsC0TJN9FG-zKQ" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='VEGAN'">
+                                                    <img class="image-menu" src="http://www.giordesign.com.mx/ciudadypoder/wp-content/uploads/2016/11/Comida-vegana-dieta-semanal-1024x563.jpg" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='GREEN'">
+                                                    <img class="image-menu" src="https://static.pexels.com/photos/162700/salad-frisch-food-diet-162700.jpeg" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='PIZZA'">
+                                                    <img class="image-menu" src="http://static0.misionesonline.net/wp-content/uploads/2016/12/f-6svg7035tej0.jpg" alt="Image menu">
+                                            </div>
+                                            <div *ngIf="menu.menuCategory=='EMPANADAS'">
+                                                    <img class="image-menu" src="https://www.mexicanplease.com/wp-content/uploads/2017/05/beef-cheese-empanadas-after-cooking-taking-bite.jpg" alt="Image menu">
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="col-xs-8 col-sm-4">
+                                            <label style="text-align: center">{{menu.menuName}}</label>
+                                            <br>
+                                            <label> {{ 'categoria' | translate }} {{menu.menuCategory|translate}}</label> <br>
+                                            <label> {{ 'price' | translate }} {{menu.menuPrice.value}}</label>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-4 col align-self-end">
+                                            <button (click)="viewMenu()" type="button" class="btn btn-lg squareButton componentSearch"> {{ 'verMenu' | translate }} </button>
+                                        </div>
+                                </div>
+                        </div>
                     </div>
-            </div>
-        <div class="col-12">
-                <div class="col-12 col-sm-4 col-lg-3 mx-auto non-lateral-padding">
-                    <select [ngModel]="cotegorySearch" (ngModelChange)="onChangeObj($event)" class="custom-select componentSearch">
-                        <option [ngValue]="i" *ngFor="let i of categories">{{i.name|translate}}</option>
-                    </select>
                 </div>
-        </div>
-        <div class="row col-12 col-sm-12 col-lg-9 mx-auto">
-                <div class="col-12 col-sm-12 col-lg-7 non-lateral-padding">
-                        <div id="listToSelector" class="col-12 non-lateral-padding col-12 hideItem">
-                                <select [ngModel]="searchValueOfList"  class="custom-select componentSearch">
-                                        <option [ngValue]="i" *ngFor="let i of listOfElements">{{i}}</option>
-                                </select>
-                        </div>
-                        <div id="search" class="col-12  non-lateral-padding">
-                                <input type="text" class="form-control componentSearch" placeholder="" aria-label="">
-                        </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-4 non-lateral-padding">
-                        <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
-                            <button type="button" class="btn btn-lg squareButton componentSearch" (click)="search()">{{ 'buscar' | translate }}</button>
-                        </div>
-                </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid" style="display:none">
-    <div class="row">
-        <div class="col-xs-8 col-sm-4">
-            <img class="image-menu" src="http://www.xdviral.com/wp-content/uploads/2014/11/recetas-de-comida-saludable-6.jpg" alt="Image menu">
-        </div>
-        <div class="col-xs-8 col-sm-4">
-            <a href="">{{serviceName}}</a>
-            <br>
-            <label>{{ 'puntuacion' | translate }} {{score}}</label><br>
-            <label> {{ 'direccion' | translate }} {{serviceAddress}}</label><br>
-            <label> {{ 'categoria' | translate }} {{menuCategory}}</label>
-        </div>
-        <div class="col-xs-8 col-sm-4 col align-self-end">
-            <button type="button" class="btn btn-lg squareButton componentSearch button-menu"> {{ 'verMenu' | translate }} </button>
-        </div>
-    </div>
-</div>
-<!--
-    <div class="list-group">
-        <a ng-repeat="service in ctrl.paisSeleccionado.caracteristicas" class="list-group-item">{{caracteristica}}</a>
-    </div>
-    -->
-<div class="container-fluid" style="display:none">
-    <div class="row">
-        <div class="col-xs-8 col-sm-4">
-            <img class="image-menu" src="http://www.xdviral.com/wp-content/uploads/2014/11/recetas-de-comida-saludable-6.jpg" alt="Image menu">
-        </div>
-        <div class="col-xs-8 col-sm-4">
-            <a href="">{{serviceName}}</a>
-            <br>
-            <label>{{ 'puntuacion' | translate }} {{score}}</label><br>
-            <label> {{ 'direccion' | translate }} {{serviceAddress}}</label><br>
-            <label> {{ 'categoria' | translate }} {{menuCategory}}</label>
-        </div>
-        <div class="col-xs-8 col-sm-4 col align-self-end">
-            <button type="button" class="btn btn-lg squareButton componentSearch button-menu"> {{ 'verMenu' | translate }} </button>
-        </div>
-    </div>
-</div>
-<div id="pagination" style="display: none">
-    <ul class="pagination justify-content-end">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1"> {{ 'paginaAnterior' | translate }}</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#"> {{ 'paginaSiguiente' | translate }}</a>
-        </li>
-    </ul>
+        </div>      
 </div>

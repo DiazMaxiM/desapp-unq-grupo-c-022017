@@ -4,7 +4,7 @@
     "tituloPantallaPrincipal": "Bienvenido a MorfiYa",
     "eligeCriterioDeBusqueda": "Elegir criterio de búsqueda",
     "nombre": "Nombre",
-    "precio": "Precio",
+    "precio": "Precio:",
     "buscarPor": "Buscar Por",
     "buscar": "Buscar",
     "nombreDeUsuario": "Nombre de usuario",
@@ -148,5 +148,14 @@
     "backToList":"Volver al listado",
     "create":"Crear",
     "cuitMax":"El CUIT debe ser de 11 dígitos",
-    "loginAuth0":"Ingresar por Auth0"
+    "loginAuth0":"Ingresar por Auth0",
+    "PIZZA":"Pizza",
+    "BEER":"Cerveza",
+    "SUSHI":"Sushi",
+    "EMPANADAS":"Empanadas",
+    "GREEN":"Green",
+    "VEGAN":"Vegano",
+    "BURGER":"Hamburguesa",
+    "allMenus":"Todos los menús",
+    "updateSearch":"Actualizar búsqueda"
 }
