@@ -36,7 +36,6 @@ export class CheckBalanceComponent implements OnInit {
   value : number = 0;
   currency:String;
 
-  @ViewChild('closeBtn') closeBtn: ElementRef;
   constructor(public languague: LanguageService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private utilsServices: UtilsService){
   	
   }

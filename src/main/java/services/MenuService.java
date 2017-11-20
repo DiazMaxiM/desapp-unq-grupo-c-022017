@@ -22,4 +22,10 @@ public class MenuService extends GenericService<Menu> {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findAll();
 	}
+	
+	@Transactional
+	public  List<Menu> listMenuForCategory(String category) {
+		MenuRepository repo = (MenuRepository) this.getRepository();
+		return repo.findMenuForCategory(category);
+	}
 }

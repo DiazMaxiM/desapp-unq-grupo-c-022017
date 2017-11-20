@@ -159,5 +159,6 @@
     "allMenus":"Todos los menús",
     "updateSearch":"Actualizar búsqueda",
     "previous":"anterior",
-    "next":"siguiente"
+    "next":"siguiente",
+    "notResult": "No se encontraron resultados"
 }

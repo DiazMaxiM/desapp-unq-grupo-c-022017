@@ -178,3 +178,7 @@ a:hover{
     color: crimson !important;
     font-size: 20px;
  }
+
+ .information{
+    text-align: center;
+  }

@@ -35,5 +35,12 @@ public class MenuRest {
 	public void setMenuService(final MenuService menuService) {
 		this.menuService = menuService;
 	}
+	
+	@GET
+	@Path("/listMenuCategory/{category}")
+	@Produces("application/json")
+	public Response listMenuForCategory(@PathParam("category") final String category) {
+		return Response.ok(menuService.listMenuForCategory(category)).build();
+	}
 
 }

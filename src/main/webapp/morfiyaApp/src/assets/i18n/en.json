@@ -162,5 +162,6 @@
     "allMenus":"All menus",
     "updateSearch":"Update search",
     "previous":"previous",
-    "next":"next"  
+    "next":"next" ,
+    "notResult": "No results found"
 }

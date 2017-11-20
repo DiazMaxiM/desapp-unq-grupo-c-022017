@@ -18,4 +18,11 @@ public class MenuRepository extends HibernateGenericDAO<Menu> implements Generic
 				.find("from " + this.persistentClass.getName() + " where menuName ='" + name + "'");
 		return find;
 	}
+
+	public List<Menu> findMenuForCategory(String category) {
+		List<Menu> find = (List<Menu>) this.getHibernateTemplate()
+				.find("from " + this.persistentClass.getName() + " where menuCategory ='" + category + "'");
+		return find;
+	}
+	
 }

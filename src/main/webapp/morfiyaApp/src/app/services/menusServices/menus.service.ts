@@ -9,15 +9,15 @@ export class MenusService {
   }
   
   getMenuForName(name :String){
-    return this.http.get('/grupoc/rest/menu/locality/listMenu/'+name).map((res:Response)=>res);
-  }
-
-  getMenuForLocality(name :String){
-    return this.http.get('/grupoc/rest/menu/locality/listMenu/'+name).map((res:Response)=>res);
+    return this.http.get('/grupoc/rest/menu/listMenu/'+name).map((res:Response)=>res);
   }
 
   getMenus(){
     return this.http.get('/grupoc/rest/menu/listMenus').map((res:Response)=>res);
+  }
+
+  getMenuForCategoty(category :String){
+    return this.http.get('/grupoc/rest/menu/listMenuCategory/'+category).map((res:Response)=>res);
   }
 
 }

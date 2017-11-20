@@ -128,6 +128,7 @@
     "allMenus":"Tutti i menu",
     "updateSearch":"Aggiorna ricerca",
     "previous":"precedente",
-    "next":"seguente"     
+    "next":"seguente",
+    "notResult": "Nessun risultato trovato"   
 
 }

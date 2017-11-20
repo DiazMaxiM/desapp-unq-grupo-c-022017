@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   categories = [{name: "name" }, {name: "locality"}, {name: "price"},{name: "category"},{name: "allMenus"}];
   cotegorySearch = this.categories[0];
   listOfElements;
-  searchValueOfList='';
+  searchValue='';
+  menuName;
   localities;
   categoriesJson;
   menus;
@@ -33,6 +34,11 @@ export class HomeComponent implements OnInit {
   onChangeObj(typeSearch) {
     this.cotegorySearch = typeSearch;
     this.showTypeSearch(typeSearch);
+  }
+
+  onChangeItemSelect(itemSelect){
+    this.searchValue=itemSelect;
+
   }
 
   showTypeSearch(typeSearch){
@@ -63,18 +69,18 @@ export class HomeComponent implements OnInit {
       this.listMenuService.changeMessage(this.menus);
       this.router.navigate(['menus']);
     }else{
-      this.showMenus();
+      this.showMenusNotFound();
     }
   }
   
-  showMenus(){
-    $('#nonResult').modal("show");
+  showMenusNotFound(){
+    $('#modalResult').modal("show");
   }
 
   showList(list:any){
     $('#listToSelector').show();
     this.listOfElements=list;
-    this.searchValueOfList=list[0];  
+    this.searchValue=list[0];  
     $('#search').hide();  
   }
 
@@ -97,6 +103,32 @@ export class HomeComponent implements OnInit {
     this.categoriesJson= JSON.parse(data._body);
   }
 
+  search(){
+    if(this.cotegorySearch.name=="name"){
+       this.searchMenusForName(this.menuName);
+    }
+    if(this.cotegorySearch.name=="locality"){
+      console.log(this.searchValue)
+      this.searchMenusForLocality(this.searchValue);
+    }
+    if(this.cotegorySearch.name=="category"){
+      console.log(this.searchValue)
+      this.searchMenusForCategory(this.searchValue);   
+    }
+
+  }
+
+  searchMenusForName(name){
+    this.menusService.getMenuForName(name).subscribe(menus =>this.resultMenus(menus));
+  }
+  
+  searchMenusForLocality(name){
+    
+  }
+
+  searchMenusForCategory(name){
+    this.menusService.getMenuForCategoty(name).subscribe(menus =>this.resultMenus(menus));
+  }
 
   
 

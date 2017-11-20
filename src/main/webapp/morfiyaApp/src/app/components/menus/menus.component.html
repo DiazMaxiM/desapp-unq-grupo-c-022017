@@ -6,7 +6,7 @@
                 <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding updateSearch">
                         <div class="col-12 col-sm-6 col-lg-4 mx-auto non-lateral-padding">
                             <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
-                                    <button type="button" (click)="updateSearch()" class="btn refUpdate squareButton componentSearch" (click)="search()">{{ 'updateSearch' | translate }}</button>
+                                    <button type="button" (click)="updateSearch()" class="btn refUpdate squareButton componentSearch">{{ 'updateSearch' | translate }}</button>
                             </div>                      
 
                         </div>
@@ -51,8 +51,8 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="col-8 col-sm-6 col-lg-6 mx-auto">
+                    <div class="col-12 non-lateral-padding">
+                        <div class="col-12 col-sm-6 col-lg-6 mx-auto non-lateral-padding">
                              <pagination-controls 
                              (pageChange)="p = $event"
                              autoHide="true"

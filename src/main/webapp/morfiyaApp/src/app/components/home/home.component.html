@@ -16,12 +16,12 @@
             <div id="searchContainer" class="row col-12 col-sm-12 col-lg-9 mx-auto">
                     <div class="col-12 col-sm-12 col-lg-7 non-lateral-padding">
                             <div id="listToSelector" class="col-12 non-lateral-padding col-12 hideItem">
-                                    <select [ngModel]="searchValueOfList"  class="custom-select componentSearch">
+                                    <select [ngModel]="searchValue" (ngModelChange)="onChangeItemSelect($event)" class="custom-select componentSearch">
                                             <option [ngValue]="i" *ngFor="let i of listOfElements">{{i|translate}}</option>
                                     </select>
                             </div>
                             <div id="search" class="col-12  non-lateral-padding">
-                                    <input type="text" class="form-control componentSearch" placeholder="" aria-label="">
+                                    <input [(ngModel)]="menuName" type="text"  class="form-control componentSearch" placeholder="" aria-label="">
                             </div>
                     </div>
                     <div class="col-12 col-sm-12 col-lg-4 non-lateral-padding">
@@ -34,9 +34,9 @@
     </div>
 
     <!-- Modal update-->
-<div class="modal" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
-            <div class="modal-content modal-sm">
+            <div class="modal-content">
                 <div class="modal-header homeHeader">
                     <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -44,7 +44,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="information">{{'nonResultMenus'}}</h4>
+                    <h4 class="information">{{'notResult'|translate}}</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">{{'aceptar'| translate }}</button>
