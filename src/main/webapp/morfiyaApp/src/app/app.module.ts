@@ -20,6 +20,7 @@ import { ProviderService} from './services/providerService/provider.service';
 import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
 import { MenusService} from './services/menusServices/menus.service';
+import { MenuService} from './services/menuService/menu.service';
 import { NumberValidatorsService} from './services/numberValidatorsService/numberValidators.service';
 import { AlertComponent } from './alert/directives/index';
 import { AlertService } from './alert/services/index';
@@ -84,7 +85,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ),
       ],
 
-  providers: [ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+  providers: [MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

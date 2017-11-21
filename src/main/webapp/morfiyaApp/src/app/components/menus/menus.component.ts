@@ -9,11 +9,13 @@ import { CurrencyPipe } from '@angular/common';
 import { CurrencyFormat } from './../../pipes/currencyFormat.pipe';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { MenusService} from './../../services/menusServices/menus.service';
+import { MenuService} from './../../services/menuService/menu.service';
 import { LanguageService} from './../../services/languageService/languageService.service';
 import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 declare var $:any;
 declare var currency: string;
+
 @Component({
   selector: 'menus',
   templateUrl: './menus.component.html',
@@ -25,8 +27,7 @@ export class MenusComponent implements OnInit {
   menus;
   currency:String;
   user:User=null;
-  constructor(public messageService:MessageService ,public languague:LanguageService ,public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){
-    
+  constructor(public menuService: MenuService,public messageService:MessageService ,public languague:LanguageService ,public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){  
   }
 
   ngOnInit(){
@@ -45,7 +46,12 @@ export class MenusComponent implements OnInit {
   }
 
   viewMenu(menu){
-    console.log(menu)
+    this.menuService.changeMessage(menu);
+
+  }
+
+  scrollTopPage(){
+    window.scrollTo(0, 0);
   }
 
   editMenu(menu){

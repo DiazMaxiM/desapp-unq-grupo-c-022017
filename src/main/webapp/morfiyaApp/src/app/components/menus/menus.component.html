@@ -64,6 +64,7 @@
                         <div class="col-12 col-sm-6 col-lg-6 mx-auto non-lateral-padding">
                              <pagination-controls 
                              (pageChange)="p = $event"
+                             (click)="scrollTopPage()"
                              autoHide="true"
                              previousLabel="{{'previous'|translate}}"
                              nextLabel="{{'next'|translate}}">
