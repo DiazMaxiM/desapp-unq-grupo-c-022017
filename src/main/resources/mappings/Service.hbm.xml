@@ -4,6 +4,9 @@
     "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
+	<typedef name="LocalityType" class="org.hibernate.type.EnumType">
+  <param name="enumClass">model.Locality</param>
+</typedef>
 	<class name="model.Service">
 		<id column="ID" name="id">
 			<generator class="native" />
@@ -21,5 +24,10 @@
         <property name="serviceEmail" />
         <one-to-one name="serviceTelephone" cascade="all" class="model.Telephone" lazy="false" />
 	    <property name="maximumNumberOfMenus" />	 
+	    
+    	<set name="serviceDeliveryLocations"  lazy="false">
+            <key column="localityName"/>
+            <element type="LocalityType" column="locality"/>
+        </set>
 	</class>
 </hibernate-mapping>

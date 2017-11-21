@@ -16,6 +16,8 @@
             	<param name="useNamed">true</param>
         	</type>       
     	</property>
+    	
+    	
     	<many-to-one name="menuDeliveryPrice" cascade="all" class="model.Price" lazy="false" />
     	<property name="startDateOfferMenu" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime" />
     	<property name="endDateOfferMenu" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime" />

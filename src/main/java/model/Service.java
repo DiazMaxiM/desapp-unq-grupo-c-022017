@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import exception.InvalidAddressException;
 import exception.InvalidMapPositionException;
@@ -26,13 +27,13 @@ public class Service extends Entity {
 	private String serviceEmail;// Required
 	private Telephone serviceTelephone;// Required
 	private HashMap<Integer, List<TimeZone>> serviceWorkingHours;// Required
-	private List<Locality> serviceDeliveryLocations;
+	private Set<Locality> serviceDeliveryLocations;
 	private int maximumNumberOfMenus = 20;
 	private ServiceValidation validator = new ServiceValidation();
 
 	public Service(String serviceName, String serviceLogo, Address serviceAddress, String serviceDescription,
 			String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations)
+			HashMap<Integer, List<TimeZone>> serviceWorkingHours, Set<Locality> serviceDeliveryLocations)
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidMapPositionException {
@@ -51,7 +52,7 @@ public class Service extends Entity {
 
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,
 			String serviceDescription, String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Integer, List<TimeZone>> serviceWorkingHours, List<Locality> serviceDeliveryLocations) {
+			HashMap<Integer, List<TimeZone>> serviceWorkingHours, Set<Locality> serviceDeliveryLocations) {
 
 		this.setServiceName(serviceName);
 		this.setServiceLogo(serviceLogo);
@@ -145,11 +146,11 @@ public class Service extends Entity {
 		this.serviceWorkingHours = serviceWorkingHours;
 	}
 
-	public List<Locality> getServiceDeliveryLocations() {
+	public Set<Locality> getServiceDeliveryLocations() {
 		return serviceDeliveryLocations;
 	}
 
-	public void setServiceDeliveryLocations(List<Locality> serviceDeliveryLocations) {
+	public void setServiceDeliveryLocations(Set<Locality> serviceDeliveryLocations) {
 		this.serviceDeliveryLocations = serviceDeliveryLocations;
 	}
 

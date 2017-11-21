@@ -5,7 +5,9 @@ package rest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -107,7 +109,7 @@ public class DataFakeRest {
 		serviceWorkingHours.put(6, workingHours);
 		serviceWorkingHours.put(7, workingHours);
 
-		List<Locality> lista = new ArrayList<Locality>();
+		Set<Locality> lista = new HashSet<Locality>();
 		lista.add(Locality.ALMIRANTEBROWN);
 		lista.add(Locality.BERAZATEGUI);
 
@@ -168,7 +170,6 @@ public class DataFakeRest {
 		menuService.save(menu22);
 		menuService.save(menu23);
 		menuService.save(menu24);
-	
 
 		return Response.ok().build();
 	}

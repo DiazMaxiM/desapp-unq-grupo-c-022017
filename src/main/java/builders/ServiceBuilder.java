@@ -2,7 +2,10 @@ package builders;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import exception.InvalidAddressException;
 import exception.InvalidAreaCodeException;
 import exception.InvalidCountryCodeException;
@@ -32,11 +35,12 @@ import validation.InvalidFormatTimeZoneException;
 public class ServiceBuilder {
 	public ServiceBuilder() throws InvalidAddressException, InvalidNumberStreetException, InvalidStreetAddressException,
 			InvalidLocalityAddressException, InvalidLocalNumberException, InvalidAreaCodeException,
-			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidCountryCodeException, InvalidTimeZoneException, InvalidFormatTimeZoneException,
+			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		this.serviceAddress = this.address();
 		this.serviceWorkingHours = this.serviceWorkingHours();
 	}
-	
+
 	private String serviceName = "Fast-Food";
 	private String serviceLogo = "Perez-H";
 	private Address serviceAddress;
@@ -45,7 +49,7 @@ public class ServiceBuilder {
 	private String serviceEmail = "perezH@gmail.com";
 	private Telephone serviceTelephone = this.telephone();
 	private HashMap<Integer, List<TimeZone>> serviceWorkingHours;
-	private List<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
+	private Set<Locality> serviceDeliveryLocations = this.serviceDeliveryLocations();
 
 	public Service build() throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
@@ -55,10 +59,11 @@ public class ServiceBuilder {
 		return service;
 	}
 
-	private HashMap<Integer, List<TimeZone>> serviceWorkingHours() throws InvalidTimeZoneException, InvalidFormatTimeZoneException {
+	private HashMap<Integer, List<TimeZone>> serviceWorkingHours()
+			throws InvalidTimeZoneException, InvalidFormatTimeZoneException {
 		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
 		List<TimeZone> workingHours = new ArrayList<>();
-		TimeZone lateShift = new TimeZone("17:00","22:30");
+		TimeZone lateShift = new TimeZone("17:00", "22:30");
 		workingHours.add(lateShift);
 		serviceWorkingHours.put(1, workingHours);
 		serviceWorkingHours.put(2, workingHours);
@@ -70,8 +75,8 @@ public class ServiceBuilder {
 		return serviceWorkingHours;
 	}
 
-	private List<Locality> serviceDeliveryLocations() {
-		List<Locality> serviceDeliveryLocations = new ArrayList<>();
+	private Set<Locality> serviceDeliveryLocations() {
+		Set<Locality> serviceDeliveryLocations = new HashSet<Locality>();
 		serviceDeliveryLocations.add(Locality.BERAZATEGUI);
 		serviceDeliveryLocations.add(Locality.QUILMES);
 		serviceDeliveryLocations.add(Locality.FLORENCIOVARELA);
@@ -79,11 +84,12 @@ public class ServiceBuilder {
 	}
 
 	private MapPosition mapPosition() throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
-			return new MapPosition(new Double(12345), new Double(34456));
+		return new MapPosition(new Double(12345), new Double(34456));
 	}
 
 	private Address address() throws InvalidAddressException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidMapPositionException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidLengthMapPositionException,
+			InvalidLatitudeMapPositionException, InvalidMapPositionException {
 		return new Address(Locality.FLORENCIOVARELA, "damasco", "124", "", this.mapPosition());
 
 	}
@@ -128,7 +134,7 @@ public class ServiceBuilder {
 		return this;
 	}
 
-	public ServiceBuilder withServiceDeliveryLocations(final List<Locality> aServiceDeliveryLocations) {
+	public ServiceBuilder withServiceDeliveryLocations(final Set<Locality> aServiceDeliveryLocations) {
 		this.serviceDeliveryLocations = aServiceDeliveryLocations;
 		return this;
 	}

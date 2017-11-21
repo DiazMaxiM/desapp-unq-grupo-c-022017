@@ -2,7 +2,7 @@ package repositories;
 
 import java.util.List;
 
-import model.Menu; 
+import model.Menu;
 
 public class MenuRepository extends HibernateGenericDAO<Menu> implements GenericRepository<Menu> {
 
@@ -26,9 +26,11 @@ public class MenuRepository extends HibernateGenericDAO<Menu> implements Generic
 	}
 
 	public List<Menu> findMenuForLocality(String locality) {
-		List<Menu> find = (List<Menu>) this.getHibernateTemplate()
-				.find("from " + this.persistentClass.getName() + " where menuCategory ='" + category + "'");
+		@SuppressWarnings("unchecked")
+		List<Menu> find2 = (List<Menu>) this.getHibernateTemplate().find("from Menu m inner join m.service as s where '"
+				+ locality + "' = some elements(s.serviceDeliveryLocations)");
+		List<Menu> find = find2;
 		return find;
 	}
-	
+
 }

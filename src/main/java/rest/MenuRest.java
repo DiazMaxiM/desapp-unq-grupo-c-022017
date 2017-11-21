@@ -18,7 +18,7 @@ public class MenuRest {
 
 	private MenuService menuService;
 
-	@GET 
+	@GET
 	@Path("/listMenu/{name}")
 	@Produces("application/json")
 	public Response listMenu(@PathParam("name") final String name) {
@@ -35,16 +35,16 @@ public class MenuRest {
 	public void setMenuService(final MenuService menuService) {
 		this.menuService = menuService;
 	}
-	
+
 	@GET
 	@Path("/listMenuCategory/{category}")
 	@Produces("application/json")
 	public Response listMenuForCategory(@PathParam("category") final String category) {
 		return Response.ok(menuService.listMenuForCategory(category)).build();
 	}
-   
+
 	@GET
-	@Path("/listMenuCategory/{locality}")
+	@Path("/listMenuLocality/{locality}")
 	@Produces("application/json")
 	public Response listMenuForLocality(@PathParam("locality") final String locality) {
 		return Response.ok(menuService.listMenuForLocality(locality)).build();

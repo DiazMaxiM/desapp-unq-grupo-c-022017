@@ -3,6 +3,7 @@ package validation;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -68,7 +69,7 @@ public class SaleValidation extends Validation {
 	}
 
 	private boolean isWithinDeliveryLocations(Order order) throws InvalidPurchaseException, InvalidDeliveryLocation {
-		List<Locality> serviceDeliveryLocality = order.getMenuToOrder().getService().getServiceDeliveryLocations();
+		Set<Locality> serviceDeliveryLocality = order.getMenuToOrder().getService().getServiceDeliveryLocations();
 		Locality localityClient = order.getClient().getAddress().getLocality();
 		if (!(serviceDeliveryLocality.contains(localityClient))) {
 			throw new InvalidDeliveryLocation("Su localidad no esta dentro de los limites de entregas");
