@@ -38,7 +38,6 @@ export class SearchMenuComponent implements OnInit {
 
   onChangeItemSelect(itemSelect){
     this.searchValue=itemSelect;
-
   }
 
   showTypeSearch(typeSearch){
@@ -108,7 +107,6 @@ export class SearchMenuComponent implements OnInit {
        this.searchMenusForName(this.menuName);
     }
     if(this.cotegorySearch.name=="locality"){
-      console.log(this.searchValue)
       this.searchMenusForLocality(this.searchValue);
     }
     if(this.cotegorySearch.name=="category"){
@@ -123,7 +121,7 @@ export class SearchMenuComponent implements OnInit {
   }
   
   searchMenusForLocality(name){
-    
+    this.menusService.getMenuForLocality(name).subscribe(menus =>this.resultMenus(menus));
   }
 
   searchMenusForCategory(name){

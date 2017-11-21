@@ -20,4 +20,8 @@ export class MenusService {
     return this.http.get('/grupoc/rest/menu/listMenuCategory/'+category).map((res:Response)=>res);
   }
 
+  getMenuForLocality(category :String){
+    return this.http.get('/grupoc/rest/menu/listMenuLocality/'+category).map((res:Response)=>res);
+  }
+
 }

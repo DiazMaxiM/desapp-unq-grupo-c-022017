@@ -24,6 +24,7 @@ export class UserComponent implements OnInit{
   }
   
   ngOnInit() {
+    this.auth.logoutUser();
     this.messageService.currentMessage.subscribe(message => this.message = message);
     this.user = this.message.name;
     this.idUser = this.message.id;
