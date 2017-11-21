@@ -122,7 +122,7 @@ public class DataFakeRest {
 		providerService.save(provider);
 
 		Menu menu1 = new MenuBuilder().withMenuService(service).build();
-		Menu menu2 = new MenuBuilder().withMenuCategory(Category.BEER).build();
+		Menu menu2 = new MenuBuilder().withMenuName("Cerveza artesanal").withMenuCategory(Category.BEER).build();
 		Menu menu3 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
 		Menu menu4 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
 		Menu menu5 = new MenuBuilder().withMenuCategory(Category.GREEN).build();

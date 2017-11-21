@@ -1,0 +1,26 @@
+#serviceName {
+    font-size: 24px;
+    font-weight: bolder;
+  }
+  
+  #categoria,
+  #delivery {
+    font-size: 12px;
+  }
+
+.border-gray{
+    border: 1px solid transparent;
+    border-color: #E5E5E5;
+}
+
+.image-menu {
+    max-width: 100%;
+    border: solid;
+ }
+
+ .container-fluid{
+    background-color: #FFFFFF;
+    width: 75%;
+    padding: 1%;
+    margin-bottom: 1%;
+ }

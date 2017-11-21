@@ -47,6 +47,7 @@ export class MenusComponent implements OnInit {
 
   viewMenu(menu){
     this.menuService.changeMessage(menu);
+    this.router.navigate(['order']);
 
   }
 

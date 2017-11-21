@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
+import { OrderComponent } from './components/order/order.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo:'/home', pathMatch:'full'},
@@ -18,7 +19,7 @@ export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'menus', component: MenusComponent},
-    { path: 'menu', component: MenuComponent},    
+    { path: 'order', component: OrderComponent},    
     { path: 'users', component: UserComponent,
     children: [
       {

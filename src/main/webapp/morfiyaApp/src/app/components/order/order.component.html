@@ -1,0 +1,53 @@
+<header></header>
+<div  class="col-12">
+    <div class=" row col-12 col-sm-12 col-lg-8 mx-auto background-Search contenedor">
+            <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding">
+                    <div class="container-fluid col-12 list-group-item-action menu border-gray">
+                            <div class="row">
+                                    <div class="col-xs-8 col-sm-4">
+                                        <div *ngIf="menu.menuCategory=='BEER'">
+                                                <img class="image-menu" src="https://estaticos.muyinteresante.es/media/cache/680x_thumb/uploads/images/gallery/5548e20641444aef0ed38df6/beneficios-cerveza1.jpg" alt="Image menu">
+                                        </div>
+                                        <div *ngIf="menu.menuCategory=='SUSHI'">
+                                                <img class="image-menu" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM8KglvjxcVrKMQpxEc8nWPDmMVlLDDJQQcjblmsC0TJN9FG-zKQ" alt="Image menu">
+                                        </div>
+                                        <div *ngIf="menu.menuCategory=='VEGAN'">
+                                                <img class="image-menu" src="http://www.giordesign.com.mx/ciudadypoder/wp-content/uploads/2016/11/Comida-vegana-dieta-semanal-1024x563.jpg" alt="Image menu">
+                                        </div>
+                                        <div *ngIf="menu.menuCategory=='GREEN'">
+                                                <img class="image-menu" src="https://static.pexels.com/photos/162700/salad-frisch-food-diet-162700.jpeg" alt="Image menu">
+                                        </div>
+                                        <div *ngIf="menu.menuCategory=='PIZZA'">
+                                                <img class="image-menu" src="http://static0.misionesonline.net/wp-content/uploads/2016/12/f-6svg7035tej0.jpg" alt="Image menu">
+                                        </div>
+                                        <div *ngIf="menu.menuCategory=='EMPANADAS'">
+                                                <img class="image-menu" src="https://www.mexicanplease.com/wp-content/uploads/2017/05/beef-cheese-empanadas-after-cooking-taking-bite.jpg" alt="Image menu">
+                                        </div>
+                                       
+                                    </div>
+                                    <!--    
+                                            private LocalDateTime startDateOfferMenu;
+                                            private LocalDateTime endDateOfferMenu;
+                                            private List<TimeZone> deliveryTimesMenus;
+                                            private Integer averageDeliveryTimeOfMenu;
+                                            private Integer firstMinimumNumberOfMenusToBuy;
+                                            private Price firstminimumPriceOfMenusToBuy;
+                                            private Integer secondMinimumNumberOfMenusToBuy;
+                                            private Price secondMinimumPriceOfMenusToBuy;
+                                            private Integer maximumNumberOfMenusSalesPerDay;
+                                            private Integer numberOfMenuSale = 0;
+-->
+                                    <div class="col-xs-8 col-sm-4">
+                                        <label id="serviceName">{{menu.service.serviceName}}</label>
+                                        <label style="text-align: center">{{menu.menuName}}</label>
+                                        <label id="categoria"> {{'categoria' | translate}} {{menu.menuCategory|translate}}</label>
+                                        <label id="delivery"> {{'promedioDeEntregaDelivery' | translate}} {{ menu.averageDeliveryTimeOfMenu }} </label>
+                                        <label> {{menu.menuDescription}} </label>
+                                        <label> {{'regularPrice' | translate}} {{menu.menuPrice.value|currencyFormat:currency}}</label>
+                                        <label> {{'deliveryPrice' | translate}} {{ menu.menuDeliveryPrice.value|currencyFormat:currency }} </label>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div>      
+</div>

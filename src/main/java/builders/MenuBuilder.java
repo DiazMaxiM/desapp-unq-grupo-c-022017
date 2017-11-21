@@ -59,7 +59,7 @@ public class MenuBuilder {
 	}
 
 	private Money moneyArg = new Money(Symbol.ARG);
-	private String menuName = "MenuName";
+	private String menuName = "Hamburguesa Caseras";
 	private String menuDescription = "MenuDescription12345678910";
 	private Category menuCategory = Category.BURGER;
 	private Price menuDeliveryPrice = new Price(moneyArg, new Double(15));

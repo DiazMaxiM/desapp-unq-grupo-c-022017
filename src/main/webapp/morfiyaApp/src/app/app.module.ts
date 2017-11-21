@@ -11,6 +11,7 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { RouterModule} from '@angular/router';
 import { UserComponent } from './components/users/user.component';
 import { EditUserComponent } from './components/editUser/editUser.component';
+import { OrderComponent } from './components/order/order.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
@@ -63,6 +64,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     CallbackComponent,
     CurrencyFormat,
     SearchMenuComponent,
+    OrderComponent,
     ProfileComponent        
   ],
   imports: [
