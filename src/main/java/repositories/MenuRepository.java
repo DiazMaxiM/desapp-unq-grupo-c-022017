@@ -27,8 +27,9 @@ public class MenuRepository extends HibernateGenericDAO<Menu> implements Generic
 
 	public List<Menu> findMenuForLocality(String locality) {
 		@SuppressWarnings("unchecked")
-		List<Menu> find2 = (List<Menu>) this.getHibernateTemplate().find("from Menu m inner join m.service as s where '"
-				+ locality + "' = some elements(s.serviceDeliveryLocations)");
+		List<Menu> find2 = (List<Menu>) this.getHibernateTemplate()
+				.find("select m from Menu m inner join m.service as s where '" + locality
+						+ "' = some elements(s.serviceDeliveryLocations)");
 		List<Menu> find = find2;
 		return find;
 	}
