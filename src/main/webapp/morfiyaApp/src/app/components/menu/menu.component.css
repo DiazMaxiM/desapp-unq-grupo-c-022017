@@ -1,11 +1,6 @@
-.name-service {
-   font-weight: bolder;
-   font-size:1.5rem;
-}
-
 .homeHeader{
-   background-color: #f52f41; 
-   vertical-align: center; 
+   background-color: #f52f41;
+   margin-bottom: 10px;
 }
 
 .titulo{
@@ -13,7 +8,7 @@
 }
 
 .subtitulo{
-   background-color: #f52f41;
+   background-color: crimson;
    text-align: center;
    color: white
 }
@@ -22,6 +17,7 @@
    height: 50px !IMPORTANT;
    width:100% !IMPORTANT;
    border-radius: 0px !IMPORTANT;
+   margin-bottom: 10px; 
 } 
 
 .buttonLogin{
@@ -34,7 +30,7 @@
    height: 50px !IMPORTANT;
    width:100% !IMPORTANT;
    border-radius: 0px !IMPORTANT; 
-
+   margin-bottom: 5px; 
    }
 }
 
@@ -56,11 +52,17 @@ a:hover{
    color:red;
 }
 
+.service{
+    padding-top: 15px; 
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+ }
+
 .container-fluid{
    background-color: #FFFFFF;
    width: 75%;
    padding: 1%;
-
+   margin-bottom: 1%;
 }
 
 .image-menu {
@@ -69,6 +71,7 @@ a:hover{
 }
 
 #pagination{
+   margin-top: 2%;
    width: 87%;
 }
 
@@ -80,41 +83,59 @@ ul {
    list-style: none;
 }
 
-menu>.details-service {
+.details-service {
    color: #FFF;
    font-size: 0.9rem;
 }
 
-.boton-agregar-menu {
-   color: #FFF !IMPORTANT;
-   background-color: red !IMPORTANT;
-
+.hide-Item{
+    display: none;
 }
 
-.boton-agregar-menu:hover {
-   color: red !IMPORTANT;
-   background-color: #FFF !IMPORTANT;
-   border-radius: 45px !IMPORTANT;
+.titleSearch{
+    text-align: center;
+    padding: 15px;
+    color: #f52f41;;
 }
 
-.grupo-menu {
-   background-color: #FFF !IMPORTANT;
-   color : grey;
-   border: grey;
-   margin-bottom: 5px;
+.background-Search{
+    background-color: #FFF;
+    padding: 20px;
 }
 
-.navbar-menu{
-   background-color: #ff3d4e !IMPORTANT;
-   border:solid white 0.5px;
-   border-radius: 5px;
-   color: #FFF !IMPORTANT;
+.squareButton {
+  background-color: #f52f41;
+  color: white;
 }
 
-.nav-item {
-   margin-right: 15% !IMPORTANT;
+.border-gray{
+    border: 1px solid transparent;
+    border-color: #E5E5E5;
 }
 
-a {
-   color: white !IMPORTANT; 
+.subtitulo{
+   background-color: crimson;
+   text-align: center;
+    color: white;
+    margin: 5px;
+}
+
+.updateSearch{
+    padding: 15px;
+}
+
+.refUpdate{
+   color: white !important;
+   font-size: 20px;
+   text-align: center;
+}
+
+#serviceName {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+#categoria,
+#delivery {
+  font-size: 12px;
 }
