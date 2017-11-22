@@ -96,12 +96,18 @@ public class UserService extends GenericService<User> {
 			InvalidMapPositionException, InvalidPasswordException {
 		UserRepository repo = (UserRepository) this.getRepository();
 		User user = repo.findById(id);
-		MapPosition mapPosition = new MapPosition(new Double(latitude), new Double(length));
-		Telephone telephone = repo.findTelephoneById(id);
-		telephone.updateInformation(countryCode, areaCode, localNumber);
-		Address address = repo.findAddressById(id);
-		address.updateInformation(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
-		user.updateInformation(password, telephone, address);
+		Telephone telephone = user.getTelephone();
+		telephone.setAreaCode(areaCode);
+		telephone.setCountryCode(countryCode);
+		telephone.setLocalNumber(localNumber);
+		MapPosition map = user.getMapPosition();
+		map.setLatitude(new Double(latitude));
+		map.setLength(new Double(length));
+		Address address = user.getAddress();
+		address.setFloor(floor);
+		address.setLocality(Locality.valueOf(locality));
+		address.setNumberStreet(numberStreet);
+		address.setStreet(numberStreet);
 		repo.update(user);
 
 	}
@@ -112,7 +118,7 @@ public class UserService extends GenericService<User> {
 		User user = repo.findById(id);
 		return new UserDataJson(user);
 	}
-	
+
 	@Transactional
 	public User loggingUserAuth0(String mail) throws InvalidLoggingException {
 		UserRepository repo = (UserRepository) this.getRepository();

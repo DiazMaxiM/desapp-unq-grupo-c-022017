@@ -153,4 +153,9 @@ public class User extends Entity {
 		return this.typeUser;
 	}
 
+	public MapPosition getMapPosition() {
+		// TODO Auto-generated method stub
+		return this.address.getMapPosition();
+	}
+
 }
