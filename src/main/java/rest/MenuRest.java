@@ -49,4 +49,11 @@ public class MenuRest {
 	public Response listMenuForLocality(@PathParam("locality") final String locality) {
 		return Response.ok(menuService.listMenuForLocality(locality)).build();
 	}
+
+	@GET
+	@Path("/listMenuForService/{idService}")
+	@Produces("application/json")
+	public Response listMenuForService(@PathParam("idService") final String idService) {
+		return Response.ok(menuService.listMenuForService(idService)).build();
+	}
 }

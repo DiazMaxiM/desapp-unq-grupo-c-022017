@@ -29,8 +29,14 @@ public class MenuRepository extends HibernateGenericDAO<Menu> implements Generic
 		@SuppressWarnings("unchecked")
 		List<Menu> find2 = (List<Menu>) this.getHibernateTemplate()
 				.find("select m from Menu m inner join m.service as s where '" + locality
-						+ "' = some elements(s.serviceDeliveryLocations)");
+						+ "' in  elements(s.serviceDeliveryLocations)  ");
 		List<Menu> find = find2;
+		return find;
+	}
+
+	public Object findMenuForService(String idService) {
+		List<Menu> find = (List<Menu>) this.getHibernateTemplate()
+				.find("select m from Menu m where m.service.id = '" + idService + "'");
 		return find;
 	}
 

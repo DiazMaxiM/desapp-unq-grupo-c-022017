@@ -6,6 +6,8 @@
 	default-cascade="save-update">
 	<typedef name="LocalityType" class="org.hibernate.type.EnumType">
   <param name="enumClass">model.Locality</param>
+              <param name="useNamed">true</param>
+  
 </typedef>
 	<class name="model.Service">
 		<id column="ID" name="id">
@@ -28,6 +30,7 @@
     	<set name="serviceDeliveryLocations"  lazy="false">
             <key column="localityName"/>
             <element type="LocalityType" column="locality"/>
+            
         </set>
 	</class>
 </hibernate-mapping>

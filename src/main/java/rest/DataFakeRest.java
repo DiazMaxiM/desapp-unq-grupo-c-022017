@@ -113,38 +113,34 @@ public class DataFakeRest {
 		lista.add(Locality.ALMIRANTEBROWN);
 		lista.add(Locality.BERAZATEGUI);
 
+		Set<Locality> lista2 = new HashSet<Locality>();
+		lista2.add(Locality.AVELLANEDA);
+
 		Service service = new Service("Mi Negocio", "Logo",
 				new Address(Locality.BERAZATEGUI, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
 				"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
 				lista);
+		Service service2 = new Service("Mi Negocio 2", "Logo",
+				new Address(Locality.AVELLANEDA, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
+				"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
+				lista2);
 		provider.addNewService(service);
+		provider.addNewService(service2);
 
 		providerService.save(provider);
 
 		Menu menu1 = new MenuBuilder().withMenuService(service).build();
-		Menu menu2 = new MenuBuilder().withMenuName("Cerveza artesanal").withMenuCategory(Category.BEER).build();
-		Menu menu3 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
-		Menu menu4 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
-		Menu menu5 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
-		Menu menu6 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
-		Menu menu7 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
-		Menu menu8 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
-		Menu menu9 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
-		Menu menu10 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
-		Menu menu11 = new MenuBuilder().withMenuCategory(Category.BURGER).build();
-		Menu menu12 = new MenuBuilder().withMenuCategory(Category.BEER).build();
-		Menu menu13 = new MenuBuilder().withMenuService(service).withMenuCategory(Category.VEGAN).build();
-		Menu menu14 = new MenuBuilder().withMenuCategory(Category.BEER).build();
-		Menu menu15 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
-		Menu menu16 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
-		Menu menu17 = new MenuBuilder().withMenuCategory(Category.GREEN).build();
-		Menu menu18 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
-		Menu menu19 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
-		Menu menu20 = new MenuBuilder().withMenuCategory(Category.PIZZA).build();
-		Menu menu21 = new MenuBuilder().withMenuCategory(Category.EMPANADAS).build();
-		Menu menu22 = new MenuBuilder().withMenuCategory(Category.SUSHI).build();
-		Menu menu23 = new MenuBuilder().withMenuCategory(Category.VEGAN).build();
-		Menu menu24 = new MenuBuilder().withMenuCategory(Category.BEER).build();
+		Menu menu2 = new MenuBuilder().withMenuService(service).withMenuName("Cerveza artesanal")
+				.withMenuCategory(Category.BEER).build();
+		Menu menu3 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.PIZZA).build();
+		Menu menu4 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.VEGAN).build();
+		Menu menu5 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.GREEN).build();
+		Menu menu6 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.EMPANADAS).build();
+		Menu menu7 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.SUSHI).build();
+		Menu menu8 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.PIZZA).build();
+		Menu menu9 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.EMPANADAS).build();
+		Menu menu10 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.GREEN).build();
+		Menu menu11 = new MenuBuilder().withMenuService(service2).withMenuCategory(Category.BURGER).build();
 
 		menuService.save(menu1);
 		menuService.save(menu2);
@@ -157,19 +153,6 @@ public class DataFakeRest {
 		menuService.save(menu9);
 		menuService.save(menu10);
 		menuService.save(menu11);
-		menuService.save(menu12);
-		menuService.save(menu13);
-		menuService.save(menu14);
-		menuService.save(menu15);
-		menuService.save(menu16);
-		menuService.save(menu17);
-		menuService.save(menu18);
-		menuService.save(menu19);
-		menuService.save(menu20);
-		menuService.save(menu21);
-		menuService.save(menu22);
-		menuService.save(menu23);
-		menuService.save(menu24);
 
 		return Response.ok().build();
 	}
