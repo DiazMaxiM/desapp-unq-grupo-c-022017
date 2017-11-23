@@ -5,9 +5,12 @@
         <div class=" row col-12 col-sm-12 col-lg-8 mx-auto background-Search contenedor">
                 <div class="col-12 col-sm-12 col-lg-12 non-lateral-padding updateSearch">
                         <div class="col-12 col-sm-6 col-lg-4 mx-auto non-lateral-padding">
-                            <div class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                            <div *ngIf="user.typeUser !=='PROVIDER'" class="col-12 col-sm-12 col-md-12 non-lateral-padding">
                                     <button type="button" (click)="updateSearch()" class="btn refUpdate squareButton componentSearch">{{ 'updateSearch' | translate }}</button>
-                            </div>                      
+                            </div>
+                            <div *ngIf="user.typeUser=='PROVIDER'" class="col-12 col-sm-12 col-md-12 non-lateral-padding">
+                                        <button type="button" (click)="addNewMenu()" class="btn refUpdate squareButton componentSearch">{{ 'newMenu' | translate }}</button>
+                            </div>                        
 
                         </div>
                 </div>

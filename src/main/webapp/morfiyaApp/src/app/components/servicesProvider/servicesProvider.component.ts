@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import { ProviderService} from './../../services/providerService/provider.service';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 declare var $:any;
 
 @Component({
@@ -23,9 +24,10 @@ export class ServicesProviderComponent implements OnInit {
   services;
   form: FormGroup;
   localities:any;
+  menus;
 
 
-  constructor(private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
+  constructor(public listMenusService:ListMenusService,private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
   }
 
   ngOnInit() {
@@ -102,5 +104,24 @@ export class ServicesProviderComponent implements OnInit {
 
   resultLocalities(data){
     this.localities= JSON.parse(data._body);
+  }
+
+  showMenus(idService){
+    this.providerService.getMenusOfService(idService).subscribe(menus=>this.resultMenus(menus))
+
+  }
+
+  resultMenus(data){
+    this.menus= JSON.parse(data._body);
+    if(this.menus.length>0){
+      this.listMenusService.changeMessage(this.menus);
+      this.router.navigate(['menus']);
+    }else{
+      this.showMenusNotFound();
+    }
+  }
+
+  showMenusNotFound(){
+    $('#modalResult').modal("show");
   }
 }

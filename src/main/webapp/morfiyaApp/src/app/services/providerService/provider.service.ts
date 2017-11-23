@@ -16,4 +16,8 @@ export class ProviderService{
     return this.http.get('/grupoc/rest/provider/getServices/'+id).map((res:Response)=>res);
   }
 
+  getMenusOfService(id:string){
+    return this.http.get('/grupoc/rest/menu/listMenuForService/'+id).map((res:Response)=>res);
+  }
+
 }

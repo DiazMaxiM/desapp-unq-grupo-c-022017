@@ -22,9 +22,12 @@
                                         </div>
 
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-lg-2">
                                     <div class="col-12 col-md-8 center-inner-content ">
                                         <button (click)="update(service)" class="btn buttonUpdate text-white ">{{'update'|translate}}</button>
+                                    </div>
+                                    <div class="col-12 col-md-8 center-inner-content ">
+                                        <button (click)="showMenus(service.id)" class="btn buttonUpdate text-white ">{{'showMenus'|translate}}</button>
                                     </div>
                                 </div>
 
@@ -212,3 +215,23 @@
             </div>
     </div>
 </div>
+
+    <!-- Modal update-->
+    <div class="modal" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header homeHeader">
+                        <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="information">{{'notMenusForService'|translate}}</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">{{'aceptar'| translate }}</button>
+                    </div>
+                </div>
+            </div>
+    </div>
