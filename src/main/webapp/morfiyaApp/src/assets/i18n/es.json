@@ -163,5 +163,9 @@
     "searchMenu":"Buscar menú",
     "verMas":"Ver más",
     "comprar":"Comprar",
-    "notResult":"No se encontraron resultados"
+    "notResult":"No se encontraron resultados",
+    "notMenusOfService": "No se encontraron menus ofrecidos para este servicio. ¿Desea crear un nuevo menú?",
+    "newMenu": "Crear nuevo menú",
+    "showMenus": "Ver menús",
+    "editar":"Editar"
 }

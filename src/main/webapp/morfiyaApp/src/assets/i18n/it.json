@@ -132,6 +132,10 @@
     "notResult": "Nessun risultato trovato",
     "searchMenu":"Menu di ricerca",
     "verMas":"Vedere di più",
-    "comprar":"Acquistare"   
+    "comprar":"Acquistare",
+    "notMenusOfService": "Nessun menu offerto per questo servizio sono stati trovati. Vuoi creare un nuovo menu?",
+    "newMenu": "Crea un nuovo menu",
+    "showMenus": "Vedere i menu",
+    "editar":"Modifica"   
 
 }

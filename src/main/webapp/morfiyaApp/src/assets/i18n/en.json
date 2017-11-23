@@ -166,5 +166,9 @@
     "notResult": "No results found",
     "searchMenu":"Search menu",
     "verMas":"See more",
-    "comprar":"Buy"   
+    "comprar":"Buy",
+    "notMenusOfService": "No menus offered for this service were found. Do you want to create a new menu?",
+    "newMenu": "Create new menu",
+    "showMenus": "See menu",
+    "editar":"Edit"   
 }
