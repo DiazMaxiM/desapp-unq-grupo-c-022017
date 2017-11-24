@@ -18,6 +18,8 @@ declare var $:any;
 
 export class OrderComponent implements OnInit {
   menu;
+  currency:String;
+  
   constructor(public menuService: MenuService, private router:Router){
   }
 

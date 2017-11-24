@@ -37,7 +37,7 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
-import { CurrencyFormat } from './pipes/currencyFormat.pipe';
+//import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -53,7 +53,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HomeComponent,
     UserComponent,
     EditUserComponent,
-    CheckBalanceComponent,
+    //CheckBalanceComponent,
     AlertComponent, 
     MenusComponent,
     MenuComponent,
@@ -62,7 +62,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HeaderComponent,
     ServicesProviderComponent   ,
     CallbackComponent,
-    CurrencyFormat,
+    //CurrencyFormat,
     SearchMenuComponent,
     OrderComponent,
     ProfileComponent        
@@ -71,6 +71,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     BrowserModule,
     NgxPaginationModule,
     FormsModule,
+    CheckBalanceComponent,
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,

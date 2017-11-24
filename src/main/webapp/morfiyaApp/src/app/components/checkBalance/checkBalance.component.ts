@@ -24,9 +24,12 @@ declare var currency: string;
 })
 
 @NgModule({
-declarations: [
-CurrencyFormat
-]
+  declarations: [
+    CurrencyFormat
+  ],
+  exports: [
+      CurrencyFormat
+  ]
 })
 
 export class CheckBalanceComponent implements OnInit {

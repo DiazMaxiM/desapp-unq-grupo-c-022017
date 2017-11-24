@@ -13,6 +13,7 @@ import { MenuService } from '../../services/menuService/menu.service';
 export class MenuComponent {
   menu;
   constructor(public menuService: MenuService, private router:Router){
+  	currency:String;
   }
 
   ngOnInit(){
