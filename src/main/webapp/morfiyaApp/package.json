@@ -4,13 +4,19 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
-    "postinstall": "ng build --aot -prod",
+    "heroku-prebuild": "npm install -g http-server",
+    "prestart": "npm install && ng build && ng serve --open",
+    "start": "node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
+    },
+    "engines":{
+        "node": ">=0.10.0",
+        "npm": "5.5.1"
+    }, 
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
@@ -27,6 +33,7 @@
     "angular2-jwt": "^0.2.3",
     "auth0-js": "^8.11.3",
     "bootstrap": "^4.0.0-beta",
+    "bower": "^1.8.2",
     "core-js": "^2.4.1",
     "express": "^4.16.2",
     "jquery": "^3.0.0",
