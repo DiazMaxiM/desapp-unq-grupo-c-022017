@@ -1,0 +1,95 @@
+.backgroundForm{
+    background-color: white;
+    padding: 15px;
+}
+
+.titleLogo{
+    text-align: center;
+    font-size: 20px;
+}
+
+.title{
+    text-align: center;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.service{
+   padding-top: 15px; 
+   margin-bottom: 15px;
+   padding-bottom: 15px;
+}
+
+.buttonNewService{
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+
+.containerButton{
+    padding: 10px;
+}
+
+.text-white {
+    color: #fff!important;
+}
+
+.text-center {
+    text-align: center!important
+}
+
+.p-3 {
+    padding: 1rem 1rem!important;
+}
+
+.d-block {
+    display: block!important;
+}
+
+.buttonUpdate{
+    margin-top: 5px;
+    border-radius: 0;
+    background-color: #005891 !important;
+}
+
+.col-form-label.required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top:7px;
+  }
+  
+  .is-invalid{
+    color: #a94442;;
+  }
+
+  .hide-item{
+      display: none;
+  }
+
+  .border-gray{
+    border: 1px solid transparent;
+    border-color: #E5E5E5;
+}
+
+.containerForm{
+    padding-bottom: 10px;
+}
+
+.center-inner-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.buttonCreate{
+    border-radius: 0;
+    background-color: red;
+    color:white;
+    text-align: center;
+    width: 100%;
+}
+
+@media (min-width: 768px) { 
+    
+}

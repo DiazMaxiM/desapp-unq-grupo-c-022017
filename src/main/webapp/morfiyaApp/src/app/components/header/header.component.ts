@@ -13,8 +13,11 @@ import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/fo
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { AuthService } from '../../auth/auth.service';
 import { LanguageService} from './../../services/languageService/languageService.service';
-
+import { Location } from '@angular/common';
 declare var $:any;
+import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
+import { I18n,CustomDatepickerI18n } from './../../services/calendarLanguage/customDatepickerI18n.service';
+
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -43,12 +46,18 @@ export class HeaderComponent {
        this.currency = 'EUR';
     }
     this.languague.changeMessage(this.currency);
+    this.setCalendarLanguage(lang);
+  }
+
+  setCalendarLanguage(key){
+   this.custom.changeLanguage(key);
+  
   }
 
   mensaje :String;
 
 
-  constructor(public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
+  constructor(private custom:CustomDatepickerI18n,private location: Location,public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
@@ -119,6 +128,10 @@ export class HeaderComponent {
     this.typeRegisterService.changeMessage("PROVIDER");
     this.router.navigate(['register']);
 
+  }
+
+  back(){
+    this.location.back();
   }
 
 

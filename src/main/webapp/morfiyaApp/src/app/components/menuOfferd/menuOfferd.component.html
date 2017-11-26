@@ -1,0 +1,177 @@
+<header></header>
+<div class="col-12">
+    <div  class="col-sm-10 col-lg-8 mx-auto backgroundForm">
+        <div class="col-12 non-lateral-padding">
+               <div id="newMenu" class="title"><h3>{{ 'newMenu' | translate }}</h3></div> 
+               <div id="editMenu" class="title"><h3>{{ 'editMenu' | translate }}</h3></div>
+        </div>
+        <div class="col-12 non-lateral-padding">
+            <alert></alert>
+        </div>
+        <form [formGroup]="form">
+                <div class="form-row">
+                        <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('name')">
+                                <label class="col-form-label required">{{ 'name' | translate }}</label>
+                                <input type="text" class="form-control" formControlName="name">
+                                <app-field-error-display [displayError]="form.controls['name'].hasError('required') && form.controls['name'].touched" errorMsg=" {{'nameRequired'|translate}}">
+                                </app-field-error-display>
+                                <app-field-error-display [displayError]="form.controls['name'].hasError('minlength')" errorMsg=" {{'nameMenuMin'|translate}}">
+                                </app-field-error-display>
+                                <app-field-error-display [displayError]="form.controls['name'].hasError('maxlength')" errorMsg=" {{'nameMenuMax'|translate}}">
+                                </app-field-error-display>
+                        </div>
+                        <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('description')">
+                          <label class="col-form-label required">{{ 'description' | translate }}</label>
+                          <input type="text" class="form-control" formControlName="description">
+                          <div *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched">
+                                {{ 'descritionRequired'|translate}}
+                          </div>
+                            <app-field-error-display [displayError]="form.controls['description'].hasError('minlength')" errorMsg=" {{'descriptionMenuMin'|translate}}">
+                            </app-field-error-display>
+                            <app-field-error-display [displayError]="form.controls['description'].hasError('maxlength')" errorMsg=" {{'descriptionMenuMax'|translate}}">
+                            </app-field-error-display>
+                        </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('category')">
+                      <label class="col-form-label required">{{ 'category' | translate }}</label>
+                      <div  class="col-12 non-lateral-padding col-12">
+                        <select class="form-control" formControlName="category">
+                            <option *ngFor="let category of categories" [value]="category">{{category|translate}}</option>
+                        </select>
+                      </div>
+                      <app-field-error-display [displayError]="isFieldValid('category')" errorMsg=" {{'categoryRequired'|translate}}">
+                      </app-field-error-display>
+              
+                      </div>
+                      <div class="form-group col-12 col-md-6">
+                          <label class="col-form-label required" [ngClass]="displayFieldCss('deliveryPrice')">{{ 'deliveryPrice' | translate }}</label>
+                          <input type="number" class="form-control" formControlName="deliveryPrice">
+                          <app-field-error-display [displayError]="isFieldValid('deliveryPrice')" errorMsg=" {{'deliveryPriceRequired'|translate}}">
+                          </app-field-error-display>
+                        <app-field-error-display [displayError]="form.controls['deliveryPrice'].hasError('min')" errorMsg=" {{'minDeliveryPrice'|translate}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="form.controls['deliveryPrice'].hasError('max')" errorMsg=" {{'maxDeliveryPrice'|translate}}">
+                        </app-field-error-display>        
+                      </div>
+                </div>
+                <div  class="form-row">
+                    <div class="form-group col-12 col-lg-6" [ngClass]="displayFieldCss('startDateToOfferd')">
+                      <label class="col-form-label required">{{'startDateToOfferd'| translate }}</label>
+                      <div class="form-inline">
+                          <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="{{'dateFormat'|translate}}"
+                                    name="startDateToOfferd" formControlName="startDateToOfferd" ngbDatepicker #e="ngbDatepicker" >
+                                    <button class="input-group-addon" (click)="e.toggle()" type="button">
+                                        <i style="width: 1.2rem; height: 1rem; cursor: pointer;" class="fa fa-calendar" aria-hidden="true"></i>
+                                    </button>
+                                </div>    
+                          </div>
+                        </div>                
+                      <app-field-error-display [displayError]="isFieldValid('startDateToOfferd')" errorMsg=" {{'startDateToOfferdRequired'|translate}}">
+                      </app-field-error-display>
+                      <app-field-error-display [displayError]="form.controls['startDateToOfferd'].hasError('pattern')" errorMsg=" {{'dateFormatRequired'|translate}}">
+                    </app-field-error-display>
+                    </div>
+                    <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('endDateToOfferd')">
+                      <label class="col-form-label required">{{'endDateToOfferd'| translate }}</label>
+                      <div class="form-inline">
+                            <div class="form-group">
+                                  <div class="input-group">
+                                      <input class="form-control" placeholder="{{'dateFormat'|translate}}"
+                                      name="endDateToOfferd" formControlName="endDateToOfferd" ngbDatepicker #d="ngbDatepicker" >
+                                      <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                          <i style="width: 1.2rem; height: 1rem; cursor: pointer;" class="fa fa-calendar" aria-hidden="true"></i>
+                                      </button>
+                                  </div>    
+                            </div>
+                       </div>   
+                      <app-field-error-display [displayError]="form.controls['endDateToOfferd'].hasError('required') && form.controls['endDateToOfferd'].touched" errorMsg=" {{'endDateToOfferdRequired'|translate}}">
+                      </app-field-error-display>
+                      <app-field-error-display [displayError]="form.controls['endDateToOfferd'].hasError('pattern')" errorMsg=" {{'dateFormatRequired'|translate}}">
+                      </app-field-error-display>
+                    </div>
+                  </div>
+                  <div  class="form-row">
+                      <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('price')">
+                        <label class="col-form-label required">{{'price'| translate }}</label>
+                        <input type="number" class="form-control" name="price" formControlName="price">
+                        <app-field-error-display [displayError]="form.controls['price'].hasError('required') && form.controls['price'].touched" errorMsg=" {{'priceRequired'|translate}}">
+                        </app-field-error-display>
+                      </div>
+                      <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('salesPerDay')">
+                          <label class="col-form-label required">{{'salesPerDay'| translate }}</label>
+                          <input type="number" class="form-control" name="salesPerDay" formControlName="salesPerDay">
+                          <app-field-error-display [displayError]="form.controls['salesPerDay'].hasError('required') && form.controls['salesPerDay'].touched" errorMsg=" {{'salesPerDayRequired'|translate}}">
+                          </app-field-error-display>
+                        </div>
+                  </div>
+                  <div  class="form-row">
+                    <div  class="form-group col-12 col-md-6">
+                        <div class="form row">
+                            <div class="col-12 col-lg-6" [ngClass]="displayFieldCss('startDeliveryTime')">
+                                <label class="col-form-label required">{{'startDeliveryTime'| translate }}</label>
+                                <ngb-timepicker class="form-control" formControlName="startDeliveryTime"></ngb-timepicker>
+                            </div>
+                            <div  class="col-12 col-lg-6" [ngClass]="displayFieldCss('endDeliveryTime')">
+                                <label class="col-form-label required" >{{'endDeliveryTime'| translate }}</label>
+                                <ngb-timepicker class="form-control" formControlName="endDeliveryTime"></ngb-timepicker>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('averageDeliveryTime')">
+                        <label class="col-form-label required">{{'averageDeliveryTime'| translate }}</label>
+                        <input type="number" class="form-control" name="averageDeliveryTime" formControlName="averageDeliveryTime">
+                        <app-field-error-display [displayError]="form.controls['averageDeliveryTime'].hasError('required') && form.controls['averageDeliveryTime'].touched" errorMsg=" {{'averageDeliveryTimeRequired'|translate}}">
+                        </app-field-error-display>
+                      </div>
+              </div>
+              <div  class="form-row">
+                  <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('minimumAmount1')">
+                      <label class="col-form-label required">{{'minimumAmount1'| translate }}</label>
+                      <input type="number" class="form-control" name="minimumAmount1" formControlName="minimumAmount1">
+                      <app-field-error-display [displayError]="form.controls['minimumAmount1'].hasError('required') && form.controls['minimumAmount1'].touched" errorMsg=" {{'minimumAmount1Required'|translate}}">
+                      </app-field-error-display>
+                    <app-field-error-display [displayError]="form.controls['minimumAmount1'].hasError('min')" errorMsg=" {{'minMinimunAmount1'|translate}}">
+                    </app-field-error-display>
+                    <app-field-error-display [displayError]="form.controls['minimumAmount1'].hasError('max')" errorMsg=" {{'maxMinimunAmount1'|translate}}">
+                    </app-field-error-display>
+                  </div>
+                  <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('priceMinimunAmount1')">
+                      <label class="col-form-label required">{{'priceMinimunAmount1'| translate }}</label>
+                      <input type="number" class="form-control" name="priceMinimunAmount1" formControlName="priceMinimunAmount1">
+                      <app-field-error-display [displayError]="form.controls['priceMinimunAmount1'].hasError('required') && form.controls['priceMinimunAmount1'].touched" errorMsg=" {{'priceMinimunAmount1Required'|translate}}">
+                      </app-field-error-display>
+                    <app-field-error-display [displayError]="form.controls['priceMinimunAmount1'].hasError('min')" errorMsg=" {{'minPriceMinimunAmount1'|translate}}">
+                    </app-field-error-display>
+                    <app-field-error-display [displayError]="form.controls['priceMinimunAmount1'].hasError('max')" errorMsg=" {{'maxPriceMinimunAmount1'|translate}}">
+                    </app-field-error-display>
+                  </div>           
+              </div>
+              <div  class="form-row">
+                  <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('minimunAmount2')">
+                      <label class="col-form-label required">{{'minimunAmount2'| translate }}</label>
+                      <input type="number" class="form-control" name="minimunAmount2" formControlName="minimunAmount2">
+                      <app-field-error-display [displayError]="form.controls['minimunAmount2'].hasError('required') && form.controls['minimunAmount2'].touched" errorMsg=" {{'minimunAmount2Required'|translate}}">
+                      </app-field-error-display>
+                      <app-field-error-display [displayError]="form.controls['minimunAmount2'].hasError('min')" errorMsg=" {{'minMinimunAmount2'|translate}}">
+                    </app-field-error-display>
+                    <app-field-error-display [displayError]="form.controls['minimunAmount2'].hasError('max')" errorMsg=" {{'maxMinimunAmount2'|translate}}">
+                    </app-field-error-display>
+                  </div>
+                  <div class="form-group col-12 col-md-6" [ngClass]="displayFieldCss('priceMinimunAmount2')">
+                        <label class="col-form-label required">{{'priceMinimunAmount2'| translate }}</label>
+                        <input type="number" class="form-control" name="priceMinimunAmount2" formControlName="priceMinimunAmount2">
+                        <app-field-error-display [displayError]="form.controls['priceMinimunAmount2'].hasError('required') && form.controls['priceMinimunAmount2'].touched" errorMsg=" {{'priceMinimunAmount2Required'|translate}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="form.controls['priceMinimunAmount2'].hasError('min')" errorMsg=" {{'minPriceMinimunAmount2'|translate}}">
+                        </app-field-error-display>
+                        <app-field-error-display [displayError]="form.controls['priceMinimunAmount2'].hasError('max')" errorMsg=" {{'maxPriceMinimunAmount2'|translate}}">
+                        </app-field-error-display>
+                  </div>      
+              </div>              
+            <button  class="btn btn-success" type="submit">{{'agregar'| translate }}</button>
+          </form>
+  </div>
+</div>

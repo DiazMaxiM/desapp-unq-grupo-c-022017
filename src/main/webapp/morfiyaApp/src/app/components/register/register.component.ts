@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
       this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
       $('#login').hide();
       $('#register').hide();
-      $('#backToHome').css('display','block');
+      $('#back').css('display','block');
       this.typeRegisterService.currentMessage.subscribe(message => this.typeRegister = message);
       this.checkTypeRegister();
       this.form = this.formBuilder.group({
@@ -157,9 +157,7 @@ export class RegisterComponent implements OnInit {
         {this.result(data)},
       err => {
         this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
-      });
-    
-     
+      });     
     }
 
     registerClient(){

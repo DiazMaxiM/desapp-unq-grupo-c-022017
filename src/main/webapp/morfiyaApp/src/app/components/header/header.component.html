@@ -8,31 +8,49 @@
             <a class="navbar-brand titulo">MorfiYa</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a id="login" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" #closeBtn>{{ 'ingresar' | translate }}</a>
+                    <div id="login" >
+                        <a class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" #closeBtn>{{ 'ingresar' | translate }}</a>
+                    </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="register" class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalRegister">{{ 'registrar' | translate }}</a>
+                    <div id="register">
+                        <a  class="nav-link titulo" data-dismiss="modal" data-toggle="modal" data-target="#modalRegister">{{ 'registrar' | translate }}</a>
+                   </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="edit" routerLink="/users/edit" class="nav-link titulo hide-link">{{ 'editarDatos' | translate }}</a>
+                    <div id="edit" class="hide-link">
+                       <a  routerLink="/users/edit" class="nav-link titulo">{{ 'editarDatos' | translate }}</a>
+                    </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="balance" routerLink="/users/balance" class="nav-link titulo hide-link">{{ 'consultarSaldo' | translate }}</a>
+                   <div id="balance" class="hide-link">
+                       <a  class="nav-link titulo">{{ 'consultarSaldo' | translate }}</a>
+                    </div> 
                 </li>
                 <li class="nav-item active">
-                    <a id="orders" class="nav-link titulo hide-link">{{ 'misPedidos' | translate }}</a>
+                    <div id="orders" class="hide-link">
+                      <a class="nav-link titulo hide-link">{{ 'misPedidos' | translate }}</a>
+                    </div>               
                 </li>
                 <li class="nav-item active">
-                        <a id="searchMenu" routerLink="/users/search" class="nav-link titulo hide-link">{{ 'searchMenu' | translate }}</a>
-                    </li>
-                <li class="nav-item active">
-                    <a id="services" routerLink="/users/services" class="nav-link titulo hide-link">{{ 'myServices' | translate }}</a>
+                    <div id="searchMenu" class="hide-link">
+                        <a routerLink="/users/search" class="nav-link titulo">{{ 'searchMenu' | translate }}</a>
+                    </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="close" class="nav-link titulo hide-link" data-toggle="modal" data-target="#loginOutModal">{{ 'cerrarSesion' | translate }}</a>
+                   <div id="services" class="hide-link">
+                     <a routerLink="/users/services" class="nav-link titulo">{{ 'myServices' | translate }}</a>
+                   </div> 
                 </li>
                 <li class="nav-item active">
-                    <a id="backToHome" class="nav-link titulo hide-link" routerLink="/home">{{ 'volver' | translate }}</a>
+                   <div id="close" class="hide-link">
+                     <a class="nav-link titulo" data-toggle="modal" data-target="#loginOutModal">{{ 'cerrarSesion' | translate }}</a>
+                    </div> 
+                </li>
+                <li class="nav-item active">
+                  <div id="back" class="hide-link">  
+                    <a class="nav-link titulo" (click)="back()">{{ 'volver' | translate }}</a>
+                  </div>
                 </li>
                 <li class="nav-item active">
                     <a *ngIf="auth.isAuthenticated()" class="nav-link titulo" (click)="auth.logout()">{{ 'cerrarSesion' | translate }}</a>

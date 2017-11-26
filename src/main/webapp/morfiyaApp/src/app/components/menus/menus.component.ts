@@ -31,7 +31,7 @@ export class MenusComponent implements OnInit {
   }
 
   ngOnInit(){
-          
+    $('#back').show();     
     this.listMenuService.currentMessage.subscribe(data=>this.menus=data);
     this.languague.currentMessage.subscribe(message =>this.currency=message);
     this.messageService.currentMessage.subscribe(message => this.resultData(message));
@@ -56,7 +56,8 @@ export class MenusComponent implements OnInit {
   }
 
   editMenu(menu){
-
+    this.menuService.changeMessage(menu);
+    this.router.navigate(['menuOfferd']);
   }
 
   updateSearch(){

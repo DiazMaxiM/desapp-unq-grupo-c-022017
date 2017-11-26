@@ -29,9 +29,10 @@ import { HttpModule,JsonpModule} from '@angular/http';
 import { MessageService} from './services/messageServices/message.service';
 import { TypeRegisterService} from './services/typeRegisterService/typeRegister.service';
 import { MenusComponent } from './components/menus/menus.component';
-import { MenuComponent } from './components/menu/menu.component';
+import { MenuOfferdComponent } from './components/menuOfferd/menuOfferd.component';
 import {FieldErrorDisplayComponent} from './components/field-error-display/field-error-display.component';
 import { ServicesProviderComponent } from './components/servicesProvider/servicesProvider.component';
+import { I18n,CustomDatepickerI18n } from './services/calendarLanguage/customDatepickerI18n.service';
 import { AuthService } from './auth/auth.service';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
@@ -39,6 +40,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
 //import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DatepickerModule } from 'angular2-material-datepicker'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerConfig, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateFRParserFormatter } from "./services/calendarLanguage/ngb-date-fr-parser-formatter"
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,10 +60,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HomeComponent,
     UserComponent,
     EditUserComponent,
-    //CheckBalanceComponent,
     AlertComponent, 
     MenusComponent,
-    MenuComponent,
+    MenuOfferdComponent,
     FieldErrorDisplayComponent,
     RegisterComponent,
     HeaderComponent,
@@ -68,6 +74,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ProfileComponent        
   ],
   imports: [
+    NgbModule.forRoot(),
+    DatepickerModule,
+    BrowserAnimationsModule,
     BrowserModule,
     NgxPaginationModule,
     FormsModule,
@@ -88,7 +97,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ),
       ],
 
-  providers: [MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+  providers: [{provide: NgbDateParserFormatter, useClass: NgbDateFRParserFormatter},I18n,CustomDatepickerI18n,{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n},MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

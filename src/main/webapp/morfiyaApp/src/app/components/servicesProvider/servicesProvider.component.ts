@@ -80,7 +80,6 @@ export class ServicesProviderComponent implements OnInit {
   }
 
   update(service:any){
-    console.log(service);
     this.form.setValue({
       'name': service.serviceName,
       'logo':service.serviceLogo,
