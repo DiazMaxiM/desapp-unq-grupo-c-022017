@@ -23,15 +23,6 @@ declare var currency: string;
   styleUrls: ['./checkBalance.component.css'],
 })
 
-@NgModule({
-  declarations: [
-    CurrencyFormat
-  ],
-  exports: [
-      CurrencyFormat
-  ]
-})
-
 export class CheckBalanceComponent implements OnInit {
   user: User
   idUser : String

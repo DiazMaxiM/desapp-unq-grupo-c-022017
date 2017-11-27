@@ -176,6 +176,17 @@
     "maxPriceMinimunAmount2":"Il prezzo dell'importo minimo 2 deve essere massimo €1000",
     "categoryRequired":"categoria richiesta",
     "minimunAmount2Required":"Importo minimo 2 richiesto",
-    "dateFormatRequired":"La data deve essere dd/mm/yyyy" 
+    "dateFormatRequired":"La data deve essere dd/mm/yyyy",
+    "buy":"Acquistare",
+    "newOrder":"Nuovo ordine",
+    "numberOfMenusToOrder":"Quantità",
+    "dateOfDelivery":"Termine",
+    "timeOfDelivery":"Tempo di consegna",
+    "typeOfDelivery":"Tipo di consegna",
+    "numberOfMenusToOrderRequired":"Quantità richiesto",
+    "dateOfDeliveryRequired":"Termine richiesto",
+    "timeOfDeliveryRequired":"Tempo di consegna richiesto",
+    "typeOfDeliveryRequired":"Tipo di consegna richiesto",
+    "total":"Totale da pagare" 
 
 }

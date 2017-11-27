@@ -38,7 +38,8 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
-//import { CurrencyFormat } from './pipes/currencyFormat.pipe';
+import { CurrencyFormat } from './pipes/currencyFormat.pipe';
+import { CurrencyPipe } from '@angular/common';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DatepickerModule } from 'angular2-material-datepicker'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +57,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 @NgModule({
   declarations: [
+    CurrencyFormat,
     AppComponent,
     HomeComponent,
     UserComponent,
@@ -66,11 +68,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FieldErrorDisplayComponent,
     RegisterComponent,
     HeaderComponent,
-    ServicesProviderComponent   ,
+    ServicesProviderComponent,
     CallbackComponent,
-    //CurrencyFormat,
     SearchMenuComponent,
     OrderComponent,
+    CheckBalanceComponent,
     ProfileComponent        
   ],
   imports: [
@@ -80,7 +82,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     BrowserModule,
     NgxPaginationModule,
     FormsModule,
-    CheckBalanceComponent,
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,

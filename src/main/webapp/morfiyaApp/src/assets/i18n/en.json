@@ -209,5 +209,16 @@
     "maxPriceMinimunAmount2":"The price of the minimum amount 2 must be maximum $ 1000",
     "categoryRequired":"Category required",
     "minimunAmount2Required":"Minimum amount 2 required",
-    "dateFormatRequired":"Date must be dd/mm/yyyy"
+    "dateFormatRequired":"Date must be dd/mm/yyyy",
+    "buy":"Buy",
+    "newOrder":"New order",
+    "numberOfMenusToOrder":"Amount",
+    "dateOfDelivery":"Deadline",
+    "timeOfDelivery":"Delivery time",
+    "typeOfDelivery":"Type of delivery",
+    "numberOfMenusToOrderRequired":"Amount required",
+    "dateOfDeliveryRequired":"Deadline required",
+    "timeOfDeliveryRequired":"Delivery time required",
+    "typeOfDeliveryRequired":"Type of delivery required",
+    "total":"Total to pay"
 }

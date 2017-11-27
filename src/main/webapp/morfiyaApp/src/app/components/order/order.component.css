@@ -20,7 +20,34 @@
 
  .container-fluid{
     background-color: #FFFFFF;
-    width: 75%;
+    width: 100%;
     padding: 1%;
     margin-bottom: 1%;
  }
+
+ .backgroundOrder{
+  background-color: white;
+  padding: 15px;
+}
+
+
+.title{
+  text-align: center;
+}
+
+.buttonCreate{
+  border-radius: 0;
+  background-color: red;
+  color:white;
+  text-align: center;
+  width: 100%;
+}
+
+menu{
+  padding: 15px;
+}
+
+.price{
+  font-size: 20px;
+  padding-bottom: 5px;
+}

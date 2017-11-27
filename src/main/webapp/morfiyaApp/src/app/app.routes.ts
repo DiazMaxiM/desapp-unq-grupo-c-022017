@@ -28,6 +28,10 @@ export const appRoutes: Routes = [
         component: EditUserComponent
       },
       {
+        path: 'balance',
+        component: CheckBalanceComponent
+      },
+      {
         path: 'services',
         component: ServicesProviderComponent
       },

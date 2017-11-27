@@ -206,6 +206,18 @@
     "maxPriceMinimunAmount2":"El precio de la cantidad mínima 2 debe ser máximo $1000",
     "categoryRequired":"Categoría requerida",
     "minimunAmount2Required":"Cantidad mínima 2 requerida",
-    "dateFormatRequired":"El formato de la fecha debe ser dd/mm/yyyy"
+    "dateFormatRequired":"El formato de la fecha debe ser dd/mm/yyyy",
+    "buy":"Comprar",
+    "newOrder":"Nuevo pedido",
+    "numberOfMenusToOrder":"Cantidad",
+    "dateOfDelivery":"Fecha de entrega",
+    "timeOfDelivery":"Horario de entrega",
+    "typeOfDelivery":"Tipo de entrega",
+    "numberOfMenusToOrderRequired":"Cantidad requerida",
+    "dateOfDeliveryRequired":"Fecha de entrega requerida",
+    "timeOfDeliveryRequired":"Horario de entrega requirida",
+    "typeOfDeliveryRequired":"Tipo de entrega requerido",
+    "total":"Total a pagar"
+
     
 }
