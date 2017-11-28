@@ -60,6 +60,12 @@
 	<bean id="services.provider" class="services.ProviderService">
 		<property name="repository" ref="persistence.providerRepository" />
 	</bean>
+	
+	<bean id="services.loader" class="bootLoad.DataLoader" init-method="initialize">
+		<property name="menuService" ref="services.menu" />
+		<property name="providerService" ref="services.provider" />
+		<property name="userService" ref="services.user" />
+	</bean>
 
 	<!-- BEAN ASPECTS -->
 	<bean name="aopLogging" class="aspects.LoggingAspect" />
