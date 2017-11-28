@@ -35,3 +35,20 @@ input[type="number"] {
 	background-color: rgb(234, 83, 35);
 	color: white;
  }
+
+
+ .btn-google-plus {
+    color: #fff;
+    background-color: #d64937;
+    border-color: rgba(0,0,0,0.2);
+	border-bottom: 3px solid #CA3523;}
+	
+.btn-social {
+    position: relative;
+    /* text-align: left; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 215px !important;
+    border-radius: 3px !important;
+}

@@ -76,7 +76,7 @@
             </div>
             <div class="modal-body">
                 <div *ngIf="!auth.isAuthenticated()" class="col-12 non-lateral-padding">
-                     <button (click)="auth.login()" class="btn button-blue-dark btn-block">{{ 'loginAuth0' | translate }}</button>
+                     <button (click)="auth.login()" class="btn btn-google-plus btn-social btn-block"><i class="fa fa-google-plus"></i> {{ 'loginAuth0' | translate }}</button>
                 </div>
                 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
                     <div class="form-group">

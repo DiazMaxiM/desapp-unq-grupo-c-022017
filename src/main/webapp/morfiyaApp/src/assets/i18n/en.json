@@ -151,7 +151,7 @@
     "create":"Create",
     "newService":"New service",
     "cuitMax":"The CUIT must be 11 digits",
-    "loginAuth0":"Login by Auth0",
+    "loginAuth0":"Login with Google",
     "PIZZA":"Pizza",
     "BEER":"Beer",
     "SUSHI":"Sushi",
