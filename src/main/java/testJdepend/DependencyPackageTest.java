@@ -40,7 +40,7 @@ public class DependencyPackageTest{
 		JavaPackage  exception= jdepend.getPackage("exception");
 		JavaPackage  menusearch= jdepend.getPackage("menusearch");
 				
-		exception.dependsUpon(model);
+		exception.dependsUpon(model); 
 		exception.dependsUpon(menusearch);	
 		
 		jdepend.analyze();
@@ -53,7 +53,9 @@ public class DependencyPackageTest{
 		final JDepend jdepend = new JDepend();
 		jdepend.addDirectory("./");
 		jdepend.analyze();
+		
 		JavaPackage  model= jdepend.getPackage("model");
+		
 		assertNotNull(model);
 		assertTrue(model.containsCycle());
 		
