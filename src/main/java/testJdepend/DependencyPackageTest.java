@@ -26,33 +26,28 @@ public class DependencyPackageTest{
 		JavaPackage  exception= constraint.addPackage("exception");
 		
 		exception.dependsUpon(model);
-		jdepend.analyze();
+
 		assertFalse(jdepend.dependencyMatch(constraint));
 	}
 	
-	/**
 	@Test
 	public void testPackageMenuSearchDependsOfModelAndExceptionPackage() throws IOException {
 		final JDepend jdepend = new JDepend();
 		jdepend.addDirectory("./");
 		jdepend.analyze();
-		DependencyConstraint constraint = new DependencyConstraint();
+		
 		JavaPackage  model= jdepend.getPackage("model");
 		JavaPackage  exception= jdepend.getPackage("exception");
 		JavaPackage  menusearch= jdepend.getPackage("menusearch");
 				
-		menusearch.dependsUpon(model);
-		menusearch.dependsUpon(exception);
-		
-		constraint.addPackage(model);
-		constraint.addPackage(exception);
-		constraint.addPackage(menusearch);
+		exception.dependsUpon(model);
+		exception.dependsUpon(menusearch);	
 		
 		jdepend.analyze();
-		assertEquals("Constraint mismatch", 
-                true, jdepend.dependencyMatch(constraint));
+		assertTrue(exception.containsCycle());
+		
 	}
-	**/
+	
 	@Test
 	public void testPackageModelHasDependecyCycles() throws IOException { 
 		final JDepend jdepend = new JDepend();
