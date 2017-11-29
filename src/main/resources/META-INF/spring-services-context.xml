@@ -33,30 +33,39 @@
 	<bean id="services.timeZone" class="services.TimeZoneService">
 		<property name="repository" ref="persistence.timeZoneRepository" />
 	</bean>
+	
 	<bean id="services.transaction" class="services.TransactionService">
 		<property name="repository" ref="persistence.transactionRepository" />
 	</bean>
+	
 	<bean id="services.money" class="services.MoneyService">
 		<property name="repository" ref="persistence.moneyRepository" />
 	</bean>
+	
 	<bean id="services.telephone" class="services.TelephoneService">
 		<property name="repository" ref="persistence.telephoneRepository" />
 	</bean>
+	
 	<bean id="services.mapPosition" class="services.MapPositionService">
 		<property name="repository" ref="persistence.mapPositionRepository" />
 	</bean>
+	
 	<bean id="services.address" class="services.AddressService">
 		<property name="repository" ref="persistence.addressRepository" />
 	</bean>
+	
 	<bean id="services.account" class="services.AccountService">
 		<property name="repository" ref="persistence.accountRepository" />
 	</bean>
+	
 	<bean id="services.menu" class="services.MenuService">
 		<property name="repository" ref="persistence.menuRepository" />
 	</bean>
+	
 	<bean id="services.price" class="services.PriceService">
 		<property name="repository" ref="persistence.priceRepository" />
 	</bean>
+	
 	<bean id="services.provider" class="services.ProviderService">
 		<property name="repository" ref="persistence.providerRepository" />
 	</bean>
@@ -67,7 +76,7 @@
 		<property name="userService" ref="services.user" />
 	</bean>
 
-	<!-- BEAN ASPECTS -->
+	<!-- BEAN ASPECTS --> 
 	<bean name="aopLogging" class="aspects.LoggingAspect" />
 	<aop:config>
 		<aop:aspect ref="aopLogging">

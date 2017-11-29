@@ -2,7 +2,7 @@ package services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import exception.BalanceInsufficient;
 import exception.InvalidAddressException;
@@ -130,5 +130,8 @@ public class UserService extends GenericService<User> {
 		throw new InvalidLoggingException("Error en el logging");
 
 	}
-
+	private void a () {
+		
+	}
+	
 }

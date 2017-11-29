@@ -2,7 +2,7 @@ package services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.Menu;
 import repositories.MenuRepository;
@@ -28,12 +28,12 @@ public class MenuService extends GenericService<Menu> {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findMenuForCategory(category);
 	}
-
+	@Transactional
 	public List<Menu> listMenuForLocality(String locality) {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findMenuForLocality(locality);
 	}
-
+	@Transactional
 	public Object listMenuForService(String idService) {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findMenuForService(idService);
