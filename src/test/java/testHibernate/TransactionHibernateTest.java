@@ -2,6 +2,7 @@ package testHibernate;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TransactionHibernateTest {
 
 	@Autowired
 	private TransactionService transactionService;
-
+	@Ignore
 	@Test
 	public void testSaveTimeZone() {
 		transactionService.save(new Transaction(TypeTransaction.CREDIT, 5.0));
