@@ -5,8 +5,6 @@ import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
-import {User} from './../../model/user';
-import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
@@ -21,10 +19,10 @@ declare var $:any;
 })
 export class EditUserComponent implements OnInit {
   form;
-  user:User;
+  user;
   idUser:string;
   userName : string;
-  userData : UserData;
+  userData;
   mensaje :String;
   localities;
 
@@ -63,7 +61,7 @@ export class EditUserComponent implements OnInit {
     }
     
     resultUserData(data){
-      this.userData = Object.assign(new UserData,data);
+      this.userData = data;
       this.form.setValue({
         'name': this.userData.name,
         'surname':this.userData.surname,

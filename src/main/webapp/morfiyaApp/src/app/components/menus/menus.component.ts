@@ -4,7 +4,6 @@ import {ViewChild, ElementRef} from '@angular/core';
 import {MessageService} from './../../services/messageServices/message.service';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {User} from './../../model/user';
 import { CurrencyPipe } from '@angular/common';
 import { CurrencyFormat } from './../../pipes/currencyFormat.pipe';
 import { UtilsService} from './../../services/utilsServices/utils.service';
@@ -26,7 +25,7 @@ export class MenusComponent implements OnInit {
   p: number = 1;
   menus;
   currency:String;
-  user:User=null;
+  user=null;
   constructor(public menuService: MenuService,public messageService:MessageService ,public languague:LanguageService ,public listMenuService: ListMenusService,private router:Router,private menusService: MenusService,private translate: TranslateService,private utilsServices: UtilsService){  
   }
 

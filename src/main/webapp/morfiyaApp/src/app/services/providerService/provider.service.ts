@@ -20,4 +20,9 @@ export class ProviderService{
     return this.http.get('/grupoc/rest/menu/listMenuForService/'+id).map((res:Response)=>res);
   }
 
+  updateProvider(id:string,password:string,countryCode:number,areaCode:number,localNumber:number,locality:string,street:string,numberStreet:number,floor:number,latitude:number,length:number){
+    return this.http.get('/grupoc/rest/provider/updateuser/'+id+'/'+password+'/'+countryCode+'/'+areaCode+'/'+localNumber+'/'+locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
+  }
+
+
 }

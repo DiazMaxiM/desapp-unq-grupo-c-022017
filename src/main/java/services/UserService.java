@@ -107,9 +107,9 @@ public class UserService extends GenericService<User> {
 		address.setFloor(floor);
 		address.setLocality(Locality.valueOf(locality));
 		address.setNumberStreet(numberStreet);
-		address.setStreet(numberStreet);
+		address.setStreet(street);
 		repo.update(user);
-
+ 
 	}
 
 	@Transactional

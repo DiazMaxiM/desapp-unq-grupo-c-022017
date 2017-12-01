@@ -20,21 +20,21 @@ public class AddressValidation extends Validation{
 	}
 
 
-	private boolean isValidNumberStreet(String numberStreet) throws InvalidNumberStreetException {
+	public boolean isValidNumberStreet(String numberStreet) throws InvalidNumberStreetException {
 		if (StringUtils.isEmpty(numberStreet)) {
 			throw new InvalidNumberStreetException("Debe ingresar un número de calle válido");
 		}
 		return true;
 	}
 
-	private boolean isValidStreet(String street) throws InvalidStreetAddressException {
+	public boolean isValidStreet(String street) throws InvalidStreetAddressException {
 		if (StringUtils.isEmpty(street)) {
 			throw new InvalidStreetAddressException("Debe ingresar un nombre de calle válido");
 		}
 		return true;
 	}
 
-	private boolean isValidLocality(Locality locality) throws InvalidLocalityAddressException {
+	public boolean isValidLocality(Locality locality) throws InvalidLocalityAddressException {
 		if (locality == null) {
 			throw new InvalidLocalityAddressException("Debe ingresar una localidad válida");
 		}

@@ -9,14 +9,14 @@ public class MapPositionValidation extends Validation {
 		return isValidLatitude(latitude) && isValidLength(lenght);
 	}
 
-	private boolean isValidLength(Double length) throws InvalidLengthMapPositionException {
+	public boolean isValidLength(Double length) throws InvalidLengthMapPositionException {
 		if (length == null) {
 			throw new InvalidLengthMapPositionException("Debe ingresar una longitud válida");
 		}
 		return true;
 	}
 
-	private boolean isValidLatitude(Double latitude) throws InvalidLatitudeMapPositionException {
+	public boolean isValidLatitude(Double latitude) throws InvalidLatitudeMapPositionException {
 		if (latitude == null) {
 			throw new InvalidLatitudeMapPositionException("Debe ingresar una latitud válida");
 		}

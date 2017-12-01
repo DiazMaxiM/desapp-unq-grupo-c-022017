@@ -3,6 +3,12 @@
   	"target":"http://localhost:8080/grupoc/rest/",
   	"secure": false,
   	"changeOrigin": true
+	},
+
+	"/conexion-afip/*":{
+  	"target":"http://localhost:8080/grupoc/rest/",
+  	"secure": false,
+  	"changeOrigin": true
   }
 
 

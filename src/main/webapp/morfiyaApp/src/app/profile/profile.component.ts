@@ -3,7 +3,6 @@ import { AuthService } from './../auth/auth.service';
 import { UserService } from './../services/userServices/user.service';
 import {MessageService} from './../services/messageServices/message.service';
 import {Router} from '@angular/router';
-import {User} from './../model/user';
 import {TranslateService} from '@ngx-translate/core';
 import {TypeRegisterService} from './../services/typeRegisterService/typeRegister.service';
 declare var $:any;
@@ -17,6 +16,7 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
   user:any;
+  name;
 
   constructor(public translate:TranslateService,public typeRegisterService: TypeRegisterService,public router:Router,public messageService: MessageService,public auth: AuthService,public userService: UserService) { }
 
@@ -46,11 +46,12 @@ export class ProfileComponent implements OnInit {
 
   showRegisterUser(){
       $("#profileUser").show();
+      this.name=this.profile.name;
 
   }
 
   result(data){
-       this.user= Object.assign(new User,JSON.parse(data._body));
+       this.user= JSON.parse(data._body);
        this.sendData();
        this.auth.logout();
        this.router.navigate(['users']);

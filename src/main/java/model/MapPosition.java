@@ -13,7 +13,7 @@ public class MapPosition extends Entity {
 	private Double length;
 	private MapPositionValidation validator = new MapPositionValidation();
 
-	public MapPosition() {
+	public MapPosition() { 
 	}
 
 	public MapPosition(Double latitude, Double length)
@@ -23,7 +23,7 @@ public class MapPosition extends Entity {
 		}
 	}
 
-	private void createMapPosition(Double latitude, Double length) {
+	private void createMapPosition(Double latitude, Double length) throws InvalidLengthMapPositionException, InvalidLatitudeMapPositionException {
 		this.setLatitude(latitude);
 		this.setLength(length);
 	}
@@ -32,16 +32,20 @@ public class MapPosition extends Entity {
 		return latitude;
 	}
 
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
+	public void setLatitude(Double latitude) throws InvalidLatitudeMapPositionException {
+		if(validator.isValidLatitude(latitude)) {
+			this.latitude = latitude;
+		}
 	}
 
 	public Double getLength() {
 		return length;
 	}
 
-	public void setLength(Double length) {
-		this.length = length;
+	public void setLength(Double length) throws InvalidLengthMapPositionException {
+		if(validator.isValidLength(length)) {
+			this.length = length;
+		}
 	}
 
 }

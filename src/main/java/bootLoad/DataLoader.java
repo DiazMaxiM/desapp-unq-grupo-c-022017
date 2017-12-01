@@ -100,7 +100,7 @@ public class DataLoader{
 
 		Address address = null;
 		try {
-			address = new Address(Locality.ALMIRANTEBROWN, "street", "numberStreet", "floor", mapPosition);
+			address = new Address(Locality.ALMIRANTEBROWN, "monserrat", "558", "0", mapPosition);
 		} catch (InvalidNumberStreetException | InvalidStreetAddressException | InvalidLocalityAddressException
 				| InvalidMapPositionException e3) {
 			// TODO Auto-generated catch block
@@ -108,7 +108,7 @@ public class DataLoader{
 		}
 		Provider provider = null;
 		try {
-			provider = new Provider("87654321", "Rosali", "Zaracho", "zaracho.rosali@gmail.com", telephone,
+			provider = new Provider("87654321", "Rosali", "Zaracho", "rosali.zaracho@gmail.com", telephone,
 					address, "password");
 		} catch (InvalidAddressException | InvalidTelephoneNumberException | InvalidMapPositionException
 				| InvalidCuitException | InvalidFirstNameException | InvalidLastNameException

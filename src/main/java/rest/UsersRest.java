@@ -34,7 +34,7 @@ public class UsersRest {
 
 	public static final int NUMBER_OF_POST = 1;
 
-	private UserService userService;
+	public UserService userService;
 
 	// http://localhost:8080/123/grupoc/rest/users/newuser/123/rosali/zaracho/123/ro@zaracho/54/011/43511464/AVELLANEDA/mitre/5000/0/1/1
 	@GET
@@ -131,7 +131,7 @@ public class UsersRest {
 	@Produces("application/json")
 	public Double getBalanceUser(@PathParam("id") final String id) {
 		return this.userService.getBalance(id);
-	}
+	} 
 
 	// http://localhost:8080/grupoc/rest/users/updateuser/1/123456/54/011/43511464/QUILMES/mitre/5000/0/1/1
 	@GET

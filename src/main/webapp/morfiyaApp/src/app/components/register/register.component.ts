@@ -4,8 +4,6 @@ import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
-import {User} from './../../model/user';
-import {UserData} from './../../model/userData';
 import {Router} from '@angular/router';
 import { AuthService } from './../../auth/auth.service'
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
@@ -21,7 +19,7 @@ declare var $:any;
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user:User;
+  user;
   idUser:string;
   userName : string;
   mensaje :String;
@@ -170,7 +168,7 @@ export class RegisterComponent implements OnInit {
     }
 
     result(data){
-      this.user= Object.assign(new User,JSON.parse(data._body));
+      this.user= JSON.parse(data._body);
       this.sendData();
       $('#modalLogin').modal('hide');
       $('#modalRegister').modal('hide');

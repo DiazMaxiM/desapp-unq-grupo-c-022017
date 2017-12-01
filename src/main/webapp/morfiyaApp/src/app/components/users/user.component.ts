@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ViewChild, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
-import {User} from './../../model/user';
 import {AuthService} from '../../auth/auth.service';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 declare var $:any;
@@ -14,10 +13,10 @@ declare var $:any;
 })
 export class UserComponent implements OnInit{
   user :String
-  userCurrent: User;
+  userCurrent;
   idUser : String;
   typeRol: String;
-  message:User;
+  message;
   
   constructor(private router:Router,public messageService : MessageService,private typeRegisterService: TypeRegisterService,public auth: AuthService){
 

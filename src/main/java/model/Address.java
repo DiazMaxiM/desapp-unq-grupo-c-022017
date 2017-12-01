@@ -29,7 +29,7 @@ public class Address extends Entity {
 	}
 
 	private void createAddress(Locality locality, String street, String numberStreet, String floor,
-			MapPosition mapPosition) {
+			MapPosition mapPosition) throws InvalidStreetAddressException, InvalidNumberStreetException, InvalidLocalityAddressException {
 		this.mapPosition = mapPosition;
 		this.setLocality(locality);
 		this.setStreet(street);
@@ -42,24 +42,31 @@ public class Address extends Entity {
 		return locality;
 	}
 
-	public void setLocality(Locality locality) {
-		this.locality = locality;
+	public void setLocality(Locality locality) throws InvalidLocalityAddressException {
+		if(validator.isValidLocality(locality)) {
+			this.locality = locality;
+			
+		}
 	}
 
 	public String getStreet() {
 		return street;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setStreet(String street) throws InvalidStreetAddressException {
+		if(validator.isValidStreet(street)) {
+			this.street = street;
+		}
 	}
 
 	public String getNumberStreet() {
 		return numberStreet;
 	}
 
-	public void setNumberStreet(String numberStreet) {
-		this.numberStreet = numberStreet;
+	public void setNumberStreet(String numberStreet) throws InvalidNumberStreetException {
+		if(validator.isValidNumberStreet(numberStreet)) {
+			this.numberStreet = numberStreet;
+		}
 	}
 
 	public String getFloor() {

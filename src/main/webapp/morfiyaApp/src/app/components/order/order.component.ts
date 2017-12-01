@@ -4,7 +4,6 @@ import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
-import {User} from './../../model/user';
 import {Router} from '@angular/router';
 import { ProviderService} from './../../services/providerService/provider.service';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
@@ -27,7 +26,7 @@ import { NgModule } from '@angular/core';
 })
 
 export class OrderComponent implements OnInit {
-  user: User
+  user;
   idUser : string
   balance : String
   services;

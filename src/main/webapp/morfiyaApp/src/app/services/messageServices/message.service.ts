@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {User} from './../../model/user';
 @Injectable()
 export class MessageService {
-    private messageSource = new BehaviorSubject<User>(new User);
+    private messageSource = new BehaviorSubject<JSON>(null);
     currentMessage = this.messageSource.asObservable();
     constructor() { }
-    changeMessage(message: User) {
+    changeMessage(message) {
       this.messageSource.next(message)
     }
 }

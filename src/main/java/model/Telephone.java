@@ -17,7 +17,7 @@ public class Telephone extends Entity {
 	private String localNumber;
 
 	private List<String> areasCode = this.areasCode();
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unused") 
 	private Validation validator = new Validation();
 
 	public Telephone() {
@@ -65,7 +65,7 @@ public class Telephone extends Entity {
 		return !StringUtils.isEmpty(countryCode) && this.getCountryCode().equals(countryCode);
 	}
 
-	private void createTelephone(String countryCode, String areaCode, String localNumber) {
+	private void createTelephone(String countryCode, String areaCode, String localNumber) throws InvalidLocalNumberException, InvalidAreaCodeException, InvalidCountryCodeException {
 		this.setAreaCode(areaCode);
 		this.setCountryCode(countryCode);
 		this.setLocalNumber(localNumber);
@@ -75,24 +75,32 @@ public class Telephone extends Entity {
 		return countryCode;
 	}
 
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
+	public void setCountryCode(String countryCode) throws InvalidCountryCodeException {
+		if(this.isValidCountryCode(countryCode)) {
+			this.countryCode = countryCode;
+		}
+		
 	}
 
 	public String getAreaCode() {
 		return areaCode;
 	}
 
-	public void setAreaCode(String areaCode) {
-		this.areaCode = areaCode;
+	public void setAreaCode(String areaCode) throws InvalidAreaCodeException {
+		if(this.isValidAreaCode(areaCode)) {
+			this.areaCode = areaCode;
+		}
 	}
 
 	public String getLocalNumber() {
 		return localNumber;
 	}
 
-	public void setLocalNumber(String localNumber) {
-		this.localNumber = localNumber;
+	public void setLocalNumber(String localNumber) throws InvalidLocalNumberException {
+		if(this.isValidLocalNumber(localNumber)) {
+			this.localNumber = localNumber;
+		}
+		
 	}
 
 	public void updateInformation(String countryCode, String areaCode, String localNumber)

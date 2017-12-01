@@ -4,7 +4,6 @@ import {MessageService} from './../../services/messageServices/message.service';
 import {ViewChild, ElementRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { AlertService } from '../../alert/services/index';
-import {User} from './../../model/user';
 import {Router} from '@angular/router';
 import {Input,Output} from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
@@ -24,7 +23,7 @@ declare var currency: string;
 })
 
 export class CheckBalanceComponent implements OnInit {
-  user: User
+  user;
   idUser : String
   balance : String  
   value : number = 0;

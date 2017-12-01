@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
 import {MessageService} from './../../services/messageServices/message.service';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 import { AlertService } from '../../alert/services/index';
-import {User} from './../../model/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,AbstractControl,ValidatorFn } from '@angular/forms';
@@ -26,7 +25,7 @@ import { I18n,CustomDatepickerI18n } from './../../services/calendarLanguage/cus
 export class HeaderComponent {
 
   public model:any = {};
-  private user : User = new User();
+  private user=null;
   form: FormGroup;
   submitted = false;
   currency : string;
@@ -91,7 +90,7 @@ export class HeaderComponent {
   }
 
   result(data){
-       this.user= Object.assign(new User,JSON.parse(data._body));
+       this.user= JSON.parse(data._body);
        this.sendData();
        $('#modalLogin').modal('hide');
        this.router.navigate(['users']);
