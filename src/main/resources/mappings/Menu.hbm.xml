@@ -22,7 +22,7 @@
     	<property name="startDateOfferMenu" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime" />
     	<property name="endDateOfferMenu" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime" />
     	<list name = "deliveryTimesMenus" cascade="all" inverse="false" lazy="false" >
-	         <key column = "id"/>
+	         <key column = "idTime"/>
 	         <list-index column = "idx"/>
 	         <one-to-many class="model.TimeZone"/>
       	</list>

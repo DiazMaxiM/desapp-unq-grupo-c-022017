@@ -110,6 +110,14 @@ public class ProviderRest {
 		return Response.ok().entity(this.providerService.getProviderForServiceId(id).getId()).build();
 	}
 
+	@GET
+	@Path("/getServiceNew/{id}")
+	@Produces("application/json")
+	public void getServiceNew(@PathParam("id") final String id) {
+		// return
+		// Response.ok().entity(this.serviceService.newService()).build();
+	}
+
 	public void setProviderService(final ProviderService providerService) {
 		this.providerService = providerService;
 	}

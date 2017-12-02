@@ -4,7 +4,6 @@
 package rest;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,6 +48,7 @@ import model.Provider;
 import model.Service;
 import model.Telephone;
 import model.TimeZone;
+import model.WorkingTime;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -99,17 +99,17 @@ public class DataFakeRest {
 		Provider provider = new Provider("87654321", "Rosali", "Zaracho", "zaracho.rosali@gmail.com", telephone,
 				address, "password");
 
-		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
+		List<WorkingTime> serviceWorkingHours = new ArrayList<>();
 		List<TimeZone> workingHours = new ArrayList<>();
 		TimeZone lateShift = new TimeZone("17:00", "22:30");
 		workingHours.add(lateShift);
-		serviceWorkingHours.put(1, workingHours);
-		serviceWorkingHours.put(2, workingHours);
-		serviceWorkingHours.put(3, workingHours);
-		serviceWorkingHours.put(4, workingHours);
-		serviceWorkingHours.put(5, workingHours);
-		serviceWorkingHours.put(6, workingHours);
-		serviceWorkingHours.put(7, workingHours);
+		serviceWorkingHours.add(new WorkingTime(1, workingHours));
+		serviceWorkingHours.add(new WorkingTime(2, workingHours));
+		serviceWorkingHours.add(new WorkingTime(3, workingHours));
+		serviceWorkingHours.add(new WorkingTime(4, workingHours));
+		serviceWorkingHours.add(new WorkingTime(5, workingHours));
+		serviceWorkingHours.add(new WorkingTime(6, workingHours));
+		serviceWorkingHours.add(new WorkingTime(7, workingHours));
 
 		Set<Locality> lista = new HashSet<Locality>();
 		lista.add(Locality.ALMIRANTEBROWN);

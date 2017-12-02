@@ -290,7 +290,7 @@ public class SalesAdministrationTest {
 		workingHours.add(lateShift);
 		serviceWorkingHours.put(6, workingHours);
 		serviceWorkingHours.put(7, workingHours);
-		service.setServiceWorkingHours(serviceWorkingHours);
+		// service.setServiceWorkingHours(serviceWorkingHours);
 		Transaction transaction = new Transaction(TypeTransaction.CREDIT, new Double(500));
 		order.getClient().getAccount().addTransaction(transaction);
 		MenuManager menuManager = new MenuManager();

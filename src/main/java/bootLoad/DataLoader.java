@@ -1,14 +1,11 @@
 package bootLoad;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import builders.MenuBuilder;
@@ -46,6 +43,7 @@ import model.Provider;
 import model.Service;
 import model.Telephone;
 import model.TimeZone;
+import model.WorkingTime;
 import serviceException.InvalidServiceDescriptionException;
 import serviceException.InvalidServiceEmailException;
 import serviceException.InvalidServiceLogoException;
@@ -62,14 +60,14 @@ import validation.InvalidFormatTimeZoneException;
 import validation.InvalidMenuPriceException;
 
 @Component
-public class DataLoader{
-	
+public class DataLoader {
+
 	public MenuService menuService;
 	public ProviderService providerService;
 	public UserService userService;
-	
+
 	public void initialize() {
-		
+
 		System.out.println("Start data loading");
 		try {
 			userService.newUser("password", "Maximiliano", "Diaz", "12345678", "diazmaxi@gmail.com", "54", "011",
@@ -109,8 +107,8 @@ public class DataLoader{
 		}
 		Provider provider = null;
 		try {
-			provider = new Provider("87654321", "Rosali", "Zaracho", "rosali.zaracho@gmail.com", telephone,
-					address, "password");
+			provider = new Provider("87654321", "Rosali", "Zaracho", "rosali.zaracho@gmail.com", telephone, address,
+					"password");
 		} catch (InvalidAddressException | InvalidTelephoneNumberException | InvalidMapPositionException
 				| InvalidCuitException | InvalidFirstNameException | InvalidLastNameException
 				| InvalidEmailAddressException e) {
@@ -118,7 +116,7 @@ public class DataLoader{
 			e.printStackTrace();
 		}
 
-		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
+		List<WorkingTime> serviceWorkingHours = new ArrayList<WorkingTime>();
 		List<TimeZone> workingHours = new ArrayList<>();
 		TimeZone lateShift = null;
 		try {
@@ -128,13 +126,13 @@ public class DataLoader{
 			e.printStackTrace();
 		}
 		workingHours.add(lateShift);
-		serviceWorkingHours.put(1, workingHours);
-		serviceWorkingHours.put(2, workingHours);
-		serviceWorkingHours.put(3, workingHours);
-		serviceWorkingHours.put(4, workingHours);
-		serviceWorkingHours.put(5, workingHours);
-		serviceWorkingHours.put(6, workingHours);
-		serviceWorkingHours.put(7, workingHours);
+		serviceWorkingHours.add(new WorkingTime(1, workingHours));
+		serviceWorkingHours.add(new WorkingTime(2, workingHours));
+		serviceWorkingHours.add(new WorkingTime(3, workingHours));
+		serviceWorkingHours.add(new WorkingTime(4, workingHours));
+		serviceWorkingHours.add(new WorkingTime(5, workingHours));
+		serviceWorkingHours.add(new WorkingTime(6, workingHours));
+		serviceWorkingHours.add(new WorkingTime(7, workingHours));
 
 		Set<Locality> lista = new HashSet<Locality>();
 		lista.add(Locality.ALMIRANTEBROWN);
@@ -146,9 +144,9 @@ public class DataLoader{
 		Service service = null;
 		try {
 			service = new Service("Mi Negocio", "Logo",
-					new Address(Locality.BERAZATEGUI, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
-					"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
-					lista);
+					new Address(Locality.BERAZATEGUI, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)),
+					"Mi Descripcion", "www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"),
+					serviceWorkingHours, lista);
 		} catch (InvalidServiceException | InvalidAddressException | InvalidTelephoneNumberException
 				| InvalidMapPositionException | InvalidNumberStreetException | InvalidStreetAddressException
 				| InvalidLocalityAddressException | InvalidLengthMapPositionException
@@ -162,9 +160,9 @@ public class DataLoader{
 		Service service2 = null;
 		try {
 			service2 = new Service("Mi Negocio 2", "Logo",
-					new Address(Locality.AVELLANEDA, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
-					"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
-					lista2);
+					new Address(Locality.AVELLANEDA, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)),
+					"Mi Descripcion", "www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"),
+					serviceWorkingHours, lista2);
 		} catch (InvalidServiceException | InvalidAddressException | InvalidTelephoneNumberException
 				| InvalidMapPositionException | InvalidNumberStreetException | InvalidStreetAddressException
 				| InvalidLocalityAddressException | InvalidLengthMapPositionException
@@ -402,7 +400,7 @@ public class DataLoader{
 		menuService.save(menu10);
 		menuService.save(menu11);
 	}
-	
+
 	@Autowired
 	public void setMenuService(final MenuService menuService) {
 		this.menuService = menuService;
@@ -412,7 +410,7 @@ public class DataLoader{
 	public void setProviderService(final ProviderService providerService) {
 		this.providerService = providerService;
 	}
-    
+
 	@Autowired
 	public void setUserService(final UserService userService) {
 		this.userService = userService;

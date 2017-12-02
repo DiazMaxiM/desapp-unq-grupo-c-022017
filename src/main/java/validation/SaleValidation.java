@@ -1,9 +1,9 @@
 package validation;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -21,6 +21,7 @@ import model.ScoringManager;
 import model.TimeZone;
 import model.TypeOfDelivery;
 import model.User;
+import model.WorkingTime;
 import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
 import serviceException.InvalidDeliveryLocation;
@@ -80,7 +81,7 @@ public class SaleValidation extends Validation {
 	private boolean isTheSaleWithinTheWorkingHoursofTheService(Order order)
 			throws InvalidPurchaseException, InvalidTimeZoneException, IOException, InvalidDateOfDeliveryException {
 		Integer dayOfWeek = order.getDateOfDelivery().getDayOfWeek();
-		HashMap<Integer, List<TimeZone>> workingsHours = order.getMenuToOrder().getService().getServiceWorkingHours();
+		List<WorkingTime> workingsHours = order.getMenuToOrder().getService().getServiceWorkingHours();
 		if (!(isThePurchaseMadeWithinOneBusinessDay(workingsHours, dayOfWeek)
 				&& isTheDeliveryDateIsNotMadeOnHoliday(order.getDateOfDelivery())
 				&& isThePurchaseWithinTheWorkingHoursOfBusinessDay(workingsHours, dayOfWeek,
@@ -100,19 +101,19 @@ public class SaleValidation extends Validation {
 
 	}
 
-	private boolean isThePurchaseWithinTheWorkingHoursOfBusinessDay(HashMap<Integer, List<TimeZone>> workingsHours,
-			Integer dayOfWeek, TimeZone deliveryTimeOfClientWantsTheOrder) throws InvalidTimeZoneException {
+	private boolean isThePurchaseWithinTheWorkingHoursOfBusinessDay(List<WorkingTime> workingsHours, Integer dayOfWeek,
+			TimeZone deliveryTimeOfClientWantsTheOrder) throws InvalidTimeZoneException {
 		boolean isInTimeWorking = false;
-		List<TimeZone> hours = workingsHours.get(dayOfWeek);
+		List<TimeZone> hours = workingsHours.stream().filter(work -> work.getDay().equals(dayOfWeek))
+				.collect(Collectors.toList()).get(0).getListTimeZone();
 		for (TimeZone timeZone : hours) {
 			isInTimeWorking = isInTimeWorking || timeZone.isWithinRangeofWorking(deliveryTimeOfClientWantsTheOrder);
 		}
 		return isInTimeWorking;
 	}
 
-	private boolean isThePurchaseMadeWithinOneBusinessDay(HashMap<Integer, List<TimeZone>> workingsHours,
-			Integer dayOfWeek) {
-		return workingsHours.containsKey(dayOfWeek);
+	private boolean isThePurchaseMadeWithinOneBusinessDay(List<WorkingTime> workingsHours, Integer dayOfWeek) {
+		return workingsHours.stream().filter(work -> work.getDay().equals(dayOfWeek)).count() > 0;
 	}
 
 	private boolean isNotHasPendingScoreForClient(User client) throws PendingScoreException {

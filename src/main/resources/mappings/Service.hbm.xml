@@ -10,7 +10,7 @@
   
 </typedef>
 	<class name="model.Service">
-		<id column="ID" name="id">
+		<id column="IDSERVICE" name="id">
 			<generator class="native" />
 		</id>
 		<property name="serviceName" />
@@ -31,7 +31,11 @@
     	<set name="serviceDeliveryLocations"  lazy="false">
             <key column="localityName"/>
             <element type="LocalityType" column="locality"/>
-            
         </set>
+        <list name = "serviceWorkingHours" cascade="all" inverse="false" lazy="false" >
+         	<key column = "IDSERVICE"/>
+         	<list-index column = "idx"/>
+         	<one-to-many class="model.WorkingTime"/>
+      	</list> 
 	</class>
 </hibernate-mapping>

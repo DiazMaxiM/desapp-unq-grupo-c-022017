@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -27,14 +26,14 @@ public class Service extends Entity {
 	private String serviceWebDirection;
 	private String serviceEmail;// Required
 	private Telephone serviceTelephone;// Required
-	private HashMap<Integer, List<TimeZone>> serviceWorkingHours;// Required
+	private List<WorkingTime> serviceWorkingHours;// Required
 	private Set<Locality> serviceDeliveryLocations;
 	private int maximumNumberOfMenus = 20;
 	private ServiceValidation validator = new ServiceValidation();
 
 	public Service(String serviceName, String serviceLogo, Address serviceAddress, String serviceDescription,
 			String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Integer, List<TimeZone>> serviceWorkingHours, Set<Locality> serviceDeliveryLocations)
+			List<WorkingTime> serviceWorkingHours, Set<Locality> serviceDeliveryLocations)
 			throws InvalidServiceException, InvalidAddressException, InvalidServiceNameException,
 			InvalidServiceLogoException, InvalidServiceDescriptionException, InvalidServiceEmailException,
 			InvalidServiceWorkingHoursException, InvalidTelephoneNumberException, InvalidMapPositionException {
@@ -57,7 +56,7 @@ public class Service extends Entity {
 
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,
 			String serviceDescription, String serviceWebDirection, String serviceEmail, Telephone serviceTelephone,
-			HashMap<Integer, List<TimeZone>> serviceWorkingHours, Set<Locality> serviceDeliveryLocations) {
+			List<WorkingTime> serviceWorkingHours, Set<Locality> serviceDeliveryLocations) {
 
 		this.setServiceName(serviceName);
 		this.setServiceLogo(serviceLogo);
@@ -143,11 +142,11 @@ public class Service extends Entity {
 		this.serviceTelephone = serviceTelephone;
 	}
 
-	public HashMap<Integer, List<TimeZone>> getServiceWorkingHours() {
+	public List<WorkingTime> getServiceWorkingHours() {
 		return serviceWorkingHours;
 	}
 
-	public void setServiceWorkingHours(HashMap<Integer, List<TimeZone>> serviceWorkingHours) {
+	public void setServiceWorkingHours(List<WorkingTime> serviceWorkingHours) {
 		this.serviceWorkingHours = serviceWorkingHours;
 	}
 
