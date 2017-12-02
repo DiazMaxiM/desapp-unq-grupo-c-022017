@@ -217,7 +217,8 @@
     "dateOfDeliveryRequired":"Fecha de entrega requerida",
     "timeOfDeliveryRequired":"Horario de entrega requirida",
     "typeOfDeliveryRequired":"Tipo de entrega requerido",
-    "total":"Total a pagar"
+    "total":"Total a pagar",
+    "117":"Ya existe un usuario registrado con este correo/cuit"
 
     
 }

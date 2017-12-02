@@ -43,7 +43,7 @@ public class SalesAdministration {
 		increaseNumberOfMenuSales(order);
 		chargeClientMenu(order);
 		payTheProvider(order);
-		// sendEmailClientAndProvider(order);
+		// sendEmailClientAndProvider(order); 
 		addOrderToConfirm(order);
 		addOrderAsHistoricalOrder(order);
 	}

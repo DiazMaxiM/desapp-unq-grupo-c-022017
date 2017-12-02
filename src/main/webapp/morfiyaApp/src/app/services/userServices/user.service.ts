@@ -35,6 +35,7 @@ export class UserService {
   }
 
   register(password: string, name: string, surname: string,cuit:string, email: string,countryCode: string, areaCode: string,localNumber: string, locality: string, street: string, numberStreet: string, floor: string,latitude: string,length: String){
+    console.log("hola");
     return this.http.get('/grupoc/rest/users/newuser/'+ password+'/'+name+'/'+ surname+'/'+ cuit +'/'+ email+'/'+countryCode+'/'+ areaCode+'/'+ localNumber+'/'+ locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }
 

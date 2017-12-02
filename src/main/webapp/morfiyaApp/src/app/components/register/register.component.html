@@ -122,7 +122,7 @@
                                <label class="col-form-label required">{{'areaCode'| translate }}</label>
                           </div>
                           <div class="col-12 non-lateral-padding">
-                                <input type="number"  class="form-control" formControlName="areaCode"> 
+                                <input type="tel"  class="form-control" formControlName="areaCode"> 
                                 <app-field-error-display [displayError]="isFieldValid('areaCode')" errorMsg=" {{'areaCodeRequired'|translate}}">
                                 </app-field-error-display>
                          </div>
@@ -182,7 +182,7 @@
 <!-- Modal update-->
 <div class="modal" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
-            <div class="modal-content modal-sm">
+            <div class="modal-content">
                 <div class="modal-header homeHeader">
                     <h5 class="modal-title titulo" id="exampleModalLongTitle">MorfiYa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -139,9 +139,7 @@ export class RegisterComponent implements OnInit {
   
     showModal(msg){
       this.mensaje= msg;
-      if(window.screen.width <=767){
-        $('#modal-update').modal('show')
-      }
+      $('#modal-update').modal('show')
     }
 
     showError(msgError){
@@ -162,7 +160,7 @@ export class RegisterComponent implements OnInit {
      this.userService.register(this.form.value.password,this.form.value.name,this.form.value.surname,this.form.value.cuit,this.form.value.email,this.form.value.countryCode,this.form.value.areaCode,this.form.value.localNumber,this.form.value.locality,this.form.value.street, this.form.value.number,this.form.value.floor,this.form.value.latitude,this.form.value.length).subscribe(data => 
         {this.result(data)},
       err => {
-        this.form.reset();
+        console.log(JSON.parse(err._body).code.toString());
         this.showModal(this.translate.instant(JSON.parse(err._body).code.toString()));
       });
     }

@@ -18,6 +18,7 @@ import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
+import exception.InvalidRegisterException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import miniObjects.ErrorJson;
@@ -50,7 +51,7 @@ public class ProviderRest {
 	) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException,
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException,InvalidRegisterException{
 		User user = null;
 		try {
 			user = this.providerService.newProvider(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
@@ -88,8 +89,10 @@ public class ProviderRest {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(115)).build();
 		} catch (InvalidLocalityAddressException e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(116)).build();
+		} catch (InvalidRegisterException e) {
+		    return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
 		}
-	}
+	} 
 
 	@GET
 	@Path("/getServices/{id}")

@@ -187,6 +187,7 @@
     "dateOfDeliveryRequired":"Termine richiesto",
     "timeOfDeliveryRequired":"Tempo di consegna richiesto",
     "typeOfDeliveryRequired":"Tipo di consegna richiesto",
-    "total":"Totale da pagare" 
+    "total":"Totale da pagare",
+    "117":"C'è già un utente registrato con questa email/cuit"
 
 }

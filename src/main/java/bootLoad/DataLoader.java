@@ -22,6 +22,7 @@ import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
+import exception.InvalidRegisterException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
@@ -78,7 +79,7 @@ public class DataLoader{
 				| InvalidMapPositionException | InvalidLengthMapPositionException | InvalidLatitudeMapPositionException
 				| InvalidNumberStreetException | InvalidStreetAddressException | InvalidLocalityAddressException
 				| InvalidCuitException | InvalidFirstNameException | InvalidLastNameException
-				| InvalidEmailAddressException e) {
+				| InvalidEmailAddressException | InvalidRegisterException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

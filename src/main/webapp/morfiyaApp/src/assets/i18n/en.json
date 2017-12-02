@@ -220,5 +220,6 @@
     "dateOfDeliveryRequired":"Deadline required",
     "timeOfDeliveryRequired":"Delivery time required",
     "typeOfDeliveryRequired":"Type of delivery required",
-    "total":"Total to pay"
+    "total":"Total to pay",
+    "117":"There is already a registered user with this email/cuit"
 }

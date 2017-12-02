@@ -13,6 +13,7 @@ import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
+import exception.InvalidRegisterException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
@@ -21,10 +22,12 @@ import model.MapPosition;
 import model.Provider;
 import model.Service;
 import model.Telephone;
+import model.User;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
+import validation.UserValidation;
 
 public class ProviderService extends GenericService<Provider> {
 	/**
@@ -40,7 +43,7 @@ public class ProviderService extends GenericService<Provider> {
 			InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException,
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidRegisterException {
 
 		MapPosition mapPosition = new MapPosition(new Double(latitude), new Double(length));
 
@@ -48,10 +51,24 @@ public class ProviderService extends GenericService<Provider> {
 
 		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
 		Provider newProvider = new Provider(cuit, name, surname, mail, telephone, address, pass);
-
-		this.getRepository().save(newProvider);
+        	
+		List<Provider> providers = this.getRepository().findAll();
+		
+		if(isNewProvider(newProvider, providers)) {
+			this.getRepository().save(newProvider);		
+			
+		}	
 
 		return newProvider;
+	}
+
+	private boolean isNewProvider(Provider newProvider, List<Provider> providers) throws InvalidRegisterException {
+		Long  providersWithSameEmail = providers.stream().filter(provider -> provider.getEmail().equals(newProvider.getEmail())).count();
+		Long  providersWithSameCuit =  providers.stream().filter(provider -> provider.equals(newProvider)).count();
+		if(providersWithSameEmail>0||providersWithSameCuit>0){
+			throw new InvalidRegisterException("Ya existe un usuario");
+		}
+		return true;
 	}
 
 	@Transactional

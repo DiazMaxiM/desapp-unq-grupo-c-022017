@@ -25,6 +25,7 @@ import exception.InvalidLocalNumberException;
 import exception.InvalidLocalityAddressException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
+import exception.InvalidRegisterException;
 import exception.InvalidServiceException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
@@ -85,7 +86,7 @@ public class DataFakeRest {
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException,
-			InvalidEndDateOfferMenuException, InvalidTimeZoneException, InvalidFormatTimeZoneException {
+			InvalidEndDateOfferMenuException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidRegisterException {
 
 		userService.newUser("password", "Maximiliano", "Diaz", "12345678", "diazmaxi@gmail.com", "54", "011",
 				"43511464", "AVELLANEDA", "BOGOTA", "4040", "1", "1", "1");

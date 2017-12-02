@@ -5,6 +5,7 @@ import {MessageService} from './../../services/messageServices/message.service';
 import {AuthService} from '../../auth/auth.service';
 import {TypeRegisterService} from './../../services/typeRegisterService/typeRegister.service';
 declare var $:any;
+import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 
 @Component({
   selector: 'user',
@@ -18,7 +19,7 @@ export class UserComponent implements OnInit{
   typeRol: String;
   message;
   
-  constructor(private router:Router,public messageService : MessageService,private typeRegisterService: TypeRegisterService,public auth: AuthService){
+  constructor(private listMenu: ListMenusService,private router:Router,public messageService : MessageService,private typeRegisterService: TypeRegisterService,public auth: AuthService){
 
   }
   
@@ -33,6 +34,9 @@ export class UserComponent implements OnInit{
 
 backToHome(){
   $('#loginOutModal').modal('hide');
+  this.listMenu.changeMessage(null)
+  this.messageService.changeMessage(null)
+
   this.router.navigate(['home']);
 }
 

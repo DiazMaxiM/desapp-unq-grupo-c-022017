@@ -7,6 +7,7 @@ import exception.InvalidMapPositionException;
 import exception.InvalidRegisterException;
 import exception.InvalidTelephoneNumberException;
 import model.Address;
+import model.Provider;
 import model.Telephone;
 import model.User;
 import userExceptions.InvalidCuitException;
@@ -73,7 +74,7 @@ public class UserValidation extends Validation{
 			throw new InvalidPasswordException("Debe ingresar una contrasenha");
 		}
 		return true;
-	}
+	}	
 	
 
 }

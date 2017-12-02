@@ -15,6 +15,7 @@ import exception.InvalidLocalityAddressException;
 import exception.InvalidLoggingException;
 import exception.InvalidMapPositionException;
 import exception.InvalidNumberStreetException;
+import exception.InvalidRegisterException;
 import exception.InvalidStreetAddressException;
 import exception.InvalidTelephoneNumberException;
 import miniObjects.UserDataJson;
@@ -31,6 +32,7 @@ import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
 import userExceptions.InvalidPasswordException;
+import validation.UserValidation;
 
 public class UserService extends GenericService<User> {
 
@@ -44,18 +46,26 @@ public class UserService extends GenericService<User> {
 			InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException,
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException {
-
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidRegisterException {
+        
+		
 		MapPosition mapPosition = new MapPosition(new Double(latitude), new Double(length));
 
 		Telephone telephone = new Telephone(countryCode, areaCode, localNumber);
 
 		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
 		User newUser = new User(cuit, name, surname, mail, telephone, address, pass);
-
-		this.getRepository().save(newUser);
-
+        
+		UserValidation validator = new UserValidation();
+		
+		List<User> users = this.getRepository().findAll();
+		
+		if(validator.isNewUser(newUser, users)) {
+			this.getRepository().save(newUser);		
+			
+		}
 		return newUser;
+		
 	}
 
 	@Transactional

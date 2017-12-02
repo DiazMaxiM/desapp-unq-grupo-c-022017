@@ -17,6 +17,6 @@ export class UtilsService {
   }
 
   getUserAfipData(cuit:string){
-    return this.http.get('https://soa.afip.gob.ar/sr-padron/v2/persona/'+cuit).map((res:Response)=>res);
+    return this.http.get('sr-padron/v2/persona/'+cuit).map((res:Response)=>res);
   }
 }
