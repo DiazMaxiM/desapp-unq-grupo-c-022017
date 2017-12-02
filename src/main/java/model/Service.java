@@ -18,6 +18,7 @@ import serviceException.InvalidServiceWorkingHoursException;
 import validation.ServiceValidation;
 
 public class Service extends Entity {
+	private Integer idProvider;
 	private String serviceName; // Required
 	private String serviceLogo; // Required
 	private Address serviceAddress; // Required
@@ -48,6 +49,10 @@ public class Service extends Entity {
 
 	public Service() {
 
+	}
+
+	public void setIdProvider(Integer idProvider) {
+		this.idProvider = idProvider;
 	}
 
 	private void createService(String serviceName, String serviceLogo, Address serviceAddress,

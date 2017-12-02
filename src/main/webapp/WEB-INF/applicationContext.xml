@@ -43,7 +43,8 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	</jaxrs:server>
    
 	<bean id="usersRest" class="rest.UsersRest">
-		<property name="userService" ref="services.user" />
+					<property name="userService" ref="services.user" />
+	
 	</bean>
 	
 	<jaxrs:server id="provider" address="/provider"  > 
@@ -64,6 +65,8 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
    
 	<bean id="providersRest" class="rest.ProviderRest">
 		<property name="providerService" ref="services.provider" />
+		<property name="serviceService" ref="services.service" />
+		
 	</bean>
 	
 	
@@ -146,5 +149,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	</bean>
 	
 	
+	
+
 	
 </beans>

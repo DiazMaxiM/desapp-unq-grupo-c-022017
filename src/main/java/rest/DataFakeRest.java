@@ -86,7 +86,8 @@ public class DataFakeRest {
 			InvalidMenuCategoryException, InvalidStartDateOfferMenuException, InvalidMenuDeliveryPriceException,
 			InvalidMinimumNumberOfMenusToBuyException, InvalidMinimumPriceOfMenusToBuyException,
 			InvalidMaximumNumberOfMenusSalesPerDay, InvalidPricesException, InvalidMenuPriceException,
-			InvalidEndDateOfferMenuException, InvalidTimeZoneException, InvalidFormatTimeZoneException, InvalidRegisterException {
+			InvalidEndDateOfferMenuException, InvalidTimeZoneException, InvalidFormatTimeZoneException,
+			InvalidRegisterException {
 
 		userService.newUser("password", "Maximiliano", "Diaz", "12345678", "diazmaxi@gmail.com", "54", "011",
 				"43511464", "AVELLANEDA", "BOGOTA", "4040", "1", "1", "1");
@@ -121,10 +122,13 @@ public class DataFakeRest {
 				new Address(Locality.BERAZATEGUI, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
 				"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
 				lista);
+		service.setIdProvider(2);
 		Service service2 = new Service("Mi Negocio 2", "Logo",
 				new Address(Locality.AVELLANEDA, "CALLE 14", "1000", "1", new MapPosition(1.0, 1.0)), "Mi Descripcion",
 				"www.ventas.com.ar", "mail@ventas.com.ar", new Telephone("54", "011", "44444444"), serviceWorkingHours,
 				lista2);
+		service2.setIdProvider(2);
+
 		provider.addNewService(service);
 		provider.addNewService(service2);
 

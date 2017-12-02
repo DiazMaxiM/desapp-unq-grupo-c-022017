@@ -14,6 +14,7 @@
 			<generator class="native" />
 		</id>
 		<property name="serviceName" />
+		<property name="idProvider" />
         <property name="serviceLogo" />
         <one-to-one name="serviceAddress" cascade="all" class="model.Address" />
         <property name="serviceDescription" />

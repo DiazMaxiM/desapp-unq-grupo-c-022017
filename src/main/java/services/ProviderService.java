@@ -23,11 +23,11 @@ import model.Provider;
 import model.Service;
 import model.Telephone;
 import model.User;
+import repositories.ProviderRepository;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
 import userExceptions.InvalidLastNameException;
-import validation.UserValidation;
 
 public class ProviderService extends GenericService<Provider> {
 	/**
@@ -51,21 +51,22 @@ public class ProviderService extends GenericService<Provider> {
 
 		Address address = new Address(Locality.valueOf(locality), street, numberStreet, floor, mapPosition);
 		Provider newProvider = new Provider(cuit, name, surname, mail, telephone, address, pass);
-        	
+
 		List<Provider> providers = this.getRepository().findAll();
-		
-		if(isNewProvider(newProvider, providers)) {
-			this.getRepository().save(newProvider);		
-			
-		}	
+
+		if (isNewProvider(newProvider, providers)) {
+			this.getRepository().save(newProvider);
+
+		}
 
 		return newProvider;
 	}
 
 	private boolean isNewProvider(Provider newProvider, List<Provider> providers) throws InvalidRegisterException {
-		Long  providersWithSameEmail = providers.stream().filter(provider -> provider.getEmail().equals(newProvider.getEmail())).count();
-		Long  providersWithSameCuit =  providers.stream().filter(provider -> provider.equals(newProvider)).count();
-		if(providersWithSameEmail>0||providersWithSameCuit>0){
+		Long providersWithSameEmail = providers.stream()
+				.filter(provider -> provider.getEmail().equals(newProvider.getEmail())).count();
+		Long providersWithSameCuit = providers.stream().filter(provider -> provider.equals(newProvider)).count();
+		if (providersWithSameEmail > 0 || providersWithSameCuit > 0) {
 			throw new InvalidRegisterException("Ya existe un usuario");
 		}
 		return true;
@@ -75,6 +76,14 @@ public class ProviderService extends GenericService<Provider> {
 	public List<Service> getServicesByIdProvider(String id) {
 		Provider provider = this.getRepository().findById(new Integer(id));
 		return provider.getServicesOffered();
+	}
+
+	@Transactional
+
+	public User getProviderForServiceId(String id) {
+		ProviderRepository provider = (ProviderRepository) this.getRepository();
+		return provider.byIdService(new Integer(id));
+
 	}
 
 }

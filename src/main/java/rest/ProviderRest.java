@@ -25,6 +25,7 @@ import miniObjects.ErrorJson;
 import miniObjects.UserJson;
 import model.User;
 import services.ProviderService;
+import services.ServiceService;
 import userExceptions.InvalidCuitException;
 import userExceptions.InvalidEmailAddressException;
 import userExceptions.InvalidFirstNameException;
@@ -36,6 +37,7 @@ public class ProviderRest {
 	public static final int NUMBER_OF_POST = 1;
 
 	private ProviderService providerService;
+	private ServiceService serviceService;
 
 	@GET
 	@Path("/newuser/{pass}/{name}/{surname}/{cuit}/{mail}/{countryCode}/{areaCode}/{localNumber}/{locality}/{street}/{numberStreet}/{floor}/{latitude}/{length}")
@@ -51,7 +53,7 @@ public class ProviderRest {
 	) throws InvalidAddressException, InvalidTelephoneNumberException, InvalidCuitException, InvalidFirstNameException,
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
-			InvalidStreetAddressException, InvalidLocalityAddressException,InvalidRegisterException{
+			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidRegisterException {
 		User user = null;
 		try {
 			user = this.providerService.newProvider(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
@@ -90,9 +92,9 @@ public class ProviderRest {
 		} catch (InvalidLocalityAddressException e) {
 			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(116)).build();
 		} catch (InvalidRegisterException e) {
-		    return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
+			return Response.status(Response.Status.NOT_FOUND).entity(new ErrorJson(117)).build();
 		}
-	} 
+	}
 
 	@GET
 	@Path("/getServices/{id}")
@@ -101,8 +103,19 @@ public class ProviderRest {
 		return Response.ok().entity(this.providerService.getServicesByIdProvider(id)).build();
 	}
 
+	@GET
+	@Path("/getProviderForService/{id}")
+	@Produces("application/json")
+	public Response getProviderForService(@PathParam("id") final String id) {
+		return Response.ok().entity(this.providerService.getProviderForServiceId(id).getId()).build();
+	}
+
 	public void setProviderService(final ProviderService providerService) {
 		this.providerService = providerService;
+	}
+
+	public void setServiceService(final ServiceService serviceService) {
+		this.serviceService = serviceService;
 	}
 
 }
