@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.Order">
+		<id column="idOrder" name="id">
+			<generator class="native" />
+ 		</id>
+ 		
+ 		
+ 		<property name="typeStatusOrder" >
+        	<type name="org.hibernate.type.EnumType">
+            	<param name="enumClass">model.TypeStatusOrder</param>
+            	<param name="useNamed">true</param>
+        	</type>       
+    	</property>  
+ 		<many-to-one name="menuToOrder" cascade="all" class="model.Menu" lazy="false" />
+ 		<property name="numberOfMenusToOrder" />
+ 		<property name="typeOfDelivery" >
+        	<type name="org.hibernate.type.EnumType">
+            	<param name="enumClass">model.TypeOfDelivery</param>
+            	<param name="useNamed">true</param>
+        	</type>       
+    	</property>  
+ 		
+ 	<property name="dateOfDelivery" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime" />
+ 		    	<one-to-one name="client" cascade="all" class="model.User" lazy="false" />
+ 		    	<one-to-one name="provider" cascade="all" class="model.Provider" lazy="false" />
+ 		 		<many-to-one name="deliveryTime" cascade="all" class="model.TimeZone" lazy="false" />
+ 	</class>
+</hibernate-mapping>

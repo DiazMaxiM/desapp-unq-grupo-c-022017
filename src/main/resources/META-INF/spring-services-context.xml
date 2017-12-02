@@ -25,6 +25,7 @@
 		<property name="priceService" ref="services.price" />
 		<property name="providerService" ref="services.provider" />
 		<property name="serviceService" ref="services.service" />
+		<property name="orderService" ref="services.order" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
@@ -72,6 +73,9 @@
 	</bean>
 	<bean id="services.service" class="services.ServiceService">
 		<property name="repository" ref="persistence.serviceRepository" />
+	</bean>
+	<bean id="services.order" class="services.OrderService">
+		<property name="repository" ref="persistence.orderRepository" />
 	</bean>
 	<bean id="services.loader" class="bootLoad.DataLoader" init-method="initialize">
 		<property name="menuService" ref="services.menu" />

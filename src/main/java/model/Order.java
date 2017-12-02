@@ -12,7 +12,7 @@ import orderExceptions.InvalidNumberOfMenusToOrderException;
 import orderExceptions.InvalidTypeOfDeliveryException;
 import validation.OrderValidation;
 
-public class Order {
+public class Order extends Entity {
 	private TypeStatusOrder typeStatusOrder;
 	private Menu menuToOrder;
 	private Integer numberOfMenusToOrder;

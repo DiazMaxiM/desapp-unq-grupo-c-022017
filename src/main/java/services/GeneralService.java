@@ -14,6 +14,15 @@ public class GeneralService {
 	public PriceService priceService;
 	public ProviderService providerService;
 	public ServiceService serviceService;
+	public OrderService orderService;
+
+	public OrderService getOrderService() {
+		return orderService;
+	}
+
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	public ServiceService getServiceService() {
 		return serviceService;

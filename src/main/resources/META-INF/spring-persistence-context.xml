@@ -157,4 +157,8 @@
 		  class="repositories.ServiceRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.orderRepository"
+		  class="repositories.OrderRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 </beans>

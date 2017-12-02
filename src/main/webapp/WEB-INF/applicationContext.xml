@@ -148,7 +148,25 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<property name="menuService" ref="services.menu" />
 	</bean>
 	
-	
+	<jaxrs:server id="order" address="/order"  > 
+		<jaxrs:serviceBeans>
+			<ref bean="ordersRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+   
+	<bean id="ordersRest" class="rest.OrderRest">
+		<property name="orderService" ref="services.order" />
+	</bean>
 	
 
 	
