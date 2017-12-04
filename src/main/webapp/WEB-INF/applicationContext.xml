@@ -151,10 +151,6 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="ordersRest" class="rest.OrderRest">
 		<property name="orderService" ref="services.order" />
-		<property name="providerService" ref="services.provider" />
-		<property name="userService" ref="services.user" />
-		<property name="menuService" ref="services.menu" />
-		<property name="scoreService" ref="services.score" />
 	</bean>
 	
 	<jaxrs:server id="order" address="/orders"  > 

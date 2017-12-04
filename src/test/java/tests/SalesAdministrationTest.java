@@ -56,6 +56,7 @@ import model.TimeZone;
 import model.Transaction;
 import model.TypeOfDelivery;
 import model.TypeTransaction;
+import model.WorkingTime;
 import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
 import orderExceptions.InvalidNumberOfMenusToOrderException;
@@ -284,13 +285,15 @@ public class SalesAdministrationTest {
 		Mail mail = new Mail().getInstance();
 		Order order = new OrderBuilder().withDateOfDelivery(new DateTime().plusDays(2).toLocalDateTime()).build();
 		Service service = order.getMenuToOrder().getService();
-		HashMap<Integer, List<TimeZone>> serviceWorkingHours = new HashMap<>();
+		List<WorkingTime> serviceWorkingHours = new ArrayList<>();
 		List<TimeZone> workingHours = new ArrayList<>();
 		TimeZone lateShift = new TimeZone("17:00", "22:30");
+		
 		workingHours.add(lateShift);
-		serviceWorkingHours.put(6, workingHours);
-		serviceWorkingHours.put(7, workingHours);
-		// service.setServiceWorkingHours(serviceWorkingHours);
+		serviceWorkingHours.add(new WorkingTime(6,workingHours));
+		serviceWorkingHours.add(new WorkingTime(7,workingHours));
+		service.setServiceWorkingHours(serviceWorkingHours);
+		
 		Transaction transaction = new Transaction(TypeTransaction.CREDIT, new Double(500));
 		order.getClient().getAccount().addTransaction(transaction);
 		MenuManager menuManager = new MenuManager();
