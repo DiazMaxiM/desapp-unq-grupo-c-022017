@@ -24,7 +24,7 @@ public class UserDataJson {
 		this.mail = user.getEmail();
 		this.telephone = user.getTelephone();
 		this.password = user.getPassword();
-		this.address = user.getAddress();
+		this.address = user.getAddress(); 
 		this.typeUser = user.getTypeUser();
 	}
 

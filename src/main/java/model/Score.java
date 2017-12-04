@@ -2,7 +2,7 @@ package model;
 
 import exception.InvalidValueScoreException;
 
-public class Score {
+public class Score extends Entity{
 	private Provider provider;
 	private User client;
 	private Integer valueScore = 0;

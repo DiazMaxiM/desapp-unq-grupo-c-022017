@@ -18,6 +18,7 @@ import { CheckBalanceComponent } from './components/checkBalance/checkBalance.co
 import { UserService} from './services/userServices/user.service';
 import { ListMenusService} from './services/listMenusService/listMenus.service';
 import { ProviderService} from './services/providerService/provider.service';
+import { PurchaseService} from './services/purchaseService/purchase.service';
 import { LanguageService} from './services/languageService/languageService.service';
 import { UtilsService} from './services/utilsServices/utils.service';
 import { MenusService} from './services/menusServices/menus.service';
@@ -98,7 +99,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ),
       ],
 
-  providers: [{provide: NgbDateParserFormatter, useClass: NgbDateFRParserFormatter},I18n,CustomDatepickerI18n,{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n},MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+  providers: [PurchaseService,{provide: NgbDateParserFormatter, useClass: NgbDateFRParserFormatter},I18n,CustomDatepickerI18n,{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n},MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

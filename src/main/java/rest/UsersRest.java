@@ -53,7 +53,7 @@ public class UsersRest {
 			InvalidLastNameException, InvalidEmailAddressException, InvalidMapPositionException, NumberFormatException,
 			InvalidLengthMapPositionException, InvalidLatitudeMapPositionException, InvalidNumberStreetException,
 			InvalidStreetAddressException, InvalidLocalityAddressException, InvalidRegisterException {
-		User user = null;
+		User user = null; 
 		try {
 			user = this.userService.newUser(pass, name, surname, cuit, mail, countryCode, areaCode, localNumber,
 					locality, street, numberStreet, floor, latitude, length);
@@ -188,7 +188,7 @@ public class UsersRest {
 	@GET
 	@Path("/getUserData/{id}")
 	@Produces("application/json")
-	public Response getUser(@PathParam("id") final String id) {
+	public Response getUserData(@PathParam("id") final String id) {
 		return Response.ok(this.userService.getUserData(id)).build();
 	}
 	
@@ -203,6 +203,13 @@ public class UsersRest {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 
+	}
+	
+	@GET
+	@Path("/getUser/{id}")
+	@Produces("application/json")
+	public Response getUser(@PathParam("id") final String id) {
+		return Response.ok(this.userService.getUser(id)).build();
 	}
 
 }

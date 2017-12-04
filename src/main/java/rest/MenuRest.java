@@ -24,7 +24,7 @@ public class MenuRest {
 	public Response listMenu(@PathParam("name") final String name) {
 		return Response.ok(menuService.listMenuForName(name)).build();
 	}
-
+ 
 	@GET
 	@Path("/listMenus")
 	@Produces("application/json")

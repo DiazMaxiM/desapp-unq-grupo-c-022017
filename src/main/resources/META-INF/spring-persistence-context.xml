@@ -112,43 +112,11 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
-	<bean id="persistence.timeZoneRepository" 
-	     class="repositories.TimeZoneRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="persistence.transactionRepository" 
-	     class="repositories.TransactionRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="persistence.moneyRepository" 
-	     class="repositories.MoneyRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="persistence.telephoneRepository"
-		  class="repositories.TelephoneRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="persistence.mapPositionRepository"
-		  class="repositories.MapPositionRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="persistence.addressRepository"
-		  class="repositories.AddressRepository" >
-		  <property name="sessionFactory" ref="persistence.sessionFactory" />
-    </bean>
-	<bean id="persistence.accountRepository"
-		  class="repositories.AccountRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
 	<bean id="persistence.menuRepository"
 		  class="repositories.MenuRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
-	<bean id="persistence.priceRepository"
-		  class="repositories.PriceRepository" >
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
 	<bean id="persistence.providerRepository"
 		  class="repositories.ProviderRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -159,6 +127,10 @@
 	</bean>
 	<bean id="persistence.orderRepository"
 		  class="repositories.OrderRepository" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="persistence.scoreRepository"
+		  class="repositories.ScoreRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 </beans>

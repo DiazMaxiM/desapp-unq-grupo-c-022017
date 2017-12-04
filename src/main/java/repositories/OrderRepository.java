@@ -1,5 +1,8 @@
 package repositories;
 
+import java.util.List;
+
+import model.Menu;
 import model.Order;
 
 public class OrderRepository extends HibernateGenericDAO<Order> implements GenericRepository<Order> {
@@ -9,5 +12,12 @@ public class OrderRepository extends HibernateGenericDAO<Order> implements Gener
 	@Override
 	protected Class<Order> getDomainClass() {
 		return Order.class;
+	}
+
+	public List<Order> findOrderForUser(String idUser) {
+		List<Order> find = (List<Order>) this.getHibernateTemplate()
+				.find("select o from Order o where o.client.idClient = '" + idUser + "'");
+		return find;
+		
 	}
 }

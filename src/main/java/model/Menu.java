@@ -41,7 +41,7 @@ public class Menu extends Entity {
 	private Service service;
 	private TypeStatusMenu status = TypeStatusMenu.ENABLED;
 	private MenuValidation validator = new MenuValidation();
-
+ 
 	public Menu() {
 
 	}

@@ -16,56 +16,19 @@
 	<!-- beans de spring -->
 	<bean id="services.general" class="services.GeneralService">
 		<property name="userService" ref="services.user" />
-		<property name="timeZoneService" ref="services.timeZone" />
-		<property name="transactionService" ref="services.transaction" />
-		<property name="moneyService" ref="services.money" />
-		<property name="addressService" ref="services.address" />
-		<property name="accountService" ref="services.account" />
 		<property name="menuService" ref="services.menu" />
-		<property name="priceService" ref="services.price" />
 		<property name="providerService" ref="services.provider" />
 		<property name="serviceService" ref="services.service" />
 		<property name="orderService" ref="services.order" />
+		<property name="scoreService" ref="services.score" />
 	</bean>
 
 	<bean id="services.user" class="services.UserService">
 		<property name="repository" ref="persistence.userRepository" />
 	</bean>
 	
-	<bean id="services.timeZone" class="services.TimeZoneService">
-		<property name="repository" ref="persistence.timeZoneRepository" />
-	</bean>
-	
-	<bean id="services.transaction" class="services.TransactionService">
-		<property name="repository" ref="persistence.transactionRepository" />
-	</bean>
-	
-	<bean id="services.money" class="services.MoneyService">
-		<property name="repository" ref="persistence.moneyRepository" />
-	</bean>
-	
-	<bean id="services.telephone" class="services.TelephoneService">
-		<property name="repository" ref="persistence.telephoneRepository" />
-	</bean>
-	
-	<bean id="services.mapPosition" class="services.MapPositionService">
-		<property name="repository" ref="persistence.mapPositionRepository" />
-	</bean>
-	
-	<bean id="services.address" class="services.AddressService">
-		<property name="repository" ref="persistence.addressRepository" />
-	</bean>
-	
-	<bean id="services.account" class="services.AccountService">
-		<property name="repository" ref="persistence.accountRepository" />
-	</bean>
-	
 	<bean id="services.menu" class="services.MenuService">
 		<property name="repository" ref="persistence.menuRepository" />
-	</bean>
-	
-	<bean id="services.price" class="services.PriceService">
-		<property name="repository" ref="persistence.priceRepository" />
 	</bean>
 	
 	<bean id="services.provider" class="services.ProviderService">
@@ -74,8 +37,16 @@
 	<bean id="services.service" class="services.ServiceService">
 		<property name="repository" ref="persistence.serviceRepository" />
 	</bean>
+	
 	<bean id="services.order" class="services.OrderService">
 		<property name="repository" ref="persistence.orderRepository" />
+		<property name="menuService" ref="services.menu" />
+		<property name="userService" ref="services.user" />
+		<property name="scoreService" ref="services.score" />
+	</bean>
+	
+	<bean id="services.score" class="services.ScoreService">
+		<property name="repository" ref="persistence.scoreRepository" />
 	</bean>
 	<bean id="services.loader" class="bootLoad.DataLoader" init-method="initialize">
 		<property name="menuService" ref="services.menu" />

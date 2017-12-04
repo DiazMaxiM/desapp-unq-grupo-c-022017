@@ -30,6 +30,10 @@ export class UserService {
     return this.http.get('/grupoc/rest/users/getUserData/'+id).map((res:Response)=>res.json());
   }
 
+  getUser(id: String){
+    return this.http.get('/grupoc/rest/users/getUser/'+id).map((res:Response)=>res.json());
+  }
+
   updateUser(id:string,password:string,countryCode:number,areaCode:number,localNumber:number,locality:string,street:string,numberStreet:number,floor:number,latitude:number,length:number){
     return this.http.get('/grupoc/rest/users/updateuser/'+id+'/'+password+'/'+countryCode+'/'+areaCode+'/'+localNumber+'/'+locality+'/'+street+'/'+numberStreet+'/'+floor+'/'+latitude+'/'+length).map((res:Response)=>res);
   }

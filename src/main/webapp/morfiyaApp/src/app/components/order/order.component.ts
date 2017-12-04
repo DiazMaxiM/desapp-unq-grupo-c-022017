@@ -10,6 +10,7 @@ import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
 import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 import { MenuService } from '../../services/menuService/menu.service';
+import { PurchaseService } from '../../services/purchaseService/purchase.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
 import { I18n,CustomDatepickerI18n } from '../../services/calendarLanguage/customDatepickerI18n.service';
@@ -19,6 +20,7 @@ import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { LanguageService} from './../../services/languageService/languageService.service';
 declare var $:any;
 import { NgModule } from '@angular/core';
+import { Order } from '../../model/order';
 @Component({
   selector: 'order',
   templateUrl: './order.component.html',
@@ -27,15 +29,24 @@ import { NgModule } from '@angular/core';
 
 export class OrderComponent implements OnInit {
   user;
-  idUser : string
-  balance : String
+  idUser;
+  idMenu : string;
+  balance : string;
+  idProvider = 2;
+  client = null;
+  provider = null;
   services;
   form: FormGroup;
   menu;
   currency:String;
   total=0;
+  startDeliveryTime;
+  endDeliveryTime;
+  dateDelivery;
+  scores;
+  
 
-  constructor(public languague:LanguageService ,private parserFormatter: NgbDateParserFormatter,public menuService: MenuService,public listMenusService:ListMenusService,private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
+  constructor(public purchaseService: PurchaseService,public languague:LanguageService ,private parserFormatter: NgbDateParserFormatter,public menuService: MenuService,public listMenusService:ListMenusService,private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
   }
 
   ngOnInit() {
@@ -52,10 +63,32 @@ export class OrderComponent implements OnInit {
       startDeliveryTime:[null,[Validators.required]],
       endDeliveryTime:[null,[Validators.required]]
     });
-    this.menuService.currentMessage.subscribe(menu=>this.menu=menu);
+    this.menuService.currentMessage.subscribe(menu=>this.resultData(menu));
+  
   }
 
+  resultData(data){
+    console.log(data);
+    this.menu=data;
+    this.idMenu= this.menu.id;
+  }
 
+  onChangeStartTimeDelivery(time){
+    if(time!==null){
+      this.startDeliveryTime= time.hour +":" + time.minute;
+    }
+  }
+
+  onChangeEndTimeDelivery(time){
+    if(time!==null){
+      this.endDeliveryTime= time.hour +":" + time.minute;
+    }
+  }
+
+  onChangDateDelivery(date){
+   
+    this.dateDelivery= date.year+"-"+date.month+"-"+date.day;
+  }
 
   displayFieldCss(field: string) {
     return {
@@ -66,8 +99,24 @@ export class OrderComponent implements OnInit {
     return !this.form.get(field).valid && this.form.get(field).touched;
   }
 
-  onChangeDate(date){
-    var stringDate=this.parserFormatter.format(date);
-    console.log(stringDate);
-  }
+  buyMenu(){
+    if(this.form.valid){
+        var order = new Order();
+        order.client= this.idUser;
+        order.provider= this.idProvider;
+        order.menu = this.idMenu;
+        order.countMenu = this.form.value.numberOfMenusToOrder;
+        order.typeDelivery = this.form.value.typeOfDelivery;
+        order.startTimeDelivery= this.startDeliveryTime;
+        order.endTimeDelivery = this.endDeliveryTime;
+        order.dateDelivery = this.dateDelivery;
+         this.purchaseService.newOrder(order).subscribe(data => 
+           {data},
+         err => {
+         }); 
+
+        }
+      }
+
+ 
 }

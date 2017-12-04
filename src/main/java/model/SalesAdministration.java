@@ -30,7 +30,7 @@ public class SalesAdministration {
 		this.menuManager = menuManager;
 		this.mail = mail;
 		this.validator = new SaleValidation(scoringManager);
-
+ 
 	}
 	
     public void saleMenu(Order order) throws PendingScoreException, BalanceInsufficient, InvalidPurchaseException, EmailException, InvalidTimeZoneException, InvalidDeliveryLocation, InvalidDeliveryTimeException, NumberOfMenusExceededException, IOException, InvalidDateOfDeliveryException{

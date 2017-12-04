@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.Score">
+		<id column="idScore" name="id">
+			<generator class="native" />
+ 		</id>	
+ 		<property name="status" >
+        	<type name="org.hibernate.type.EnumType">
+            	<param name="enumClass">model.TypeStatusScore</param>
+            	<param name="useNamed">true</param>
+        	</type>       
+    	</property>  
+ 		<one-to-one name="menu" cascade="all" class="model.Menu" lazy="false" />
+ 		<property name="valueScore" />
+        <one-to-one name="client" cascade="all" class="model.User" lazy="false" />
+ 		<one-to-one name="provider" cascade="all" class="model.Provider" lazy="false" />
+ 	</class>
+</hibernate-mapping>

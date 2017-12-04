@@ -14,7 +14,7 @@ import validation.OrderValidation;
 
 public class Order extends Entity {
 	private TypeStatusOrder typeStatusOrder;
-	private Menu menuToOrder;
+	private Menu menuToOrder; 
 	private Integer numberOfMenusToOrder;
 	private TypeOfDelivery typeOfDelivery;
 	private LocalDateTime dateOfDelivery;
@@ -37,6 +37,11 @@ public class Order extends Entity {
 					provider);
 		}
 	}
+	
+	public Order() {
+
+	}
+
 
 	public void createOrder(Menu menuToOrder, Integer numberOfMenusToOrder, TypeOfDelivery typeOfDelivery,
 			LocalDateTime dateOfDelivery, TimeZone deliveryTime, User client, Provider provider) {

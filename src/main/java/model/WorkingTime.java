@@ -8,6 +8,9 @@ public class WorkingTime extends Entity {
 		numberDay = day;
 		timeZone = workingHours;
 	}
+	
+	public WorkingTime() {}
+
 
 	public Integer getDay() {
 		return numberDay;

@@ -28,18 +28,6 @@
                                     </div>
                                    
                                 </div>
-                                <!--    
-                                        private LocalDateTime startDateOfferMenu;
-                                        private LocalDateTime endDateOfferMenu;
-                                        private List<TimeZone> deliveryTimesMenus;
-                                        private Integer averageDeliveryTimeOfMenu;
-                                        private Integer firstMinimumNumberOfMenusToBuy;
-                                        private Price firstminimumPriceOfMenusToBuy;
-                                        private Integer secondMinimumNumberOfMenusToBuy;
-                                        private Price secondMinimumPriceOfMenusToBuy;
-                                        private Integer maximumNumberOfMenusSalesPerDay;
-                                        private Integer numberOfMenuSale = 0;
--->
                                 <div class="col-12">
                                     <div class="col-12" style="text-align: center">
                                           <label>{{menu.menuName}}</label>
@@ -85,7 +73,7 @@
                                              <div class="form-inline">
                                                  <div class="form-group">
                                                        <div class="input-group">
-                                                           <input class="form-control" placeholder="{{'dateFormat'|translate}}"
+                                                           <input  (ngModelChange)="onChangDateDelivery($event)" class="form-control" placeholder="{{'dateFormat'|translate}}"
                                                            name="dateOfDelivery" formControlName="dateOfDelivery" ngbDatepicker #e="ngbDatepicker" >
                                                            <button class="input-group-addon" (click)="e.toggle()" type="button">
                                                                <i style="width: 1.2rem; height: 1rem; cursor: pointer;" class="fa fa-calendar" aria-hidden="true"></i>
@@ -105,12 +93,12 @@
                                          </div>
                                          <div class="form row">
                                              <div class="col-12 col-lg-6" [ngClass]="displayFieldCss('startDeliveryTime')">
-                                                 <ngb-timepicker class="form-control" formControlName="startDeliveryTime"></ngb-timepicker>
+                                                 <ngb-timepicker  (ngModelChange)=" onChangeStartTimeDelivery($event)" class="form-control" formControlName="startDeliveryTime"></ngb-timepicker>
                                                  <app-field-error-display [displayError]="form.controls['startDeliveryTime'].hasError('required') && form.controls['typeOfDelivery'].touched" errorMsg=" {{'typeOfDeliveryRequired'|translate}}">
                                                     </app-field-error-display>
                                              </div>
                                              <div  class="col-12 col-lg-6" [ngClass]="displayFieldCss('endDeliveryTime')">
-                                                 <ngb-timepicker class="form-control" formControlName="endDeliveryTime"></ngb-timepicker>
+                                                 <ngb-timepicker  (ngModelChange)=" onChangeEndTimeDelivery($event)" class="form-control" formControlName="endDeliveryTime"></ngb-timepicker>
                                                  <app-field-error-display [displayError]="form.controls['endDeliveryTime'].hasError('required') && form.controls['typeOfDelivery'].touched" errorMsg=" {{'typeOfDeliveryRequired'|translate}}">
                                                  </app-field-error-display>
                                              </div>
@@ -129,7 +117,7 @@
                                             {{'total'| translate }}:{{total| currencyFormat:currency}}
                                         </div> 
                                <div class="col-12">          
-                                   <button class="btn buttonCreate">{{'buy'| translate }}</button>
+                                   <button class="btn buttonCreate" (click)="buyMenu()">{{'buy'| translate }}</button>
                                </div>    
                            </form>
 

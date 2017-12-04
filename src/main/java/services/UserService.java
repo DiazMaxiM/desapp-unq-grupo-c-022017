@@ -136,12 +136,23 @@ public class UserService extends GenericService<User> {
 
 		if (user.size() == 1) {
 			return user.get(0);
-		}
+		} 
 		throw new InvalidLoggingException("Error en el logging");
 
 	}
-	private void a () {
-		
+ 
+	
+
+	@Transactional
+	public User getUserById(String id) {
+		UserRepository repo = (UserRepository) this.getRepository();
+		return repo.findById(id);
+	}
+   
+	@Transactional
+	public  User getUser(String id) {
+		UserRepository repo = (UserRepository) getRepository();
+		return repo.findById(id);
 	}
 	
 }

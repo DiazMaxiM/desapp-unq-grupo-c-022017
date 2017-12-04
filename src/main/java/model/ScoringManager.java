@@ -9,9 +9,17 @@ import java.util.stream.Collectors;
 public class ScoringManager {
 	List<Score> scoresList = new ArrayList<Score>();
 
+	public List<Score> getScoresList() {
+		return scoresList;
+	}
+
+	public void setScoresList(List<Score> scoresList) {
+		this.scoresList = scoresList;
+	}
+
 	public void addScore(Score score) {
 		scoresList.add(score);
-	}
+	} 
 
 	public Boolean hasPendingScoreForClient(User client) {
 

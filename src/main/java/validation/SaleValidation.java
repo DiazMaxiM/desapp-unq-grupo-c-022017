@@ -42,7 +42,7 @@ public class SaleValidation extends Validation {
 		return isNotHasPendingScoreForClient(order.getClient()) && isHasClientBalanceToBuy(order)
 				&& isTheSaleWithinDeliveryLocationsAndTimes(order) && isTheSaleWithinTheWorkingHoursofTheService(order)
 				&& isTheSaleOfTheMenuWithinTheLimitOfPurchase(order) && isWithinTheMaximumAmountOfMenuSales(order);
-	}
+	} 
 
 	private boolean isTheSaleWithinDeliveryLocationsAndTimes(Order order) throws InvalidPurchaseException,
 			InvalidDeliveryLocation, InvalidDeliveryTimeException, InvalidTimeZoneException {

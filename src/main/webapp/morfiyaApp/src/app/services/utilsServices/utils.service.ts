@@ -19,4 +19,8 @@ export class UtilsService {
   getUserAfipData(cuit:string){
     return this.http.get('sr-padron/v2/persona/'+cuit).map((res:Response)=>res);
   }
+
+  getScoresOfClient(id:string){
+    return this.http.get('/grupoc/rest/scores/scoresClient/'+id).map((res:Response)=>res);
+  }
 }

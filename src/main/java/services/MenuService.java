@@ -38,4 +38,10 @@ public class MenuService extends GenericService<Menu> {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findMenuForService(idService);
 	}
+    
+	@Transactional
+	public Menu getMenuById(int idMenu) {
+		MenuRepository repo = (MenuRepository) this.getRepository();
+		return repo.findById(idMenu);
+	}
 }
