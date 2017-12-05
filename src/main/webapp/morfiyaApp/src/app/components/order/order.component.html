@@ -42,10 +42,22 @@
                                         <label id="delivery"> {{'averageDeliveryTime' | translate}}: {{ menu.averageDeliveryTimeOfMenu }} </label>
                                     </div>
                                     <div class="col-12">
-                                        <label> {{menu.menuDescription}} </label>
+                                        <label> {{'description' | translate}}: {{menu.menuDescription}} </label>
                                     </div>
                                     <div class="col-12">
                                         <label> {{'price' | translate}}: {{menu.menuPrice.value| currencyFormat:currency}}</label>
+                                    </div>
+                                    <div class="col-12">
+                                        <label> {{'minimumAmount1' | translate}}: {{ menu.firstMinimumNumberOfMenusToBuy }} </label>
+                                    </div>
+                                    <div class="col-12">
+                                        <label> {{'priceMinimunAmount1' | translate}}: {{ menu.firstminimumPriceOfMenusToBuy.value|currencyFormat:currency }} </label>
+                                    </div>
+                                    <div class="col-12">
+                                        <label> {{'minimunAmount2' | translate}}: {{ menu.secondMinimumNumberOfMenusToBuy }} </label>
+                                    </div>
+                                    <div class="col-12">
+                                        <label> {{'priceMinimunAmount2' | translate}}: {{ menu.secondMinimumPriceOfMenusToBuy.value |currencyFormat:currency }} </label>
                                     </div>
                                     <div class="col-12">
                                         <label> {{'deliveryPrice' | translate}}: {{ menu.menuDeliveryPrice.value|currencyFormat:currency }} </label>
@@ -64,7 +76,7 @@
                          <form [formGroup]="form" class="border-gray">
                                          <div class="form-group col-12" [ngClass]="displayFieldCss('numberOfMenusToOrder')">
                                                  <label class="col-form-label required">{{ 'numberOfMenusToOrder' | translate }}</label>
-                                                 <input type="number" min="1" class="form-control" formControlName="numberOfMenusToOrder">
+                                                 <input (ngModelChange)="onChangeNumberOfMenusToOrder($event)" type="number" min="1" class="form-control" formControlName="numberOfMenusToOrder">
                                                  <app-field-error-display [displayError]="form.controls['numberOfMenusToOrder'].hasError('required') && form.controls['numberOfMenusToOrder'].touched" errorMsg=" {{'numberOfMenusToOrderRequired'|translate}}">
                                                  </app-field-error-display>
                                          </div>
@@ -106,7 +118,7 @@
                                        </div>
                                        <div class="form-group col-12" [ngClass]="displayFieldCss('typeOfDelivery')">
                                          <label class="col-form-label required">{{'typeOfDelivery'| translate }}</label>
-                                         <select class="form-control" name="typeOfDelivery" formControlName="typeOfDelivery">
+                                         <select (ngModelChange)="onChangeDeliveyType($event)" class="form-control" name="typeOfDelivery" formControlName="typeOfDelivery">
                                              <option value="LOCALDELIVERY">{{'localDelivery'| translate }}</option>
                                              <option value="HOMEDELIVERY">{{'homeDelivery'| translate }}</option>
                                            </select>

@@ -67,8 +67,26 @@ export class OrderComponent implements OnInit {
   
   }
 
+  onChangeNumberOfMenusToOrder(numberOfMenusToOrder){
+    if(numberOfMenusToOrder>=this.menu.firstMinimumNumberOfMenusToBuy && numberOfMenusToOrder < this.menu.secondMinimumNumberOfMenusToBuy ){
+      this.total= numberOfMenusToOrder * this.menu.firstminimumPriceOfMenusToBuy.value;
+    }else{
+      if(numberOfMenusToOrder>=this.menu.secondMinimumNumberOfMenusToBuy){
+        this.total= numberOfMenusToOrder * this.menu.secondMinimumPriceOfMenusToBuy.value; 
+      }else{
+        this.total= numberOfMenusToOrder * this.menu.menuPrice.value;
+      }
+    }
+
+  }
+
+  onChangeDeliveyType(typeDelivery){
+    if(typeDelivery=="HOMEDELIVERY"){
+      this.total = this.total + this.menu.menuDeliveryPrice.value;
+    }
+  }
+
   resultData(data){
-    console.log(data);
     this.menu=data;
     this.idMenu= this.menu.id;
   }
