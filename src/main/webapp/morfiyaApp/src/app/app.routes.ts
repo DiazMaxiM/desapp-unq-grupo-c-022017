@@ -11,6 +11,7 @@ import { ServicesProviderComponent } from './components/servicesProvider/service
 import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
 import { OrderComponent } from './components/order/order.component';
+import { ServiceComponent } from './components/service/service.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo:'/home', pathMatch:'full'},
@@ -20,7 +21,8 @@ export const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'menus', component: MenusComponent},
     { path: 'order', component: OrderComponent},  
-    { path: 'menuOfferd', component: MenuOfferdComponent},  
+    { path: 'menuOfferd', component: MenuOfferdComponent}, 
+    { path: 'service', component: ServiceComponent},  
     { path: 'users', component: UserComponent,
     children: [
       {

@@ -44,4 +44,13 @@ public class MenuService extends GenericService<Menu> {
 		MenuRepository repo = (MenuRepository) this.getRepository();
 		return repo.findById(idMenu);
 	}
+
+	@Transactional
+	public void incrementNumberOfMenuSale(int id, int numberOfMenusSale) {
+		MenuRepository repo = (MenuRepository) this.getRepository();
+		Menu menu = repo.findById(id);
+		menu.increaseMenuSale(numberOfMenusSale);
+		repo.save(menu);
+		
+	}
 }

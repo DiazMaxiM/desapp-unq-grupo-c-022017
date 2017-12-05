@@ -48,6 +48,7 @@
 .buttonUpdate{
     margin-top: 5px;
     border-radius: 0;
+    width: 100%;
     background-color: #005891 !important;
 }
 
@@ -84,15 +85,8 @@
 
 .buttonCreate{
     border-radius: 0;
-    background-color: #005891 !important;
+    background-color: red;
     color:white;
     text-align: center;
     width: 100%;
-    margin-bottom: 10px;
 }
-
-.refUpdate{
-    color: white !important;
-    font-size: 20px;
-    text-align: center;
- }

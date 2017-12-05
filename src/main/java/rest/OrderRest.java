@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.mail.EmailException;
+
 import exception.BalanceInsufficient;
 import exception.InvalidClientException;
 import exception.InvalidMenuException;
@@ -45,7 +47,7 @@ public class OrderRest {
 	@Path("/newOrder")
 	@Consumes("application/json") 
 	@Produces("application/json")
-	public Response newOrder(OrderJson orderJson) throws NumberFormatException, InvalidMenuException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, NumberOfMenusExceededException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, ParseException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, IOException {
+	public Response newOrder(OrderJson orderJson) throws NumberFormatException, InvalidMenuException, InvalidClientException, InvalidProviderException, InvalidTimeZoneException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, NumberOfMenusExceededException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, ParseException, InvalidFormatTimeZoneException, InvalidDeliveryLocation, IOException, EmailException {
 	     					
 		orderService.newPurchase(orderJson);	
     

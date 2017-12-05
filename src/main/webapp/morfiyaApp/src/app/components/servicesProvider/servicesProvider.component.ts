@@ -8,11 +8,12 @@ import {Router} from '@angular/router';
 import { ProviderService} from './../../services/providerService/provider.service';
 import {FormGroup,FormBuilder,Validators, FormControl} from '@angular/forms';
 import { UtilsService} from './../../services/utilsServices/utils.service';
+import { ServiceProvider} from './../../services/serviceProvider/serviceProvider.service';
 import { ListMenusService} from './../../services/listMenusService/listMenus.service';
 declare var $:any;
 
 @Component({
-  selector: 'checkBalance',
+  selector: 'servicesProvider',
   templateUrl: './servicesProvider.component.html',
   styleUrls: ['./servicesProvider.component.css']
 })
@@ -26,44 +27,14 @@ export class ServicesProviderComponent implements OnInit {
   menus;
 
 
-  constructor(public listMenusService:ListMenusService,private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
+  constructor(public serviceProvider:ServiceProvider,public listMenusService:ListMenusService,private utilsServices: UtilsService,public userService: UserService, private router:Router,public messageService : MessageService,public alertService: AlertService,private translate: TranslateService,private providerService: ProviderService,private formBuilder: FormBuilder){
   }
 
   ngOnInit() {
     this.messageService.currentMessage.subscribe(message => this.user = message);
     this.idUser = this.user.id;
     this.getServices();
-    this.startWindow();
-    this.utilsServices.localities().subscribe(data =>this.resultLocalities(data));
-    this.form = this.formBuilder.group({
-      name:[null,[Validators.required]],
-      logo:[null,[Validators.required]],
-      description:[null,[Validators.required,Validators.minLength(30),Validators.maxLength(200)]],
-      email:[null,[Validators.required,Validators.email]],
-      street:[null,[Validators.required]],
-      number:[null,[Validators.required]],
-      floor:['0',[Validators.required]],
-      countryCode:['54',[Validators.required]],
-      areaCode:['011',[Validators.required]],
-      localNumber:[null,[Validators.required]],
-      locality:[null,[Validators.required]],
-      length:[null,[Validators.required]],
-      latitude:[null,[Validators.required]],
-      site:[null,[]],
-      localityMax:[null,[Validators.required]]        
-    });
   }
-
-  startWindow(){
-    if(window.screen.width <=768){
-      $('#createNewService').hide();
-    }
-  }
-
-  displayFieldCss(field: string) {
-    return {
-      'is-invalid': this.isFieldValid(field)
-    }}
 
   getServices(){
     this.providerService.getServices(this.idUser).subscribe(data => this.result(data));
@@ -71,33 +42,6 @@ export class ServicesProviderComponent implements OnInit {
 
   result(data){
     this.services= JSON.parse(data._body);
-    console.log(this.services);
-  }
-
-  isFieldValid(field: string) {
-    return !this.form.get(field).valid && this.form.get(field).touched;
-  }
-
-  update(service:any){
-    this.form.setValue({
-      'name': service.serviceName,
-      'logo':service.serviceLogo,
-      'description':service.serviceDescription,
-      'email': service.serviceEmail,
-      'street':service.serviceAddress.street,
-      'number':service.serviceAddress.numberStreet,
-      'floor':service.serviceAddress.floor,
-      'locality'    : service.serviceAddress.locality,
-      'countryCode' : service.serviceTelephone.countryCode,
-      'areaCode'    :service.serviceTelephone.areaCode,
-      'localNumber' : service.serviceTelephone.localNumber,
-      'length'    : service.serviceAddress.mapPosition.length,
-      'latitude' : service.serviceAddress.mapPosition.latitude,
-      "site":"",
-      "localityMax":service.serviceDeliveryLocations
-    });
-    $('#createService').hide();
-    $('#updateService').show();
   }
 
   resultLocalities(data){
@@ -108,6 +52,7 @@ export class ServicesProviderComponent implements OnInit {
     this.providerService.getMenusOfService(idService).subscribe(menus=>this.resultMenus(menus))
 
   }
+
 
   resultMenus(data){
     this.menus= JSON.parse(data._body);
@@ -121,5 +66,15 @@ export class ServicesProviderComponent implements OnInit {
 
   showMenusNotFound(){
     $('#modalResult').modal("show");
+  }
+
+  addNewService(){
+    this.router.navigate(['service']);
+  }
+
+  update(service){
+    this.serviceProvider.changeMessage(service);
+    this.router.navigate(['service']);
+
   }
 }

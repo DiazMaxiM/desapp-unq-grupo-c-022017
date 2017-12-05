@@ -188,6 +188,9 @@
     "timeOfDeliveryRequired":"Tempo di consegna richiesto",
     "typeOfDeliveryRequired":"Tipo di consegna richiesto",
     "total":"Totale da pagare",
-    "117":"C'è già un utente registrato con questa email/cuit"
+    "117":"C'è già un utente registrato con questa email/cuit",
+    "editService":"Modifica servizio",
+    "localDelivery":"Ritiro in locale",
+    "homeDelivery":"Consegna a domicilio"
 
 }

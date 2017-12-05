@@ -68,7 +68,6 @@ public class DataLoader {
 
 	public void initialize() {
 
-		System.out.println("Start data loading");
 		try {
 			userService.newUser("password", "Maximiliano", "Diaz", "12345678", "diazmaxi@gmail.com", "54", "011",
 					"43511464", "AVELLANEDA", "BOGOTA", "4040", "1", "1", "1");
@@ -122,7 +121,6 @@ public class DataLoader {
 		try {
 			lateShift = new TimeZone("17:00", "22:30");
 		} catch (InvalidTimeZoneException | InvalidFormatTimeZoneException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		workingHours.add(lateShift);

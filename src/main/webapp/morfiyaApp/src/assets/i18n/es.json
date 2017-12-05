@@ -218,7 +218,10 @@
     "timeOfDeliveryRequired":"Horario de entrega requirida",
     "typeOfDeliveryRequired":"Tipo de entrega requerido",
     "total":"Total a pagar",
-    "117":"Ya existe un usuario registrado con este correo/cuit"
+    "117":"Ya existe un usuario registrado con este correo/cuit",
+    "editService":"Actualizar Servicio",
+    "localDelivery":"Retiro en local",
+    "homeDelivery":"Entrega a domicio"
 
     
 }

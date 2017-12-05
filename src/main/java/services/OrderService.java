@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.joda.time.LocalDateTime;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import exception.InvalidTimeZoneException;
 import exception.NumberOfMenusExceededException;
 import exception.PendingScoreException;
 import miniObjects.OrderJson;
+import model.Mail;
 import model.Menu;
 import model.Order;
 import model.Provider;
@@ -25,6 +27,7 @@ import model.Score;
 import model.ScoringManager;
 import model.TimeZone;
 import model.TypeOfDelivery;
+import model.TypeTransaction;
 import model.User;
 import orderExceptions.InvalidDateOfDeliveryException;
 import orderExceptions.InvalidDeliveryTimeException;
@@ -59,7 +62,7 @@ public class OrderService extends GenericService<Order> {
 
 	
 	@Transactional
-	public void newPurchase(OrderJson order) throws NumberFormatException, InvalidMenuException, InvalidClientException, InvalidProviderException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, ParseException, InvalidTimeZoneException, InvalidFormatTimeZoneException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, NumberOfMenusExceededException, InvalidDeliveryLocation, IOException {
+	public void newPurchase(OrderJson order) throws NumberFormatException, InvalidMenuException, InvalidClientException, InvalidProviderException, InvalidNumberOfMenusToOrderException, InvalidTypeOfDeliveryException, InvalidDateOfDeliveryException, InvalidDeliveryTimeException, ParseException, InvalidTimeZoneException, InvalidFormatTimeZoneException, BalanceInsufficient, PendingScoreException, InvalidPurchaseException, NumberOfMenusExceededException, InvalidDeliveryLocation, IOException, EmailException {
 		
 		User client= userService.getUser(order.getClient());
 		Provider provider = (Provider) userService.getUser(order.getProvider()); 
@@ -69,6 +72,8 @@ public class OrderService extends GenericService<Order> {
 		Date date = formatter.parse(order.getDateDelivery());
 		LocalDateTime dayOfDelivery = new org.joda.time.LocalDateTime(date);
 		List<Score> scores = scoreService.getAllScore();
+		int idService= menu.getService().getId();
+		
 		
 		Order newOrder= new Order(menu,new Integer(order.getCountMenu()),TypeOfDelivery.valueOf(order.getTypeDelivery()),
 				dayOfDelivery,deliveryTime,client,provider);
@@ -76,11 +81,31 @@ public class OrderService extends GenericService<Order> {
 		ScoringManager scoringManager = new ScoringManager();
 		scoringManager.setScoresList(scores);
 		OrderRepository repo = (OrderRepository) this.getRepository();
+		
 		SaleValidation validator = new SaleValidation(scoringManager);
+		
+		Mail mail = new Mail().getInstance();
+		
 		if(validator.isValidSale(newOrder)) {
+			menuService.incrementNumberOfMenuSale(menu.getId(),Integer.parseInt(order.getCountMenu()));
+		    Double moneyToDiscount = this.calculatePriceToDiscount(newOrder);
+		    userService.addTransaction(order.getClient(),"DEBIT", moneyToDiscount.toString());
+		    userService.addTransaction(order.getProvider(),"CREDIT", moneyToDiscount.toString());
+			mail.sendMailProviderSale(client.getEmail());
+			mail.sendMailClientBuy(provider.getEmail());
 			repo.save(newOrder);
+			
 		}
 		
+	}
+	
+	private Double calculatePriceToDiscount(Order order) {
+		Double priceToDiscount = order.getNumberOfMenusToOrder()
+				* order.getMenuToOrder().getMenuPrice().getValue();
+		if (order.getTypeOfDelivery() == TypeOfDelivery.HOMEDELIVERY) {
+			priceToDiscount += order.getMenuToOrder().getMenuDeliveryPrice().getValue();
+		}
+		return priceToDiscount;
 	}
 
 }

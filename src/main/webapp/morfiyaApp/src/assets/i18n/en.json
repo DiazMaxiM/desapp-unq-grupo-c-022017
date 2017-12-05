@@ -221,5 +221,8 @@
     "timeOfDeliveryRequired":"Delivery time required",
     "typeOfDeliveryRequired":"Type of delivery required",
     "total":"Total to pay",
-    "117":"There is already a registered user with this email/cuit"
+    "117":"There is already a registered user with this email/cuit",
+    "editService":"Update Service",
+    "localDelivery":"Withdrawal in local",
+    "homeDelivery":"Home delivery"
 }

@@ -13,6 +13,7 @@ import { UtilsService} from './../../services/utilsServices/utils.service';
 import { AuthService } from '../../auth/auth.service';
 import { LanguageService} from './../../services/languageService/languageService.service';
 import { Location } from '@angular/common';
+import { ServiceProvider} from './../../services/serviceProvider/serviceProvider.service';
 declare var $:any;
 import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
 import { I18n,CustomDatepickerI18n } from './../../services/calendarLanguage/customDatepickerI18n.service';
@@ -56,7 +57,7 @@ export class HeaderComponent {
   mensaje :String;
 
 
-  constructor(private custom:CustomDatepickerI18n,private location: Location,public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
+  constructor( public serviceProvider:ServiceProvider,private custom:CustomDatepickerI18n,private location: Location,public languague: LanguageService,public userService: UserService,public alertService: AlertService,private router:Router,private translate: TranslateService,public messageService : MessageService,private formBuilder: FormBuilder,private typeRegisterService: TypeRegisterService,private utilsServices: UtilsService,public auth: AuthService){
     translate.addLangs(['en', 'es','it']);
     translate.setDefaultLang('es');
     translate.use('es');
@@ -96,8 +97,6 @@ export class HeaderComponent {
        this.router.navigate(['users']);
   }
 
-  //call this wherever you want to close modal
-
   private sendData(): void {
        this.messageService.changeMessage(this.user);
     }  
@@ -130,6 +129,7 @@ export class HeaderComponent {
   }
 
   back(){
+    this.serviceProvider.changeMessage(null);
     this.location.back();
   }
 

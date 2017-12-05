@@ -21,7 +21,7 @@ export class SearchMenuComponent implements OnInit {
 
   selectedValue: String
   searchs
-  categories = [{name: "name" }, {name: "locality"}, {name: "price"},{name: "category"},{name: "allMenus"}];
+  categories = [{name: "name" }, {name: "locality"},{name: "category"},{name: "allMenus"}];
   cotegorySearch = this.categories[0];
   listOfElements;
   searchValue='';

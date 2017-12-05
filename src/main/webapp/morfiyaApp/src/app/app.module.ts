@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CheckBalanceComponent } from './components/checkBalance/checkBalance.component';
 import { UserService} from './services/userServices/user.service';
+import { ServiceProvider} from './services/serviceProvider/serviceProvider.service';
 import { ListMenusService} from './services/listMenusService/listMenus.service';
 import { ProviderService} from './services/providerService/provider.service';
 import { PurchaseService} from './services/purchaseService/purchase.service';
@@ -38,6 +39,7 @@ import { AuthService } from './auth/auth.service';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ProfileComponent } from './profile/profile.component';
+import { ServiceComponent } from './components/service/service.component';
 import { CallbackComponent } from './callback/callback.component';
 import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 import { CurrencyPipe } from '@angular/common';
@@ -58,6 +60,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 @NgModule({
   declarations: [
+    ServiceComponent,
     CurrencyFormat,
     AppComponent,
     HomeComponent,
@@ -99,7 +102,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ),
       ],
 
-  providers: [PurchaseService,{provide: NgbDateParserFormatter, useClass: NgbDateFRParserFormatter},I18n,CustomDatepickerI18n,{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n},MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
+  providers: [ServiceProvider,PurchaseService,{provide: NgbDateParserFormatter, useClass: NgbDateFRParserFormatter},I18n,CustomDatepickerI18n,{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n},MenuService,ListMenusService,UserService,AlertService,MessageService,TypeRegisterService,ProviderService, UtilsService,LanguageService,AuthService,MenusService,NumberValidatorsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
