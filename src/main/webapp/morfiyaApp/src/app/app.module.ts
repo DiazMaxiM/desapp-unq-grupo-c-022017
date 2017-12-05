@@ -44,7 +44,6 @@ import { CallbackComponent } from './callback/callback.component';
 import { CurrencyFormat } from './pipes/currencyFormat.pipe';
 import { CurrencyPipe } from '@angular/common';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { DatepickerModule } from 'angular2-material-datepicker'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
@@ -81,7 +80,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   ],
   imports: [
     NgbModule.forRoot(),
-    DatepickerModule,
     BrowserAnimationsModule,
     BrowserModule,
     NgxPaginationModule,
