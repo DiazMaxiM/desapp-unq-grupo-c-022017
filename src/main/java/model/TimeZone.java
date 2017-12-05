@@ -1,17 +1,19 @@
 package model;
 
-import org.joda.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import exception.InvalidTimeZoneException;
 import validation.InvalidFormatTimeZoneException;
 import validation.TimeZoneValidation;
 
 public class TimeZone extends Entity{
+	
 	private static final long serialVersionUID = 1L;
-	private LocalTime startHours;
-    private LocalTime endHours;
+	private LocalDateTime startHours;
+    private LocalDateTime endHours;
     private TimeZoneValidation validator = new TimeZoneValidation();
     
     public TimeZone(String startHours,String endHours) throws InvalidTimeZoneException, InvalidFormatTimeZoneException{
@@ -30,9 +32,9 @@ public class TimeZone extends Entity{
     	}
     }
  
-	private LocalTime parseString(String hours) {
-		 DateTimeFormatter newDateTimeFormatter = DateTimeFormat.forPattern("HH:mm");
-		 LocalTime localTime = newDateTimeFormatter.parseLocalTime(hours);
+	private LocalDateTime parseString(String hours) {
+
+ LocalDateTime localTime = LocalDateTime.parse(hours,  DateTimeFormat.forPattern("HH:mm"));
 		return  localTime;
 	}
 	
@@ -58,11 +60,11 @@ public class TimeZone extends Entity{
 			   || getStartHours().equals(timeZone.getStartHours());
 	}
 
-	public LocalTime getStartHours() {
+	public LocalDateTime getStartHours() {
 		return startHours;
 	}
 
-	public LocalTime getEndHours() {
+	public LocalDateTime getEndHours() {
 		return endHours;
 	}
 
